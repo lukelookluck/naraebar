@@ -90,9 +90,21 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={MakingCocktail}></Route>
             <Route exact path="/MenuList" component={MenuList} />
-            <Route exact path="/MakingCocktail" component={MakingCocktail}></Route>
-            <Route exact path="/CompleteCocktail" component={CompleteCocktail}></Route>
-            <Route exact path="/SelectCocktail" component={SelectCocktail}></Route>
+            <Route
+              exact
+              path="/MakingCocktail"
+              component={MakingCocktail}
+            ></Route>
+            <Route
+              exact
+              path="/CompleteCocktail"
+              component={CompleteCocktail}
+            ></Route>
+            <Route
+              exact
+              path="/SelectCocktail"
+              component={SelectCocktail}
+            ></Route>
             <Redirect to="/NotFound" component={NotFound} />
           </Switch>
         </BrowserRouter>
