@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../../layout/'
 import './style.css'
 
-const Complete = () => {
+const CompleteCocktail = () => {
   return (
     <Layout>
         <div className="container">
@@ -15,4 +15,4 @@ const Complete = () => {
   );
 };
 
-export default Complete;
+export default CompleteCocktail;

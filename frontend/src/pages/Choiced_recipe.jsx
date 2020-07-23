@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "../components/Card";
-import Button from "../components/Button";
+import Button from "../../components/Button";
 
 function Example() {
   // "count"라는 새 상태 변수를 선언합니다

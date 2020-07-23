@@ -10,10 +10,11 @@ import { CommonContext } from './context/CommonContext';
 import { useLocalStorageSetState } from './common/CommonHooks';
 
 // pages
-import MainDisplay from './pages/MainDisplay';
+import MenuList from './pages/MenuList';
 import MakingCocktail from './pages/MakingCocktail/';
-import Complete from './pages/Complete/';
+import CompleteCocktail from './pages/CompleteCocktail/';
 import NotFound from './pages/NotFound/';
+import SelectCocktail from './pages/SelectCocktail/';
 
 // css
 // import './index.css';
@@ -88,9 +89,10 @@ const App = () => {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={MakingCocktail}></Route>
-            <Route exact path="/MainDisplay" component={MainDisplay} />
+            <Route exact path="/MenuList" component={MenuList} />
             <Route exact path="/MakingCocktail" component={MakingCocktail}></Route>
-            <Route exact path="/Complete" component={Complete}></Route>
+            <Route exact path="/CompleteCocktail" component={CompleteCocktail}></Route>
+            <Route exact path="/SelectCocktail" component={SelectCocktail}></Route>
             <Redirect to="/NotFound" component={NotFound} />
           </Switch>
         </BrowserRouter>
