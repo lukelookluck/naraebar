@@ -4,11 +4,7 @@ import './style.css';
 const Layout = props => {
   const { children } = props;
 
-  return (
-    <div className='App'>
-      <div>{children}</div>
-    </div>
-  );
+  return <div className="App">{children}</div>;
 };
 
 export default Layout;
