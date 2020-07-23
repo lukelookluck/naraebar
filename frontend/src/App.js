@@ -9,9 +9,10 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { CommonContext } from './context/CommonContext';
 import { useLocalStorageSetState } from './common/CommonHooks';
 
-// page
-
+// pages
 import MainDisplay from './pages/MainDisplay';
+import MakingCocktail from './pages/MakingCocktail/';
+import Complete from './pages/Complete/';
 
 // css
 // import './index.css';
@@ -85,7 +86,15 @@ const App = () => {
       <MuiThemeProvider theme={theme}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={MainDisplay} />
+            <Route exact path="/" component={MakingCocktail}></Route>
+            <Route exact path="/MainDisplay" component={MainDisplay} />
+            <Route
+              exact
+              path="/MakingCocktail"
+              component={MakingCocktail}
+            ></Route>
+            <Route exact path="/Complete" component={Complete}></Route>
+
             <Redirect to="/not-found" />
           </Switch>
         </BrowserRouter>
