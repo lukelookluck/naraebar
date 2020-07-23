@@ -13,6 +13,7 @@ import { useLocalStorageSetState } from './common/CommonHooks';
 import MainDisplay from './pages/MainDisplay';
 import MakingCocktail from './pages/MakingCocktail/';
 import Complete from './pages/Complete/';
+import NotFound from './pages/NotFound/';
 
 // css
 // import './index.css';
@@ -88,14 +89,9 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={MakingCocktail}></Route>
             <Route exact path="/MainDisplay" component={MainDisplay} />
-            <Route
-              exact
-              path="/MakingCocktail"
-              component={MakingCocktail}
-            ></Route>
+            <Route exact path="/MakingCocktail" component={MakingCocktail}></Route>
             <Route exact path="/Complete" component={Complete}></Route>
-
-            <Redirect to="/not-found" />
+            <Redirect to="/NotFound" component={NotFound} />
           </Switch>
         </BrowserRouter>
       </MuiThemeProvider>
