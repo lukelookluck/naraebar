@@ -6,7 +6,7 @@ import dumpfile from '../../pages/CocktailDump.json';
 // import mojito from '../../../public/images/cocktail/mojito2.png';
 
 export default function CardBody(props) {
-  const myCockTail = dumpfile[1];
+  const myCockTail = dumpfile[2];
   return (
     <div className="card-body">
       <div className="card-text">
@@ -44,12 +44,12 @@ export default function CardBody(props) {
         </div>
       </div>
       <div>
-        {/* <img
+        <img
           className="my-img"
           src={myCockTail.strDrinkThumb}
           alt={myCockTail.strDrink}
-        /> */}
-        <img className="my-img" src="images/cocktail/mojito2.png" alt="" />
+        />
+        {/* <img className="my-img" src="images/cocktail/mojito2.png" alt="" /> */}
       </div>
     </div>
   );

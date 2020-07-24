@@ -1,6 +1,6 @@
 .card-body {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   width: auto;
   height: auto;
@@ -13,7 +13,7 @@
 
 .card-text {
   /* text-align: center; */
-  vertical-align: bottom;
+  /* vertical-align: bottom; */
   max-width: 50%;
 }
 
