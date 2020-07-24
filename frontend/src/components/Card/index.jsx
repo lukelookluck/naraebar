@@ -1,40 +1,41 @@
 import React from 'react';
 import './style.css';
 import Button from '../../components/Button';
+import dumpfile from '../../pages/CocktailDump.json';
 
 // import mojito from '../../../public/images/cocktail/mojito2.png';
 
-export default function CardBody() {
+export default function CardBody(props) {
+  const myCockTail = dumpfile[1];
   return (
     <div className="card-body">
       <div className="card-text">
-        <h1 className="card-title">모히토</h1>
-        <h2 className="card-subtitle">쿠바</h2>
+        <h1 className="card-title"> {myCockTail.strDrink}</h1>
+        <h2 className="card-subtitle"> {myCockTail.strCategory}</h2>
         <p className="card-description">
-          Muddle mint leaves with sugar and lime juice. Add a splash of soda
-          water and fill the glass with cracked ice. Pour the rum and top with
-          soda water. Garnish and serve with straw.
+          <p>{myCockTail.strInstructions}</p>
         </p>
         <div>
           <ul>
             <li>
-              <h4>Light rum</h4>
-              2-3 oz
+              <h4>{myCockTail.strIngredient1}</h4>
+              <p>{myCockTail.strMeasure1}</p>
             </li>
             <li>
-              <h4>Lime</h4>
-              Juice of 1
+              <h4>{myCockTail.strIngredient2}</h4>
+              <p>{myCockTail.strMeasure2}</p>
             </li>
             <li>
-              <h4>Sugar</h4>2 tsp
+              <h4>{myCockTail.strIngredient3}</h4>
+              <p>{myCockTail.strMeasure3}</p>
             </li>
             <li>
-              <h4>Mint</h4>
-              2-4
+              <h4>{myCockTail.strIngredient4}</h4>
+              <p>{myCockTail.strMeasure4}</p>
             </li>
             <li>
-              <h4>Soda water</h4>
-              half cup
+              <h4>{myCockTail.strIngredient5}</h4>
+              <p>{myCockTail.strMeasure5}</p>
             </li>
           </ul>
         </div>
@@ -43,6 +44,11 @@ export default function CardBody() {
         </div>
       </div>
       <div>
+        {/* <img
+          className="my-img"
+          src={myCockTail.strDrinkThumb}
+          alt={myCockTail.strDrink}
+        /> */}
         <img className="my-img" src="images/cocktail/mojito2.png" alt="" />
       </div>
     </div>
