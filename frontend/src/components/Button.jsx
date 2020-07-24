@@ -11,14 +11,16 @@ const useStyles = makeStyles({
     width: 'auto',
     display: 'flex',
     justifyContent: 'around',
-    backgroundColor: 'rgb(203, 245, 255)',
+    // color: 'rgb(12, 12, 12)',
+    // backgroundColor: 'rgb(203, 245, 255)',
+    backgroundColor: 'rgba(255, 255, 255, 0)',
   },
   item: {
     backgroundColor: 'white',
-    paddingLeft: 100,
-    paddingRight: 100,
-    marginLeft: 50,
-    marginRight: 50,
+    paddingLeft: 150,
+    paddingRight: 150,
+    marginLeft: 25,
+    marginRight: 25,
     borderRadius: 25,
   },
 });
@@ -28,31 +30,29 @@ export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
 
   return (
-    <div class="d-flex justify-content-center ">
-      <BottomNavigation
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-        showLabels
-        className={classes.root}
-      >
-        <BottomNavigationAction
-          className={classes.item}
-          label="SELECT"
-          icon={<CheckBoxIcon />}
-          to="/MakingCocktail"
-          component={Link}
-        />
-        <BottomNavigationAction
-          className={classes.item}
-          label="BACK"
-          icon={<UndoIcon />}
-          to="/MenuList"
-          component={Link}
-        />
-        {/* <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}
-      </BottomNavigation>
-    </div>
+    <BottomNavigation
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(newValue);
+      }}
+      showLabels
+      className={classes.root}
+    >
+      <BottomNavigationAction
+        className={classes.item}
+        label="SELECT"
+        icon={<CheckBoxIcon />}
+        to="/MakingCocktail"
+        component={Link}
+      />
+      <BottomNavigationAction
+        className={classes.item}
+        label="BACK"
+        icon={<UndoIcon />}
+        to="/MenuList"
+        component={Link}
+      />
+      {/* <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}
+    </BottomNavigation>
   );
 }
