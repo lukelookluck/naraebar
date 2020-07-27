@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
+import "bootstrap/dist/css/bootstrap.min.css";
 import Main from './pages/Main/';
 import Community from './pages/Community/';
 import MyBar from './pages/MyBar/'
