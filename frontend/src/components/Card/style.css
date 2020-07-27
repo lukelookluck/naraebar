@@ -14,7 +14,8 @@
 .card-text {
   /* text-align: center; */
   /* vertical-align: bottom; */
-  max-width: 50%;
+  max-width: 75%;
+  width: 50%;
 }
 
 .card-title {

@@ -10,18 +10,15 @@ const useStyles = makeStyles({
   root: {
     width: 'auto',
     display: 'flex',
-    justifyContent: 'around',
-    // color: 'rgb(12, 12, 12)',
-    // backgroundColor: 'rgb(203, 245, 255)',
     backgroundColor: 'rgba(255, 255, 255, 0)',
-    marginRight: 50,
+    marginRight: 100,
   },
   item: {
     backgroundColor: 'white',
-    paddingLeft: 150,
-    paddingRight: 150,
+    paddingLeft: 125,
+    paddingRight: 125,
     // marginLeft: 25,
-    marginRight: 25,
+    marginRight: 100,
     borderRadius: 25,
   },
 });
