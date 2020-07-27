@@ -1,10 +1,11 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
-import Main from './pages/Main/';
-import Community from './pages/Community/';
-import MyBar from './pages/MyBar/'
+import Main from "./pages/Main/";
+import Community from "./pages/Community/";
+import MyBar from "./pages/MyBar/";
 
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
