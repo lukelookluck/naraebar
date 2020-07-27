@@ -1,11 +1,17 @@
 import React from 'react';
 import Layout from '../../layout/';
+import './style.css'
+
+import Logo from '../../components/Logo/'
+import Nav from '../../components/NavigationMenu/'
+import Recipe from '../../components/RecipeList/'
 
 const Community = () => {
   return (
     <Layout>
-      <h1>커뮤니티 화면</h1>
-      
+      <Logo />
+      <Nav />
+      <Recipe />
     </Layout>
   );
 };
