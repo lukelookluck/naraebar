@@ -5,7 +5,7 @@
     text-align: center;
 }
 
-.logo {
+.logo_div {
     height: 300px;
     text-align: center;
     background-color: rgb(183, 199, 253);
@@ -75,7 +75,7 @@
         text-align: center;
     }
     
-    .logo {
+    .logo_div {
         height: 300px;
         text-align: center;
         background-color: rgb(183, 199, 253);

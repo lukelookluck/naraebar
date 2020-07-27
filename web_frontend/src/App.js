@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Main from './pages/Main/';
@@ -8,6 +8,10 @@ import SignUp from './pages/SignUp/'
 import FindPW from './pages/FindPW/'
 
 function App() {
+
+  // const [user, setUser] = useState(null);
+  // const logout = () => setUser(null);
+
   return (
     <BrowserRouter>
       <Switch>
