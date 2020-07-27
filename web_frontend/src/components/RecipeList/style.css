@@ -1,0 +1,30 @@
+.list-box {
+  margin-top: 15%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.list-item {
+  display: flex;
+
+}
+
+.list-item-image {
+  width: 40%;
+}
+
+.list-item-detail {
+  flex: auto;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.like-button {
+  /* align-items: flex-end; */
+  display: flex;
+  justify-content: end;
+
+}
