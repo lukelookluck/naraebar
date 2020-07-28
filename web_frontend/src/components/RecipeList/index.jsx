@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 
 import Wrapper from "./style";
@@ -11,13 +11,18 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import dumpfile from "../../pages/Community/ArticleDump.json";
 
 export default function () {
-  const isLikeit = 0;
+  const [isLikeit, setLikeIt] = useState(0);
 
   let likeButton = null;
   if (isLikeit) {
-    likeButton = <FavoriteIcon />;
+    likeButton = <FavoriteIcon onClick={likeIt} />;
   } else {
-    likeButton = <FavoriteBorderIcon />;
+    likeButton = <FavoriteBorderIcon onClick={likeIt} />;
+  }
+
+  function likeIt() {
+    // alert("눌럿어?");
+    setLikeIt(!isLikeit);
   }
 
   const articleDump = dumpfile;
@@ -30,7 +35,7 @@ export default function () {
         <div className="list-item">
           <img className="list-item-image" src="images/sample.jpg" alt="" />
           <div className="list-item-detail">
-            <span>{item.content}</span>
+            <span className="detail-content">{item.content}</span>
           </div>
         </div>
         <div className="like-button">

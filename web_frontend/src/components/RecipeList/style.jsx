@@ -42,6 +42,10 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
   }
+
+  & .detail-content {
+    font-size: 1em;
+  }
 `;
 
 export default Wrapper;
