@@ -1,17 +1,23 @@
-import React from 'react';
-import Layout from '../../layout/';
-import './style.css'
+import React from "react";
+import Layout from "../../layout/";
+import Grid from "@material-ui/core/Grid";
 
-import Logo from '../../components/Logo/'
-import Nav from '../../components/NavigationMenu/'
-import Recipe from '../../components/RecipeList/'
+import Wrapper from "./style";
+
+import Logo from "../../components/Logo/";
+import Nav from "../../components/NavigationMenu/";
+import Recipe from "../../components/RecipeList/";
 
 const Community = () => {
   return (
     <Layout>
-      <Logo />
-      <Nav />
-      <Recipe />
+      <Wrapper>
+        <Grid>
+          <Logo />
+          <Nav />
+          <Recipe />
+        </Grid>
+      </Wrapper>
     </Layout>
   );
 };
