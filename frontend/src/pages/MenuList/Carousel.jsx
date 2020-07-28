@@ -1,7 +1,8 @@
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from 'react-bootstrap';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-
+import Layout from '../../layout';
+import Wrapper from './style';
 // import NotFound from '../NotFound/';
 
 // let selectedCocktail = e => {
@@ -9,41 +10,47 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 // };
 
 export default () => (
-  <Carousel>
-    <div>
-      <Link to="/SelectCocktail">
-        <p className="cocktail">cocktail 1</p>
-      </Link>
-      <button>
-        <img
-          alt="cocktail 1 image"
-          src="http://lorempixel.com/output/abstract-q-c-640-480-1.jpg"
-        />
-      </button>
-    </div>
+  <Layout>
+    <Wrapper>
+      <Carousel>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://picsum.photos/200/400"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://picsum.photos/200/300"
+            alt="Third slide"
+          />
 
-    <div>
-      <Link to="/SelectCocktail">
-        <p className="cocktail">cocktail 2</p>
-      </Link>
-      <button>
-        <img
-          alt="cocktail 2 image"
-          src="http://lorempixel.com/output/abstract-q-c-640-480-2.jpg"
-        />
-      </button>
-    </div>
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://picsum.photos/200/300"
+            alt="Third slide"
+          />
 
-    <div>
-      <Link to="/SelectCocktail">
-        <p className="cocktail">cocktail 3</p>
-      </Link>
-      <button>
-        <img
-          alt="cocktail 3 image"
-          src="http://lorempixel.com/output/abstract-q-c-640-480-3.jpg"
-        />
-      </button>
-    </div>
-  </Carousel>
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    </Wrapper>
+  </Layout>
 );
