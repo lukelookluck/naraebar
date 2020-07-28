@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Choiced_recipe from './pages/Choiced_recipe'
+import Selected_recipe from './pages/Selected_recipe'
 
 function App() {
   return (
     <div className="App">
       <header className="App-body">
-        <Choiced_recipe />
+        <Selected_recipe />
       </header>
     </div>
   );
