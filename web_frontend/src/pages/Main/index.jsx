@@ -35,11 +35,11 @@ const Main = () => {
     return (
         <Wrapper>
             <Grid container className="root" justify="center" alignItems="center">
-                <Grid item xs={10} justify="center" alignItems="center" className="logoGrid">
+                <Grid item xs={10} className="logoGrid">
                     <p id="logo_en">NaReBar</p>
                     <p id="logo_ko">나만의 레시피 바텐더</p>
                 </Grid>
-                <Grid item xs={10} justify="center" alignItems="center" className="login">
+                <Grid item xs={10} className="login">
                     <div>
                         <input id="id" type="text" name="id" placeholder="아이디"
                             value={id} onChange={({ target: { value } }) => setId(value)}></input>

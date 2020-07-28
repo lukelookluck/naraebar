@@ -1,13 +1,14 @@
 import React from 'react';
-import './style.css';
 import Header from './Header/';
+import NavigationTab from './NavigationTab/'
 
 const Layout = props => {
   const { children } = props;
 
   return (
-    <div className='App'>
+    <div>
       <Header></Header>
+      <NavigationTab></NavigationTab>
       <div>{children}</div>
     </div>
   );

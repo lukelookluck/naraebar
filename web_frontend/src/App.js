@@ -7,6 +7,7 @@ import Community from './pages/Community/';
 import MyBar from './pages/MyBar/'
 import SignUp from './pages/SignUp/'
 import FindPW from './pages/FindPW/'
+import UploadRecipe from './pages/UploadRecipe/'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/MyBar" component={MyBar}></Route>
         <Route exact path="/SignUp" component={SignUp}></Route>
         <Route exact path="/FindPW" component={FindPW}></Route>
+        <Route exact path="/UploadRecipe" component={UploadRecipe}></Route>
       </Switch>
     </BrowserRouter>
   );
