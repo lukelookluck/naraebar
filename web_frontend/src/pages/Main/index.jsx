@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './style.css';
+import { Grid, Button } from "@material-ui/core";
+import Wrapper from "./styles";
 import { signIn } from './auth';
 
 const Main = () => {
@@ -32,36 +33,35 @@ const Main = () => {
     };
 
     return (
-        <div className="App">
-            <div className="logo_div">
-                <p className="logo_en">NaReBar</p>
-                <p className="logo_ko">나만의 레시피 바텐더</p>
-            </div>
-
-            <div className="login">
-
-                <div>
-                    <input id="id" type="text" name="id" placeholder="ID"
-                        value={id} onChange={({ target: { value } }) => setId(value)}></input>
-                </div>
-                <div>
-                    <input id="pw" type="password" name="pw" placeholder="PASSWORD"
-                        value={pw} onChange={({ target: { value } }) => setPw(value)}></input>
-                </div>
-                <button id="login_btn" onClick={handleLogin}>LOGIN</button>
-
-            </div>
-
-            <div className="link_div">
-                <div id="signup" onClick={onClickRedirectPathHandler('/SignUp')}>SIGN UP</div>
-                <div id="findpw" onClick={onClickRedirectPathHandler('/FindPW')}>FIND PASSWORD</div>
-            </div>
-        </div>
+        <Wrapper>
+            <Grid container className="root" justify="center" alignItems="center">
+                <Grid item xs={10} justify="center" alignItems="center" className="logoGrid">
+                    <p id="logo_en">NaReBar</p>
+                    <p id="logo_ko">나만의 레시피 바텐더</p>
+                </Grid>
+                <Grid item xs={10} justify="center" alignItems="center" className="login">
+                    <div>
+                        <input id="id" type="text" name="id" placeholder="아이디"
+                            value={id} onChange={({ target: { value } }) => setId(value)}></input>
+                    </div>
+                    <div>
+                        <input id="pw" type="password" name="pw" placeholder="비밀번호"
+                            value={pw} onChange={({ target: { value } }) => setPw(value)}></input>
+                    </div>
+                    <Button variant="contained" className="login_btn" onClick={handleLogin}>로그인</Button>
+                </Grid>
+                <Grid item xs={5} className="bottom">
+                    <div id="signup" onClick={onClickRedirectPathHandler('/SignUp')}>회원가입</div>
+                </Grid>
+                <Grid item xs={5} className="bottom">
+                    <div id="findpw" onClick={onClickRedirectPathHandler('/FindPW')}>비밀번호<br/>찾기</div>
+                </Grid>
+            </Grid>
+        </Wrapper>
     );
 };
 
 export default Main;
-
 
 
 
