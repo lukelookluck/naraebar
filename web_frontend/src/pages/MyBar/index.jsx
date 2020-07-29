@@ -15,6 +15,9 @@ const MyBar = () => {
   return (
     <Layout>
       <Wrapper>
+        <Grid container className="syncButton" justify="flex-end">
+          <SyncButton />
+        </Grid>
         <Grid container className="recipe" justify="center" alignItems="center">
           <Card>
             <Card.Body>
@@ -51,8 +54,6 @@ const MyBar = () => {
             <Pagination.Last />
           </Pagination>
         </Grid>
-
-        <SyncButton />
       </Wrapper>
     </Layout>
   );
