@@ -21,14 +21,7 @@ const MyBar = () => {
           alignItems="center"
           spacing={4}
           className="mybarHeader"
-        >
-          <Grid item className="Community">
-            <Button variant="secondary">Community</Button>{" "}
-          </Grid>
-          <Grid item className="MyBar">
-            <Button variant="dark">MyBar</Button>{" "}
-          </Grid>
-        </Grid>
+        ></Grid>
 
         <Grid container justify="flex-end" className="sync">
           <Button variant="light" size="sm">
