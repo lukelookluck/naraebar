@@ -1,3 +1,5 @@
+char data = 9;
+
 void setup() {
   // put your setup code here, to run once:
   pinMode(9, OUTPUT);
@@ -6,9 +8,14 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  if(Serial.available()){
+    data=Serial.read();
+  }
+  if(data == '1'){
+    digitalWrite(9, HIGH);  // Turn the LED
+  }
+  else if(data == '0'){
+    digitalWrite(9, LOW);   // Turn the LED
+  }
   
-  digitalWrite(9, LOW);   // Turn the LED
-  delay(1000);    // Wait for a seconds
-  digitalWrite(9, HIGH);  // Turn the LED
-  delay(1000);    // Wait for a seconds
 }
