@@ -61,7 +61,7 @@ export default function () {
     }
 
     return (
-      <div className="list-card">
+      <div key={item.id} className="list-card">
         <div className="list-user">
           <AccountCircleIcon />
           {item.user}
