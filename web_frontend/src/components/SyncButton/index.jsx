@@ -1,13 +1,22 @@
 import React from "react";
-
 import Wrapper from "./style";
 
-export default function () {
+const SyncButton = () => {
   return (
     <Wrapper>
-      <div>
-        <button className="sync-button">Sync</button>
+      <div className="custom-control custom-switch">
+        <input
+          type="checkbox"
+          className="custom-control-input"
+          id="customSwitches"
+          readOnly
+        />
+        <label className="custom-control-label" htmlFor="customSwitches">
+          Sync
+        </label>
       </div>
     </Wrapper>
   );
-}
+};
+
+export default SyncButton;

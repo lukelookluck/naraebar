@@ -1,8 +1,6 @@
 import React from "react";
 import Layout from "../../layout/";
-
 import { Grid } from "@material-ui/core";
-
 import {
   ListGroup,
   ListGroupItem,
@@ -10,7 +8,6 @@ import {
   Button,
   Pagination,
 } from "react-bootstrap";
-
 import Wrapper from "./styles";
 import SyncButton from "../../components/SyncButton";
 
@@ -18,15 +15,7 @@ const MyBar = () => {
   return (
     <Layout>
       <Wrapper>
-        <Grid
-          container
-          justify="center"
-          alignItems="center"
-          spacing={4}
-          className="mybarHeader"
-        ></Grid>
-
-        <Grid container className="recipe" justify="center">
+        <Grid container className="recipe" justify="center" alignItems="center">
           <Card>
             <Card.Body>
               <Card.Title>Frozen Margerita</Card.Title>
