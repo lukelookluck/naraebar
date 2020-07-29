@@ -14,8 +14,8 @@ const Community = () => {
     <Layout>
       <Wrapper>
         <Grid>
-          <Logo />
-          <Nav />
+          {/* <Logo /> */}
+          {/* <Nav /> */}
           <Recipe />
           <CreateArticleButton />
         </Grid>

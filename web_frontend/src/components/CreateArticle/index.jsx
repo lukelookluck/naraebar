@@ -1,14 +1,16 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
+import CreateIcon from "@material-ui/icons/Create";
 
 import Wrapper from "./style";
 
 export default function () {
   return (
     <Wrapper>
-      <Grid>
-        <button>글 쓰기</button>
-      </Grid>
+      <div>
+        <button className="create-button">
+          <CreateIcon color="secondary" fontSize="small" /> 글 쓰기
+        </button>
+      </div>
     </Wrapper>
   );
 }

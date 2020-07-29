@@ -6,7 +6,8 @@ const Wrapper = styled.div`
         margin-top: 60px;
         margin-bottom: 20px;
         height: 100px;
-        background-color: rgb(183, 199, 253);
+        background-color: rgb(56, 97, 149);
+        color: white;
     }
 
     & #logo {

@@ -27,13 +27,13 @@ const NavigationTab = () => {
           >
             <Tab
               className="myTab"
-              label="커뮤니티"
+              label="Community"
               component={Link}
               to="/Community"
             ></Tab>
             <Tab
               className="myTab"
-              label="마이바"
+              label="MyBar"
               component={Link}
               to="/MyBar"
             ></Tab>

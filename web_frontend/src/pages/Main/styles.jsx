@@ -6,7 +6,8 @@ const Wrapper = styled.div`
     & .logoGrid {
         margin-top: 60px;
         height: 300px;
-        background-color: rgb(183, 199, 253);
+        background-color: rgb(56, 97, 149);
+        color: white;
     }
 
     & #logo_en {
@@ -39,7 +40,7 @@ const Wrapper = styled.div`
         margin-top: 30px;
         width: 100%;
         height: 50px;
-        background-color: rgb(151, 156, 228);
+        background-color: rgb(76, 127, 188);
         text-decoration: none;
         border: none;
         color: white;
@@ -48,6 +49,7 @@ const Wrapper = styled.div`
 
     & .bottom {
         margin-top: 40px;
+        color: rgb(56, 97, 149);
     }
 `;
 
