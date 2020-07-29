@@ -35,7 +35,6 @@ const Wrapper = styled.div`
   }
 
   & .list-item-detail {
-    /* flex: auto; */
     flex-direction: column;
     display: flex;
     justify-content: center;
