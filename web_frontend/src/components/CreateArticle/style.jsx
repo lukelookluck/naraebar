@@ -6,7 +6,7 @@ const Wrapper = styled.div`
     /* right: 50%; */
     left: 50%;
     transform: translateX(-50%);
-    bottom: 2.5%;
+    bottom: 9%;
 
     border: 0.5px solid #9b9b9b;
     border-radius: 15px;

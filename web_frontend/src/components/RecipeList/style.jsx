@@ -9,13 +9,17 @@ const Wrapper = styled.div`
 
   & .list-card {
     margin-bottom: 20%;
+    padding: 10%;
+    border: solid 1px #9b9b9b;
+    border-radius: 15px;
   }
 
   & .list-user {
     display: flex;
     justify-content: start;
     margin-left: 2%;
-    margin-bottom: 4%;
+    padding-bottom: 4%;
+    border-bottom: solid 1px #9b9b9b;
   }
 
   & .list-item {
@@ -24,9 +28,10 @@ const Wrapper = styled.div`
   }
 
   & .list-item-image {
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 100%;
+    padding: 10% 10%;
+    /* padding-bottom: 10%; */
+    border-bottom: solid 1px #9b9b9b;
   }
 
   & .list-item-detail {
@@ -46,6 +51,8 @@ const Wrapper = styled.div`
 
   & .detail-content {
     font-size: 1em;
+    padding: 10% 0;
+    border-bottom: solid 1px #9b9b9b;
   }
 `;
 
