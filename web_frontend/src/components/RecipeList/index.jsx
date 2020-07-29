@@ -41,6 +41,25 @@ export default function () {
       setSaveit(!isSaveit);
     }
 
+    let moreButton = (
+      <a href="#" onClick={moreContent}>
+        더보기
+      </a>
+    );
+
+    const [myHide, setmyHide] = useState(moreButton);
+
+    const [cardContent, setCardContent] = useState(
+      item.content.substring(0, 50) + "..."
+    );
+
+    function moreContent(e) {
+      setCardContent(item.content);
+      console.log(myHide);
+      setmyHide(null);
+      e.preventDefault();
+    }
+
     return (
       <div className="list-card">
         <div className="list-user">
@@ -50,7 +69,10 @@ export default function () {
         <div className="list-item">
           <img className="list-item-image" src="images/sample.jpg" alt="" />
           <div className="list-item-detail">
-            <span className="detail-content">{item.content}</span>
+            <span className="detail-content">
+              {cardContent}
+              {myHide}
+            </span>
           </div>
         </div>
         <div className="like-button">
