@@ -53,6 +53,12 @@ const Wrapper = styled.div`
     padding: 10% 0;
     border-bottom: solid 1px #9b9b9b;
   }
+
+  & .more-tag {
+    text-decoration: none;
+    font-weight: 600;
+    color: #727272;
+  }
 `;
 
 export default Wrapper;
