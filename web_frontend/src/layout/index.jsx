@@ -1,16 +1,22 @@
 import React from 'react';
 import Header from './Header/';
-import NavigationTab from './NavigationTab/'
+import NavigationTab from './NavigationTab/';
+import { Grid } from "@material-ui/core";
 
 const Layout = props => {
   const { children } = props;
 
   return (
-    <div>
-      <Header></Header>
-      <NavigationTab></NavigationTab>
-      <div>{children}</div>
-    </div>
+
+    <Grid container justify="center" alignItems="center">
+
+      <Grid item xs={10}>
+        <Header></Header>
+        <NavigationTab></NavigationTab>
+        <div>{children}</div>
+
+      </Grid>
+    </Grid>
   );
 };
 

@@ -18,8 +18,8 @@ const NavigationTab = () => {
             <Grid container justify="center" alignItems="center">
                 <Grid item xs={10}>
                     <Tabs variant="fullWidth" indicatorColor="primary" textColor="primary" className="navTabs" value={value} onChange={handleChange} >
-                        <Tab className="myTab" label="커뮤니티" component={Link} to="/Community"></Tab>
-                        <Tab className="myTab" label="마이바" component={Link} to="/MyBar"></Tab>
+                        <Tab className="myTab" label="Community" component={Link} to="/Community"></Tab>
+                        <Tab className="myTab" label="MyBar" component={Link} to="/MyBar"></Tab>
                     </Tabs>
                 </Grid>
             </Grid>

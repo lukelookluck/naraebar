@@ -12,7 +12,6 @@ const MyBar = () => {
       <Wrapper>
         <Grid className="narebarLogo">
           {/* <img src="" alt="narebarLogo" /> */}
-          <h1>NaReBar</h1>
         </Grid>
 
         <Grid
