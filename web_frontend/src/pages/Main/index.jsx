@@ -39,7 +39,7 @@ const Main = () => {
                     <p id="logo_en">NaReBar</p>
                     <p id="logo_ko">나만의 레시피 바텐더</p>
                 </Grid>
-                <Grid item xs={12} className="login">
+                <Grid item xs={10} className="login">
                     <div>
                         <input id="id" type="text" name="id" placeholder="아이디"
                             value={id} onChange={({ target: { value } }) => setId(value)}></input>

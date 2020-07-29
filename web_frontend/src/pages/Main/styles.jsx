@@ -4,7 +4,7 @@ const Wrapper = styled.div`
     text-align: center;
 
     & .logoGrid {
-        margin-top: 60px;
+        // margin-top: 60px;
         height: 300px;
         background-color: rgb(56, 97, 149);
         color: white;
