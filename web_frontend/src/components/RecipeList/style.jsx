@@ -19,13 +19,14 @@ const Wrapper = styled.div`
   }
 
   & .list-item {
-    display: flex;
+    /* display: flex; */
     margin-bottom: 4%;
   }
 
   & .list-item-image {
-    width: 40%;
-    margin-right: 5%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 
   & .list-item-detail {
