@@ -3,17 +3,21 @@ import Layout from "../../layout/";
 
 import { Grid } from "@material-ui/core";
 
-import { Button, Pagination } from "react-bootstrap";
+import {
+  ListGroup,
+  ListGroupItem,
+  Card,
+  Button,
+  Pagination,
+} from "react-bootstrap";
+
 import Wrapper from "./styles";
+import SyncButton from "../../components/SyncButton";
 
 const MyBar = () => {
   return (
     <Layout>
       <Wrapper>
-        <Grid className="narebarLogo">
-          {/* <img src="" alt="narebarLogo" /> */}
-        </Grid>
-
         <Grid
           container
           justify="center"
@@ -22,35 +26,27 @@ const MyBar = () => {
           className="mybarHeader"
         ></Grid>
 
-        <Grid container justify="flex-end" className="sync">
-          <Button variant="light" size="sm">
-            Sync
-          </Button>{" "}
-        </Grid>
-
-        <Grid container className="recipe">
-          <Grid item xs={12} className="recipeImage">
-            <img
-              src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/tpupvr1478251697.jpg"
-              alt="recipeImage"
-            ></img>
-          </Grid>
-          <Grid item xs={12} className="recipeDetail">
-            <h3>recipeDetail</h3>
-            <hr />
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-              elementum vulputate libero et laoreet. Curabitur et turpis
-              posuere, blandit elit eu, commodo enim. Duis rutrum mollis ipsum
-              tempus semper. Maecenas quis rhoncus neque. Proin porta hendrerit
-              massa, non dictum dui dictum a. Vivamus porta est gravida velit
-              malesuada fermentum. Nam dui lorem, commodo tincidunt tempor
-              vitae, convallis ut quam. Donec eget viverra urna, nec tempor dui.
-              Morbi eleifend massa a ullamcorper placerat. Vestibulum congue
-              sagittis urna ut accumsan.
-            </p>
-            <hr />
-          </Grid>
+        <Grid container className="recipe" justify="center">
+          <Card>
+            <Card.Body>
+              <Card.Title>Frozen Margerita</Card.Title>
+              <hr />
+              <Card.Img
+                variant="top"
+                src={require("./images/FrozenMargerita.jpg")}
+              />
+              <hr />
+              <Card.Text>
+                대충 프로즌 마르게리타 설명 및 만드는법.
+                <hr />
+              </Card.Text>
+            </Card.Body>
+            <ListGroup className="list-group-flush">
+              <ListGroupItem>재료 1</ListGroupItem>
+              <ListGroupItem>재료 2</ListGroupItem>
+              <ListGroupItem>재료 3</ListGroupItem>
+            </ListGroup>
+          </Card>
         </Grid>
 
         <Grid container justify="center" className="pagination">
@@ -66,6 +62,8 @@ const MyBar = () => {
             <Pagination.Last />
           </Pagination>
         </Grid>
+
+        <SyncButton />
       </Wrapper>
     </Layout>
   );
