@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <Wrapper>
             <Grid container justify="center" alignItems="center">
-                <Grid item xs={10} className="logoGrid">
+                <Grid item xs={12} className="logoGrid">
                     <p id="logo">NaReBar</p>
                 </Grid>
             </Grid>

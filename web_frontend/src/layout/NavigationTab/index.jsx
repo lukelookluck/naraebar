@@ -7,41 +7,41 @@ import Tab from "@material-ui/core/Tab";
 import AppBar from "@material-ui/core/AppBar";
 
 const NavigationTab = () => {
-  const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
-  return (
-    <Wrapper>
-      <Grid container justify="center" alignItems="center">
-        <Grid item xs={10}>
-          <Tabs
-            variant="fullWidth"
-            indicatorColor="primary"
-            textColor="primary"
-            className="navTabs"
-            value={value}
-            onChange={handleChange}
-          >
-            <Tab
-              className="myTab"
-              label="Community"
-              component={Link}
-              to="/Community"
-            ></Tab>
-            <Tab
-              className="myTab"
-              label="MyBar"
-              component={Link}
-              to="/MyBar"
-            ></Tab>
-          </Tabs>
-        </Grid>
-      </Grid>
-    </Wrapper>
-  );
+    return (
+        <Wrapper>
+            <Grid container justify="center" alignItems="center">
+                <Grid item xs={12}>
+                    <Tabs
+                        variant="fullWidth"
+                        indicatorColor="primary"
+                        textColor="primary"
+                        className="navTabs"
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        <Tab
+                            className="myTab"
+                            label="Community"
+                            component={Link}
+                            to="/Community"
+                        ></Tab>
+                        <Tab
+                            className="myTab"
+                            label="MyBar"
+                            component={Link}
+                            to="/MyBar"
+                        ></Tab>
+                    </Tabs>
+                </Grid>
+            </Grid>
+        </Wrapper>
+    );
 };
 
 export default NavigationTab;

@@ -14,6 +14,9 @@ const Wrapper = styled.div`
         font-size: 20px;
         height: 50px;
     }
+    & .myTab:hover {
+        text-decoration: none;
+    }
 
 `;
 

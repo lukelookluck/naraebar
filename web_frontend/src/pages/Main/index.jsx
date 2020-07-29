@@ -35,11 +35,11 @@ const Main = () => {
     return (
         <Wrapper>
             <Grid container className="root" justify="center" alignItems="center">
-                <Grid item xs={10} className="logoGrid">
+                <Grid item xs={12} className="logoGrid">
                     <p id="logo_en">NaReBar</p>
                     <p id="logo_ko">나만의 레시피 바텐더</p>
                 </Grid>
-                <Grid item xs={10} className="login">
+                <Grid item xs={12} className="login">
                     <div>
                         <input id="id" type="text" name="id" placeholder="아이디"
                             value={id} onChange={({ target: { value } }) => setId(value)}></input>
@@ -50,10 +50,10 @@ const Main = () => {
                     </div>
                     <Button variant="contained" className="login_btn" onClick={handleLogin}>로그인</Button>
                 </Grid>
-                <Grid item xs={5} className="bottom">
+                <Grid item xs={6} className="bottom">
                     <div id="signup" onClick={onClickRedirectPathHandler('/SignUp')}>회원가입</div>
                 </Grid>
-                <Grid item xs={5} className="bottom">
+                <Grid item xs={6} className="bottom">
                     <div id="findpw" onClick={onClickRedirectPathHandler('/FindPW')}>비밀번호<br/>찾기</div>
                 </Grid>
             </Grid>
