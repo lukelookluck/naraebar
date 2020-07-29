@@ -42,7 +42,7 @@ export default function () {
     }
 
     let moreButton = (
-      <a href="#" onClick={moreContent}>
+      <a className="more-tag" href="#" onClick={moreContent}>
         더보기
       </a>
     );
