@@ -45,10 +45,14 @@ const Wrapper = styled.div`
         border: none;
         color: white;
         font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    & .login_btn:hover {
+        background-color: rgb(76, 127, 188);
     }
 
     & .bottom {
-        margin-top: 40px;
         color: rgb(56, 97, 149);
     }
 `;
