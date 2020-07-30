@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  & .create-button {
+  & .go-articleForm-button {
     position: fixed;
     /* right: 50%; */
     left: 50%;
     transform: translateX(-50%);
+    /* top: 0; */
     bottom: 9%;
 
     border: 0.5px solid #9b9b9b;

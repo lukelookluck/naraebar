@@ -130,8 +130,14 @@ export default function NavigationTab() {
             variant="fullWidth"
             className="navTabs"
           >
-            <Tab /* component={Link} to="/Community" */  label="Community" {...a11yProps(0)} />
-            <Tab /* component={Link} to="/MyBar" */ label="MyBar" {...a11yProps(1)} />
+            <Tab
+              /* component={Link} to="/Community" */ label="Community"
+              {...a11yProps(0)}
+            />
+            <Tab
+              /* component={Link} to="/MyBar" */ label="MyBar"
+              {...a11yProps(1)}
+            />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -139,7 +145,7 @@ export default function NavigationTab() {
           index={value}
           onChangeIndex={handleChangeIndex}
         >
-          <TabPanel value={value} index={0} dir={theme.direction} >
+          <TabPanel value={value} index={0} dir={theme.direction}>
             <Community></Community>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
