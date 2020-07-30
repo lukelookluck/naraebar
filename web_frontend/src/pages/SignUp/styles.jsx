@@ -32,6 +32,10 @@ const Wrapper = styled.div`
         font-size: 20px;
     }
 
+    & .submitBtn:hover {
+        background-color: rgb(76, 127, 188);
+    }
+
     & .resetBtn {
         margin-top: 30px;
         height: 50px;
