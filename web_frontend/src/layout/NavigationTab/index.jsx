@@ -64,6 +64,8 @@ import Box from "@material-ui/core/Box";
 import Community from "../../pages/Community/";
 import MyBar from "../../pages/MyBar/";
 
+import Portal from "@material-ui/core/Portal";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -146,7 +148,9 @@ export default function NavigationTab() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <Community></Community>
+            <Portal container={document.body}>
+              <Community></Community>
+            </Portal>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <MyBar></MyBar>
