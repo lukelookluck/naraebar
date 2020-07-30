@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Grid, Button } from "@material-ui/core";
 import Wrapper from "./styles";
-import Layout from "../../layout/"
+import Layout from "../../layout/";
+
+import Header from "../../layout/Header";
 
 const UploadRecipe = () => {
-
-    return (
-        <Layout>
-            <Wrapper>
-                <Grid container justify="center" alignItems="center">
-                    
-                </Grid>
-            </Wrapper>
-        </Layout>
-    );
+  return (
+    <Wrapper>
+      <Header />
+      <Grid container justify="center" alignItems="center"></Grid>
+    </Wrapper>
+  );
 };
 
 export default UploadRecipe;

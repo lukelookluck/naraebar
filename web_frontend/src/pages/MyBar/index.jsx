@@ -13,49 +13,47 @@ import SyncButton from "../../components/SyncButton";
 
 const MyBar = () => {
   return (
-    <Layout>
-      <Wrapper>
-        <Grid container className="syncButton" justify="flex-end">
-          <SyncButton />
-        </Grid>
-        <Grid container className="recipe" justify="center" alignItems="center">
-          <Card>
-            <Card.Body>
-              <Card.Title>Frozen Margerita</Card.Title>
+    <Wrapper>
+      <Grid container className="syncButtonGrid" justify="flex-end">
+        <SyncButton />
+      </Grid>
+      <Grid container className="recipe" justify="center" alignItems="center">
+        <Card>
+          <Card.Body>
+            <Card.Title>Frozen Margerita</Card.Title>
+            <hr />
+            <Card.Img
+              variant="top"
+              src={require("./images/FrozenMargerita.jpg")}
+            />
+            <hr />
+            <Card.Text>
+              대충 프로즌 마르게리타 설명 및 만드는법.
               <hr />
-              <Card.Img
-                variant="top"
-                src={require("./images/FrozenMargerita.jpg")}
-              />
-              <hr />
-              <Card.Text>
-                대충 프로즌 마르게리타 설명 및 만드는법.
-                <hr />
-              </Card.Text>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroupItem>재료 1</ListGroupItem>
-              <ListGroupItem>재료 2</ListGroupItem>
-              <ListGroupItem>재료 3</ListGroupItem>
-            </ListGroup>
-          </Card>
-        </Grid>
+            </Card.Text>
+          </Card.Body>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem>재료 1</ListGroupItem>
+            <ListGroupItem>재료 2</ListGroupItem>
+            <ListGroupItem>재료 3</ListGroupItem>
+          </ListGroup>
+        </Card>
+      </Grid>
 
-        <Grid container justify="center" className="pagination">
-          <Pagination>
-            <Pagination.First />
-            <Pagination.Prev />
-            <Pagination.Item>{1}</Pagination.Item>
-            <Pagination.Item>{2}</Pagination.Item>
-            <Pagination.Item>{3}</Pagination.Item>
-            <Pagination.Item>{4}</Pagination.Item>
-            <Pagination.Item>{5}</Pagination.Item>
-            <Pagination.Next />
-            <Pagination.Last />
-          </Pagination>
-        </Grid>
-      </Wrapper>
-    </Layout>
+      <Grid container justify="center" className="pagination">
+        <Pagination>
+          <Pagination.First />
+          <Pagination.Prev />
+          <Pagination.Item>{1}</Pagination.Item>
+          <Pagination.Item>{2}</Pagination.Item>
+          <Pagination.Item>{3}</Pagination.Item>
+          <Pagination.Item>{4}</Pagination.Item>
+          <Pagination.Item>{5}</Pagination.Item>
+          <Pagination.Next />
+          <Pagination.Last />
+        </Pagination>
+      </Grid>
+    </Wrapper>
   );
 };
 
