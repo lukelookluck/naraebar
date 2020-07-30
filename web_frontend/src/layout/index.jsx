@@ -12,7 +12,7 @@ const Layout = props => {
 
       <Grid item xs={12}>
         <Header></Header>
-        <NavigationTab></NavigationTab>
+        {/* <NavigationTab></NavigationTab> */}
         <div>{children}</div>
 
       </Grid>

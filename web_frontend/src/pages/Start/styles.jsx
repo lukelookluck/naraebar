@@ -5,13 +5,13 @@ const Wrapper = styled.div`
 
     & .logoGrid {
         // margin-top: 60px;
-        height: 300px;
+        height: 360px;
         background-color: rgb(56, 97, 149);
         color: white;
     }
 
     & #logo_en {
-        margin-top: 70px;
+        margin-top: 100px;
         margin-bottom: 0;
         
         font-size: 70px;
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     }
 
     & .login {
-        margin-top: 60px;
+        margin-top: 70px;
     }
 
     & #id {

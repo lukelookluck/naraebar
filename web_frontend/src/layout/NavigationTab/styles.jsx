@@ -3,11 +3,11 @@ import styled from "styled-components";
 const Wrapper = styled.div`
     text-align: center;
     & .myAppbar {
-        background-color: rgb(255, 200, 200);
+    //    margin-top: 0;
     }
 
     & .navTabs {
-        
+        background-color: rgb(255, 255, 255);
     }
 
     & .myTab {
