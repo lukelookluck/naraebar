@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import Start from './pages/Start';
-import Main from './pages/Main/';
-import Community from './pages/Community/';
-import MyBar from './pages/MyBar/';
-import SignUp from './pages/SignUp/';
-import FindPW from './pages/FindPW/';
-import UploadRecipe from './pages/UploadRecipe/';
-import ArticleForm from './pages/ArticleForm/';
-
-
+import Start from "./pages/Start";
+import Main from "./pages/Main/";
+import Community from "./pages/Community/";
+import MyBar from "./pages/MyBar/";
+import SignUp from "./pages/SignUp/";
+import FindPW from "./pages/FindPW/";
+import UploadRecipe from "./pages/UploadRecipe/";
+import ArticleForm from "./pages/ArticleForm/";
 
 function App() {
-
-  // const [user, setUser] = useState(null);
-  // const logout = () => setUser(null);
-
   return (
     <BrowserRouter>
       <Switch>
