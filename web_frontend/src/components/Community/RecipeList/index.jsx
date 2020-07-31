@@ -9,7 +9,7 @@ import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-import dumpfile from "../../pages/Community/ArticleDump.json";
+import dumpfile from "../../../pages/Community/ArticleDump.json";
 
 export default function () {
   const articleDump = dumpfile;

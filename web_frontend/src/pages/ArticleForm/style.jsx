@@ -50,7 +50,7 @@ const Wrapper = styled.div`
   }
 
   & .form-textarea {
-    height: 60vh;
+    height: 45vh;
   }
 `;
 
