@@ -1,15 +1,18 @@
 import React from 'react';
 import Layout from '../../layout/';
-import './style.css';
 import Card from '../../components/Card/';
+
+import Wrapper from './style';
 
 const SelectCocktail = () => {
   return (
-    <Layout>
-      <div className="a">
-        <Card />
-      </div>
-    </Layout>
+    <Wrapper>
+      <Layout>
+        <div className="a">
+          <Card />
+        </div>
+      </Layout>
+    </Wrapper>
   );
 };
 
