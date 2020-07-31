@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   & .list-box {
-    margin-top: 15%;
     padding-left: 10%;
     padding-right: 10%;
   }

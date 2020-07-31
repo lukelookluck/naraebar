@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   & .article-create-button {
     border: none;
     border-radius: 25px;
-    padding: 7.5px 10px;
+    padding: 7px 10px;
     background-color: rgb(56, 97, 182);
 
     height: 35px;
@@ -47,6 +47,10 @@ const Wrapper = styled.div`
   & textarea::placeholder {
     color: #a1a1a1;
     font-weight: 500;
+  }
+
+  & .form-textarea {
+    height: 60vh;
   }
 `;
 

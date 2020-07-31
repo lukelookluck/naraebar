@@ -58,9 +58,9 @@ const ArticleForm = ({ history }) => {
             </b-input-group>
             <div class="form-group mb-2">
               <textarea
-                class="form-control"
+                class="form-control form-textarea"
                 placeholder="여기를 눌러 내용을 입력하세요."
-                rows="21"
+                // rows="21"
                 v-model="articleData.content"
               ></textarea>
             </div>
@@ -71,7 +71,7 @@ const ArticleForm = ({ history }) => {
                 aria-label="upload picture"
                 component="span"
               >
-                <PhotoCameraIcon fontSize="large" />
+                {/* <PhotoCameraIcon fontSize="large" /> */}
               </IconButton>
             </label>
           </form>
