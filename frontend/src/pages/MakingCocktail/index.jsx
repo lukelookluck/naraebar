@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Layout from '../../layout/'
-import './style.css'
+import Layout from '../../layout/';
+import Wrapper from './styles';
 
 export default class MakingCocktail extends Component {
   
@@ -14,12 +14,14 @@ export default class MakingCocktail extends Component {
   render() {
     return (
       <Layout>
-        <div className="container">
-          <div className="bartender">
-            <img src="images/bartender1.gif"></img>
+        <Wrapper>
+          <div className="container">
+            <div className="bartender">
+              <img src="images/bartender1.gif"></img>
+            </div>
+            <h1>Making a Cocktail<br></br>Please Waiting...</h1>
           </div>
-          <h1>Making a Cocktail<br></br>Please Waiting...</h1>
-        </div>
+        </Wrapper>
       </Layout>
     );
   }

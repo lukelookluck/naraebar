@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Layout from '../../layout/'
-import './style.css'
+import Layout from '../../layout/';
+import Wrapper from './styles';
 
 export default class CompleteCocktail extends Component {
   
@@ -14,12 +14,15 @@ export default class CompleteCocktail extends Component {
   render() {
     return (
       <Layout>
-          <div className="container">
-              <div className="bartender">
-                  <img src="images/bartender2.gif"></img>
-              </div>
-              <h1>Take it and<br></br>Enjoy your drink!</h1>
-          </div>
+        <Wrapper>
+            <div className="container">
+                <div className="bartender">
+                    <img src="images/bartender2.gif"></img>
+                </div>
+                <h1>Take it and<br></br>Enjoy your drink!</h1>
+            </div>
+
+        </Wrapper>
       </Layout>
     );
   }

@@ -1,10 +1,14 @@
 import React from 'react';
-import './style.css';
+import Wrapper from './styles';
 
 const Layout = props => {
   const { children } = props;
 
-  return <div className="App">{children}</div>;
+  return (
+    <Wrapper>
+      <div className="App">{children}</div>
+    </Wrapper>
+  );
 };
 
 export default Layout;
