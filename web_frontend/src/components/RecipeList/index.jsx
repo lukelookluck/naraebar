@@ -28,9 +28,9 @@ export default function () {
   const articleDump = dumpfile;
   const article = articleDump.map((item) => {
     return (
-      <div className="list-card">
+      <div className="list-card" key={item.id}>
         <div className="list-user">
-          <AccountCircleIcon /> {item.id}
+          <AccountCircleIcon /> {item.user}
         </div>
         <div className="list-item">
           <img className="list-item-image" src="images/sample.jpg" alt="" />
