@@ -1,27 +1,22 @@
 import React from "react";
-import _ from "lodash";
+import { Pagination } from "react-bootstrap";
 
-const Pagination = (props) => {
-  const { itemsCount, pageSize } = props;
-  const pageCount = Math.ceil(itemsCount / pageSize);
-
-  if (pageCount === 1) return null;
-
-  const pages = _.range(1, pageCount + 1);
-
+const MyBarPagination = (props) => {
   return (
-    <nav>
-      {" "}
-      {/* VSCode 입력: nav>ul.pagination>li.page-item>a.page-link */}
-      <ul className="pagination">
-        {pages.map((page) => (
-          <li key={page} className="page-item" style={{ cursor: "pointer" }}>
-            <a className="page-link">{page}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div>
+      <Pagination>
+        <Pagination.First />
+        <Pagination.Prev />
+        <Pagination.Item>{1}</Pagination.Item>
+        <Pagination.Item>{2}</Pagination.Item>
+        <Pagination.Item>{3}</Pagination.Item>
+        <Pagination.Item>{4}</Pagination.Item>
+        <Pagination.Item>{5}</Pagination.Item>
+        <Pagination.Next />
+        <Pagination.Last />
+      </Pagination>
+    </div>
   );
 };
 
-export default Pagination;
+export default MyBarPagination;
