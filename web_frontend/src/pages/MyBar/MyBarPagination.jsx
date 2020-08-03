@@ -4,6 +4,7 @@ import { Pagination } from "react-bootstrap";
 const MyBarPagination = (props) => {
   return (
     <div>
+      <h1>{}</h1>
       <Pagination>
         <Pagination.First />
         <Pagination.Prev />
