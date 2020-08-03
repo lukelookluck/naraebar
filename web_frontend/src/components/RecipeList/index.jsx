@@ -21,7 +21,7 @@ export default function () {
   }
 
   function likeIt() {
-    // alert("눌럿어?");
+    alert("눌럿어?");
     setLikeIt(!isLikeit);
   }
 

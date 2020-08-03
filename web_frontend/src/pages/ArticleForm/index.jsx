@@ -5,6 +5,7 @@ import Wrapper from "./style";
 import CloseIcon from "@material-ui/icons/Close";
 import ImageUploadBtn from "../../components/Community/ImageUploadButton/";
 
+import Temp1 from "../../components/Community/Temp1/";
 // import { Grid, IconButton, Grow, makeStyles } from "@material-ui/core";
 // import { CloseIcon, PhotoCameraIcon  } from "@material-ui/icons";
 
@@ -23,7 +24,6 @@ const ArticleForm = ({ history }) => {
   return (
     <Wrapper>
       <Grid>
-        <goBackBtn />
         <div className="form-box">
           <div className="form-header">
             <div className="form-header">
@@ -65,6 +65,7 @@ const ArticleForm = ({ history }) => {
                 ></input>
               </div>
             </div>
+            <Temp1 />
             <ImageUploadBtn />
           </form>
         </div>

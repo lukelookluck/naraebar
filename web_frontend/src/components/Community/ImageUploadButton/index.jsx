@@ -5,7 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 
 import Wrapper from "./style";
-import Temp1 from "../InputImage";
+import InputImage from "../InputImage/";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,7 +52,7 @@ export default function ImageUploadButton() {
   return (
     <Wrapper>
       {/* <div className="input-image-box">{inputImage}</div> */}
-      <Temp1 temp={imgBase64} />
+      <InputImage temp={imgBase64} />
       <div className="input-footer">
         <input
           accept="image/*"
