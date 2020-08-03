@@ -4,13 +4,14 @@ const Wrapper = styled.div`
     text-align: center;
 
     & .logoGrid {
-        margin-top: 60px;
-        height: 300px;
-        background-color: rgb(183, 199, 253);
+        // margin-top: 60px;
+        height: 360px;
+        background-color: rgb(56, 97, 149);
+        color: white;
     }
 
     & #logo_en {
-        margin-top: 70px;
+        margin-top: 100px;
         margin-bottom: 0;
         
         font-size: 70px;
@@ -20,7 +21,7 @@ const Wrapper = styled.div`
     }
 
     & .login {
-        margin-top: 60px;
+        margin-top: 70px;
     }
 
     & #id {
@@ -39,15 +40,20 @@ const Wrapper = styled.div`
         margin-top: 30px;
         width: 100%;
         height: 50px;
-        background-color: rgb(151, 156, 228);
+        background-color: rgb(76, 127, 188);
         text-decoration: none;
         border: none;
         color: white;
         font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    & .login_btn:hover {
+        background-color: rgb(76, 127, 188);
     }
 
     & .bottom {
-        margin-top: 40px;
+        color: rgb(56, 97, 149);
     }
 `;
 

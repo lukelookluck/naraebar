@@ -1,24 +1,17 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import './style.css';
+import React from "react";
+import Wrapper from "./styles";
+import { Grid } from "@material-ui/core";
 
 const Header = () => {
-    let history = useHistory();
-
-    const onClickRedirectPathHandler = name => e => {
-        window.scrollTo(0, 0);
-        history.push(name);
-    };
-
-    return (
-        <div>
-            <div className='logo' onClick={onClickRedirectPathHandler('/Community')}>HOMEBAR</div>
-            <header>
-                <div className='hdiv' onClick={onClickRedirectPathHandler('/Community')}>Community</div>
-                <div className='hdiv' onClick={onClickRedirectPathHandler('/MyBar')}>MyBar</div>
-            </header>
-        </div>
-    );
+  return (
+    <Wrapper>
+      <Grid container justify="center" alignItems="center">
+        <Grid item xs={12} className="logoGrid">
+          <p id="logo">NaReBar</p>
+        </Grid>
+      </Grid>
+    </Wrapper>
+  );
 };
 
 export default Header;
