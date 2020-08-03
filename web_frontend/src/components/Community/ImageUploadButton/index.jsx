@@ -5,7 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 
 import Wrapper from "./style";
-import Temp1 from "../Temp1/";
+import Temp1 from "../InputImage";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UploadButtons() {
+export default function ImageUploadButton() {
   const classes = useStyles();
   const [imgBase64, setImgBase64] = useState([]); // 파일 base64
   const [imgFile, setImgFile] = useState(null); //파일

@@ -39,7 +39,7 @@ const Wrapper = styled.div`
     border: 0;
   }
 
-  & input::placeholder {
+  & .form-group input::placeholder {
     color: #a1a1a1;
     font-weight: 700;
   }
@@ -50,7 +50,12 @@ const Wrapper = styled.div`
   }
 
   & .form-textarea {
-    height: 45vh;
+    height: 15vh;
+  }
+
+  & .form-row .col input::placeholder {
+    color: #a1a1a1;
+    font-weight: 500;
   }
 `;
 

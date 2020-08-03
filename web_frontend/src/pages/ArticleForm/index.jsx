@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Wrapper from "./style";
 
 import CloseIcon from "@material-ui/icons/Close";
-import Uploadbtn from "../../components/Community/UploadButton/";
+import ImageUploadBtn from "../../components/Community/ImageUploadButton/";
 
 // import { Grid, IconButton, Grow, makeStyles } from "@material-ui/core";
 // import { CloseIcon, PhotoCameraIcon  } from "@material-ui/icons";
@@ -34,33 +34,38 @@ const ArticleForm = ({ history }) => {
             </div>
             <button className="article-create-button">작성완료</button>
           </div>
-          <form class="text-left">
+          <form>
             <div class="form-group mb-2">
               <input
                 class="form-control"
                 aria-describedby="titleHelp"
-                placeholder="제목"
-                v-model="articleData.title"
+                placeholder="음료 레시피 이름"
               />
             </div>
-            <b-input-group>
-              <b-form-rating
-                v-model="selected_movie.rate_value"
-                color="#ff8800"
-                size="lg"
-                required
-                no-border
-              ></b-form-rating>
-            </b-input-group>
             <div class="form-group mb-2">
               <textarea
                 class="form-control form-textarea"
-                placeholder="여기를 눌러 내용을 입력하세요."
+                placeholder="여기를 눌러 음료소개를 입력하세요."
                 // rows="21"
-                v-model="articleData.content"
               ></textarea>
             </div>
-            <Uploadbtn />
+            <div class="form-row mb-2">
+              <div className="col">
+                <input
+                  class="form-control"
+                  placeholder="재료명"
+                  // rows="21"
+                ></input>
+              </div>
+              <div className="col">
+                <input
+                  class="form-control"
+                  placeholder="용량(ml)"
+                  // rows="21"
+                ></input>
+              </div>
+            </div>
+            <ImageUploadBtn />
           </form>
         </div>
       </Grid>

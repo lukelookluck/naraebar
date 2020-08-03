@@ -7,6 +7,8 @@ import IconButton from "@material-ui/core/IconButton";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 // import tileData from "./tileData";
 
+import Wrapper from "./style";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -29,33 +31,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'Image',
- *     author: 'author',
- *   },
- *   {
- *     [etc...]
- *   },
- * ];
- */
 export default function SingleLineGridList(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <GridList className={classes.gridList} cols={2.5}>
-        {props.temp.map((tile) => (
-          <GridListTile key={tile.img}>
-            <img src={tile.value} alt={tile.title} />
-            {/* <GridListTileBar
+    <Wrapper>
+      <div className={classes.root}>
+        <GridList className={classes.gridList} cols={3}>
+          {props.temp.map((tile) => (
+            <GridListTile key={tile.id}>
+              <div className="input-image-box">
+                <img
+                  className="input-image"
+                  src={tile.value}
+                  alt={tile.title}
+                />
+              </div>
+              {/* <GridListTileBar
               title={tile.title}
               classes={{
                 root: classes.titleBar,
@@ -67,9 +59,10 @@ export default function SingleLineGridList(props) {
                 </IconButton>
               }
             /> */}
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
+            </GridListTile>
+          ))}
+        </GridList>
+      </div>
+    </Wrapper>
   );
 }
