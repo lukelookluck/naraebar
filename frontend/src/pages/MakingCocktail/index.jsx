@@ -19,7 +19,7 @@ export default class MakingCocktail extends Component {
             <div className="bartender">
               <img src="images/bartender1.gif"></img>
             </div>
-            <h1>Making a Cocktail<br></br>Please Waiting...</h1>
+            <h1>잠시만 기다려주세요</h1>
           </div>
         </Wrapper>
       </Layout>

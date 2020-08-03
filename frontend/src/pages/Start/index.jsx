@@ -18,7 +18,7 @@ const Start = () => {
           <div className="logo" onClick={onClickRedirectPathHandler('/MenuList')}>
             <img src="images/logo1.png"></img>
           </div>
-          <h1 onClick={onClickRedirectPathHandler('/MenuList')}>Touch to Start!</h1>
+          <h2 onClick={onClickRedirectPathHandler('/MenuList')}>시작하려면 화면을 눌러주세요</h2>
         </div>
 
       </Wrapper>
