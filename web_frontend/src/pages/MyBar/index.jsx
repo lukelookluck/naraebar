@@ -1,5 +1,4 @@
-import React from "react";
-import Layout from "../../layout/";
+import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import {
   ListGroup,
@@ -10,8 +9,16 @@ import {
 } from "react-bootstrap";
 import Wrapper from "./styles";
 import SyncButton from "../../components/SyncButton";
+import CocktailDump from "./CocktailDump.json";
+import MyBarPagination from "./MyBarPagination";
 
+const DumpFile = CocktailDump;
+const DumpFileLength = DumpFile.length;
 const MyBar = () => {
+  const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [endPage] = useState(DumpFileLength);
+
   return (
     <Wrapper>
       <Grid container className="syncButtonGrid" justify="flex-end">
@@ -41,17 +48,7 @@ const MyBar = () => {
       </Grid>
 
       <Grid container justify="center" className="pagination">
-        <Pagination>
-          <Pagination.First />
-          <Pagination.Prev />
-          <Pagination.Item>{1}</Pagination.Item>
-          <Pagination.Item>{2}</Pagination.Item>
-          <Pagination.Item>{3}</Pagination.Item>
-          <Pagination.Item>{4}</Pagination.Item>
-          <Pagination.Item>{5}</Pagination.Item>
-          <Pagination.Next />
-          <Pagination.Last />
-        </Pagination>
+        <MyBarPagination />
       </Grid>
     </Wrapper>
   );
