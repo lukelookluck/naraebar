@@ -34,7 +34,7 @@ const Start = () => {
             history.push("/Main");
             console.log("로그인 됨");
         } catch (e) {
-            alert('Failed to login');
+            alert('아이디, 비밀번호를 확인해주세요');
             setId('');
             setPw('');
         }

@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  & .form-box {
-    padding: 2.5% 2.5% 0 2.5%;
-  }
+  text-align: center;
 
   & .article-create-button {
     border: none;
@@ -17,22 +15,9 @@ const Wrapper = styled.div`
     color: white;
   }
 
-  & .form-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    height: 35px;
-  }
-
-  & .form-header2 {
-    display: flex;
-    flex-direction: row;
-  }
-
   & .form-header-title {
-    font-size: 1.4rem;
-    margin: 0;
-    margin-left: 10px;
+    margin-top: 65px;
+    font-size: 25px;
   }
 
   & .form-control {
