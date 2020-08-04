@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Grid from "@material-ui/core/Grid";
+import { Grid, Button, TextField } from "@material-ui/core";
 import Wrapper from "./style";
 import Header from "../../layout/Header/";
 
@@ -11,12 +11,14 @@ import Temp1 from "../../components/Community/Temp1/";
 // import { CloseIcon, PhotoCameraIcon  } from "@material-ui/icons";
 
 const ArticleForm = ({ history }) => {
+  
   const goBack = () => {
     history.goBack();
   };
+
   useEffect(() => {
     console.log(history);
-    const unblock = history.block("정말 떠나실건가요?");
+    const unblock = history.block("작성하던 내용이 없어집니다. 정말 떠나실건가요?");
     return () => {
       unblock();
     };
@@ -27,7 +29,7 @@ const ArticleForm = ({ history }) => {
       <Header></Header>
       <Grid container className="root" justify="center" alignItems="center">
         <Grid item xs={12} className="form-header-title">
-          <div>글 쓰기</div>
+          <div>나만의 레시피 만들기</div>
         </Grid>
         {/* <div className="form-header">
             <Link to="/Community">
@@ -35,41 +37,47 @@ const ArticleForm = ({ history }) => {
             </Link>
             <p className="form-header-title">글 쓰기</p>
           </div> */}
-        <form>
-          <div class="form-group mb-2">
-            <input
-              class="form-control"
-              aria-describedby="titleHelp"
-              placeholder="음료 레시피 이름"
-            />
-          </div>
-          <div class="form-group mb-2">
-            <textarea
-              class="form-control form-textarea"
-              placeholder="여기를 눌러 음료소개를 입력하세요."
-            // rows="21"
-            ></textarea>
-          </div>
-          <div class="form-row mb-2">
-            <div className="col">
-              <input
-                class="form-control"
-                placeholder="재료명"
-              // rows="21"
-              ></input>
+        <Grid item xs={10}>
+          <form>
+            <div>
+              <TextField required fullWidth id="name" label="칵테일 이름" variant="outlined" autoFocus></TextField>
             </div>
-            <div className="col">
-              <input
-                class="form-control"
-                placeholder="용량(ml)"
-              // rows="21"
-              ></input>
+            <div>
+              <TextField required fullWidth id="details" label="칵테일 소개" multiline rows={4} variant="outlined"></TextField>
             </div>
-          </div>
-          <Temp1 />
-          <ImageUploadBtn />
-          <button className="article-create-button">작성완료</button>
-        </form>
+
+
+
+            <div class="form-row mb-2">
+              <div className="col">
+                <input
+                  class="form-control"
+                  placeholder="재료명"
+                // rows="21"
+                ></input>
+              </div>
+              <div className="col">
+                <input
+                  class="form-control"
+                  placeholder="용량(ml)"
+                // rows="21"
+                ></input>
+              </div>
+            </div>
+            <Temp1 />
+            <ImageUploadBtn />
+
+            {/* <button className="article-create-button">작성완료</button> */}
+            <Grid container justify="center" alignItems="center">
+              <Grid item xs={6}>
+                <Button type="submit" variant="contained" className="article-create-button">공유하기</Button>
+              </Grid>
+              <Grid item xs={6}>
+                <Button type="reset" variant="contained" className="resetBtn">다시 입력</Button>
+              </Grid>
+            </Grid>
+          </form>
+        </Grid>
       </Grid>
     </Wrapper>
   );

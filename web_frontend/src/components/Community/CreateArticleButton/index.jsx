@@ -11,7 +11,7 @@ export default function () {
       <div>
         <Link to="/Community/Create">
           <button className="go-articleForm-button">
-            <CreateIcon color="secondary" fontSize="small" /> 글 쓰기
+            <CreateIcon color="secondary" fontSize="small" /> 레시피 추가
           </button>
         </Link>
       </div>
