@@ -3,6 +3,14 @@ import { useHistory } from 'react-router-dom';
 import { Grid, Button } from "@material-ui/core";
 import Wrapper from "./styles";
 import { signIn } from './auth';
+import { makeStyles } from "@material-ui/core/styles";
+import '../../index.css';
+
+const useStyles = makeStyles({
+    logotext: {
+        fontFamily: 'Cafe24Ohsquare'
+    }
+})
 
 const Start = () => {
 
@@ -32,12 +40,14 @@ const Start = () => {
         }
     };
 
+    const classes = useStyles()
+
     return (
         <Wrapper>
             <Grid container className="root" justify="center" alignItems="center">
                 <Grid item xs={12} className="logoGrid">
-                    <p id="logo_en">NaReBar</p>
-                    <p id="logo_ko">나만의 레시피 바텐더</p>
+                    <p className={classes.logotext} id="logo_en">NaReBar</p>
+                    <p className={classes.logotext} id="logo_ko">나만의 레시피 바텐더</p>
                 </Grid>
                 <Grid item xs={10} className="login">
                     <div>
