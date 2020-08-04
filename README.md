@@ -80,15 +80,15 @@
 
 - 1차 아이디어 회의
 
-  ![1차 회의](C:/Users/multicampus/ssafy/first_pjt/sub_pjt1/images/idea1.jpg)
+  ![1차 회의](images/idea1.jpg)
 
 - 2차 아이디어 회의
 
-  ![2차 회의](C:/Users/multicampus/ssafy/first_pjt/sub_pjt1/images/idea2.jpg)
+  ![2차 회의](images/idea2.jpg)
 
 - 3차 아이디어 회의
 
-  ![3차 회의](C:/Users/multicampus/ssafy/first_pjt/sub_pjt1/images/idea3.jpg)
+  ![3차 회의](images/idea3.jpg)
 
 
 
