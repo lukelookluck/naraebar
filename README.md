@@ -1,4 +1,4 @@
-# README (전체 PJT)
+# README
 
 - 기획서
 - 아이디어 선정 과정
