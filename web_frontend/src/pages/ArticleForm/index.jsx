@@ -42,11 +42,10 @@ const ArticleForm = ({ history }) => {
             <div>
               <TextField required fullWidth id="name" label="칵테일 이름" variant="outlined" autoFocus></TextField>
             </div>
+            
             <div>
               <TextField required fullWidth id="details" label="칵테일 소개" multiline rows={4} variant="outlined"></TextField>
             </div>
-
-
 
             <div class="form-row mb-2">
               <div className="col">
@@ -76,7 +75,9 @@ const ArticleForm = ({ history }) => {
                 <Button type="reset" variant="contained" className="resetBtn">다시 입력</Button>
               </Grid>
             </Grid>
+
           </form>
+
         </Grid>
       </Grid>
     </Wrapper>

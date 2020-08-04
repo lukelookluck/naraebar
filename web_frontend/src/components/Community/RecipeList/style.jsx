@@ -18,6 +18,7 @@ const Wrapper = styled.div`
     justify-content: start;
     margin-left: 2%;
     padding-bottom: 4%;
+    width: 100%;
     border-bottom: solid 1px #9b9b9b;
   }
 
@@ -38,7 +39,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: left;
+    text-align: center;
   }
 
   & .like-button {
@@ -51,6 +52,7 @@ const Wrapper = styled.div`
   & .detail-content {
     font-size: 1em;
     padding: 10% 0;
+    width: 100%;
     border-bottom: solid 1px #9b9b9b;
   }
 
@@ -58,6 +60,11 @@ const Wrapper = styled.div`
     text-decoration: none;
     font-weight: 600;
     color: #727272;
+  }
+
+  & .cname {
+    font-weight: 600;
+    font-size: 1.3em;
   }
 `;
 

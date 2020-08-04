@@ -50,11 +50,11 @@ export default function () {
     const [myHide, setmyHide] = useState(moreButton);
 
     const [cardContent, setCardContent] = useState(
-      item.content.substring(0, 50) + "..."
+      item.details.substring(0, 50) + "..."
     );
 
     function moreContent(e) {
-      setCardContent(item.content);
+      setCardContent(item.details + '<br></br>' + item.ingredients);
       console.log(myHide);
       setmyHide(null);
       e.preventDefault();
@@ -64,15 +64,16 @@ export default function () {
       <div key={item.id} className="list-card">
         <div className="list-user">
           <AccountCircleIcon />
-          {item.user}
+          &nbsp;&nbsp;{item.user}
         </div>
         <div className="list-item">
           <img className="list-item-image" src="images/sample.jpg" alt="" />
           <div className="list-item-detail">
-            <span className="detail-content">
+            <div className="detail-content">
+              <p className="cname">" {item.name} "</p>
               {cardContent}
               {myHide}
-            </span>
+            </div>
           </div>
         </div>
         <div className="like-button">
