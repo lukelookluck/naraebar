@@ -10,5 +10,6 @@ class Article(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='articles')
     LIKE = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_articles')
     DISLIKE = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='dislike_articles')
+    
 
 
