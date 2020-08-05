@@ -30,6 +30,7 @@ const Wrapper = styled.div`
         border: none;
         color: white;
         font-size: 20px;
+        font-family: 'IBMPlexSansKR-Text';
     }
 
     & .submitBtn:hover {
@@ -45,6 +46,7 @@ const Wrapper = styled.div`
         border: none;
         color: black;
         font-size: 20px;
+        font-family: 'IBMPlexSansKR-Text';
     }
     
 `;

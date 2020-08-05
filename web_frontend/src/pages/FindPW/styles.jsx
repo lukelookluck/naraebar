@@ -8,8 +8,9 @@ const Wrapper = styled.div`
     }
 
     & .findpw div {
-        margin-top: 65px;
-        font-size: 25px;
+        margin-top: 60px;
+        font-size: 30px;
+        font-family: 'IBMPlexSansKR-Text';
     }
 
     & form div {
