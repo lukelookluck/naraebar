@@ -5,6 +5,8 @@ from rest_framework.decorators import permission_classes, authentication_classes
 from .models import Article
 from .serializers import ArticleSerializer
 
+def index(request):
+    pass
 
 
 # @permission_classes((IsAuthenticated,))
