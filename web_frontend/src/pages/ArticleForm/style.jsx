@@ -4,9 +4,10 @@ const Wrapper = styled.div`
   text-align: center;
 
   & .form-header-title {
-    margin-top: 40px;
-    font-size: 25px;
+    margin-top: 35px;
+    font-size: 30px;
     height: 60px;
+    font-family: 'IBMPlexSansKR-Text';
   }
 
   & #details {
@@ -34,6 +35,7 @@ const Wrapper = styled.div`
     border: none;
     color: white;
     font-size: 20px;
+    font-family: 'IBMPlexSansKR-Text';
 
     // border: none;
     // border-radius: 25px;
@@ -58,6 +60,7 @@ const Wrapper = styled.div`
     border: none;
     color: black;
     font-size: 20px;
+    font-family: 'IBMPlexSansKR-Text';
   }
 
 `;

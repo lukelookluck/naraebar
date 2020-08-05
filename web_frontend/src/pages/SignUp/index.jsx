@@ -2,15 +2,24 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../../layout/Header/'
 import Wrapper from "./styles";
-import { Grid, Button, TextField } from "@material-ui/core";
+import { Grid, Button, TextField } from "@material-ui/core";import { makeStyles } from "@material-ui/core/styles";
+import '../../index.css';
+
+const useStyles = makeStyles({
+    signupText: {
+        fontFamily: 'IBMPlexSansKR-Text',
+        fontSize: '30px'
+    }
+})
 
 const SignUp = () => {
+    const classes = useStyles()
     return (
         <Wrapper>
             <Header></Header>
             <Grid container className="root" justify="center" alignItems="center">
                 <Grid item xs={12} className="signin">
-                    <div>회원가입</div>
+                    <div className={classes.signupText}>회원가입</div>
                 </Grid>
                 <Grid item xs={10} className="info">
                     <form>

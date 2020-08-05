@@ -11,14 +11,15 @@ import Temp1 from "../../components/Community/Temp1/";
 // import { CloseIcon, PhotoCameraIcon  } from "@material-ui/icons";
 
 const ArticleForm = ({ history }) => {
-  
   const goBack = () => {
     history.goBack();
   };
 
   useEffect(() => {
     console.log(history);
-    const unblock = history.block("작성하던 내용이 없어집니다. 정말 떠나실건가요?");
+    const unblock = history.block(
+      "작성하던 내용이 없어집니다. 정말 떠나실건가요?"
+    );
     return () => {
       unblock();
     };
@@ -40,44 +41,49 @@ const ArticleForm = ({ history }) => {
         <Grid item xs={10}>
           <form>
             <div>
-              <TextField required fullWidth id="name" label="칵테일 이름" variant="outlined" autoFocus></TextField>
-            </div>
-            
-            <div>
-              <TextField required fullWidth id="details" label="칵테일 소개" multiline rows={4} variant="outlined"></TextField>
+              <TextField
+                required
+                fullWidth
+                id="name"
+                label="칵테일 이름"
+                variant="outlined"
+                autoFocus
+              ></TextField>
             </div>
 
-            <div class="form-row mb-2">
-              <div className="col">
-                <input
-                  class="form-control"
-                  placeholder="재료명"
-                // rows="21"
-                ></input>
-              </div>
-              <div className="col">
-                <input
-                  class="form-control"
-                  placeholder="용량(ml)"
-                // rows="21"
-                ></input>
-              </div>
+            <div>
+              <TextField
+                required
+                fullWidth
+                id="details"
+                label="칵테일 소개"
+                multiline
+                rows={4}
+                variant="outlined"
+              ></TextField>
             </div>
+
             <Temp1 />
             <ImageUploadBtn />
 
             {/* <button className="article-create-button">작성완료</button> */}
             <Grid container justify="center" alignItems="center">
               <Grid item xs={6}>
-                <Button type="submit" variant="contained" className="article-create-button">공유하기</Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  className="article-create-button"
+                >
+                  공유하기
+                </Button>
               </Grid>
               <Grid item xs={6}>
-                <Button type="reset" variant="contained" className="resetBtn">다시 입력</Button>
+                <Button type="reset" variant="contained" className="resetBtn">
+                  다시 입력
+                </Button>
               </Grid>
             </Grid>
-
           </form>
-
         </Grid>
       </Grid>
     </Wrapper>

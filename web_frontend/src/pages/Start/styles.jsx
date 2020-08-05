@@ -44,6 +44,7 @@ const Wrapper = styled.div`
         text-decoration: none;
         border: none;
         color: white;
+        font-family: 'IBMPlexSansKR-Text';
         font-size: 20px;
         margin-bottom: 30px;
     }
@@ -54,6 +55,7 @@ const Wrapper = styled.div`
 
     & .bottom {
         color: rgb(56, 97, 149);
+        font-family: 'IBMPlexSansKR-Text';
     }
 `;
 

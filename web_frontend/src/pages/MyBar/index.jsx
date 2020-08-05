@@ -10,7 +10,7 @@ import {
 import Wrapper from "./styles";
 import SyncButton from "../../components/SyncButton";
 import CocktailDump from "./CocktailDump.json";
-import MyBarPagination from "./MyBarPagination";
+import MyPagination from "../../components/MyPagination";
 
 const DumpFile = CocktailDump;
 const DumpFileLength = DumpFile.length;
@@ -48,7 +48,7 @@ const MyBar = () => {
       </Grid>
 
       <Grid container justify="center" className="pagination">
-        <MyBarPagination />
+        <MyPagination />
       </Grid>
     </Wrapper>
   );

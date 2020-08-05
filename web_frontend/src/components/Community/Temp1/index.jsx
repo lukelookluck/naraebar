@@ -12,12 +12,13 @@ class Board extends Component {
     console.log("num", this.state.num);
     // this.state.num++;
     // const { input1, input2, list } = this.state;
-    this.setState({
-      num: this.state.num + 1,
-      // list: list.concat({ input1: input1, input2: input2 }),
-      // input1: "",
-      // input2: "",
-    });
+    if (this.state.num < 6) {
+      this.setState({
+        num: this.state.num + 1,
+      });
+    } else {
+      alert("그만해!!!!!!!!!!!!");
+    }
   };
   render() {
     const { handleChange, handleCreate } = this;
@@ -50,6 +51,7 @@ class Board extends Component {
         <div>
           <button onClick={handleCreate}>추가</button>
         </div>
+        {this.state.num}
       </div>
     );
   }

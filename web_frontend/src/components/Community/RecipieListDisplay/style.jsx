@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   & .list-box {
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 0%;
+    padding-right: 0%;
   }
 
   & .list-card {
