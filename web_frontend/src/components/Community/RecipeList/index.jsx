@@ -54,7 +54,7 @@ export default function () {
     );
 
     function moreContent(e) {
-      setCardContent(item.details + '<br></br>' + item.ingredients);
+      setCardContent(item.details + "<br></br>" + item.ingredients);
       console.log(myHide);
       setmyHide(null);
       e.preventDefault();
