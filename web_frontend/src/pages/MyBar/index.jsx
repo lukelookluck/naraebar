@@ -26,10 +26,6 @@ const MyBar = () => {
 
   return (
     <Wrapper>
-      <Grid container className="test_lym" justify="center" alignItems="center">
-        <p>test</p>
-      </Grid>
-
       <Grid container className="syncButtonGrid" justify="flex-end">
         <SyncButton />
       </Grid>
