@@ -4,9 +4,11 @@ void setup() {
   // put your setup code here, to run once:
   pinMode(9, OUTPUT);
   Serial.begin(9600);
+  
 }
 
 void loop() {
+  //함수로 나누어서 인터럽트 받기 
   // put your main code here, to run repeatedly:
   if(Serial.available()){
     data=Serial.read();
