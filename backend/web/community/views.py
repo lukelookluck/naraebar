@@ -6,6 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Article
 from .serializers import ArticleSerializer
 
+def index(request):
+    pass
 
 @api_view(['GET'])
 def detail(request, article_pk):
