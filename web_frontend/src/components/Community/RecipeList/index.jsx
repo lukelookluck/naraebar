@@ -54,7 +54,7 @@ export default function () {
     );
 
     function moreContent(e) {
-      setCardContent(item.details + '<br></br>' + item.ingredients);
+      setCardContent(item.details + '\n\n' + item.ingredients);
       console.log(myHide);
       setmyHide(null);
       e.preventDefault();
@@ -71,7 +71,7 @@ export default function () {
           <div className="list-item-detail">
             <div className="detail-content">
               <p className="cname">" {item.name} "</p>
-              {cardContent}
+    {cardContent.split('\n').map(line => {return (<span>{line}<br></br></span>)})}
               {myHide}
             </div>
           </div>

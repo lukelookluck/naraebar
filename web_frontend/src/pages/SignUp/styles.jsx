@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
     & .signin div {
         margin-top: 65px;
-        font-size: 25px;
+        // font-size: 40px;
     }
 
     & form div {
@@ -46,7 +46,6 @@ const Wrapper = styled.div`
         color: black;
         font-size: 20px;
     }
-
     
 `;
 
