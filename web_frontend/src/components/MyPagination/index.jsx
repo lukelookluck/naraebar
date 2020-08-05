@@ -13,6 +13,7 @@ export default function PaginationLink() {
           const page = parseInt(query.get("page") || "1", 10);
           return (
             <Pagination
+              size="small"
               page={page}
               // count에 dump.length 적용해야함
               count={100}
