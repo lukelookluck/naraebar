@@ -4,6 +4,6 @@ from . import views
 app_name = "recipe"
 
 urlpatterns = [
-    path('', views.ListArticle.as_view()),
-    path('<int:article_pk>/', views.DetailArticle.as_view()),
+    path('', views.RecipeList.as_view()),
+    path('<int:article_pk>/', views.UploadRecipe.as_view()),
 ]

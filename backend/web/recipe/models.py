@@ -5,6 +5,7 @@ from django.utils import timezone
 
 
 class Recipe(models.Model):
+    objects = models.Manager()
     name = models.CharField(max_length=100)
     author = models.CharField(max_length=50)
     content = models.CharField(max_length=200)
@@ -19,9 +20,8 @@ class Recipe(models.Model):
     weekly_ranking = models.IntegerField(default=999)
     monthly_ranking = models.IntegerField(default=999)
 
-    def upload_time(self):
-        self.uploaded_at = timezone.now()
-        self.save()
+    def __str__(self):
+        return self.name
 
 
 class IngredientCategory(models.Model):
