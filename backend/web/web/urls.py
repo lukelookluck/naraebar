@@ -19,13 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('community/', include('community.urls')),
-
-<<<<<<< HEAD
     path('accounts/', include('accounts.urls')),
-=======
-    path('rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/signup/', include('rest_auth.registration.urls')),
-
     path('recipe/', include('recipe.urls')),
->>>>>>> 876c7a6b8690a32aed2fbbe528e8f55a32c74a54
 ]

@@ -141,10 +141,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'accounts.User'
-<<<<<<< HEAD
 # AUTH_USER_MODEL = 'authentication.CustomUser'
-=======
->>>>>>> 876c7a6b8690a32aed2fbbe528e8f55a32c74a54
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -168,7 +165,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
-<<<<<<< HEAD
 }
 
 JWT_AUTH = {
@@ -179,6 +175,4 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=10),
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(hours=1),
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'api.custom_responses.my_jwt_response_handler'
-=======
->>>>>>> 876c7a6b8690a32aed2fbbe528e8f55a32c74a54
 }
