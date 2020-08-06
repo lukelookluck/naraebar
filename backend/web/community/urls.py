@@ -3,7 +3,8 @@ from . import views
 
 app_name = "community"
 
-urlpatterns =[
+urlpatterns = [
     path('', views.ListArticle.as_view()),
+    path('', views.ListComment.as_view()),
     path('<int:article_pk>/', views.DetailArticle.as_view()),
 ]
