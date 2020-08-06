@@ -4,6 +4,10 @@ const Wrapper = styled.div`
   text-align: center;
   font-family: 'IBMPlexSansKR-Text';
 
+  & .titleGrid {
+    margin-top: 40px;
+  }
+
   & h1 {
     font-size: 80px;
     margin-bottom: 30px;
@@ -31,7 +35,7 @@ const Wrapper = styled.div`
 
   & .textGrid {
     margin-top: 60px;
-    padding-left: 40px;
+    padding-left: 60px;
   }
 
   & .itemdiv {
@@ -39,7 +43,39 @@ const Wrapper = styled.div`
   }
   
   & .igrGrid {
-    margin-top: 30px;
+    margin-top: 40px;
+  }
+
+  & .btnGrid {
+    margin-top: 80px;
+  }
+
+  & .btnSelect {
+    background-color: rgb(76, 127, 188);
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-family: 'IBMPlexSansKR-Text';
+    font-size: 25px;
+    height: 60px;
+    width: 120px;
+    margin-right: 20px;
+  }
+
+  & .btnSelect:hover {
+    background-color: rgb(76, 127, 188);
+  }
+
+  & .btnCancel {
+    background-color: rgb(242, 242, 242);
+    text-decoration: none;
+    border: none;
+    color: black;
+    font-size: 25px;
+    font-family: 'IBMPlexSansKR-Text';
+    height: 60px;
+    width: 120px;
+    margin-left: 20px;
   }
 
 `;
