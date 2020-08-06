@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # app
     'accounts',
     'community',
+    'recipe',
 ]
 
 MIDDLEWARE = [
@@ -137,11 +138,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'accounts.User'
+# AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 AUTHENTICATION_BACKENDS = (
-	'django.contrib.auth.backends.ModelBackend',
-	'allauth.account.auth_backends.AuthenticationBackend'
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
 )
 
 SITE_ID = 1

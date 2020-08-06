@@ -9,8 +9,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import CustomUserCreationForm
 
 
-User = get_user_model()
-
 def signup(request):
     if request.method == 'POST':
         signup_form = CustomUserCreationForm(request.POST)
@@ -22,11 +20,12 @@ def signup(request):
     else:
         form = CustomUserCreationForm()
 
-    context={
+    context = {
         'form': form,
     }
 
     return render(request, 'accounts/form.html', context)
+
 
 def login(request):
     if request.method == 'POST':
@@ -40,6 +39,7 @@ def login(request):
         'form': form,
     }
     return render(request, 'accounts/form.html', context)
+
 
 @login_required
 def logout(request):
