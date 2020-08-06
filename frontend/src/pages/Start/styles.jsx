@@ -8,6 +8,7 @@ const Wrapper = styled.div`
         margin-top: 120px;
         font-size: 250px;
         font-family: 'Cafe24Ohsquare';
+        color: rgb(56, 97, 149);
         margin-bottom: 0px;
     }
 

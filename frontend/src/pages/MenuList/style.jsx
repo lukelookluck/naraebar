@@ -16,10 +16,10 @@ const Wrapper = styled.div`
 & .carousel-control-next-icon {
   height: 100px;
   width: 100px;
-  outline: black;
+  outline: rgb(56, 97, 149);
   background-size: 100%, 100%;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 6px solid rgb(56, 97, 149);
   background-image: none;
 }
 
@@ -35,13 +35,13 @@ const Wrapper = styled.div`
 {
   content: '>';
   font-size: 55px;
-  color: black;
+  color: rgb(56, 97, 149);
 }
 
 & .carousel-control-prev-icon:after {
   content: '<';
   font-size: 55px;
-  color: black;
+  color: rgb(56, 97, 149);
 }
 
 & h1 {

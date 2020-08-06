@@ -19,7 +19,7 @@ export default class CompleteCocktail extends Component {
                 <div className="bartender">
                     <img src="images/bartender2.gif"></img>
                 </div>
-                <h1>맛있게 즐기세요</h1>
+                <h1>맛있게 드세요 :)</h1>
             </div>
 
         </Wrapper>
