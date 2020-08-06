@@ -47,12 +47,14 @@ const Wrapper = styled.div`
 & h1 {
   font-weight: bold;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-family: 'IBMPlexSansKR-Text';
 }
 
 & p {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   font-size: 25px;
   font-weight: 600;
+  font-family: 'IBMPlexSansKR-Text';
 }
 
 & .carousel-caption {

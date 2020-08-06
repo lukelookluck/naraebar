@@ -8,18 +8,11 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
 const useStyles = makeStyles({
   root: {
-    width: 'auto',
     display: 'flex',
-    backgroundColor: 'rgba(255, 255, 255, 0)',
-    marginRight: 100,
   },
   item: {
-    backgroundColor: 'white',
-    paddingLeft: 125,
-    paddingRight: 125,
-    // marginLeft: 25,
-    marginRight: 100,
-    borderRadius: 25,
+    marginTop: "50px"
+    
   },
 });
 
