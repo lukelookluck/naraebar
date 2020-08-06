@@ -17,8 +17,8 @@ class RecipeList extends Component {
   state = {
     loading: "123",
     articleList: [],
+    commentList: [],
   };
-
   componentDidMount() {
     this.refreshList();
   }
@@ -28,12 +28,14 @@ class RecipeList extends Component {
         // headers: {
         //   Authorization: `JWT ${localStorage.getItem("token")}`,
         // },
+        // params: {
+        //   article: 1,
+        // },
       })
       .then((res) => {
-        console.log(this.state.articleList);
+        console.log(res.data);
         this.setState({ loading: "123123", articleList: res.data });
-        console.log(this.state.articleList);
-        console.log(this.state.loading);
+        // console.log(this.state.loading);
       })
       .catch((err) => console.log(err));
   };

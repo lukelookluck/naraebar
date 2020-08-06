@@ -66,6 +66,15 @@ const Wrapper = styled.div`
     font-weight: 600;
     font-size: 1.3em;
   }
+
+  & .comments-box {
+    margin-top: 5%;
+  }
+
+  & .comment-username {
+    margin: 0 2%;
+    font-weight: 600;
+  }
 `;
 
 export default Wrapper;

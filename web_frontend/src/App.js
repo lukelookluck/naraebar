@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp/";
 import FindPW from "./pages/FindPW/";
 import UploadRecipe from "./pages/UploadRecipe/";
 import ArticleForm from "./pages/ArticleForm/";
+import CommentDisplay from "./pages/CommentDisplay/"
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route exact path="/FindPW" component={FindPW}></Route>
         <Route exact path="/UploadRecipe" component={UploadRecipe}></Route>
         <Route exact path="/Community/Create" component={ArticleForm}></Route>
+        <Route exact path="/Community/Comment" component={CommentDisplay}></Route>
+
       </Switch>
     </BrowserRouter>
   );

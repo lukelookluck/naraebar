@@ -6,16 +6,20 @@ import Wrapper from "./style";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
+import InsertCommentOutlinedIcon from "@material-ui/icons/InsertCommentOutlined";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-export default function (props) {
-  console.log("zzzzz", props.list);
+import CommentList from "../CommentList/";
 
-  let article = props.list.map((item) => {
+export default function (props) {
+  // console.log(props.list);
+  let article = props.list.map((item, index) => {
+    // console.log("key", index);
+    // console.log("asd");
+
     const [isLikeit, setLikeIt] = useState(0);
     const [isSaveit, setSaveit] = useState(0);
-    console.log("a?", props.list);
 
     let likeButton = null;
     if (isLikeit) {
@@ -60,7 +64,7 @@ export default function (props) {
     }
 
     return (
-      <div key={item.id} className="list-card">
+      <div className="list-card" key={index}>
         <div className="list-user">
           <AccountCircleIcon />
           &nbsp;&nbsp;{item.user}
@@ -70,9 +74,9 @@ export default function (props) {
           <div className="list-item-detail">
             <div className="detail-content">
               <p className="cname">" {item.name} "</p>
-              {cardContent.split("\n").map((line) => {
+              {cardContent.split("\n").map((line, index2) => {
                 return (
-                  <span>
+                  <span key={index2}>
                     {line}
                     <br></br>
                   </span>
@@ -83,9 +87,14 @@ export default function (props) {
           </div>
         </div>
         <div className="like-button">
-          {likeButton}
+          <div>
+            {likeButton}&nbsp;&nbsp;
+            <InsertCommentOutlinedIcon />
+          </div>
           {saveButton}
         </div>
+
+        <CommentList comments={item.comments} />
       </div>
     );
   });
