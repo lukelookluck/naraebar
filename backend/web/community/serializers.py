@@ -22,13 +22,13 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    user = serializers.SerializerMethodField()
+    username = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
         fields = '__all__'
         read_only_fields = ('user', 'article')
 
-    def get_user(self, obj):
+    def get_username(self, obj):
         user = obj.user.all()
         return sz.serialize('json', user, ensure_ascii=False)
