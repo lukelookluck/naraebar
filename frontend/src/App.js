@@ -17,32 +17,6 @@ import NotFound from './pages/NotFound/';
 import SelectCocktail from './pages/SelectCocktail/';
 import Start from './pages/Start/';
 
-// css
-// import './index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-/// theme
-const theme = createMuiTheme({
-  typography: {
-    fontFamily: ['Noto Sans KR'].join(','),
-    button: {
-      fontFamily: 'Noto Sans KR',
-    },
-    body1: {
-      fontWeight: 500,
-    },
-  },
-  overrides: {
-    MuiCssBaseline: {
-      '@global': {
-        body: {
-          backgroundColor: 'white',
-        },
-      },
-    },
-  },
-});
-
 // app
 const App = () => {
   const [user, setUser] = useLocalStorageSetState(
@@ -87,31 +61,17 @@ const App = () => {
         setIsShowKeyborad,
       }}
     >
-      <MuiThemeProvider theme={theme}>
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Start}></Route>
             <Route exact path="/Start" component={Start}></Route>
-            <Route exact path="/MenuList" component={MenuList} />
-            <Route
-              exact
-              path="/MakingCocktail"
-              component={MakingCocktail}
-            ></Route>
-            <Route
-              exact
-              path="/CompleteCocktail"
-              component={CompleteCocktail}
-            ></Route>
-            <Route
-              exact
-              path="/SelectCocktail"
-              component={SelectCocktail}
-            ></Route>
+            <Route exact path="/MenuList" component={MenuList}></Route>
+            <Route exact path="/MakingCocktail" component={MakingCocktail}></Route>
+            <Route exact path="/CompleteCocktail" component={CompleteCocktail}></Route>
+            <Route exact path="/SelectCocktail/:cocktailId" component={SelectCocktail}></Route>
             <Route component={NotFound} />
           </Switch>
         </BrowserRouter>
-      </MuiThemeProvider>
     </CommonContext.Provider>
   );
 };

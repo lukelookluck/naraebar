@@ -1,17 +1,14 @@
 import React from 'react';
 import Wrapper from './style';
 import Button from '../../components/Button';
-import dumpfile from '../../pages/CocktailDump.json';
-
-// import mojito from '../../../public/images/cocktail/mojito2.png';
 
 export default function CardBody(props) {
-  const myCockTail = dumpfile[1];
+
   return (
     <Wrapper>
       <div className="card-body">
         <div className="card-text">
-          <h1 className="card-title"> {myCockTail.strDrink}</h1>
+          <h1 className="card-title"> {myCockTail.name}</h1>
           <h2 className="card-subtitle"> {myCockTail.strCategory}</h2>
           <p className="card-description">
             <p>{myCockTail.strInstructions}</p>
@@ -50,7 +47,6 @@ export default function CardBody(props) {
             src={myCockTail.strDrinkThumb}
             alt={myCockTail.strDrink}
           />
-          {/* <img className="my-img" src="images/cocktail/mojito2.png" alt="" /> */}
         </div>
       </div>
     </Wrapper>

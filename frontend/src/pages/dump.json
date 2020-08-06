@@ -5,7 +5,7 @@
         "name": "에너자이저",
         "details": "코딩은 역시 음주 코딩!",
         "ingredients": "소주,40/파워에이드,80/레드불,80",
-        "img": "./images/에너자이저.jpg"
+        "img": "/images/에너자이저.jpg"
     },
     {
         "id": 2,
@@ -13,15 +13,15 @@
         "name": "레드아이",
         "details": "토마토가 있으니 이건 해장술 아닐까?",
         "ingredients": "맥주,100/토마토,100",
-        "img": "./images/레드아이.jpg"
+        "img": "/images/레드아이.jpg"
     },
     {
         "id": 3,
-        "user": "싸피3기",
-        "name": "에너자이저",
-        "details": "코딩은 역시 음주 코딩!",
-        "ingredients": "소주,40/파워에이드,80/레드불,80",
-        "img": "./images/xonthebeach.jpg"
+        "user": "호로록",
+        "name": "레몬끌라라",
+        "details": "스페인에 온 기분을 만끽해보자",
+        "ingredients": "맥주,100/레몬토닉,100",
+        "img": "/images/레몬끌라라.jpg"
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "name": "에너자이저",
         "details": "코딩은 역시 음주 코딩!",
         "ingredients": "소주,40/파워에이드,80/레드불,80",
-        "img": "./images/margerita.jpg"
+        "img": "/images/margerita.jpg"
     },
     {
         "id": 5,
@@ -37,7 +37,7 @@
         "name": "에너자이저",
         "details": "코딩은 역시 음주 코딩!",
         "ingredients": "소주,40/파워에이드,80/레드불,80",
-        "img": "./images/margerita.jpg"
+        "img": "/images/margerita.jpg"
     },
     {
         "id": 6,
@@ -45,6 +45,6 @@
         "name": "에너자이저",
         "details": "코딩은 역시 음주 코딩!",
         "ingredients": "소주,40/파워에이드,80/레드불,80",
-        "img": "./images/margerita.jpg"
+        "img": "/images/margerita.jpg"
     }
 ]
