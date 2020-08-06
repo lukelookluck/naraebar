@@ -5,6 +5,7 @@ from django.utils import timezone
 
 
 class Recipe(models.Model):
+    objects = models.Manager()
     name = models.CharField(max_length=100)
     author = models.CharField(max_length=50)
     content = models.CharField(max_length=200)
@@ -19,18 +20,17 @@ class Recipe(models.Model):
     weekly_ranking = models.IntegerField(default=999)
     monthly_ranking = models.IntegerField(default=999)
 
-    def upload_time(self):
-        self.uploaded_at = timezone.now()
-        self.save()
+    def __str__(self):
+        return self.name
 
 
-class Ingredient_category(models.Model):
+class IngredientCategory(models.Model):
     name = models.CharField(max_length=100)
     is_alcohol = models.BooleanField()
 
 
 class Ingredient(models.Model):
     recipes = models.ManyToManyField(Recipe)
-    category = models.ForeignKey(Ingredient_category, on_delete=models.CASCADE)
+    category = models.ForeignKey(IngredientCategory, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     volume_ml = models.IntegerField(default=0)
