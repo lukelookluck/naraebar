@@ -24,13 +24,13 @@ class Recipe(models.Model):
         self.save()
 
 
-class Ingredient_category(models.Model):
+class IngredientCategory(models.Model):
     name = models.CharField(max_length=100)
     is_alcohol = models.BooleanField()
 
 
 class Ingredient(models.Model):
     recipes = models.ManyToManyField(Recipe)
-    category = models.ForeignKey(Ingredient_category, on_delete=models.CASCADE)
+    category = models.ForeignKey(IngredientCategory, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     volume_ml = models.IntegerField(default=0)
