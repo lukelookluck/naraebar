@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import {
   ListGroup,
   ListGroupItem,
   Card,
-  Button,
   Pagination,
 } from "react-bootstrap";
 import Wrapper from "./styles";
 import SyncButton from "../../components/SyncButton";
-import CocktailDump from "./CocktailDump.json";
+// import CocktailDump from "./CocktailDump.json";
+import CocktailDump from "./dump.json";
 import MyPagination from "../../components/MyPagination";
 
 const dumpFile = CocktailDump;
@@ -19,10 +19,19 @@ const MyBar = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [endPage] = useState(dumpFile.length);
 
-  const cocktailName = `${dumpFile[0].strDrink}`;
-  const cocktailImageUrl = `${dumpFile[0].strDrinkThumb}`;
-  const cocktailText = `${dumpFile[0].strInstructions}`;
-  const cocktailIngredient = `${dumpFile[0].strIngredient1}`;
+  const MyCocktail = dumpFile[0];
+
+  const igrList = MyCocktail.ingredients.map((item) => {
+    return (
+      // <ListGroup className="list-group-flush">
+            <ListGroupItem>
+              <div className="listdiv">{item.igrname}</div>
+              <div className="listdiv">{item.amount} ml</div>
+            </ListGroupItem>
+      // </ListGroup>
+    );
+  });
+
 
   return (
     <Wrapper>
@@ -33,14 +42,15 @@ const MyBar = () => {
       <Grid container className="recipe" justify="center" alignItems="center">
         <Card>
           <Card.Body>
-            <Card.Title>{cocktailName}</Card.Title>
+            <Card.Title>{MyCocktail.name}</Card.Title>
             <hr />
-            <Card.Img variant="top" src={cocktailImageUrl} />
+            <Card.Img variant="top" src={MyCocktail.img} />
             <hr />
-            <Card.Text>{cocktailText}</Card.Text>
+            <Card.Text>{MyCocktail.details}</Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>{cocktailIngredient}</ListGroupItem>
+            {igrList}
+
           </ListGroup>
         </Card>
       </Grid>
