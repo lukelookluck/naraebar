@@ -20,3 +20,10 @@ class RecipeList(generics.ListCreateAPIView):
 class UploadRecipe(generics.RetrieveUpdateDestroyAPIView):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
+
+
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JSONWebTokenAuthentication,))
+class DeleteRecipe(generics.RetrieveDestroyAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
