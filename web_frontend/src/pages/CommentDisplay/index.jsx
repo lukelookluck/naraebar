@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
-
 import Wrapper from "./style";
 
 import ArrowBackOutlinedIcon from "@material-ui/icons/ArrowBackOutlined";
 import AccountCircleTwoToneIcon from "@material-ui/icons/AccountCircleTwoTone";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+
+import CommentForm from "../../components/Community/Comment/CommentForm/";
+import ReplyList from "../../components/Community/ReplyList/";
 
 const CommentDisplay = (props) => {
   console.log(props.location.state);
@@ -38,28 +40,36 @@ const CommentDisplay = (props) => {
         <div className="comment-list-box">
           {props.location.state.comments.map((comment, idx) => {
             return (
-              <div className="comment-single" key={idx}>
-                <AccountCircleTwoToneIcon
-                  className="comment-avata"
-                  fontSize="large"
-                />
-                <div className="comment-single-left">
-                  <div className="comment-single-left-1">
-                    <div className="comment-username">{comment.username}</div>
-                    <div className="comment-content">{comment.content}</div>
+              <div key={idx}>
+                <div className="comment-single">
+                  <AccountCircleTwoToneIcon
+                    className="comment-avata"
+                    fontSize="large"
+                  />
+                  <div className="comment-single-left">
+                    <div className="comment-single-left-1">
+                      <div className="comment-username">
+                        {comment.username}
+                        <div className="comment-content">{comment.content}</div>
+                      </div>
+                    </div>
+                    <div className="comment-single-left-2">
+                      <div className="comment-createdTime">작성시간</div>
+                      <div className="comment-likeIt-count">좋아요 개수</div>
+                    </div>
                   </div>
-                  <div className="comment-single-left-2">
-                    <div className="comment-createdTime">작성시간</div>
-                    <div className="comment-likeIt-count">좋아요 개수</div>
+                  <div className="comment-likeIt">
+                    <FavoriteBorderIcon />
                   </div>
                 </div>
-                <div className="comment-likeIt">
-                  <FavoriteBorderIcon />
+                <div>
+                  <ReplyList replys={comment.replys} />
                 </div>
               </div>
             );
           })}
         </div>
+        <CommentForm />
       </Grid>
     </Wrapper>
   );

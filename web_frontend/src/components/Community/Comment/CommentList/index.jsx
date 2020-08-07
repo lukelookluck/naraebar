@@ -5,31 +5,24 @@ import Wrapper from "./style";
 
 import Grid from "@material-ui/core/Grid";
 
-import CommentDisplay from "../../../pages/CommentDisplay/";
+import CommentDisplay from "../../../../pages/CommentDisplay/";
 
 export default function (props) {
   return (
     <Wrapper>
       <Grid className="comments-box">
-        {props.comments.length > 2 && (
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
+        {props.comments.length > 0 && (
+          <Link
+            className="more-comment"
+            to={{
+              pathname: "/Community/Comment",
+              state: {
+                comments: props.comments,
+              },
             }}
           >
-            <Link
-              className="more-comment"
-              to={{
-                pathname: "/Community/Comment",
-                state: {
-                  comments: props.comments,
-                },
-              }}
-            >
-              댓글 {props.comments.length}개 모두 보기
-            </Link>
-          </a>
+            댓글 {props.comments.length}개 모두 보기
+          </Link>
         )}
 
         {props.comments.map((comment, idx) => {

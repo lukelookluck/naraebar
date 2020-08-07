@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   & .comment-list-header {
-    border-bottom: solid 1px black;
-    padding: 2.5% 1%;
+    border-bottom: solid 0.5px #dddddd;
+    padding: 10px 5px;
     display: flex;
     flex-direction: row;
+    background-color: #fcfcfc;
   }
 
   & .comment-list-header-arrow {
@@ -13,23 +14,24 @@ const Wrapper = styled.div`
   }
 
   & .comment-list-header-title {
-    margin-left: 3%;
+    margin-left: 15px;
     font-size: 30px;
   }
 
   & .comment-list-box {
-    margin: 5% 2.5%;
+    margin: 20px 10px;
+    margin-bottom: 70px;
   }
 
   & .comment-single {
-    margin: 2.5% 0;
+    margin: 11px 0;
     display: flex;
     justify-content: space-between;
   }
 
   & .comment-single-left {
     width: 100%;
-    margin: auto;
+    /* margin: auto; */
     /* display: flex; */
   }
 
@@ -40,22 +42,23 @@ const Wrapper = styled.div`
 
   & .comment-single-left-2 {
     /* width: auto; */
-    height: 2vh;
+    height: 13px;
   }
 
   & .comment-avata {
-    font-size: 7.5vh;
+    font-size: 40px;
   }
 
   & .comment-username {
+    display: flex;
     font-weight: 900;
-    margin: 0 1%;
-    float: left;
+    margin-left: 3.3px;
   }
 
   & .comment-content {
-    /* float: left; */
-    /* width: 100%; */
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 3.3px;
   }
 
   & .comment-likeIt {
@@ -63,9 +66,9 @@ const Wrapper = styled.div`
   }
 
   & .comment-createdTime {
-    font-size: 1vh;
-    margin-left: 1%;
-    margin-right: 5%;
+    font-size: 10px;
+    margin-left: 5.5px;
+    margin-right: 20px;
     float: left;
   }
 

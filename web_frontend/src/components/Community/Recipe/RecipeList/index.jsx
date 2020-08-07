@@ -10,8 +10,7 @@ import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-import dumpfile from "../../../pages/Community/ArticleDump.json";
-import RecipieListDisplay from "../RecipieListDisplay";
+import RecipieListDisplay from "../RecipieListDisplay/";
 
 class RecipeList extends Component {
   state = {
@@ -24,7 +23,7 @@ class RecipeList extends Component {
   }
   refreshList = () => {
     axios
-      .get("http://localhost:8080/community/", {
+      .get("http://192.168.0.5:8000/community/", {
         // headers: {
         //   Authorization: `JWT ${localStorage.getItem("token")}`,
         // },

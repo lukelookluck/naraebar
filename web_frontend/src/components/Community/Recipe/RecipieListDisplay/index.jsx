@@ -10,7 +10,7 @@ import InsertCommentOutlinedIcon from "@material-ui/icons/InsertCommentOutlined"
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-import CommentList from "../CommentList/";
+import CommentList from "../../Comment/CommentList/";
 
 export default function (props) {
   // console.log(props.list);

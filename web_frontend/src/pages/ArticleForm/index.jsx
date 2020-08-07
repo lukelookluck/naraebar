@@ -4,7 +4,7 @@ import Wrapper from "./style";
 import Header from "../../layout/Header/";
 
 import CloseIcon from "@material-ui/icons/Close";
-import ImageUploadBtn from "../../components/Community/ImageUploadButton/";
+import ImageUploadBtn from "../../components/Community/ArticleForm/ImageUploadButton/";
 
 import Temp1 from "../../components/Community/Temp1/";
 // import { Grid, IconButton, Grow, makeStyles } from "@material-ui/core";
