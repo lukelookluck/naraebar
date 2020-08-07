@@ -4,15 +4,20 @@ import {
   ListGroup,
   ListGroupItem,
   Card,
-  Pagination,
+  // Pagination,
 } from "react-bootstrap";
 import Wrapper from "./styles";
 import SyncButton from "../../components/SyncButton";
 // import CocktailDump from "./CocktailDump.json";
 import CocktailDump from "./dump.json";
-import MyPagination from "../../components/MyPagination";
+// import MyPagination from "../../components/MyPagination";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+
+import { MemoryRouter, Route } from "react-router";
+import { Link } from "react-router-dom";
+import Pagination from "@material-ui/lab/Pagination";
+import PaginationItem from "@material-ui/lab/PaginationItem";
 
 const dumpFile = CocktailDump;
 
@@ -20,8 +25,9 @@ const MyBar = () => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [endPage] = useState(dumpFile.length);
+  const [index, setIndex] = useState(0);
 
-  const MyCocktail = dumpFile[0];
+  const MyCocktail = dumpFile[index];
 
   const igrList = MyCocktail.ingredients.map((item) => {
     return (
@@ -42,8 +48,12 @@ const MyBar = () => {
     } catch (e) {
         alert('네트워크 연결에 문제가 있어 레시피 삭제에 실패했습니다.');
     }
-};
+  };
 
+  // const onSearchSubmit = text => {
+  //   console.log(text);
+  //   alert(text);
+  // };
 
   return (
     <Wrapper>
@@ -76,7 +86,31 @@ const MyBar = () => {
       </Grid>
 
       <Grid container justify="center" className="pagination">
-        <MyPagination />
+      <MemoryRouter initialEntries={["/inbox"]} initialIndex={0}>
+      <Route>
+        {({ location }) => {
+          const query = new URLSearchParams(location.search);
+          const page = parseInt(query.get("page") || "1", 10);
+          return (
+            // <form onSubmit={onFormSubmit}>
+              <Pagination
+                size="small"
+                page={page}
+                count={dumpFile.length}
+                onChange={setIndex(page - 1)}
+                renderItem={(item) => (
+                  <PaginationItem
+                    component={Link}
+                    to={`/inbox${item.page === 1 ? "" : `?page=${item.page}`}`}
+                    {...item}
+                  />
+                )}
+              />
+            // </form>
+          );
+        }}
+      </Route>
+    </MemoryRouter>
       </Grid>
     </Wrapper>
   );
