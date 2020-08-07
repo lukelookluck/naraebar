@@ -9,8 +9,6 @@ const dumpFile = CocktailDump;
 
 export default function PaginationLink() {
 
-  const MyCocktail = dumpFile[0];
-
   return (
     <MemoryRouter initialEntries={["/inbox"]} initialIndex={0}>
       <Route>
