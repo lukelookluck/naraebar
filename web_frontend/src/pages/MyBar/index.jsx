@@ -11,6 +11,8 @@ import SyncButton from "../../components/SyncButton";
 // import CocktailDump from "./CocktailDump.json";
 import CocktailDump from "./dump.json";
 import MyPagination from "../../components/MyPagination";
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const dumpFile = CocktailDump;
 
@@ -23,14 +25,24 @@ const MyBar = () => {
 
   const igrList = MyCocktail.ingredients.map((item) => {
     return (
-      // <ListGroup className="list-group-flush">
-            <ListGroupItem>
-              <div className="listdiv">{item.igrname}</div>
-              <div className="listdiv">{item.amount} ml</div>
-            </ListGroupItem>
-      // </ListGroup>
+      <ListGroupItem>
+        <div className="listdiv">{item.igrname}</div>
+        <div className="listdiv">{item.amount} ml</div>
+      </ListGroupItem>
     );
   });
+
+  const deleteRecipe = id => e => {
+    try {
+        // 삭제하라는 어떤 신호를 보내겠지
+
+
+        console.log("삭제 버튼 클릭, id = " + id);
+        alert('삭제 성공');
+    } catch (e) {
+        alert('네트워크 연결에 문제가 있어 레시피 삭제에 실패했습니다.');
+    }
+};
 
 
   return (
@@ -42,7 +54,16 @@ const MyBar = () => {
       <Grid container className="recipe" justify="center" alignItems="center">
         <Card>
           <Card.Body>
-            <Card.Title>{MyCocktail.name}</Card.Title>
+            <Card.Title>
+              <div className="namediv">
+                {MyCocktail.name}
+              </div>
+              <div className="iconbtndiv">
+                <IconButton aria-label="delete" className="deletebtn" onClick={deleteRecipe(MyCocktail.id)}>
+                  <DeleteIcon/>
+                </IconButton>
+              </div>
+            </Card.Title>
             <hr />
             <Card.Img variant="top" src={MyCocktail.img} />
             <hr />
@@ -50,7 +71,6 @@ const MyBar = () => {
           </Card.Body>
           <ListGroup className="list-group-flush">
             {igrList}
-
           </ListGroup>
         </Card>
       </Grid>

@@ -3,8 +3,14 @@ import { MemoryRouter, Route } from "react-router";
 import { Link } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
+import CocktailDump from "../../pages/MyBar/dump.json";
+
+const dumpFile = CocktailDump;
 
 export default function PaginationLink() {
+
+  const MyCocktail = dumpFile[0];
+
   return (
     <MemoryRouter initialEntries={["/inbox"]} initialIndex={0}>
       <Route>
@@ -16,7 +22,7 @@ export default function PaginationLink() {
               size="small"
               page={page}
               // count에 dump.length 적용해야함
-              count={100}
+              count={dumpFile.length}
               renderItem={(item) => (
                 <PaginationItem
                   component={Link}

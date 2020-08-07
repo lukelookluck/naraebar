@@ -21,6 +21,20 @@ const Wrapper = styled.div`
     display: inline-block;
     width: 50%;
   }
+
+  & .deletebtn {
+    float: right;
+  }
+
+  & .namediv {
+    position: relative;
+  }
+
+  & .iconbtndiv {
+    position: relative;
+    left:10px;
+    top: -38px;
+  }
 `;
 
 export default Wrapper;
