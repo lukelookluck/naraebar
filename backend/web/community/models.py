@@ -26,5 +26,7 @@ class Comment(models.Model):
                              on_delete=models.CASCADE, related_name='my_comments')
     article = models.ForeignKey(
         Article, on_delete=models.CASCADE, related_name='comments')
+    parent = models.ForeignKey(
+        'self', related_name='replys', on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -25,6 +25,8 @@ class DetailArticle(generics.RetrieveUpdateDestroyAPIView):
 # @authentication_classes((JSONWebTokenAuthentication,))
 class ListComment(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
+    # queryset = queryset.filter(parent=None)
+
     serializer_class = CommentSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['article']

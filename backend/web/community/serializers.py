@@ -14,7 +14,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         read_only_fields = ('user', 'DISLIKE', 'LIKE')
 
     def get_comments(self, obj):
-        comments = obj.comments.all()
+        comments = obj.comments.filter(parent=None)  # 답글인 거는 제외
         serializer = CommentSerializer(instance=comments, many=True)
         return serializer.data
 
@@ -22,13 +22,18 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    user = serializers.SerializerMethodField()
+    username = serializers.SerializerMethodField()
+    replys = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
         fields = '__all__'
         read_only_fields = ('user', 'article')
 
-    def get_user(self, obj):
-        user = obj.user.all()
-        return sz.serialize('json', user, ensure_ascii=False)
+    def get_username(self, obj):
+        return obj.user.username
+
+    def get_replys(self, obj):
+        replys = obj.replys.all()
+        serializer = CommentSerializer(instance=replys, many=True)
+        return serializer.data
