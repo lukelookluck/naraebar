@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
 import Wrapper from "./style";
@@ -23,7 +24,7 @@ export default function (props) {
 
     let likeButton = null;
     if (isLikeit) {
-      likeButton = <FavoriteIcon onClick={likeIt} />;
+      likeButton = <FavoriteIcon onClick={likeIt} color="error" />;
     } else {
       likeButton = <FavoriteBorderIcon onClick={likeIt} />;
     }
@@ -88,12 +89,22 @@ export default function (props) {
         </div>
         <div className="like-button">
           <div>
-            {likeButton}&nbsp;&nbsp;
-            <InsertCommentOutlinedIcon />
+            {likeButton}&nbsp;&nbsp;&nbsp;
+            <Link
+              className="more-comment"
+              to={{
+                pathname: "/Community/Comment",
+                state: {
+                  comments: item.comments,
+                },
+              }}
+            >
+              <InsertCommentOutlinedIcon />
+            </Link>
           </div>
           {saveButton}
         </div>
-
+        <hr />
         <CommentList comments={item.comments} />
       </div>
     );

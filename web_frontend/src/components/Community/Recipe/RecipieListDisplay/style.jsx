@@ -66,6 +66,10 @@ const Wrapper = styled.div`
     font-weight: 600;
     font-size: 1.3em;
   }
+
+  & .more-comment {
+    color: black;
+  }
 `;
 
 export default Wrapper;

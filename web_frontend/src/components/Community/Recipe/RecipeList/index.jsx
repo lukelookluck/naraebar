@@ -23,7 +23,7 @@ class RecipeList extends Component {
   }
   refreshList = () => {
     axios
-      .get("http://192.168.0.5:8000/community/", {
+      .get("http://172.30.1.30:8100/community/", {
         // headers: {
         //   Authorization: `JWT ${localStorage.getItem("token")}`,
         // },

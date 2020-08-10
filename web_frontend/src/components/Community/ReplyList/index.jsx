@@ -16,22 +16,47 @@ export default function (props) {
     console.log(myIndex);
   }
 
+  const [showReplysBool, setshowReplysBool] = useState(false);
+  let showReplys = null;
+  if (!showReplysBool) {
+    console.log("폴스!!");
+    if (myIndex < props.replys.length && props.replys.length > 2) {
+      showReplys = (
+        <span className="more-reply" onClick={moreComment}>
+          이전 답글 {props.replys.length - myIndex}개 보기
+        </span>
+      );
+    }
+    if (props.replys.length > 2 && myIndex >= props.replys.length) {
+      console.log("숨기기");
+      showReplys = (
+        <span className="more-reply" onClick={switcher}>
+          답글 숨기기
+        </span>
+      );
+    }
+  } else {
+    console.log("트루");
+    showReplys = (
+      <span className="more-reply" onClick={switcher}>
+        답글 {props.replys.length}개 보기
+      </span>
+    );
+  }
+
+  function switcher() {
+    setshowReplysBool(!showReplysBool);
+    console.log(showReplysBool);
+  }
+
   return (
     <Wrapper>
       <Grid className="replys-box">
-        {props.replys.length > 2 && (
-          <span className="more-reply" onClick={moreComment}>
-            이전 답글 {props.replys.length - myIndex}개 보기
-          </span>
-        )}
-
+        {/* {props.replys.length} {myIndex} */}
+        {showReplys}
         {props.replys.reverse().map((reply, idx) => {
-          if (idx < myIndex) {
+          if (showReplysBool === false && idx < myIndex) {
             return (
-              // <div className="reply-single" key={idx}>
-              //   <span className="reply-username">{reply.username}</span>
-              //   {reply.content}
-              // </div>
               <div className="reply-single" key={idx}>
                 <AccountCircleTwoToneIcon
                   className="reply-avata"
