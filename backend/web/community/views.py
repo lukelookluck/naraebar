@@ -29,4 +29,4 @@ class ListComment(generics.ListCreateAPIView):
 
     serializer_class = CommentSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['article']
+    filterset_fields = ['article']  # 요청받은 article과 같은 값을 가진 댓글만 가져오기
