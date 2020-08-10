@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   & .input-footer {
-    position: fixed;
+    // position: fixed;
     bottom: 0%;
   }
 `;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
 import Wrapper from "./style";
@@ -6,21 +7,24 @@ import Wrapper from "./style";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
+import InsertCommentOutlinedIcon from "@material-ui/icons/InsertCommentOutlined";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-import dumpfile from "../../../pages/Community/ArticleDump.json";
+import CommentList from "../../Comment/CommentList/";
 
-export default function () {
-  const articleDump = dumpfile;
+export default function (props) {
+  // console.log(props.list);
+  let article = props.list.map((item, index) => {
+    // console.log("key", index);
+    // console.log("asd");
 
-  const article = articleDump.map((item) => {
     const [isLikeit, setLikeIt] = useState(0);
     const [isSaveit, setSaveit] = useState(0);
 
     let likeButton = null;
     if (isLikeit) {
-      likeButton = <FavoriteIcon onClick={likeIt} />;
+      likeButton = <FavoriteIcon onClick={likeIt} color="error" />;
     } else {
       likeButton = <FavoriteBorderIcon onClick={likeIt} />;
     }
@@ -50,35 +54,58 @@ export default function () {
     const [myHide, setmyHide] = useState(moreButton);
 
     const [cardContent, setCardContent] = useState(
-      item.content.substring(0, 50) + "..."
+      item.detail.substring(0, 50) + "..."
     );
 
     function moreContent(e) {
-      setCardContent(item.content);
+      setCardContent(item.detail + "\n\n" + item.ingredients);
       console.log(myHide);
       setmyHide(null);
       e.preventDefault();
     }
 
     return (
-      <div key={item.id} className="list-card">
+      <div className="list-card" key={index}>
         <div className="list-user">
           <AccountCircleIcon />
-          {item.user}
+          &nbsp;&nbsp;{item.user}
         </div>
         <div className="list-item">
           <img className="list-item-image" src="images/sample.jpg" alt="" />
           <div className="list-item-detail">
-            <span className="detail-content">
-              {cardContent}
+            <div className="detail-content">
+              <p className="cname">" {item.name} "</p>
+              {cardContent.split("\n").map((line, index2) => {
+                return (
+                  <span key={index2}>
+                    {line}
+                    <br></br>
+                  </span>
+                );
+              })}
               {myHide}
-            </span>
+            </div>
           </div>
         </div>
         <div className="like-button">
-          {likeButton}
+          <div>
+            {likeButton}&nbsp;&nbsp;&nbsp;
+            <Link
+              className="more-comment"
+              to={{
+                pathname: "/Community/Comment",
+                state: {
+                  comments: item.comments,
+                },
+              }}
+            >
+              <InsertCommentOutlinedIcon />
+            </Link>
+          </div>
           {saveButton}
         </div>
+        <hr />
+        <CommentList comments={item.comments} />
       </div>
     );
   });

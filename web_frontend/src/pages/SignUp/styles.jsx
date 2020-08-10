@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
     & .signin div {
         margin-top: 65px;
-        font-size: 25px;
+        // font-size: 40px;
     }
 
     & form div {
@@ -30,6 +30,7 @@ const Wrapper = styled.div`
         border: none;
         color: white;
         font-size: 20px;
+        font-family: 'IBMPlexSansKR-Text';
     }
 
     & .submitBtn:hover {
@@ -45,8 +46,8 @@ const Wrapper = styled.div`
         border: none;
         color: black;
         font-size: 20px;
+        font-family: 'IBMPlexSansKR-Text';
     }
-
     
 `;
 

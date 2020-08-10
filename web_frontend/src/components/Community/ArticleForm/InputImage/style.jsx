@@ -12,8 +12,8 @@ const Wrapper = styled.div`
   & .input-image {
     /* max-width: 20%; */
     /* overflow: hidden; */
-    width: 100%;
-    height: 100%;
+    width: 80vw;
+    height: 50vh;
     border-radius: 25px;
   }
 `;

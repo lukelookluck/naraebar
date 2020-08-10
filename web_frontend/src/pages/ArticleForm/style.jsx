@@ -1,62 +1,68 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  & .form-box {
-    padding: 2.5% 2.5% 0 2.5%;
-  }
-
-  & .article-create-button {
-    border: none;
-    border-radius: 25px;
-    padding: 7px 10px;
-    background-color: rgb(56, 97, 182);
-
-    height: 35px;
-
-    font-size: 15px;
-    color: white;
-  }
-
-  & .form-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    height: 35px;
-  }
-
-  & .form-header2 {
-    display: flex;
-    flex-direction: row;
-  }
+  text-align: center;
 
   & .form-header-title {
-    font-size: 1.4rem;
-    margin: 0;
-    margin-left: 10px;
+    margin-top: 35px;
+    font-size: 30px;
+    height: 60px;
+    font-family: 'IBMPlexSansKR-Text';
   }
 
-  & .form-control {
-    border: 0;
+  & #details {
+    // height: 200px;
   }
 
-  & .form-group input::placeholder {
-    color: #a1a1a1;
-    font-weight: 700;
-  }
-
-  & textarea::placeholder {
-    color: #a1a1a1;
-    font-weight: 500;
-  }
-
-  & .form-textarea {
-    height: 15vh;
+  & form div {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   & .form-row .col input::placeholder {
     color: #a1a1a1;
     font-weight: 500;
   }
+
+  & .article-create-button {
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+    width: 120px;
+    background-color: rgb(76, 127, 188);
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'IBMPlexSansKR-Text';
+
+    // border: none;
+    // border-radius: 25px;
+    // padding: 7px 10px;
+    // background-color: rgb(56, 97, 182);
+    // height: 35px;
+    // font-size: 15px;
+    // color: white;
+  }
+
+  & .article-create-button:hover {
+    background-color: rgb(76, 127, 188);
+  }
+
+  & .resetBtn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+    width: 120px;
+    background-color: rgb(242, 242, 242);
+    text-decoration: none;
+    border: none;
+    color: black;
+    font-size: 20px;
+    font-family: 'IBMPlexSansKR-Text';
+  }
+
 `;
 
 export default Wrapper;

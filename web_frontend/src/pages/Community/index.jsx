@@ -6,8 +6,8 @@ import Wrapper from "./style";
 
 // import Logo from "../../components/Logo/";
 // import Nav from "../../components/NavigationMenu/";
-import Recipe from "../../components/Community/RecipeList/";
-import CreateArticleButton from "../../components/Community/CreateArticleButton/";
+import RecipeList from "../../components/Community/Recipe/RecipeList/";
+import CreateArticleButton from "../../components/Community/ArticleForm/CreateArticleButton/";
 
 const Community = () => {
   return (
@@ -15,7 +15,7 @@ const Community = () => {
       <Grid>
         {/* <Logo /> */}
         {/* <Nav /> */}
-        <Recipe />
+        <RecipeList />
         <CreateArticleButton />
       </Grid>
     </Wrapper>

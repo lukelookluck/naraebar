@@ -36,7 +36,6 @@ export default function ImageUploadButton() {
         const base64 = reader.result;
         console.log(base64);
         setImgBase64((imgBase64) => [
-          ...imgBase64,
           { id: imgBase64.length, value: base64.toString() },
         ]); // 파일 base64 상태 업데이트
 
@@ -59,7 +58,7 @@ export default function ImageUploadButton() {
           className={classes.input}
           id="icon-button-file"
           type="file"
-          multiple
+          // multiple
           onChange={handleChangeFile}
         />
         <label htmlFor="icon-button-file">

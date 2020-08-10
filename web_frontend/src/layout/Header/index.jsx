@@ -1,13 +1,23 @@
 import React from "react";
 import Wrapper from "./styles";
 import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import '../../index.css';
+
+const useStyles = makeStyles({
+    logotext: {
+        fontFamily: 'Cafe24Ohsquare'
+    }
+})
 
 const Header = () => {
+  const classes = useStyles()
+
   return (
     <Wrapper>
       <Grid container justify="center" alignItems="center">
         <Grid item xs={12} className="logoGrid">
-          <p id="logo">NaReBar</p>
+          <p className={classes.logotext} id="logo">NaReBar</p>
         </Grid>
       </Grid>
     </Wrapper>
