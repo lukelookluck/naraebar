@@ -15,8 +15,9 @@ class Article(models.Model):
         settings.AUTH_USER_MODEL, related_name='like_articles')
     DISLIKE = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name='dislike_articles')
+    name = models.CharField(max_length=20)
     # drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
-
+    
     ingredients = models.TextField()
 
 
