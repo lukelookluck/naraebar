@@ -6,8 +6,12 @@ export default class CompleteCocktail extends Component {
   
   componentDidMount() {
     setTimeout(() => {
-      this.props.history.push('/Start');
-      console.log("처음으로!");
+      // this.props.history.push('/Start');
+      // console.log("처음으로!");
+
+      this.props.history.push('/Cleaning');
+      console.log("청소중!");
+
     }, 5000) // 5초 후 실행
   }
   

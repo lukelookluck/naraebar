@@ -16,6 +16,7 @@ import CompleteCocktail from './pages/CompleteCocktail/';
 import SelectCocktail from './pages/SelectCocktail/';
 import Start from './pages/Start/';
 import Error from './pages/Error/';
+import Cleaning from './pages/Cleaning';
 
 // app
 const App = () => {
@@ -69,6 +70,7 @@ const App = () => {
             <Route exact path="/MakingCocktail" component={MakingCocktail}></Route>
             <Route exact path="/CompleteCocktail" component={CompleteCocktail}></Route>
             <Route exact path="/SelectCocktail/:cocktailId" component={SelectCocktail}></Route>
+            <Route exact path="/Cleaning" component={Cleaning}></Route>
             <Route component={Error} />
           </Switch>
         </BrowserRouter>
