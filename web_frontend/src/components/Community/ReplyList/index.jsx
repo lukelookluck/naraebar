@@ -19,7 +19,7 @@ export default function (props) {
   const [showReplysBool, setshowReplysBool] = useState(false);
   let showReplys = null;
   if (!showReplysBool) {
-    console.log("폴스!!");
+    // console.log("폴스!!");
     if (myIndex < props.replys.length && props.replys.length > 2) {
       showReplys = (
         <span className="more-reply" onClick={moreComment}>
@@ -28,7 +28,7 @@ export default function (props) {
       );
     }
     if (props.replys.length > 2 && myIndex >= props.replys.length) {
-      console.log("숨기기");
+      // console.log("숨기기");
       showReplys = (
         <span className="more-reply" onClick={switcher}>
           답글 숨기기

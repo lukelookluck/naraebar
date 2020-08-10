@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Button, TextField } from "@material-ui/core";
+import axios from "axios";
+
 import Wrapper from "./style";
 import Header from "../../layout/Header/";
 
@@ -10,7 +12,9 @@ import Temp1 from "../../components/Community/Temp1/";
 // import { Grid, IconButton, Grow, makeStyles } from "@material-ui/core";
 // import { CloseIcon, PhotoCameraIcon  } from "@material-ui/icons";
 
-const ArticleForm = ({ history }) => {
+export default function ({ history }) {
+  // console.log(history);
+
   const goBack = () => {
     history.goBack();
   };
@@ -25,12 +29,43 @@ const ArticleForm = ({ history }) => {
     };
   }, [history]);
 
+  const [articleFormData, setArticleFormData] = useState({
+    title: "",
+    detail: "",
+    name: "",
+    ingredients: "레몬",
+    user: 1,
+  });
+
+  function handleSubmit(data) {
+    console.log(data);
+    axios
+      .post("http://192.168.0.4:8100/community/", data, {
+        // headers: {
+        //     Authorization: `JWT ${localStorage.getItem("token")}`,
+        //   },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <Wrapper>
       <Header></Header>
       <Grid container className="root" justify="center" alignItems="center">
         <Grid item xs={12} className="form-header-title">
           <div>나만의 레시피 만들기</div>
+          <p>
+            title: {articleFormData.title}
+            detail: {articleFormData.detail}
+            name: {articleFormData.name}
+            user: {articleFormData.user}
+            ingredients: {articleFormData.ingredients}
+          </p>
         </Grid>
         {/* <div className="form-header">
             <Link to="/Community">
@@ -38,6 +73,7 @@ const ArticleForm = ({ history }) => {
             </Link>
             <p className="form-header-title">글 쓰기</p>
           </div> */}
+
         <Grid item xs={10}>
           <form>
             <div>
@@ -48,9 +84,13 @@ const ArticleForm = ({ history }) => {
                 label="칵테일 이름"
                 variant="outlined"
                 autoFocus
+                value={articleFormData.title}
+                onChange={({ target: { value } }) =>
+                  setArticleFormData({ ...articleFormData, title: value })
+                }
               ></TextField>
             </div>
-
+            {/* {a.a} */}
             <div>
               <TextField
                 required
@@ -60,6 +100,14 @@ const ArticleForm = ({ history }) => {
                 multiline
                 rows={4}
                 variant="outlined"
+                value={articleFormData.detail}
+                onChange={({ target: { value } }) =>
+                  setArticleFormData({
+                    ...articleFormData,
+                    detail: value,
+                    name: value,
+                  })
+                }
               ></TextField>
             </div>
 
@@ -70,9 +118,10 @@ const ArticleForm = ({ history }) => {
             <Grid container justify="center" alignItems="center">
               <Grid item xs={6}>
                 <Button
-                  type="submit"
+                  // type="submit"
                   variant="contained"
                   className="article-create-button"
+                  onClick={() => handleSubmit(articleFormData)}
                 >
                   공유하기
                 </Button>
@@ -88,5 +137,4 @@ const ArticleForm = ({ history }) => {
       </Grid>
     </Wrapper>
   );
-};
-export default ArticleForm;
+}

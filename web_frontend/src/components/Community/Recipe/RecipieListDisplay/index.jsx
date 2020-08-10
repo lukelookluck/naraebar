@@ -17,7 +17,7 @@ export default function (props) {
   // console.log(props.list);
   let article = props.list.map((item, index) => {
     // console.log("key", index);
-    // console.log("asd");
+    // console.log("item", item);
 
     const [isLikeit, setLikeIt] = useState(0);
     const [isSaveit, setSaveit] = useState(0);
@@ -74,7 +74,7 @@ export default function (props) {
           <img className="list-item-image" src="images/sample.jpg" alt="" />
           <div className="list-item-detail">
             <div className="detail-content">
-              <p className="cname">" {item.name} "</p>
+              <p className="cname">" {item.title} "</p>
               {cardContent.split("\n").map((line, index2) => {
                 return (
                   <span key={index2}>
@@ -96,6 +96,7 @@ export default function (props) {
                 pathname: "/Community/Comment",
                 state: {
                   comments: item.comments,
+                  article: item.id,
                 },
               }}
             >
@@ -105,7 +106,7 @@ export default function (props) {
           {saveButton}
         </div>
         <hr />
-        <CommentList comments={item.comments} />
+        <CommentList comments={item.comments} article={item} />
       </div>
     );
   });

@@ -29,7 +29,7 @@ class Board extends Component {
           {[...Array(num)].map((item, index) => {
             // console.log("index", item);
             return (
-              <div class="form-row mb-2" key={item}>
+              <div class="form-row mb-2" key={index}>
                 <div className="col">
                   <input
                     class="form-control"

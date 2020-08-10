@@ -23,7 +23,7 @@ class RecipeList extends Component {
   }
   refreshList = () => {
     axios
-      .get("http://172.30.1.30:8100/community/", {
+      .get("http://192.168.0.4:8100/community/", {
         // headers: {
         //   Authorization: `JWT ${localStorage.getItem("token")}`,
         // },
@@ -32,7 +32,7 @@ class RecipeList extends Component {
         // },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         this.setState({ loading: "123123", articleList: res.data });
         // console.log(this.state.loading);
       })

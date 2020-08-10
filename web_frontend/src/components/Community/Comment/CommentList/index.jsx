@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import CommentDisplay from "../../../../pages/CommentDisplay/";
 
 export default function (props) {
+  // console.log(props);
   return (
     <Wrapper>
       <Grid className="comments-box">
@@ -18,6 +19,7 @@ export default function (props) {
               pathname: "/Community/Comment",
               state: {
                 comments: props.comments,
+                article: props.article.id,
               },
             }}
           >

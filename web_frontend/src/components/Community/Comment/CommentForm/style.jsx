@@ -25,6 +25,14 @@ const Wrapper = styled.div`
 
   & .comment-form-register {
     text-decoration: none;
+    font-weight: 600;
+    color: #88c4ff;
+  }
+
+  & .comment-form-register2 {
+    text-decoration: none;
+    font-weight: 600;
+    color: #0080ff;
   }
 `;
 export default Wrapper;
