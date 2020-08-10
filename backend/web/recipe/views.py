@@ -11,25 +11,22 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 @permission_classes((IsAuthenticated,))
 @authentication_classes((JSONWebTokenAuthentication,))
 class RecipeList(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
-
-    queryset = Recipe.objects.all()
+    queryset = Recipe.objects.all().order_by('-rating')
     serializer_class = RecipeSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 @permission_classes((IsAuthenticated,))
 @authentication_classes((JSONWebTokenAuthentication,))
 class UploadRecipe(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthenticated,)
-
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 @permission_classes((IsAuthenticated,))
 @authentication_classes((JSONWebTokenAuthentication,))
 class DeleteRecipe(generics.RetrieveDestroyAPIView):
-    permission_classes = (IsAuthenticated)
-
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
+    permission_classes = [permissions.IsAuthenticated]
