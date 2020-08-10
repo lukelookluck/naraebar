@@ -8,7 +8,7 @@ font-family: 'IBMPlexSansKR-Text';
 }
 
 & .gif {
-    padding-top: 90px;
+    padding-top: 100px;
 }
 & img {
     border-radius: 50px;
@@ -18,6 +18,7 @@ font-family: 'IBMPlexSansKR-Text';
 
 & h1 {
     font-size: 100px;
+    margin-top: 50px;
 }
 
 `

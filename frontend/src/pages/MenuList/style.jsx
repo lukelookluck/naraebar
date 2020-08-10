@@ -4,12 +4,12 @@ const Wrapper = styled.div`
   text-align: center;
 
   & .cocktailimg {
-      width:1000px;
+      width:800px;
       height:650px;
   }
 
   & .caro {
-    margin-top: 50px;
+    margin-top: 110px;
   }
 
 & .carousel-control-prev-icon,
@@ -59,11 +59,11 @@ const Wrapper = styled.div`
 
 & .carousel-caption {
   background-color: rgba( 255, 255, 255, 0.5 );
-  width: 800px;
+  width: 650px;
   border-radius: 20px;
   right: 0%;
   left: 0%;
-  margin-left: 367px;
+  margin-left: 250px;
 };
 
 & .caroitem {

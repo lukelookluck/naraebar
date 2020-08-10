@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   font-family: 'IBMPlexSansKR-Text';
 
   & .titleGrid {
-    margin-top: 40px;
+    margin-top: 120px;
   }
 
   & h1 {
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   }
 
   & .imgGrid {
-    margin-top: 100px;
+    margin-top: 160px;
   }
 
   & .textGrid {

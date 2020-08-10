@@ -8,7 +8,7 @@ font-family: 'IBMPlexSansKR-Text';
 }
 
 & .bartender {
-    padding-top: 90px;
+    padding-top: 100px;
 }
 & img {
     border-radius: 50px;
