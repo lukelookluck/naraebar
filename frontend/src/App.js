@@ -13,9 +13,9 @@ import { useLocalStorageSetState } from './common/CommonHooks';
 import MenuList from './pages/MenuList';
 import MakingCocktail from './pages/MakingCocktail/';
 import CompleteCocktail from './pages/CompleteCocktail/';
-import NotFound from './pages/NotFound/';
 import SelectCocktail from './pages/SelectCocktail/';
 import Start from './pages/Start/';
+import Error from './pages/Error/';
 
 // app
 const App = () => {
@@ -69,7 +69,7 @@ const App = () => {
             <Route exact path="/MakingCocktail" component={MakingCocktail}></Route>
             <Route exact path="/CompleteCocktail" component={CompleteCocktail}></Route>
             <Route exact path="/SelectCocktail/:cocktailId" component={SelectCocktail}></Route>
-            <Route component={NotFound} />
+            <Route component={Error} />
           </Switch>
         </BrowserRouter>
     </CommonContext.Provider>
