@@ -47,7 +47,7 @@ const Wrapper = styled.div`
   }
 
   & .btnGrid {
-    margin-top: 80px;
+    margin-top: 70px;
   }
 
   & .btnSelect {
@@ -56,10 +56,10 @@ const Wrapper = styled.div`
     border: none;
     color: white;
     font-family: 'IBMPlexSansKR-Text';
-    font-size: 25px;
-    height: 60px;
-    width: 120px;
-    margin-right: 20px;
+    font-size: 35px;
+    height: 70px;
+    width: 140px;
+    margin-right: 50px;
   }
 
   & .btnSelect:hover {
@@ -71,11 +71,11 @@ const Wrapper = styled.div`
     text-decoration: none;
     border: none;
     color: black;
-    font-size: 25px;
+    font-size: 35px;
     font-family: 'IBMPlexSansKR-Text';
-    height: 60px;
-    width: 120px;
-    margin-left: 20px;
+    height: 70px;
+    width: 140px;
+    margin-left: 50px;
   }
 
 `;
