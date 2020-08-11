@@ -12,9 +12,7 @@ class Article(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE, related_name='articles')
     LIKE = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name='like_articles')
-    DISLIKE = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name='dislike_articles')
+        settings.AUTH_USER_MODEL, related_name='like_articles', blank=True)
     name = models.CharField(max_length=20)
     # drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
     
@@ -29,5 +27,7 @@ class Comment(models.Model):
         Article, on_delete=models.CASCADE, related_name='comments')
     parent = models.ForeignKey(
         'self', related_name='replys', on_delete=models.CASCADE, null=True, blank=True)
+    LIKE = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name='comment_articles', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

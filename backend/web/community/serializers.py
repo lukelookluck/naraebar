@@ -11,7 +11,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = '__all__'
-        read_only_fields = ('DISLIKE', 'LIKE')
+        read_only_fields = ()
 
     def get_comments(self, obj):
         comments = obj.comments.filter(parent=None)  # 답글인 거는 제외
@@ -19,6 +19,10 @@ class ArticleSerializer(serializers.ModelSerializer):
         return serializer.data
 
         # return sz.serialize('json', obj.comments.all(), ensure_ascii=False)
+
+    def perform_update(self, serializer):
+        instance = serializer.save()
+        LIKE(user=self.request.user, modified=instance)
 
 
 class CommentSerializer(serializers.ModelSerializer):
