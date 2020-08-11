@@ -40,14 +40,28 @@ def LikeArticle(request, article_pk):
     user_id = request.data.get('user')
     user = User.objects.get(id=user_id)
     LIKE = article.LIKE.all()
-    print(request.data.get('user'), article, user, LIKE)
+
     if user in LIKE:
         article.LIKE.remove(user)
     else:
         article.LIKE.add(user)
+
     result = article.LIKE.all().count()
-    print(result)
     return Response(result)
 
 
+@api_view(['POST'])
+def LikeComment(request, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    user_id = request.data.get('user')
+    user = User.objects.get(id=user_id)
+    LIKE = comment.LIKE.all()
+    
+    if user in LIKE:
+        comment.LIKE.remove(user)
+    else:
+        comment.LIKE.add(user)
+    result = comment.LIKE.all().count()
+    print(result)
+    return Response(result)
 

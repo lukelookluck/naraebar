@@ -8,4 +8,5 @@ urlpatterns = [
     path('comment/', views.ListComment.as_view()),
     
     path('article/<int:article_pk>/', views.LikeArticle),
+    path('comment/<int:comment_pk>/', views.LikeComment),
 ]
