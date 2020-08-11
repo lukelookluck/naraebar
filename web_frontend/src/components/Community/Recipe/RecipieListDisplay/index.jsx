@@ -20,6 +20,7 @@ export default function (props) {
     // console.log("item", item);
 
     const [isLikeit, setLikeIt] = useState(0);
+    const [countLikeIt, setCountLikeIt] = useState(item.LIKE.length);
     const [isSaveit, setSaveit] = useState(0);
 
     let likeButton = null;
@@ -31,7 +32,14 @@ export default function (props) {
 
     function likeIt() {
       // alert("눌럿어?");
+      props.likeSubmit(item);
       setLikeIt(!isLikeit);
+
+      if (isLikeit) {
+        setCountLikeIt(countLikeIt - 1);
+      } else {
+        setCountLikeIt(countLikeIt + 1);
+      }
     }
 
     let saveButton = null;
@@ -89,7 +97,9 @@ export default function (props) {
         </div>
         <div className="like-button">
           <div>
-            {likeButton}&nbsp;&nbsp;&nbsp;
+            {likeButton}
+            {countLikeIt}
+            &nbsp;&nbsp;&nbsp;
             <Link
               className="more-comment"
               to={{

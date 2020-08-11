@@ -32,17 +32,41 @@ class RecipeList extends Component {
         // },
       })
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         this.setState({ loading: "123123", articleList: res.data });
         // console.log(this.state.loading);
       })
       .catch((err) => console.log(err));
   };
+
+  likeSubmit = (article) => {
+    console.log(article);
+    axios
+      .post(
+        `http://192.168.0.4:8100/community/article/${article.id}/`,
+        { user: article.user }, // 현재 유저 정보 넣기
+        {
+          // headers: {
+          //   dd
+          // }
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+
+        // this.refreshList();
+      })
+      .catch((err) => console.log(err));
+  };
+
   render() {
     return (
       <Wrapper>
         <Grid className="list-box">
-          <RecipieListDisplay list={this.state.articleList} />
+          <RecipieListDisplay
+            list={this.state.articleList}
+            likeSubmit={this.likeSubmit}
+          />
         </Grid>
       </Wrapper>
     );
