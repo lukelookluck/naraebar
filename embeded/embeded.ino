@@ -7,7 +7,7 @@ int cnt = 0;
 int timer = 1;
 
 void setup() {
-  pinMode(6, OUTPUT); //PWM OUT
+  //pinMode(6, OUTPUT); //PWM OUT
   TCCR0A = 0; //TCCR0A 초기화
   TCCR0B = 0; //TCCR0B 초기화
   TCNT0 = 0; //TCNT0 초기화
@@ -17,7 +17,7 @@ void setup() {
   TCCR0B |= (1<<CS02)|(1<<CS00); // 1024로 나눠서 prescale
   TIMSK0 |= (1<<OCIE0A);
   
-  //pinMode(9, OUTPUT); //
+  pinMode(9, OUTPUT); //
   
   Serial.begin(9600);  //시리얼통신 보레이트 9600으로 시작
   attachInterrupt(0, pulseCount, RISING); // 상승엣지에서 INT0(2번 포트)으로 pulseCount실행
@@ -41,8 +41,8 @@ ISR(TIMER0_COMPA_vect){
 }
 
 void loop() {
-//  analogWrite(6,i); //PWM 출력 
-
+  analogWrite(5,255); //PWM 출력 
+  // digitalWrite(9,HIGH);
   pwmTest();
   
 //  if(Serial.available()){
@@ -50,7 +50,7 @@ void loop() {
 //    echoSerial(data);
 //  }
    
-   countFlow();
+   //countFlow();
 }
 
 void pwmTest(){
@@ -71,6 +71,7 @@ void pwmTest(){
   else if(i>=255){
     mode = 1;
   }
+  
 }
 
 void echoSerial(char data){
