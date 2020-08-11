@@ -33,6 +33,14 @@ const Wrapper = styled.div`
         background-color: rgb(76, 127, 188);
     }
 
+    @media(min-width: 700px) {
+        & form {
+            margin: 0 auto; 
+            width: 50%;
+        }
+
+    }
+
 `;
 
 export default Wrapper;

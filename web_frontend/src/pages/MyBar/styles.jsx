@@ -35,6 +35,20 @@ const Wrapper = styled.div`
     left:10px;
     top: -38px;
   }
+
+  @media(min-width: 700px) {
+
+    & .card {
+      width: 1000px;
+    }
+
+    & .card-img-top {
+      // width: 600px;
+      // height: 500px;
+    }
+  }
+
+
 `;
 
 export default Wrapper;

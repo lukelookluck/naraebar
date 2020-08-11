@@ -48,6 +48,14 @@ const Wrapper = styled.div`
         font-size: 20px;
         font-family: 'IBMPlexSansKR-Text';
     }
+
+    @media(min-width: 700px) {
+        & form {
+            margin: 0 auto; 
+            width: 50%;
+        }
+
+    }
     
 `;
 

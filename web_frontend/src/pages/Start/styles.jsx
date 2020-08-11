@@ -57,6 +57,40 @@ const Wrapper = styled.div`
         color: rgb(56, 97, 149);
         font-family: 'IBMPlexSansKR-Text';
     }
+
+    @media(min-width: 700px) {
+
+        & #logo_en {
+            margin-top: 50px;
+            margin-bottom: 0px;
+            font-size: 110px;
+        }
+        & #logo_ko {
+            margin-top: 0px;
+            font-size: 60px;
+        }
+
+        & #id {
+            width: 50%;
+        }
+    
+        & #pw {
+            width: 50%;
+        }
+
+        & .login_btn {
+            width: 50%;
+        }
+
+        & #signup {
+            padding-left: 300px;
+        }
+
+        & #findpw {
+            padding-right: 300px;
+        }
+
+    }
 `;
 
 export default Wrapper;
