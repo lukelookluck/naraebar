@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Q
 from .models import Bottle, Recipe
-from .serializer import bottleSerializer, recipeSerializer
+from .serializers import BottleSerializer, RecipeSerializer
 from rest_framework import viewsets, filters
 import random
 
@@ -26,7 +26,7 @@ def pickRandom():
 
 class randomRecipeViewset(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
-    serializer_class = recipeSerializer
+    serializer_class = RecipeSerializer
 
     def get_queryset(self):
         return Recipe.objects.all().filter(id=pickRandom())
@@ -34,7 +34,7 @@ class randomRecipeViewset(viewsets.ModelViewSet):
 
 class searchRecipeViewset(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
-    serializer_class = searchSerializer
+    serializer_class = RecipeSerializer
 
     def get_queryset(self):
         qs = filterQuery(self.request)
