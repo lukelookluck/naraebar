@@ -70,6 +70,11 @@ const Wrapper = styled.div`
   & .more-comment {
     color: black;
   }
+
+  & .countLikeIt1 {
+    font-weight: 600;
+    margin-left: 8px;
+  }
 `;
 
 export default Wrapper;

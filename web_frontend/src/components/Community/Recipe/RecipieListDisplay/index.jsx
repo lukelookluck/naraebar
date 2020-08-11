@@ -11,7 +11,7 @@ import InsertCommentOutlinedIcon from "@material-ui/icons/InsertCommentOutlined"
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
-import CommentList from "../../Comment/CommentList/";
+import CommentList from "../../Comment/ArticleUnderCommentList";
 
 export default function (props) {
   // console.log(props.list);
@@ -19,27 +19,31 @@ export default function (props) {
     // console.log("key", index);
     // console.log("item", item);
 
-    const [isLikeit, setLikeIt] = useState(0);
-    const [countLikeIt, setCountLikeIt] = useState(item.LIKE.length);
+    // const [countLikeIt, setCountLikeIt] = useState(item.LIKE.length);
     const [isSaveit, setSaveit] = useState(0);
 
     let likeButton = null;
-    if (isLikeit) {
-      likeButton = <FavoriteIcon onClick={likeIt} color="error" />;
+    let countLikeIt1 = null;
+    if (item.LIKE.length) {
+      // 현재 유저가 item.LIKE에 있으면 1 없으면 0
+      likeButton = <FavoriteIcon onClick={likeIt} color="error" key={index} />;
+      countLikeIt1 = (
+        <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
+      );
     } else {
-      likeButton = <FavoriteBorderIcon onClick={likeIt} />;
+      likeButton = <FavoriteBorderIcon onClick={likeIt} key={index} />;
     }
 
     function likeIt() {
       // alert("눌럿어?");
       props.likeSubmit(item);
-      setLikeIt(!isLikeit);
-
-      if (isLikeit) {
-        setCountLikeIt(countLikeIt - 1);
-      } else {
-        setCountLikeIt(countLikeIt + 1);
-      }
+      // setLikeIt(!isLikeit);
+      // if (item.LIKE.length) {
+      //   // 현재 유저가 item.LIKE에 있으면 1 없으면 0
+      //   setCountLikeIt(countLikeIt - 1);
+      // } else {
+      //   setCountLikeIt(countLikeIt + 1);
+      // }
     }
 
     let saveButton = null;
@@ -98,7 +102,7 @@ export default function (props) {
         <div className="like-button">
           <div>
             {likeButton}
-            {countLikeIt}
+            {/* {countLikeIt} */}
             &nbsp;&nbsp;&nbsp;
             <Link
               className="more-comment"
@@ -116,6 +120,7 @@ export default function (props) {
           {saveButton}
         </div>
         <hr />
+        {countLikeIt1}
         <CommentList comments={item.comments} article={item} />
       </div>
     );

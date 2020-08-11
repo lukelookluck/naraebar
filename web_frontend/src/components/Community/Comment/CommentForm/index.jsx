@@ -6,7 +6,7 @@ import axios from "axios";
 import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
 
 export default function (props) {
-  console.log("props", props.commentInput);
+  // console.log("props", props);
   // function handleSubmit(data) {
   //   console.log(data);
   // }

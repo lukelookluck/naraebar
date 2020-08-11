@@ -54,7 +54,7 @@ class RecipeList extends Component {
       .then((res) => {
         console.log(res.data);
 
-        // this.refreshList();
+        this.refreshList();
       })
       .catch((err) => console.log(err));
   };
