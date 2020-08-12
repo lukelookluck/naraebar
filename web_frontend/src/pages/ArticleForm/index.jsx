@@ -45,20 +45,27 @@ export default function (props) {
     refreshList();
   }, []);
 
-  // useEffect(() => {
-  //   if (articleFormData.id) {
-  //     const unblock = props.history.block(
-  //       "작성하던 내용이 없어집니다. 정말 떠나실건가요?"
-  //     );
-  //     return () => {
-  //       unblock();
-  //     };
-  //   }
-  // }, [props.history]);
+  useEffect(() => {
+    const unblock = props.history.block((location, action) => {
+      if (action === "POP") {
+        if (window.confirm("작성하던 내용이 없어집니다. 정말 떠나실건가요?")) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    });
+    return () => {
+      unblock();
+    };
+  }, [props.history]);
+
+  // function yerOrNo() {
+  //   if
+  // }
 
   function handleSubmit(data) {
     // console.log(data);
-
     if (data.id) {
       console.log(data);
       axios

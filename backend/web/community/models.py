@@ -13,9 +13,12 @@ class Article(models.Model):
                              on_delete=models.CASCADE, related_name='articles')
     LIKE = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name='like_articles', blank=True)
-    name = models.CharField(max_length=20)
+    drink_name = models.CharField(max_length=20)
+
+    image = models.ImageField()
+
     # drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
-    
+
     ingredients = models.TextField()
 
 
