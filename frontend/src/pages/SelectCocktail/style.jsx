@@ -35,7 +35,7 @@ const Wrapper = styled.div`
 
   & .textGrid {
     margin-top: 60px;
-    padding-left: 60px;
+    padding-right: 200px;
   }
 
   & .itemdiv {

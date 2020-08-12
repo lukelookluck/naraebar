@@ -35,6 +35,9 @@ const SelectCocktail = ({ match }) => {
     <Layout>
       <Wrapper>
         <Grid container justify="center" alignItems="center">
+          <Grid item xs={6} className="imgGrid">
+            <img src={MyCocktail.img} alt={MyCocktail.name} className="cocktailImg"></img>
+          </Grid>
           <Grid item xs={6} className="textGrid">
             <Grid className="titleGrid">
               <h1>" {MyCocktail.name} "</h1>
@@ -56,9 +59,6 @@ const SelectCocktail = ({ match }) => {
               <Button className="btnSelect" variant="contained" onClick={onClickRedirectPathHandler("/MakingCocktail")}>선택</Button>
               <Button className="btnCancel" variant="contained" onClick={onClickRedirectPathHandler("/MenuList")}>취소</Button>
             </Grid>
-          </Grid>
-          <Grid item xs={6} className="imgGrid">
-            <img src={MyCocktail.img} alt={MyCocktail.name} className="cocktailImg"></img>
           </Grid>
         </Grid>
       </Wrapper>
