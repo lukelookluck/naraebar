@@ -24,7 +24,7 @@ def pickRandom():
     return random.randrange(1, Recipe.objects.all().count() + 1)
 
 
-class randomRecipeViewset(viewsets.ModelViewSet):
+class randomRecipeViewset(viewsets.ReadOnlyModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
@@ -32,10 +32,22 @@ class randomRecipeViewset(viewsets.ModelViewSet):
         return Recipe.objects.all().filter(id=pickRandom())
 
 
-class searchRecipeViewset(viewsets.ModelViewSet):
+class searchRecipeViewset(viewsets.ReadOnlyModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
     def get_queryset(self):
         qs = filterQuery(self.request)
         return qs
+
+
+class recipeViewset(viewsets.ModelViewSet):
+    query = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class bottleViewset(viewsets.ModelViewSet):
+    query = Bottle.objects.all()
+    serializer_class = RecipeSerializer
+    permission_classes = [IsAuthenticated]
