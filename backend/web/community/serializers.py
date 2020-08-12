@@ -20,9 +20,9 @@ class ArticleSerializer(serializers.ModelSerializer):
 
         # return sz.serialize('json', obj.comments.all(), ensure_ascii=False)
 
-    def perform_update(self, serializer):
-        instance = serializer.save()
-        LIKE(user=self.request.user, modified=instance)
+    # def perform_update(self, serializer):
+    #     instance = serializer.save()
+    #     LIKE(user=self.request.user, modified=instance)
 
 
 class CommentSerializer(serializers.ModelSerializer):
