@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 - 기획서
@@ -371,4 +372,9 @@
 
 
 
+=======
+# Sub PJT 2
+
+## local_ui 시작
+>>>>>>> feature/local_ui
 
