@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import Wrapper from "./style";
 
@@ -12,120 +12,111 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CommentList from "../../components/Community/Comment/CommentList/";
 import CommentForm from "../../components/Community/Comment/CommentForm/";
 import ReplyList from "../../components/Community/ReplyList/";
+import { CommonContext } from "../../context/CommonContext";
 
-class CommentDisplay extends Component {
-  state = {
-    listComment: [],
-    commentInput: {
-      content: "",
-      article: this.props.location.state.article,
-      parent: null,
-      user: 2,
-    },
-  };
+export default function (props) {
+  const { serverUrl, user } = useContext(CommonContext);
+  const [listComment, setListComment] = useState([]);
+  const [commentInput, setCommentInput] = useState({
+    content: "",
+    article: props.location.state.article,
+    parent: null,
+    user: 1,
+  });
 
-  handleChangeCommentInput = (e) => {
+  function handleChangeCommentInput(e) {
     // console.log(e.content);
-    this.setState({
-      commentInput: {
-        ...this.state.commentInput,
-        content: e.content,
-      },
+    setCommentInput({
+      ...commentInput,
+      content: e.content,
     });
-    console.log("commentinput", this.state.commentInput);
-  };
-
-  componentDidMount() {
-    this.refreshList();
+    // console.log("commentinput", commentInput);
   }
 
-  goBack = () => {
-    this.props.history.goBack();
-  };
+  useEffect(() => {
+    refreshList();
+  }, []);
 
-  refreshList = () => {
+  function goBack() {
+    props.history.goBack();
+  }
+
+  function refreshList() {
     axios
-      .get("http://192.168.0.4:8100/community/comment/", {
-        // headers: {
-        //   Authorization: `JWT ${localStorage.getItem("token")}`,
-        // },
+      .get(`${serverUrl}/community/comment/`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
         params: {
-          article: this.props.location.state.article,
+          article: props.location.state.article,
         },
       })
       .then((res) => {
-        this.setState({ listComment: res.data });
-        console.log(this.state.listComment);
+        setListComment(res.data);
+        console.log(listComment);
       })
       .catch((err) => console.log(err));
-  };
+  }
 
-  handleSubmit = (data) => {
+  function handleSubmit(data) {
     axios
-      .post("http://192.168.0.4:8100/community/comment/", data, {
-        // headers: {
-        //     Authorization: `JWT ${localStorage.getItem("token")}`,
-        //   },
+      .post(`${serverUrl}/community/comment/`, data, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
       })
       .then((res) => {
         console.log(res.data);
-        this.state.commentInput.content = "";
-        this.refreshList();
+        commentInput.content = "";
+        refreshList();
       })
       .catch((err) => {
         console.log(err);
       });
-  };
+  }
 
-  likeSubmit = (comment) => {
+  function likeSubmit(comment) {
     console.log(comment);
     axios
       .post(
-        `http://192.168.0.4:8100/community/comment/${comment.id}/`,
+        `${serverUrl}/community/comment/${comment.id}/`,
         { user: comment.user }, // 현재 유저 정보 넣기
         {
-          // headers: {
-          //   dd
-          // }
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
         }
       )
       .then((res) => {
         console.log(res.data);
 
-        this.refreshList();
+        refreshList();
       })
       .catch((err) => console.log(err));
-  };
-
-  render() {
-    return (
-      <Wrapper>
-        <Grid>
-          <div className="comment-list-header">
-            <ArrowBackOutlinedIcon
-              className="comment-list-header-arrow"
-              fontSize="large"
-              onClick={this.goBack}
-            />
-            <span className="comment-list-header-title">댓글</span>
-          </div>
-          <div className="comment-list-box">
-            <CommentList
-              comments={this.state.listComment}
-              likeSubmit={this.likeSubmit}
-            />
-          </div>
-          <CommentForm
-            commentInput={this.state.commentInput}
-            // setCommentInput={this.state.setCommentInput}
-            setCommentInput={this.handleChangeCommentInput}
-            handleSubmit={this.handleSubmit} // 부모에서 자식으로 부모 이벤트 넘겨줄 떄 자식에선 'props.부모이벤트' 로 사용
-            // this.setState({ listComment: res.data });
-          />
-        </Grid>
-      </Wrapper>
-    );
   }
-}
 
-export default CommentDisplay;
+  return (
+    <Wrapper>
+      <Grid>
+        <div className="comment-list-header">
+          <ArrowBackOutlinedIcon
+            className="comment-list-header-arrow"
+            fontSize="large"
+            onClick={goBack}
+          />
+          <span className="comment-list-header-title">댓글</span>
+        </div>
+        <div className="comment-list-box">
+          <CommentList comments={listComment} likeSubmit={likeSubmit} />
+        </div>
+        <CommentForm
+          commentInput={commentInput}
+          // setCommentInput={this.state.setCommentInput}
+          setCommentInput={handleChangeCommentInput}
+          handleSubmit={handleSubmit} // 부모에서 자식으로 부모 이벤트 넘겨줄 떄 자식에선 'props.부모이벤트' 로 사용
+          // this.setState({ listComment: res.data });
+        />
+      </Grid>
+    </Wrapper>
+  );
+}

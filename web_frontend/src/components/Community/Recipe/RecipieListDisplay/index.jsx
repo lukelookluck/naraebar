@@ -80,7 +80,23 @@ export default function (props) {
       <div className="list-card" key={index}>
         <div className="list-user">
           <AccountCircleIcon />
-          &nbsp;&nbsp;{item.user}
+          &nbsp;&nbsp;{item.username}
+          <span>
+            <Link
+              className="more-comment"
+              to={{
+                pathname: "/Community/Create",
+                state: {
+                  article: item,
+                },
+              }}
+            >
+              <button>수정</button>
+            </Link>
+          </span>
+          <span>
+            <button onClick={() => props.DeleteArticle(item)}>삭제</button>
+          </span>
         </div>
         <div className="list-item">
           <img className="list-item-image" src="images/sample.jpg" alt="" />

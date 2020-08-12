@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { Grid, Button, TextField } from "@material-ui/core";
 import axios from "axios";
 
@@ -9,41 +10,73 @@ import CloseIcon from "@material-ui/icons/Close";
 import ImageUploadBtn from "../../components/Community/ArticleForm/ImageUploadButton/";
 
 import Temp1 from "../../components/Community/Temp1/";
-// import { Grid, IconButton, Grow, makeStyles } from "@material-ui/core";
-// import { CloseIcon, PhotoCameraIcon  } from "@material-ui/icons";
+import { CommonContext } from "../../context/CommonContext";
 
-export default function ({ history }) {
-  // console.log(history);
-
-  const goBack = () => {
-    history.goBack();
-  };
-
-  useEffect(() => {
-    console.log(history);
-    const unblock = history.block(
-      "작성하던 내용이 없어집니다. 정말 떠나실건가요?"
-    );
-    return () => {
-      unblock();
-    };
-  }, [history]);
-
+export default function (props) {
   const [articleFormData, setArticleFormData] = useState({
+    id: null,
     title: "",
     detail: "",
     name: "",
     ingredients: "레몬",
     user: 1,
   });
+  function refreshList() {
+    if (props.location.state) {
+      const article = props.location.state.article;
+      setArticleFormData({
+        ...articleFormData,
+        id: article.id,
+        title: article.title,
+        detail: article.detail,
+        name: article.title,
+      });
+    }
+  }
+
+  const { serverUrl, user } = useContext(CommonContext);
+
+  const goBack = () => {
+    props.history.goBack();
+  };
+
+  useEffect(() => {
+    refreshList();
+  }, []);
+
+  useEffect(() => {
+    // console.log(history);
+    const unblock = props.history.block(
+      "작성하던 내용이 없어집니다. 정말 떠나실건가요?"
+    );
+    return () => {
+      unblock();
+    };
+  }, [props.history]);
 
   function handleSubmit(data) {
     console.log(data);
+    if (data.id) {
+      console.log(data);
+      axios
+        .put(`${serverUrl}/community/${data.id}/`, data, {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+        })
+        .then((res) => {
+          // console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      return;
+    }
     axios
-      .post("http://192.168.0.4:8100/community/", data, {
-        // headers: {
-        //     Authorization: `JWT ${localStorage.getItem("token")}`,
-        //   },
+      .post(`${serverUrl}/community/`, data, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
       })
       .then((res) => {
         console.log(res.data);
@@ -60,6 +93,7 @@ export default function ({ history }) {
         <Grid item xs={12} className="form-header-title">
           <div>나만의 레시피 만들기</div>
           <p>
+            id: {articleFormData.id}
             title: {articleFormData.title}
             detail: {articleFormData.detail}
             name: {articleFormData.name}
@@ -121,7 +155,9 @@ export default function ({ history }) {
                   // type="submit"
                   variant="contained"
                   className="article-create-button"
-                  onClick={() => handleSubmit(articleFormData)}
+                  onClick={() => {
+                    handleSubmit(articleFormData);
+                  }}
                 >
                   공유하기
                 </Button>

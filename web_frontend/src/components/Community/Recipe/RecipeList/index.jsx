@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 
@@ -11,66 +11,79 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import RecipieListDisplay from "../RecipieListDisplay/";
+import { CommonContext } from "../../../../context/CommonContext";
 
-class RecipeList extends Component {
-  state = {
-    loading: "123",
-    articleList: [],
-    commentList: [],
-  };
-  componentDidMount() {
-    this.refreshList();
-  }
-  refreshList = () => {
+export default function () {
+  const { serverUrl, user } = useContext(CommonContext);
+
+  useEffect(() => {
+    refreshList();
+  }, []);
+
+  const [articleList, setArticleList] = useState([]);
+  const [commentList, setCommentList] = useState([]);
+
+  // componentDidMount() {
+  //   this.refreshList();
+  // }
+  function refreshList() {
     axios
-      .get("http://192.168.0.4:8100/community/", {
-        // headers: {
-        //   Authorization: `JWT ${localStorage.getItem("token")}`,
-        // },
+      .get(`${serverUrl}/community/`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
         // params: {
         //   article: 1,
         // },
       })
       .then((res) => {
         console.log(res.data);
-        this.setState({ loading: "123123", articleList: res.data });
+        setArticleList(res.data);
         // console.log(this.state.loading);
       })
       .catch((err) => console.log(err));
-  };
+  }
 
-  likeSubmit = (article) => {
+  function likeSubmit(article) {
     console.log(article);
     axios
       .post(
-        `http://192.168.0.4:8100/community/article/${article.id}/`,
+        `${serverUrl}/community/article/${article.id}/`,
         { user: article.user }, // 현재 유저 정보 넣기
         {
-          // headers: {
-          //   dd
-          // }
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
         }
       )
       .then((res) => {
         console.log(res.data);
 
-        this.refreshList();
+        refreshList();
       })
       .catch((err) => console.log(err));
-  };
-
-  render() {
-    return (
-      <Wrapper>
-        <Grid className="list-box">
-          <RecipieListDisplay
-            list={this.state.articleList}
-            likeSubmit={this.likeSubmit}
-          />
-        </Grid>
-      </Wrapper>
-    );
   }
-}
 
-export default RecipeList;
+  function DeleteArticle(article) {
+    console.log(article);
+    axios
+      .delete(`${serverUrl}/community/${article.id}/`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+      })
+      .then((res) => refreshList());
+  }
+
+  return (
+    <Wrapper>
+      <Grid className="list-box">
+        <RecipieListDisplay
+          list={articleList}
+          likeSubmit={likeSubmit}
+          DeleteArticle={DeleteArticle}
+        />
+      </Grid>
+    </Wrapper>
+  );
+}
