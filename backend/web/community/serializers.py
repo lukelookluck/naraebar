@@ -6,12 +6,16 @@ from django.core import serializers as sz
 
 
 class ArticleSerializer(serializers.ModelSerializer):
+    username = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
 
     class Meta:
         model = Article
         fields = '__all__'
         read_only_fields = ()
+
+    def get_username(self, obj):
+        return obj.user.username
 
     def get_comments(self, obj):
         comments = obj.comments.filter(parent=None)  # 답글인 거는 제외
