@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Grid, Button, TextField } from "@material-ui/core";
 import axios from "axios";
 
@@ -21,6 +21,7 @@ export default function (props) {
     ingredients: "레몬",
     user: 1,
   });
+
   function refreshList() {
     if (props.location.state) {
       const article = props.location.state.article;
@@ -36,26 +37,28 @@ export default function (props) {
 
   const { serverUrl, user } = useContext(CommonContext);
 
-  const goBack = () => {
+  function goBack() {
     props.history.goBack();
-  };
+  }
 
   useEffect(() => {
     refreshList();
   }, []);
 
-  useEffect(() => {
-    // console.log(history);
-    const unblock = props.history.block(
-      "작성하던 내용이 없어집니다. 정말 떠나실건가요?"
-    );
-    return () => {
-      unblock();
-    };
-  }, [props.history]);
+  // useEffect(() => {
+  //   if (articleFormData.id) {
+  //     const unblock = props.history.block(
+  //       "작성하던 내용이 없어집니다. 정말 떠나실건가요?"
+  //     );
+  //     return () => {
+  //       unblock();
+  //     };
+  //   }
+  // }, [props.history]);
 
   function handleSubmit(data) {
-    console.log(data);
+    // console.log(data);
+
     if (data.id) {
       console.log(data);
       axios
@@ -151,16 +154,23 @@ export default function (props) {
             {/* <button className="article-create-button">작성완료</button> */}
             <Grid container justify="center" alignItems="center">
               <Grid item xs={6}>
-                <Button
-                  // type="submit"
-                  variant="contained"
-                  className="article-create-button"
-                  onClick={() => {
-                    handleSubmit(articleFormData);
+                <Link
+                  className="more-comment"
+                  to={{
+                    pathname: "/Main",
                   }}
                 >
-                  공유하기
-                </Button>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    className="article-create-button"
+                    onClick={() => {
+                      handleSubmit(articleFormData);
+                    }}
+                  >
+                    공유하기
+                  </Button>
+                </Link>
               </Grid>
               <Grid item xs={6}>
                 <Button type="reset" variant="contained" className="resetBtn">

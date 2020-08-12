@@ -27,5 +27,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('community/', include('community.urls')),
     path('accounts/', include('accounts.urls')),
-    path('recipe/', include('recipe.urls')),
+    # path('recipe/', include('recipe.urls')),
 ]

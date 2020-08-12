@@ -27,8 +27,7 @@ class Recipe(models.Model):
     name = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add="true")
-    detail = models.TextField(max_lengh=300)
-    ingredients = models.JSONField(encoder="None")
+    detail = models.TextField(max_length=300)
     image = models.ImageField()
 
     def __str__(self):
