@@ -15,12 +15,12 @@ const Wrapper = styled.div`
   }
 
   & h2 {
-    font-size: 40px;
+    font-size: 30px;
     margin-bottom: 30px;
   }
 
   & h3 {
-    font-size: 30px;
+    font-size: 40px;
     margin-top: 30px;
   }
 
@@ -30,12 +30,13 @@ const Wrapper = styled.div`
   }
 
   & .imgGrid {
-    margin-top: 160px;
+    margin-top: 120px;
+    padding-left: 50px;
   }
 
   & .textGrid {
-    margin-top: 60px;
-    padding-right: 200px;
+    // margin-top: 60px;
+    padding-right: 20px;
   }
 
   & .itemdiv {
@@ -47,7 +48,7 @@ const Wrapper = styled.div`
   }
 
   & .btnGrid {
-    margin-top: 70px;
+    margin-top: 100px;
   }
 
   & .btnSelect {
@@ -56,10 +57,10 @@ const Wrapper = styled.div`
     border: none;
     color: white;
     font-family: 'IBMPlexSansKR-Text';
-    font-size: 35px;
-    height: 70px;
-    width: 140px;
-    margin-right: 50px;
+    font-size: 45px;
+    height: 130px;
+    width: 200px;
+    margin-right: 30px;
   }
 
   & .btnSelect:hover {
@@ -67,15 +68,15 @@ const Wrapper = styled.div`
   }
 
   & .btnCancel {
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(200, 200, 200);
     text-decoration: none;
     border: none;
     color: black;
-    font-size: 35px;
+    font-size: 45px;
     font-family: 'IBMPlexSansKR-Text';
-    height: 70px;
-    width: 140px;
-    margin-left: 50px;
+    height: 130px;
+    width: 200px;
+    margin-left: 30px;
   }
 
 `;
