@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import datetime
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -144,7 +145,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'accounts.User'
-# AUTH_USER_MODEL = 'authentication.CustomUser'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -152,12 +152,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
-
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework.authentication.TokenAuthentication',
-#     ]
-# }
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -177,7 +171,7 @@ JWT_AUTH = {
     'JWT_ALGORITHM': 'HS256',
     'JWT_VERIFY_EXPIRATION': True,
     'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=10),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=100),
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(hours=1),
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'accounts.custom_responses.my_jwt_response_handler'
 }
