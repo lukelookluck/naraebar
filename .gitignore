@@ -1,6 +1,5 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/django,react
-# Edit at https://www.toptal.com/developers/gitignore?templates=django,react
+# Created by https://www.toptal.com/developers/gitignore/api/django,react,venv
+# Edit at https://www.toptal.com/developers/gitignore?templates=django,react,venv
 
 ### Django ###
 *.log
@@ -68,6 +67,7 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
+pytestdebug.log
 
 # Translations
 *.mo
@@ -83,6 +83,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+doc/_build/
 
 # PyBuilder
 target/
@@ -159,4 +160,16 @@ psd
 thumb
 sketch
 
-# End of https://www.toptal.com/developers/gitignore/api/django,react
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+pip-selfcheck.json
+
+# End of https://www.toptal.com/developers/gitignore/api/django,react,venv
