@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2a8fa74-251b-4d45-894e-477e6c3e6e7b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Button.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Card/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Card/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Card/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Card/style.css" afterDir="false" />
+    <list default="true" id="d539aff6-50e8-434a-801d-bbb9844e212a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/web_frontend/src/components/Community/Recipe/RecipeList/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web_frontend/src/components/Community/Recipe/RecipeList/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_frontend/src/components/Community/Recipe/RecipieListDisplay/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web_frontend/src/components/Community/Recipe/RecipieListDisplay/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_frontend/src/pages/ArticleForm/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web_frontend/src/pages/ArticleForm/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectId" id="1fFWEAEw5tXuSuYGlBsSNerqhco" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ftHmLEBb4L8wHGWJzDBCtFq2vb" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -25,11 +28,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f2a8fa74-251b-4d45-894e-477e6c3e6e7b" name="Default Changelist" comment="" />
-      <created>1595814206921</created>
+      <changelist id="d539aff6-50e8-434a-801d-bbb9844e212a" name="Default Changelist" comment="" />
+      <created>1597030627349</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1595814206921</updated>
+      <updated>1597030627349</updated>
     </task>
     <servers />
   </component>
