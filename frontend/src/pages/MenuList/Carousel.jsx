@@ -14,7 +14,7 @@ export default function () {
   };
 
 
-  const [articleList, setArticleList] = useState([]);
+  const [menuList, setMenuList] = useState([]);
   const { serverUrl } = useContext(CommonContext);
 
   function refreshList() {
@@ -26,17 +26,20 @@ export default function () {
       })
       .then((res) => {
         console.log(res.data);
-        setArticleList(res.data);
+        setMenuList(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err + " 에러났음"));
   }
 
   useEffect(() => {
     refreshList();
+    if(menuList.length === 0) {
+      console.log("i don't know")
+    }
   }, []);
 
 
-  const menu = articleList.map((item) => {
+  const menu = menuList.map((item) => {
     return (
       <Carousel.Item key={item.id} className="caroitem" onClick={onClickRedirectPathHandler('/SelectCocktail/' + item.id)}>
         <img src={item.image} alt={item.name} className="cocktailimg"></img>

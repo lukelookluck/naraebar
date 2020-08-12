@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Layout from '../../layout/';
 import Wrapper from './style';
 import { useHistory } from 'react-router-dom';
 import { Grid, Button } from "@material-ui/core";
-import dumpfile from '../dump.json';
+import { CommonContext } from "../../context/CommonContext";
+import axios from "axios";
+// import dumpfile from '../dump.json';
 
 const SelectCocktail = ({ match }) => {
 
@@ -16,11 +18,31 @@ const SelectCocktail = ({ match }) => {
     history.push(name);
   };
 
-  const Cocktails = dumpfile;
+  // const Cocktails = dumpfile;
+  const [menuList, setMenuList] = useState([]);
+  const { serverUrl } = useContext(CommonContext);
 
-  var index = Cocktails.findIndex(item => item.id == match.params.cocktailId);
+  function refreshList() {
+    axios
+      .get(`${serverUrl}/bartender/recipe`, {
+        // headers: {
+        //   Authorization: `JWT ${user.token}`,
+        // },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setMenuList(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
-  const MyCocktail = dumpfile[index];
+  useEffect(() => {
+    refreshList();
+  }, []);
+
+  var index = menuList.findIndex(item => item.id == match.params.cocktailId);
+
+  const MyCocktail = menuList[index];
 
   const igrList = MyCocktail.ingredients.map((item) => {
     return (
