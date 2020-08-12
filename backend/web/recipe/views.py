@@ -19,17 +19,25 @@ class recipeListView(mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.Cr
     # template_name = '#'
 
 
-# @permission_classes((IsAuthenticated,))
-# @authentication_classes((JSONWebTokenAuthentication,))
-# class UploadRecipe(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Recipe.objects.all()
-#     serializer_class = RecipeSerializer
-#     permission_classes = [IsAuthenticated]
+class recipeDetailView(generics.ListAPIView):
+    model = Recipe
+    serializer_class = RecipeSerializer
+    queryset = Recipe.objects.all()
+    permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        return Recipe.objects.all().order_by('-rating')
 
-# @permission_classes((IsAuthenticated,))
-# @authentication_classes((JSONWebTokenAuthentication,))
-# class DeleteRecipe(generics.RetrieveDestroyAPIView):
-#     queryset = Recipe.objects.all()
-#     serializer_class = RecipeSerializer
-#     permission_classes = [IsAuthenticated]
+    # @permission_classes((IsAuthenticated,))
+    # @authentication_classes((JSONWebTokenAuthentication,))
+    # class UploadRecipe(generics.RetrieveUpdateDestroyAPIView):
+    #     queryset = Recipe.objects.all()
+    #     serializer_class = RecipeSerializer
+    #     permission_classes = [IsAuthenticated]
+
+    # @permission_classes((IsAuthenticated,))
+    # @authentication_classes((JSONWebTokenAuthentication,))
+    # class DeleteRecipe(generics.RetrieveDestroyAPIView):
+    #     queryset = Recipe.objects.all()
+    #     serializer_class = RecipeSerializer
+    #     permission_classes = [IsAuthenticated]
