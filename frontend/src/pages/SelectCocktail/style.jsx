@@ -57,7 +57,7 @@ const Wrapper = styled.div`
     border: none;
     color: white;
     font-family: 'IBMPlexSansKR-Text';
-    font-size: 45px;
+    font-size: 60px;
     height: 130px;
     width: 200px;
     margin-right: 30px;
@@ -72,7 +72,7 @@ const Wrapper = styled.div`
     text-decoration: none;
     border: none;
     color: black;
-    font-size: 45px;
+    font-size: 60px;
     font-family: 'IBMPlexSansKR-Text';
     height: 130px;
     width: 200px;
