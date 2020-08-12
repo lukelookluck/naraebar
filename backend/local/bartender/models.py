@@ -21,7 +21,4 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(auto_now_add="true")
     detail = models.TextField(max_length=300)
     ingredients = JSONField()
-    image = models.ImageField()
-
-    def __str__(self):
-        return '{}: {}'.format(self.name, self.image)
+    # image = models.ImageField(upload_to="image/bartender", blank="true")
