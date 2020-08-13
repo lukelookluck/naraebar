@@ -33,7 +33,7 @@ const SelectCocktail = ({ match }) => {
         console.log(res.data);
         setMenuList(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err + "왜 에러가 난걸까"));
   }
 
   useEffect(() => {
@@ -66,16 +66,13 @@ const SelectCocktail = ({ match }) => {
   return (
     <Layout>
       <Wrapper>
-        <Grid container justify="center" alignItems="center">
-          {/* <Grid item xs={6} className="imgGrid">
+        {
+          MyCocktail ? (<Grid container justify="center" alignItems="center">
+          <Grid item xs={6} className="imgGrid">
             <img src={MyCocktail.imgDrink} alt={MyCocktail.strDrink} className="cocktailImg"></img>
-          </Grid> */}
+          </Grid>
           <Grid item xs={6} className="textGrid">
-          <div>{index}</div>
-          <div>{menuList.length}</div>
-          <div>{typeof(MyCocktail)}</div>
-          <div>{menuList[1].strDrink}</div>
-            {/* <Grid className="titleGrid">
+            <Grid className="titleGrid">
               <h1>" {MyCocktail.strDrink} "</h1>
               <h2>{MyCocktail.strInstructions}</h2>
               <hr style={{
@@ -90,13 +87,14 @@ const SelectCocktail = ({ match }) => {
             </Grid>
             <Grid container className="igrGrid">
               {igrList}
-            </Grid> */}
+            </Grid>
             <Grid className="btnGrid">
               <Button className="btnSelect" variant="contained" onClick={onClickRedirectPathHandler("/MakingCocktail")}>선택</Button>
               <Button className="btnCancel" variant="contained" onClick={onClickRedirectPathHandler("/MenuList")}>취소</Button>
             </Grid>
           </Grid>
-        </Grid>
+        </Grid>) : (<div></div>)
+        }
       </Wrapper>
     </Layout>
   );
