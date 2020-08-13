@@ -34,5 +34,5 @@ class Recipe(models.Model):
     strIngredient6 = models.CharField(max_length=100, default="null")
     strMeasure6 = models.PositiveIntegerField(default="0")
 
-    # image = models.ImageField(upload_to="image/bartender", blank="true")
-    strDrinkThumb = models.URLField(max_length=200, default="null")
+    imgDrink = models.ImageField(upload_to="image/bartender", blank="true")
+    # strDrinkThumb = models.URLField(max_length=200, default="null")
