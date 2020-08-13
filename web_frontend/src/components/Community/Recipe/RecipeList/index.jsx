@@ -16,12 +16,12 @@ import { CommonContext } from "../../../../context/CommonContext";
 export default function () {
   const { serverUrl, user } = useContext(CommonContext);
 
+  const [articleList, setArticleList] = useState([]);
+  const [commentList, setCommentList] = useState([]);
+
   useEffect(() => {
     refreshList();
   }, []);
-
-  const [articleList, setArticleList] = useState([]);
-  const [commentList, setCommentList] = useState([]);
 
   // componentDidMount() {
   //   this.refreshList();
