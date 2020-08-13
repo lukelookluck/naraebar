@@ -20,60 +20,27 @@ import Cleaning from './pages/Cleaning';
 
 // app
 const App = () => {
-  const [user, setUser] = useLocalStorageSetState(
-    {
-      user_no: 0,
-      user_id: '',
-      user_nm: '',
-      user_pwd: '',
-      user_img_url: '',
-      status: '',
-      web_site: '',
-      token: '',
-    },
-    'user',
-  );
-  const [infoData, setInfoData] = useState({});
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [userDialogIndex, setUserDialogIndex] = useState(0);
-  const [isShowKeyborad, setIsShowKeyborad] = useState(false);
-  const [signDialogOpen, setSignDialogOpen] = useState(false);
-  const [infoDialogOpen, setInfoDetailDialogOpen] = useState(false);
-  const [userDialogOpen, setUserDetailDialogOpen] = useState(false);
+
+  const HOST = "127.0.0.1:8000";
+  const serverUrl = `http://${HOST}`;
 
   return (
     <CommonContext.Provider
       value={{
-        user,
-        setUser,
-        drawerOpen,
-        setDrawerOpen,
-        signDialogOpen,
-        setSignDialogOpen,
-        infoDialogOpen,
-        setInfoDetailDialogOpen,
-        infoData,
-        setInfoData,
-        userDialogOpen,
-        setUserDetailDialogOpen,
-        userDialogIndex,
-        setUserDialogIndex,
-        isShowKeyborad,
-        setIsShowKeyborad,
-      }}
-    >
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={Start}></Route>
-            <Route exact path="/Start" component={Start}></Route>
-            <Route exact path="/MenuList" component={MenuList}></Route>
-            <Route exact path="/MakingCocktail" component={MakingCocktail}></Route>
-            <Route exact path="/CompleteCocktail" component={CompleteCocktail}></Route>
-            <Route exact path="/SelectCocktail/:cocktailId" component={SelectCocktail}></Route>
-            <Route exact path="/Cleaning" component={Cleaning}></Route>
-            <Route component={Error} />
-          </Switch>
-        </BrowserRouter>
+        serverUrl
+      }}>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Start}></Route>
+          <Route exact path="/Start" component={Start}></Route>
+          <Route exact path="/MenuList" component={MenuList}></Route>
+          <Route exact path="/MakingCocktail" component={MakingCocktail}></Route>
+          <Route exact path="/CompleteCocktail" component={CompleteCocktail}></Route>
+          <Route exact path="/SelectCocktail/:cocktailId" component={SelectCocktail}></Route>
+          <Route exact path="/Cleaning" component={Cleaning}></Route>
+          <Route component={Error} />
+        </Switch>
+      </BrowserRouter>
     </CommonContext.Provider>
   );
 };
