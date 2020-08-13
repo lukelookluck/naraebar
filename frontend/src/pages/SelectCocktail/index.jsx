@@ -24,7 +24,7 @@ const SelectCocktail = ({ match }) => {
 
   function refreshList() {
     axios
-      .get(`${serverUrl}/bartender/recipe`, {
+      .get(`/bartender/recipe`, {
         // headers: {
         //   Authorization: `JWT ${user.token}`,
         // },

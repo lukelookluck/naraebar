@@ -43,7 +43,7 @@ export default function () {
   const menu = menuList.map((item) => {
     return (
       <Carousel.Item key={item.id} className="caroitem" onClick={onClickRedirectPathHandler('/SelectCocktail/' + item.id)}>
-        <img src={item.image} alt={item.name} className="cocktailimg"></img>
+        <img src={item.imgDrink} alt={item.name} className="cocktailimg"></img>
         <Carousel.Caption>
           <h1>{item.strDrink}</h1>
           <p>{item.strInstructions}</p>
