@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, Fragment } from 'react';
 import Layout from '../../layout/';
 import Wrapper from './style';
 import { useHistory } from 'react-router-dom';
@@ -53,13 +53,40 @@ const SelectCocktail = ({ match }) => {
   //   );
   // });
 
-  const igrList = () => {
+  function igrList () {
     return (
-      <Grid item xs>
-        {1+1 === 2 ? (<div className="itemdiv">{MyCocktail.strIngredient1}</div>) : (<div></div>)}
-        {/* <div className="itemdiv">{item.strIngredient}</div>
-        <div className="itemdiv">{item.strMeasure} ml</div> */}
-      </Grid>
+      <Fragment>
+        {
+          MyCocktail.strIngredient1 != "null" 
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient1}</div><div className="itemdiv">{MyCocktail.strMeasure1} ml</div></Grid>) 
+          : (<div></div>)
+        }
+        {
+          MyCocktail.strIngredient2 != "null"
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient2}</div><div className="itemdiv">{MyCocktail.strMeasure2} ml</div></Grid>) 
+          : (<div></div>)
+        }
+        {
+          MyCocktail.strIngredient3 != "null" 
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient3}</div><div className="itemdiv">{MyCocktail.strMeasure3} ml</div></Grid>) 
+          : (<div></div>)
+        }
+        {
+          MyCocktail.strIngredient4 != "null"
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient4}</div><div className="itemdiv">{MyCocktail.strMeasure4} ml</div></Grid>) 
+          : (<div></div>)
+        }
+        {
+          MyCocktail.strIngredient5 != "null" 
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient5}</div><div className="itemdiv">{MyCocktail.strMeasure5} ml</div></Grid>) 
+          : (<div></div>)
+        }
+        {
+          MyCocktail.strIngredient6 != "null" 
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient6}</div><div className="itemdiv">{MyCocktail.strMeasure6} ml</div></Grid>) 
+          : (<div></div>)
+        }
+      </Fragment>
     );
   };
 
@@ -86,7 +113,7 @@ const SelectCocktail = ({ match }) => {
               <h3>레시피</h3>
             </Grid>
             <Grid container className="igrGrid">
-              {igrList}
+              {igrList()}
             </Grid>
             <Grid className="btnGrid">
               <Button className="btnSelect" variant="contained" onClick={onClickRedirectPathHandler("/MakingCocktail")}>선택</Button>
