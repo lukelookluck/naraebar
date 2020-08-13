@@ -12,7 +12,7 @@ class Bottle(models.Model):
 
 
 class Recipe(models.Model):
-    # MyBar/CocktailDump.json 참조
+    # MyBar/CocktailDump.json
     author = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add="true")
 
