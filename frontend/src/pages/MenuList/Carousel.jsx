@@ -19,10 +19,11 @@ export default function () {
 
   function refreshList() {
     axios
-      .get(`${serverUrl}/bartender/recipe`, {
-        // headers: {
-        //   Authorization: `JWT ${user.token}`,
-        // },
+      .get(`/bartender/recipe`, {
+        headers: {
+          'Access-Control-Allow-Origin' : '*'
+        },
+        
       })
       .then((res) => {
         console.log(res.data);
@@ -44,8 +45,8 @@ export default function () {
       <Carousel.Item key={item.id} className="caroitem" onClick={onClickRedirectPathHandler('/SelectCocktail/' + item.id)}>
         <img src={item.image} alt={item.name} className="cocktailimg"></img>
         <Carousel.Caption>
-          <h1>{item.name}</h1>
-          <p>{item.detail}</p>
+          <h1>{item.strDrink}</h1>
+          <p>{item.strInstructions}</p>
         </Carousel.Caption>
       </Carousel.Item>
     );

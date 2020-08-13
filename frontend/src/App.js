@@ -21,7 +21,7 @@ import Cleaning from './pages/Cleaning';
 // app
 const App = () => {
 
-  const HOST = "localhost:8000";
+  const HOST = "127.0.0.1:8000";
   const serverUrl = `http://${HOST}`;
 
   return (
