@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
@@ -6,6 +6,9 @@ import PhotoCamera from "@material-ui/icons/PhotoCamera";
 
 import Wrapper from "./style";
 import InputImage from "../InputImage/";
+
+import axios from "axios";
+import { CommonContext } from "../../../../context/CommonContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,34 +21,49 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ImageUploadButton() {
+export default function ImageUploadButton(props) {
+  const { serverUrl, user } = useContext(CommonContext);
+
   const classes = useStyles();
-  const [imgBase64, setImgBase64] = useState([]); // 파일 base64
+  const [imgBase64, setImgBase64] = useState([]); // 파일 base64, web화면에 띄워주는 역할
   const [imgFile, setImgFile] = useState(null); //파일
 
   const handleChangeFile = (event) => {
-    for (let i = 0; i < event.target.files.length; i++) {
-      let reader = new FileReader();
-      reader.readAsDataURL(event.target.files[i]); // 1. 파일을 읽어 버퍼에 저장
-      setImgFile(event.target.files); // 파일 상태 업데이트
-      console.log(event.target.files.length);
+    // for (let i = 0; i < event.target.files.length; i++) {
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장
+    setImgFile(event.target.files); // 파일 상태 업데이트
+    console.log("asdasdasd", event.target.files[0]);
 
-      reader.onloadend = () => {
-        // 2. 읽기가 완료되면
-        console.log(reader);
-        const base64 = reader.result;
-        console.log(base64);
-        setImgBase64((imgBase64) => [
-          { id: imgBase64.length, value: base64.toString() },
-        ]); // 파일 base64 상태 업데이트
+    // const formData = new FormData();
+    // formData.append("name", "chris");
+    // console.log("formData", formData);
 
-        console.log("imgBase64", imgBase64);
-      };
-    }
+    reader.onloadend = () => {
+      console.log("imgFile", imgFile);
+      // 2. 읽기가 완료되면
+      console.log("reader", reader);
+      const base64 = reader.result;
+      console.log("base64", base64);
+      setImgBase64((imgBase64) => [
+        { id: imgBase64.length, value: base64.toString("base64") },
+      ]); // 파일 base64 상태 업데이트
+
+      console.log("imgBase64", imgBase64);
+      props.setArticleFormData({
+        ...props.articleFormData,
+        image: base64,
+      });
+    };
+    // }
   };
 
-  const inputImage = imgBase64.map((item) => {
-    return <img className="input-image" src={item.value} alt="" />;
+  const inputImage = imgBase64.map((item, index) => {
+    return (
+      <span key={index}>
+        <img className="input-image" src={item.value} alt="" />;
+      </span>
+    );
   });
 
   return (

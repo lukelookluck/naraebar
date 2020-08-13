@@ -17,10 +17,24 @@ export default function (props) {
     id: null,
     title: "",
     detail: "",
-    name: "",
-    ingredients: "레몬",
+    drink_name: "",
     user: 1,
+    ingredient1: "",
+    ingredient2: "",
+    ingredient3: "",
+    ingredient4: "",
+    ingredient5: "",
+    ingredient6: "",
+    measure1: "",
+    measure2: "",
+    measure3: "",
+    measure4: "",
+    measure5: "",
+    measure6: "",
+    image: "",
   });
+
+  console.log("asd", articleFormData);
 
   function refreshList() {
     if (props.location.state) {
@@ -30,7 +44,19 @@ export default function (props) {
         id: article.id,
         title: article.title,
         detail: article.detail,
-        name: article.title,
+        drink_name: article.title,
+        ingredient1: article.ingredient1,
+        ingredient2: article.ingredient2,
+        ingredient3: article.ingredient3,
+        ingredient4: article.ingredient4,
+        ingredient5: article.ingredient5,
+        ingredient6: article.ingredient6,
+        measure1: article.measure1,
+        measure2: article.measure2,
+        measure3: article.measure3,
+        measure4: article.measure4,
+        measure5: article.measure5,
+        measure6: article.measure6,
       });
     }
   }
@@ -106,9 +132,10 @@ export default function (props) {
             id: {articleFormData.id}
             title: {articleFormData.title}
             detail: {articleFormData.detail}
-            name: {articleFormData.name}
+            drink_name: {articleFormData.drink_name}
             user: {articleFormData.user}
-            ingredients: {articleFormData.ingredients}
+            image: {articleFormData.image}
+            {/* ingredients: {articleFormData.ingredients2.ingredient} */}
           </p>
         </Grid>
         {/* <div className="form-header">
@@ -129,9 +156,12 @@ export default function (props) {
                 variant="outlined"
                 autoFocus
                 value={articleFormData.title}
-                onChange={({ target: { value } }) =>
-                  setArticleFormData({ ...articleFormData, title: value })
-                }
+                onChange={({ target: { value } }) => {
+                  setArticleFormData({
+                    ...articleFormData,
+                    title: value,
+                  });
+                }}
               ></TextField>
             </div>
             {/* {a.a} */}
@@ -145,18 +175,24 @@ export default function (props) {
                 rows={4}
                 variant="outlined"
                 value={articleFormData.detail}
-                onChange={({ target: { value } }) =>
+                onChange={({ target: { value } }) => {
                   setArticleFormData({
                     ...articleFormData,
                     detail: value,
-                    name: value,
-                  })
-                }
+                    drink_name: value,
+                  });
+                }}
               ></TextField>
             </div>
 
-            <Temp1 />
-            <ImageUploadBtn />
+            <Temp1
+              setArticleFormData={setArticleFormData}
+              articleFormData={articleFormData}
+            />
+            <ImageUploadBtn
+              articleFormData={articleFormData}
+              setArticleFormData={setArticleFormData}
+            />
 
             {/* <button className="article-create-button">작성완료</button> */}
             <Grid container justify="center" alignItems="center">
