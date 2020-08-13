@@ -25,9 +25,9 @@ const SelectCocktail = ({ match }) => {
   function refreshList() {
     axios
       .get(`/bartender/recipe`, {
-        // headers: {
-        //   Authorization: `JWT ${user.token}`,
-        // },
+        headers: {
+          'Access-Control-Allow-Origin' : '*'
+        },
       })
       .then((res) => {
         console.log(res.data);
@@ -44,26 +44,40 @@ const SelectCocktail = ({ match }) => {
 
   const MyCocktail = menuList[index];
 
-  const igrList = MyCocktail.ingredients.map((item) => {
+  // const igrList = MyCocktail.ingredients.map((item) => {
+  //   return (
+  //     <Grid item xs>
+  //       <div className="itemdiv">{item.strIngredient}</div>
+  //       <div className="itemdiv">{item.strMeasure} ml</div>
+  //     </Grid>
+  //   );
+  // });
+
+  const igrList = () => {
     return (
       <Grid item xs>
-        <div className="itemdiv">{item.igrname}</div>
-        <div className="itemdiv">{item.amount} ml</div>
+        {1+1 === 2 ? (<div className="itemdiv">{MyCocktail.strIngredient1}</div>) : (<div></div>)}
+        {/* <div className="itemdiv">{item.strIngredient}</div>
+        <div className="itemdiv">{item.strMeasure} ml</div> */}
       </Grid>
     );
-  });
+  };
 
   return (
     <Layout>
       <Wrapper>
         <Grid container justify="center" alignItems="center">
-          <Grid item xs={6} className="imgGrid">
-            <img src={MyCocktail.img} alt={MyCocktail.name} className="cocktailImg"></img>
-          </Grid>
+          {/* <Grid item xs={6} className="imgGrid">
+            <img src={MyCocktail.imgDrink} alt={MyCocktail.strDrink} className="cocktailImg"></img>
+          </Grid> */}
           <Grid item xs={6} className="textGrid">
-            <Grid className="titleGrid">
-              <h1>" {MyCocktail.name} "</h1>
-              <h2>{MyCocktail.details}</h2>
+          <div>{index}</div>
+          <div>{menuList.length}</div>
+          <div>{typeof(MyCocktail)}</div>
+          <div>{menuList[1].strDrink}</div>
+            {/* <Grid className="titleGrid">
+              <h1>" {MyCocktail.strDrink} "</h1>
+              <h2>{MyCocktail.strInstructions}</h2>
               <hr style={{
                 color: '#000000',
                 backgroundColor: '#000000',
@@ -76,7 +90,7 @@ const SelectCocktail = ({ match }) => {
             </Grid>
             <Grid container className="igrGrid">
               {igrList}
-            </Grid>
+            </Grid> */}
             <Grid className="btnGrid">
               <Button className="btnSelect" variant="contained" onClick={onClickRedirectPathHandler("/MakingCocktail")}>선택</Button>
               <Button className="btnCancel" variant="contained" onClick={onClickRedirectPathHandler("/MenuList")}>취소</Button>
