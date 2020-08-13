@@ -60,7 +60,7 @@ class bottleViewset(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
 
 
-# def get_random_recipe(request):
-#     max_id = Recipe.objects.all().aggregate(max_id=Max("id"))['max_id']
-#     pk = random.randint(1, max_id)
-#     return Recipe.objects.get(pk=pk)
+def get_random_recipe(request):
+    max_id = Recipe.objects.all().aggregate(max_id=Max("id"))['max_id']
+    pk = random.randint(1, max_id)
+    return Recipe.objects.get(pk=pk)
