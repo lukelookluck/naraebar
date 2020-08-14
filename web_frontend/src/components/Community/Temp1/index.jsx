@@ -1,59 +1,248 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 
-class Board extends Component {
-  // num = 3; //모든 input 제어
-  state = { input1: "", input2: "", num: 3 };
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  }; //추가 명령을 수행할 함수
-  handleCreate = (data) => {
-    data.preventDefault();
-    console.log("num", this.state.num);
-    // this.state.num++;
-    // const { input1, input2, list } = this.state;
-    if (this.state.num < 6) {
-      this.setState({
-        num: this.state.num + 1,
-      });
-    } else {
-      alert("그만해!!!!!!!!!!!!");
+export default function (props) {
+  const [myNum, setMyNum] = useState(3);
+
+  useEffect(() => {
+    if (props.articleFormData.ingredient4) {
+      setMyNum(4);
     }
-  };
-  render() {
-    const { handleChange, handleCreate } = this;
-    const { input1, input2, num } = this.state;
-    return (
-      <div>
-        <div>
-          {[...Array(num)].map((item, index) => {
-            // console.log("index", item);
-            return (
-              <div class="form-row mb-2" key={index}>
-                <div className="col">
-                  <input
-                    class="form-control"
-                    placeholder="재료명"
-                    // rows="21"
-                  ></input>
-                </div>
-                <div className="col">
-                  <input
-                    class="form-control"
-                    placeholder="용량(ml)"
-                    // rows="21"
-                  ></input>
-                </div>
-              </div>
-            );
-          })}
+    if (
+      props.articleFormData.ingredient4 &&
+      props.articleFormData.ingredient5
+    ) {
+      setMyNum(5);
+    }
+    if (
+      props.articleFormData.ingredient4 &&
+      props.articleFormData.ingredient5 &&
+      props.articleFormData.ingredient6
+    ) {
+      setMyNum(6);
+    }
+  }, []);
+
+  console.log(myNum);
+
+  function moreInput(data) {
+    data.preventDefault();
+    if (myNum > 5) {
+      alert("재료는 6개를 초과할 수 없습니다.");
+    } else {
+      setMyNum(myNum + 1);
+    }
+    console.log(myNum);
+  }
+
+  function updateField(index, e) {
+    console.log("index", index);
+  }
+
+  let ingredient4 = null;
+  let ingredient5 = null;
+  let ingredient6 = null;
+
+  if (myNum >= 4) {
+    ingredient4 = (
+      <div class="form-row mb-2">
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="재료명"
+            value={props.articleFormData.ingredient4}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                ingredient4: value,
+              });
+            }}
+          ></input>
+          {/* {a} */}
         </div>
-        <div>
-          <button onClick={handleCreate}>추가</button>
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="용량(ml)"
+            value={props.articleFormData.measure4}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                measure4: value,
+              });
+            }}
+          ></input>
         </div>
-        {this.state.num}
       </div>
     );
   }
+  if (myNum >= 5) {
+    ingredient5 = (
+      <div class="form-row mb-2">
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="재료명"
+            value={props.articleFormData.ingredient5}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                ingredient5: value,
+              });
+            }}
+          ></input>
+          {/* {a} */}
+        </div>
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="용량(ml)"
+            value={props.articleFormData.measure5}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                measure5: value,
+              });
+            }}
+          ></input>
+        </div>
+      </div>
+    );
+  }
+  if (myNum >= 6) {
+    ingredient6 = (
+      <div class="form-row mb-2">
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="재료명"
+            value={props.articleFormData.ingredient6}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                ingredient6: value,
+              });
+            }}
+          ></input>
+          {/* {a} */}
+        </div>
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="용량(ml)"
+            value={props.articleFormData.measure6}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                measure6: value,
+              });
+            }}
+          ></input>
+        </div>
+      </div>
+    );
+  }
+
+  let listInput = (
+    <div>
+      <div class="form-row mb-2">
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="재료명"
+            value={props.articleFormData.ingredient1}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                ingredient1: value,
+              });
+            }}
+          ></input>
+          {/* {a} */}
+        </div>
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="용량(ml)"
+            value={props.articleFormData.measure1}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                measure1: value,
+              });
+            }}
+          ></input>
+        </div>
+      </div>
+      <div class="form-row mb-2">
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="재료명"
+            value={props.articleFormData.ingredient2}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                ingredient2: value,
+              });
+            }}
+          ></input>
+          {/* {a} */}
+        </div>
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="용량(ml)"
+            value={props.articleFormData.measure2}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                measure2: value,
+              });
+            }}
+          ></input>
+        </div>
+      </div>
+      <div class="form-row mb-2">
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="재료명"
+            value={props.articleFormData.ingredient3}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                ingredient3: value,
+              });
+            }}
+          ></input>
+          {/* {a} */}
+        </div>
+        <div className="col">
+          <input
+            class="form-control"
+            placeholder="용량(ml)"
+            value={props.articleFormData.measure3}
+            onChange={({ target: { value } }) => {
+              props.setArticleFormData({
+                ...props.articleFormData,
+                measure3: value,
+              });
+            }}
+          ></input>
+        </div>
+      </div>
+      {ingredient4}
+      {ingredient5}
+      {ingredient6}
+    </div>
+  );
+  return (
+    <div>
+      <div>{listInput}</div>
+      <div>
+        <button onClick={moreInput}>추가</button>
+      </div>
+      {/* {this.state.num} */}
+    </div>
+  );
 }
-export default Board;

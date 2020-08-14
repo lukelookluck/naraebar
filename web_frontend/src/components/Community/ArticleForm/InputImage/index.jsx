@@ -37,8 +37,8 @@ export default function SingleLineGridList(props) {
   return (
     <Wrapper>
       <div className={classes.root}>
-        {props.temp.map((tile) => (
-          <div className="input-image-box">
+        {props.temp.map((tile, idx) => (
+          <div className="input-image-box" key={tile.id}>
             <img className="input-image" src={tile.value} alt={tile.title} />
           </div>
         ))}

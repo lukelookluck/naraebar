@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Grid, Button, TextField } from "@material-ui/core";
 import axios from "axios";
 
@@ -17,10 +17,25 @@ export default function (props) {
     id: null,
     title: "",
     detail: "",
-    name: "",
-    ingredients: "레몬",
+    drink_name: "",
     user: 1,
+    ingredient1: "",
+    ingredient2: "",
+    ingredient3: "",
+    ingredient4: "",
+    ingredient5: "",
+    ingredient6: "",
+    measure1: "",
+    measure2: "",
+    measure3: "",
+    measure4: "",
+    measure5: "",
+    measure6: "",
+    image: "",
   });
+
+  console.log("asd", articleFormData);
+
   function refreshList() {
     if (props.location.state) {
       const article = props.location.state.article;
@@ -29,33 +44,54 @@ export default function (props) {
         id: article.id,
         title: article.title,
         detail: article.detail,
-        name: article.title,
+        drink_name: article.title,
+        ingredient1: article.ingredient1,
+        ingredient2: article.ingredient2,
+        ingredient3: article.ingredient3,
+        ingredient4: article.ingredient4,
+        ingredient5: article.ingredient5,
+        ingredient6: article.ingredient6,
+        measure1: article.measure1,
+        measure2: article.measure2,
+        measure3: article.measure3,
+        measure4: article.measure4,
+        measure5: article.measure5,
+        measure6: article.measure6,
       });
     }
   }
 
   const { serverUrl, user } = useContext(CommonContext);
 
-  const goBack = () => {
+  function goBack() {
     props.history.goBack();
-  };
+  }
 
   useEffect(() => {
     refreshList();
   }, []);
 
   useEffect(() => {
-    // console.log(history);
-    const unblock = props.history.block(
-      "작성하던 내용이 없어집니다. 정말 떠나실건가요?"
-    );
+    const unblock = props.history.block((location, action) => {
+      if (action === "POP") {
+        if (window.confirm("작성하던 내용이 없어집니다. 정말 떠나실건가요?")) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    });
     return () => {
       unblock();
     };
   }, [props.history]);
 
+  // function yerOrNo() {
+  //   if
+  // }
+
   function handleSubmit(data) {
-    console.log(data);
+    // console.log(data);
     if (data.id) {
       console.log(data);
       axios
@@ -96,9 +132,10 @@ export default function (props) {
             id: {articleFormData.id}
             title: {articleFormData.title}
             detail: {articleFormData.detail}
-            name: {articleFormData.name}
+            drink_name: {articleFormData.drink_name}
             user: {articleFormData.user}
-            ingredients: {articleFormData.ingredients}
+            image: {articleFormData.image}
+            {/* ingredients: {articleFormData.ingredients2.ingredient} */}
           </p>
         </Grid>
         {/* <div className="form-header">
@@ -119,9 +156,12 @@ export default function (props) {
                 variant="outlined"
                 autoFocus
                 value={articleFormData.title}
-                onChange={({ target: { value } }) =>
-                  setArticleFormData({ ...articleFormData, title: value })
-                }
+                onChange={({ target: { value } }) => {
+                  setArticleFormData({
+                    ...articleFormData,
+                    title: value,
+                  });
+                }}
               ></TextField>
             </div>
             {/* {a.a} */}
@@ -135,32 +175,45 @@ export default function (props) {
                 rows={4}
                 variant="outlined"
                 value={articleFormData.detail}
-                onChange={({ target: { value } }) =>
+                onChange={({ target: { value } }) => {
                   setArticleFormData({
                     ...articleFormData,
                     detail: value,
-                    name: value,
-                  })
-                }
+                    drink_name: value,
+                  });
+                }}
               ></TextField>
             </div>
 
-            <Temp1 />
-            <ImageUploadBtn />
+            <Temp1
+              setArticleFormData={setArticleFormData}
+              articleFormData={articleFormData}
+            />
+            <ImageUploadBtn
+              articleFormData={articleFormData}
+              setArticleFormData={setArticleFormData}
+            />
 
             {/* <button className="article-create-button">작성완료</button> */}
             <Grid container justify="center" alignItems="center">
               <Grid item xs={6}>
-                <Button
-                  // type="submit"
-                  variant="contained"
-                  className="article-create-button"
-                  onClick={() => {
-                    handleSubmit(articleFormData);
+                <Link
+                  className="more-comment"
+                  to={{
+                    pathname: "/Main",
                   }}
                 >
-                  공유하기
-                </Button>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    className="article-create-button"
+                    onClick={() => {
+                      handleSubmit(articleFormData);
+                    }}
+                  >
+                    공유하기
+                  </Button>
+                </Link>
               </Grid>
               <Grid item xs={6}>
                 <Button type="reset" variant="contained" className="resetBtn">

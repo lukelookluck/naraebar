@@ -56,7 +56,7 @@ def LikeComment(request, comment_pk):
     user_id = request.data.get('user')
     user = User.objects.get(id=user_id)
     LIKE = comment.LIKE.all()
-    
+
     if user in LIKE:
         comment.LIKE.remove(user)
     else:
@@ -64,4 +64,3 @@ def LikeComment(request, comment_pk):
     result = comment.LIKE.all().count()
     print(result)
     return Response(result)
-

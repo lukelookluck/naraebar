@@ -1,11 +1,17 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, Fragment } from 'react';
 import Layout from '../../layout/';
 import Wrapper from './style';
 import { useHistory } from 'react-router-dom';
+<<<<<<< HEAD
 import { Grid, Button } from '@material-ui/core';
 import { CommonContext } from '../../context/CommonContext';
 import axios from 'axios';
 // import dumpfile from '../dump.json';
+=======
+import { Grid, Button } from "@material-ui/core";
+import { CommonContext } from "../../context/CommonContext";
+import axios from "axios";
+>>>>>>> 37eb06a578ddc41ab4f9b67f9ac734e6ce80f0e4
 
 const SelectCocktail = ({ match }) => {
   let history = useHistory();
@@ -16,7 +22,6 @@ const SelectCocktail = ({ match }) => {
     history.push(name);
   };
 
-  // const Cocktails = dumpfile;
   const [menuList, setMenuList] = useState([]);
   const { serverUrl } = useContext(CommonContext);
 
@@ -31,7 +36,11 @@ const SelectCocktail = ({ match }) => {
         console.log(res.data);
         setMenuList(res.data);
       })
+<<<<<<< HEAD
       .catch(err => console.log(err));
+=======
+      .catch((err) => console.log(err + "왜 에러가 난걸까"));
+>>>>>>> 37eb06a578ddc41ab4f9b67f9ac734e6ce80f0e4
   }
 
   useEffect(() => {
@@ -42,18 +51,65 @@ const SelectCocktail = ({ match }) => {
 
   const MyCocktail = menuList[index];
 
+<<<<<<< HEAD
   const igrList = MyCocktail.ingredients.map(item => {
     return (
       <Grid item xs>
         <div className="itemdiv">{item.igrname}</div>
         <div className="itemdiv">{item.amount} ml</div>
       </Grid>
+=======
+  // const igrList = MyCocktail.ingredients.map((item) => {
+  //   return (
+  //     <Grid item xs>
+  //       <div className="itemdiv">{item.strIngredient}</div>
+  //       <div className="itemdiv">{item.strMeasure} ml</div>
+  //     </Grid>
+  //   );
+  // });
+
+  function igrList () {
+    return (
+      <Fragment>
+        {
+          MyCocktail.strIngredient1 != "null" 
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient1}</div><div className="itemdiv">{MyCocktail.strMeasure1} ml</div></Grid>) 
+          : (<div></div>)
+        }
+        {
+          MyCocktail.strIngredient2 != "null"
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient2}</div><div className="itemdiv">{MyCocktail.strMeasure2} ml</div></Grid>) 
+          : (<div></div>)
+        }
+        {
+          MyCocktail.strIngredient3 != "null" 
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient3}</div><div className="itemdiv">{MyCocktail.strMeasure3} ml</div></Grid>) 
+          : (<div></div>)
+        }
+        {
+          MyCocktail.strIngredient4 != "null"
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient4}</div><div className="itemdiv">{MyCocktail.strMeasure4} ml</div></Grid>) 
+          : (<div></div>)
+        }
+        {
+          MyCocktail.strIngredient5 != "null" 
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient5}</div><div className="itemdiv">{MyCocktail.strMeasure5} ml</div></Grid>) 
+          : (<div></div>)
+        }
+        {
+          MyCocktail.strIngredient6 != "null" 
+          ? (<Grid item xs><div className="itemdiv">{MyCocktail.strIngredient6}</div><div className="itemdiv">{MyCocktail.strMeasure6} ml</div></Grid>) 
+          : (<div></div>)
+        }
+      </Fragment>
+>>>>>>> 37eb06a578ddc41ab4f9b67f9ac734e6ce80f0e4
     );
   });
 
   return (
     <Layout>
       <Wrapper>
+<<<<<<< HEAD
         <Grid container justify="center" alignItems="center">
           <Grid item xs={6} className="imgGrid">
             <img
@@ -80,6 +136,29 @@ const SelectCocktail = ({ match }) => {
             </Grid>
             <Grid container className="igrGrid">
               {igrList}
+=======
+        {
+          MyCocktail ? (<Grid container justify="center" alignItems="center">
+          <Grid item xs={6} className="imgGrid">
+            <img src={MyCocktail.imgDrink} alt={MyCocktail.strDrink} className="cocktailImg"></img>
+          </Grid>
+          <Grid item xs={6} className="textGrid">
+            <Grid className="titleGrid">
+              <h1>" {MyCocktail.strDrink} "</h1>
+              <h2>{MyCocktail.strInstructions}</h2>
+              <hr style={{
+                color: '#000000',
+                backgroundColor: '#000000',
+                height: .8,
+                borderColor: '#000000',
+                width: '80%',
+                marginLeft: '10%'
+              }} />
+              <h3>레시피</h3>
+            </Grid>
+            <Grid container className="igrGrid">
+              {igrList()}
+>>>>>>> 37eb06a578ddc41ab4f9b67f9ac734e6ce80f0e4
             </Grid>
             <Grid className="btnGrid">
               <Button
@@ -98,7 +177,8 @@ const SelectCocktail = ({ match }) => {
               </Button>
             </Grid>
           </Grid>
-        </Grid>
+        </Grid>) : (<div></div>)
+        }
       </Wrapper>
     </Layout>
   );
