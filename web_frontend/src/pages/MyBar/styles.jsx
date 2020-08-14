@@ -36,6 +36,10 @@ const Wrapper = styled.div`
     top: -38px;
   }
 
+  & .sug {
+    font-size: 30px;
+  }
+
   @media(min-width: 700px) {
 
     & .card {
