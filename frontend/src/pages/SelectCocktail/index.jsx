@@ -112,19 +112,19 @@ const SelectCocktail = ({ match }) => {
               {igrList()}
             </Grid>
             <Grid className="btnGrid">
-              <Button
-                className="btnSelect"
-                variant="contained"
-                onClick={onClickRedirectPathHandler('/MakingCocktail')}
-              >
-                선택
-              </Button>
-              <Button
+            <Button
                 className="btnCancel"
                 variant="contained"
                 onClick={onClickRedirectPathHandler('/MenuList')}
               >
                 취소
+              </Button>
+              <Button
+                className="btnSelect"
+                variant="contained"
+                onClick={onClickRedirectPathHandler('/MakingCocktail')}
+              >
+                제조
               </Button>
             </Grid>
           </Grid>

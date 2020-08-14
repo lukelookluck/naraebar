@@ -4,12 +4,12 @@ const Wrapper = styled.div`
   text-align: center;
 
   & .cocktailimg {
-      width:800px;
-      height:650px;
+      width:700px;
+      height:700px;
   }
 
   & .caro {
-    margin-top: 110px;
+    margin-top: 35px;
   }
 
 & .carousel-control-prev-icon,
@@ -46,24 +46,29 @@ const Wrapper = styled.div`
 
 & h1 {
   font-weight: bold;
+  font-size: 70px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   font-family: 'IBMPlexSansKR-Text';
 }
 
 & p {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  font-size: 25px;
+  font-size: 40px;
   font-weight: 600;
   font-family: 'IBMPlexSansKR-Text';
+  margin-top: 0px;
+  padding-top: 0px;
 }
 
 & .carousel-caption {
   background-color: rgba( 255, 255, 255, 0.5 );
-  width: 650px;
+  width: 630px;
   border-radius: 20px;
   right: 0%;
   left: 0%;
-  margin-left: 250px;
+  margin-left: 195px;
 };
 
 & .caroitem {
