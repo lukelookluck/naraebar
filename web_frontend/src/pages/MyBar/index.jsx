@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment, useContext } from "react";
 import { Grid, Button } from "@material-ui/core";
 import {
   ListGroup,
@@ -20,6 +20,7 @@ import axios from "axios";
 
 const MyBar = () => {
 
+  const { serverUrl, user } = useContext(CommonContext);
   const [menuList, setMenuList] = useState([]);
   const [index, setIndex] = useState(0);
 
@@ -27,11 +28,10 @@ const MyBar = () => {
 
   function refreshList() {
     axios
-      .get(`/recipe/list`, {
+      .get(`${serverUrl}/recipe/list`, {
         headers: {
-          'Access-Control-Allow-Origin': '*'
+          Authorization: `JWT ${user.token}`,
         },
-
       })
       .then((res) => {
         console.log(res.data);
