@@ -2,16 +2,9 @@ import React, { useState, useContext, useEffect, Fragment } from 'react';
 import Layout from '../../layout/';
 import Wrapper from './style';
 import { useHistory } from 'react-router-dom';
-<<<<<<< HEAD
-import { Grid, Button } from '@material-ui/core';
-import { CommonContext } from '../../context/CommonContext';
-import axios from 'axios';
-// import dumpfile from '../dump.json';
-=======
 import { Grid, Button } from "@material-ui/core";
 import { CommonContext } from "../../context/CommonContext";
 import axios from "axios";
->>>>>>> 37eb06a578ddc41ab4f9b67f9ac734e6ce80f0e4
 
 const SelectCocktail = ({ match }) => {
   let history = useHistory();
@@ -36,11 +29,7 @@ const SelectCocktail = ({ match }) => {
         console.log(res.data);
         setMenuList(res.data);
       })
-<<<<<<< HEAD
-      .catch(err => console.log(err));
-=======
       .catch((err) => console.log(err + "왜 에러가 난걸까"));
->>>>>>> 37eb06a578ddc41ab4f9b67f9ac734e6ce80f0e4
   }
 
   useEffect(() => {
@@ -51,14 +40,6 @@ const SelectCocktail = ({ match }) => {
 
   const MyCocktail = menuList[index];
 
-<<<<<<< HEAD
-  const igrList = MyCocktail.ingredients.map(item => {
-    return (
-      <Grid item xs>
-        <div className="itemdiv">{item.igrname}</div>
-        <div className="itemdiv">{item.amount} ml</div>
-      </Grid>
-=======
   // const igrList = MyCocktail.ingredients.map((item) => {
   //   return (
   //     <Grid item xs>
@@ -102,41 +83,12 @@ const SelectCocktail = ({ match }) => {
           : (<div></div>)
         }
       </Fragment>
->>>>>>> 37eb06a578ddc41ab4f9b67f9ac734e6ce80f0e4
     );
-  });
+  };
 
   return (
     <Layout>
       <Wrapper>
-<<<<<<< HEAD
-        <Grid container justify="center" alignItems="center">
-          <Grid item xs={6} className="imgGrid">
-            <img
-              src={MyCocktail.img}
-              alt={MyCocktail.name}
-              className="cocktailImg"
-            ></img>
-          </Grid>
-          <Grid item xs={6} className="textGrid">
-            <Grid className="titleGrid">
-              <h1>" {MyCocktail.name} "</h1>
-              <h2>{MyCocktail.details}</h2>
-              <hr
-                style={{
-                  color: '#000000',
-                  backgroundColor: '#000000',
-                  height: 0.8,
-                  borderColor: '#000000',
-                  width: '80%',
-                  marginLeft: '10%',
-                }}
-              />
-              <h3>레시피</h3>
-            </Grid>
-            <Grid container className="igrGrid">
-              {igrList}
-=======
         {
           MyCocktail ? (<Grid container justify="center" alignItems="center">
           <Grid item xs={6} className="imgGrid">
@@ -158,7 +110,6 @@ const SelectCocktail = ({ match }) => {
             </Grid>
             <Grid container className="igrGrid">
               {igrList()}
->>>>>>> 37eb06a578ddc41ab4f9b67f9ac734e6ce80f0e4
             </Grid>
             <Grid className="btnGrid">
               <Button
