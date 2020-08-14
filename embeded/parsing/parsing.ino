@@ -8,28 +8,40 @@ String enddata;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  pinMode(9, OUTPUT);
 }
 
 void loop() {
-  if(Serial.available()){
-    // 시리얼 포트로 데이터를 받기, return이 1이면 정상 파싱 완료
-    if (parsing(Serial.readString()) == 1){
-      if (mode == "MAKE"){
-        // bottle이랑 contain에서 값 받아와서 make함수에 전달. 실행
-//        j = 0;
-//        while (bottle[j] != "-1"){
-//          Serial.print(bottle[j]);
-//          Serial.print(" ");
-//          Serial.println(contain[j]);
-//          j++;
+//    if(Serial.available()){
+//      if ( parsing(Serial.readString()) == 1){
+//        if (mode == "MAKE"){
+//          // 제작 함수 실행 bottle과 contain 하나하나 돌면서 출력
+////          j = 0;
+////          while (bottle[j] != "-1"){
+////            Serial.print(bottle[j]);
+////            Serial.print(" ");
+////            Serial.println(contain[j]);
+////            j++;
+////          }
 //        }
-      }
-      else if (mode == "WASH"){
-        // 0번 솔밸브 오픈 워시하자
-      }
-    }
-  }
-  
+//        else if (mode == "WASH"){
+//          // 세척 함수 실행 
+//        }
+//      }
+//    }
+
+
+//if (Serial.readString()){
+//  digitalWrite(9, HIGH);
+//  delay(500);
+//}
+//else{
+//  digitalWrite(9, LOW);
+//  delay(500);
+
+Serial.println("TTT");
+delay(1000);
+
 }
 // $,MAKE,1,180,3,350,&
 int parsing(String str){
