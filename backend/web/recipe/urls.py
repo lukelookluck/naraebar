@@ -15,10 +15,10 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import recipeViewset
+from .views import recipeListViewset
 
 router = DefaultRouter()
-router.register('recipe', recipeViewset)
+router.register('list', recipeListViewset)
 
 urlpatterns = [
     path('', include(router.urls))
