@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
-from django.conf import settings
-from django.conf.urls.static import static
+
 
 app_name = "community"
 
@@ -12,4 +11,4 @@ urlpatterns = [
 
     path('article/<int:article_pk>/', views.LikeArticle),
     path('comment/<int:comment_pk>/', views.LikeComment),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

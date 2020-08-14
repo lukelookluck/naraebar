@@ -15,9 +15,10 @@ const Wrapper = styled.div`
 
   & .list-user {
     display: flex;
-    justify-content: start;
-    margin-left: 2%;
-    padding-bottom: 4%;
+    justify-content: space-between;
+    padding-left: 2%;
+    margin: 0;
+    padding-bottom: 15px;
     width: 100%;
     border-bottom: solid 1px #9b9b9b;
   }
@@ -27,11 +28,21 @@ const Wrapper = styled.div`
     margin-bottom: 4%;
   }
 
-  & .list-item-image {
-    width: 100%;
-    padding: 10% 10%;
+  & .list-item-imageBox {
+    width: 63.75vw;
+    height: 63.75vw;
+    padding: 10% 5%;
+    overflow: hidden;
     /* padding-bottom: 10%; */
     border-bottom: solid 1px #9b9b9b;
+  }
+
+  & .list-item-image {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    /* padding-bottom: 10%; */
+    /* border-bottom: solid 1px #9b9b9b; */
   }
 
   & .list-item-detail {
@@ -74,6 +85,10 @@ const Wrapper = styled.div`
   & .countLikeIt1 {
     font-weight: 600;
     margin-left: 8px;
+  }
+
+  & .to-update-button {
+    padding: 50px;
   }
 `;
 

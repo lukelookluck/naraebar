@@ -12,6 +12,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import CommentList from "../../Comment/ArticleUnderCommentList";
+import MenuModal from "../MenuModal/";
 
 export default function (props) {
   // console.log(props.list);
@@ -79,27 +80,22 @@ export default function (props) {
     return (
       <div className="list-card" key={index}>
         <div className="list-user">
-          <AccountCircleIcon />
-          &nbsp;&nbsp;{item.username}
-          <span>
-            <Link
-              className="more-comment"
-              to={{
-                pathname: "/Community/Create",
-                state: {
-                  article: item,
-                },
-              }}
-            >
-              <button>수정</button>
-            </Link>
-          </span>
-          <span>
-            <button onClick={() => props.DeleteArticle(item)}>삭제</button>
-          </span>
+          <div>
+            <AccountCircleIcon />
+            &nbsp;&nbsp;{item.username}
+          </div>
+          <div>
+            <MenuModal item={item} DeleteArticle={props.DeleteArticle} />
+          </div>
         </div>
         <div className="list-item">
-          <img className="list-item-image" src="images/sample.jpg" alt="" />
+          <div className="list-item-imageBox">
+            {/* <img className="list-item-image" src="images/sample.jpg" alt="" /> */}
+            <img className="list-item-image" src={item.image} alt="" />
+          </div>
+
+          <a href={item.image}>dds</a>
+
           <div className="list-item-detail">
             <div className="detail-content">
               <p className="cname">" {item.title} "</p>
