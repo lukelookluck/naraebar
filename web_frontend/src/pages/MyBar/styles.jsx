@@ -38,6 +38,7 @@ const Wrapper = styled.div`
 
   & .sug {
     font-size: 30px;
+    margin-top: 50px;
   }
 
   @media(min-width: 700px) {
