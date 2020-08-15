@@ -46,8 +46,8 @@ const Wrapper = styled.div`
   }
 
   & .list-item-detail {
-    // flex-direction: column;
-    // display: flex;
+    /* flex-direction: column;
+    display: flex; */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -89,6 +89,20 @@ const Wrapper = styled.div`
 
   & .to-update-button {
     padding: 50px;
+  }
+
+  & .ingredient-title {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
+    margin: 2vw 0;
+  }
+
+  & .ingredient-box {
+    display: flex;
+    justify-content: space-between;
+    margin: 2vw 2vw;
+    border-bottom: 1px dotted #9b9b9b;
   }
 `;
 

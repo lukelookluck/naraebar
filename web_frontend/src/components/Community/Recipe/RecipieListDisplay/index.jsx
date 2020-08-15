@@ -69,9 +69,46 @@ export default function (props) {
     const [cardContent, setCardContent] = useState(
       item.detail.substring(0, 50) + "..."
     );
+    const [ingredients, setIngredients] = useState("");
 
     function moreContent(e) {
-      setCardContent(item.detail + "\n\n" + item.ingredients);
+      setCardContent(
+        <div>
+          <div>{item.detail}</div>
+          <div className="ingredient-title">[재료]</div>
+          <div className="ingredient-box">
+            <span>{item.ingredient1}</span>
+            <span>{item.measure1}</span>
+          </div>
+          <div className="ingredient-box">
+            <span>{item.ingredient2}</span>
+            <span>{item.measure2}</span>
+          </div>
+          <div className="ingredient-box">
+            <span>{item.ingredient3}</span>
+            <span>{item.measure3}</span>
+          </div>
+          {item.ingredient4 && (
+            <div className="ingredient-box">
+              <span>{item.ingredient4}</span>
+              <span>{item.measure4}</span>
+            </div>
+          )}
+          {item.ingredient5 && (
+            <div className="ingredient-box">
+              <span>{item.ingredient5}</span>
+              <span>{item.measure5}</span>
+            </div>
+          )}
+          {item.ingredient6 && (
+            <div className="ingredient-box">
+              <span>{item.ingredient6}</span>
+              <span>{item.measure6}</span>
+            </div>
+          )}
+        </div>
+      );
+      setIngredients("");
       console.log(myHide);
       setmyHide(null);
       e.preventDefault();
@@ -93,20 +130,18 @@ export default function (props) {
             {/* <img className="list-item-image" src="images/sample.jpg" alt="" /> */}
             <img className="list-item-image" src={item.image} alt="" />
           </div>
-
-          <a href={item.image}>dds</a>
-
           <div className="list-item-detail">
             <div className="detail-content">
               <p className="cname">" {item.title} "</p>
-              {cardContent.split("\n").map((line, index2) => {
+              {cardContent}
+              {/* {cardContent.split("\n").map((line, index) => {
                 return (
-                  <span key={index2}>
+                  <span key={index}>
                     {line}
                     <br></br>
                   </span>
                 );
-              })}
+              })} */}
               {myHide}
             </div>
           </div>
