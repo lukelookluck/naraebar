@@ -128,11 +128,11 @@ export default function (props) {
         <Grid item xs={12} className="form-header-title">
           <div>나만의 레시피 만들기</div>
           <p>
-            id: {articleFormData.id}
+            {/* id: {articleFormData.id}
             title: {articleFormData.title}
             detail: {articleFormData.detail}
             drink_name: {articleFormData.drink_name}
-            user: {articleFormData.user}
+            user: {articleFormData.user} */}
             {/* image: {articleFormData.image} */}
             {/* ingredients: {articleFormData.ingredients2.ingredient} */}
           </p>

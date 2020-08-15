@@ -2,13 +2,21 @@ from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 # from django.contrib.auth.models import User
 from .models import User
+from community.models import Article
+from community.serializers import ArticleSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
+    like_articles = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'like_articles')
+
+    def get_like_articles(self, obj):
+        like_articles = obj.like_articles.all()
+        serializer = ArticleSerializer(instance=like_articles, many=True)
+        return serializer.data
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):

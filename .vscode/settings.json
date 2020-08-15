@@ -1,3 +1,4 @@
 {
-  "python.formatting.provider": "autopep8"
+  "python.formatting.provider": "autopep8",
+  "python.pythonPath": "c:\\Users\\multicampus\\Desktop\\2학기\\sub3\\develop\\s03p13d209\\venv\\Scripts\\python.exe"
 }
