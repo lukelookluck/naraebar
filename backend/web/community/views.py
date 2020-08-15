@@ -26,7 +26,7 @@ class DetailArticle(generics.RetrieveUpdateDestroyAPIView):
 # @permission_classes((IsAuthenticated,))
 # @authentication_classes((JSONWebTokenAuthentication,))
 class ListComment(generics.ListCreateAPIView):
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.filter(parent=None)
     # queryset = queryset.filter(parent=None)
 
     serializer_class = CommentSerializer

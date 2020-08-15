@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 
@@ -37,6 +38,7 @@ export default function () {
         // },
       })
       .then((res) => {
+        setArticleList([]);
         console.log(res.data);
         setArticleList(res.data);
         // console.log(this.state.loading);
@@ -58,21 +60,35 @@ export default function () {
       )
       .then((res) => {
         console.log(res.data);
-
         refreshList();
       })
       .catch((err) => console.log(err));
   }
 
+  function reload() {
+    // const current = location.pathname;
+    // history.replace(`/reload`);
+    setTimeout(() => {
+      history.go(0);
+    });
+  }
+  let history = useHistory();
+
   function DeleteArticle(article) {
     console.log(article);
+    console.log(history);
+
     axios
       .delete(`${serverUrl}/community/${article.id}/`, {
         headers: {
           Authorization: `JWT ${user.token}`,
         },
       })
-      .then((res) => refreshList());
+      .then((res) => {
+        refreshList();
+        window.scrollTo(0, 0);
+        history.push("/Main");
+      });
   }
 
   return (
