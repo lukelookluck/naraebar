@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   font-family: 'IBMPlexSansKR-Text';
 
   & .titleGrid {
-    margin-top: 120px;
+    margin-top: 110px;
   }
 
   & h1 {
@@ -25,12 +25,12 @@ const Wrapper = styled.div`
   }
 
   & .cocktailImg {
-    width:500px;
-    height:500px;
+    width:480px;
+    height:480px;
   }
 
   & .imgGrid {
-    margin-top: 120px;
+    margin-top: 110px;
     padding-left: 50px;
   }
 
@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   }
 
   & .btnGrid {
-    margin-top: 100px;
+    margin-top: 90px;
   }
 
   & .btnSelect {
@@ -57,10 +57,10 @@ const Wrapper = styled.div`
     border: none;
     color: white;
     font-family: 'IBMPlexSansKR-Text';
-    font-size: 60px;
-    height: 130px;
-    width: 200px;
-    margin-right: 30px;
+    font-size: 50px;
+    height: 100px;
+    width: 170px;
+    margin-left: 30px;
   }
 
   & .btnSelect:hover {
@@ -72,11 +72,11 @@ const Wrapper = styled.div`
     text-decoration: none;
     border: none;
     color: black;
-    font-size: 60px;
+    font-size: 50px;
     font-family: 'IBMPlexSansKR-Text';
-    height: 130px;
-    width: 200px;
-    margin-left: 30px;
+    height: 100px;
+    width: 170px;
+    margin-right: 30px;
   }
 
 `;
