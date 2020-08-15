@@ -66,7 +66,7 @@ const Wrapper = styled.div`
   }
 
   & .comment-createdTime {
-    font-size: 10px;
+    font-size: 11px;
     margin-left: 5.5px;
     margin-right: 20px;
     float: left;

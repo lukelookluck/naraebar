@@ -15,19 +15,23 @@ export default function (props) {
     let likeButton = null;
     let countLikeIt1 = null;
     if (comment.LIKE.length) {
-      likeButton = <FavoriteIcon onClick={likeIt} color="error" key={idx} />;
+      likeButton = (
+        <FavoriteIcon onClick={() => likeIt(comment)} color="error" key={idx} />
+      );
       countLikeIt1 = (
         <span className="comment-likeIt-count">
           좋아요 {comment.LIKE.length}개
         </span>
       );
     } else {
-      likeButton = <FavoriteBorderIcon onClick={likeIt} key={idx} />;
+      likeButton = (
+        <FavoriteBorderIcon onClick={() => likeIt(comment)} key={idx} />
+      );
     }
 
-    function likeIt() {
+    function likeIt(thisComment) {
       // alert("눌럿어?");
-      props.likeSubmit(comment);
+      props.likeSubmit(thisComment);
     }
 
     function getTime(myTime) {
@@ -110,13 +114,18 @@ export default function (props) {
             <div className="comment-single-left-2">
               {getTime(comment.created_at)}
               {countLikeIt1}
-              <span className="comment-reply">답글 달기</span>
+              <span
+                className="comment-reply"
+                onClick={() => props.doReply(comment)}
+              >
+                답글 달기
+              </span>
             </div>
           </div>
           <div className="comment-likeIt">{likeButton}</div>
         </div>
         <div>
-          <ReplyList replys={comment.replys} />
+          <ReplyList replys={comment.replys} likeIt={likeIt} />
         </div>
       </div>
     );
