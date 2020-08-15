@@ -2,8 +2,9 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Layout from '../../layout/';
 import Wrapper from './styles';
-import { Grid } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import '../../index.css';
+import LocalBarIcon from '@material-ui/icons/LocalBar';
 
 const Start = () => {
   let history = useHistory();
@@ -16,9 +17,26 @@ const Start = () => {
     <Layout>
       <Wrapper>
         <Grid container className="root" justify="center" alignItems="center">
-          <Grid item xs={12} className="logo" onClick={onClickRedirectPathHandler('/MenuList')}>
+          <Grid item xs={12} className="logo">
             <p>NaReBar</p>
-            <h1>시작하려면 화면을 눌러주세요</h1>
+            <div>
+              <Button
+                className="btnCleaning"
+                variant="contained"
+                onClick={onClickRedirectPathHandler('/Cleaning')}
+              >
+                세척
+              </Button>
+              <Button
+                className="btnStart"
+                variant="contained"
+                onClick={onClickRedirectPathHandler('/MenuList')}
+                startIcon={<LocalBarIcon/>}
+              >
+                칵테일
+              </Button>
+            </div>
+
           </Grid>
         </Grid>
       </Wrapper>

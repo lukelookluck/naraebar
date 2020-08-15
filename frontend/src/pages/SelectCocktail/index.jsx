@@ -40,15 +40,6 @@ const SelectCocktail = ({ match }) => {
 
   const MyCocktail = menuList[index];
 
-  // const igrList = MyCocktail.ingredients.map((item) => {
-  //   return (
-  //     <Grid item xs>
-  //       <div className="itemdiv">{item.strIngredient}</div>
-  //       <div className="itemdiv">{item.strMeasure} ml</div>
-  //     </Grid>
-  //   );
-  // });
-
   function igrList () {
     return (
       <Fragment>
@@ -112,7 +103,7 @@ const SelectCocktail = ({ match }) => {
               {igrList()}
             </Grid>
             <Grid className="btnGrid">
-            <Button
+              <Button
                 className="btnCancel"
                 variant="contained"
                 onClick={onClickRedirectPathHandler('/MenuList')}
