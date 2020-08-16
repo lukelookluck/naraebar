@@ -29,20 +29,19 @@ void loop() {
 //        }
 //      }
 //    }
+String tmp = ""; 
 
-
-//if (Serial.readString()){
-//  digitalWrite(9, HIGH);
-//  delay(500);
-//}
-//else{
-//  digitalWrite(9, LOW);
-//  delay(500);
-
-Serial.println("TTT");
-delay(1000);
+tmp = Serial.readString();
+if (tmp && (tmp!="")){
+  parsing(tmp);
+}
 
 }
+
+void test(String str){
+  Serial.println("$,DONE,MAKE,&");
+}
+
 // $,MAKE,1,180,3,350,&
 int parsing(String str){
   int first = str.indexOf(","); // 첫번째 콤마위치
@@ -53,7 +52,7 @@ int parsing(String str){
   start = str.substring(0, first); // 첫번째 토큰
   mode = str.substring(first+1, second); // 두번째 토큰
   data = str.substring(second+1, strlength-3); // 세번째 토큰
-  enddata = str.substring(strlength-2,strlength-1); // 네번째 토큰 문자열 맨 마지막은 \n임 그래서 -1해줌
+  enddata = str.substring(strlength-1,strlength); // 네번째 토큰 문자열 맨 마지막은 \n임 그래서 -1해줌
 
   int ss = 0; //이전 콤마idx
   int ee = 0; //이번 콤마idx
@@ -85,24 +84,29 @@ int parsing(String str){
     contain[j/2] = "-1";
   }
   else {
-    return 0; //문자열 에러
+    //문자열 에러
+    Serial.println("ERROR");
+    
   }
-
-
-  // 데이터 디버깅용 출력
-  j = 0;
-  while (bottle[j] != "-1"){
-    Serial.print(bottle[j]);
-    Serial.print(" ");
-    Serial.println(contain[j]);
-    j++;
-  }
-
-  // 데이터 디버깅용 출력
-  Serial.println(start);
-  Serial.println(mode);
-  Serial.println(data);
+  Serial.print(str);
+  
+//  Serial.println("$,DONE,MAKE,&");
   Serial.println(enddata);
+  
+//  // 데이터 디버깅용 출력
+//  j = 0;
+//  while (bottle[j] != "-1"){
+//    Serial.print(bottle[j]);
+//    Serial.print(" ");
+//    Serial.println(contain[j]);
+//    j++;
+//  }
+//
+//  // 데이터 디버깅용 출력
+//  Serial.println(start);
+//  Serial.println(mode);
+//  Serial.println(data);
+//  Serial.println(enddata);
 
   return 1; //파싱 완료 
   

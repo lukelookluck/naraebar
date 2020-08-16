@@ -5,6 +5,7 @@ int i = 0;
 int mode = 0;
 int cnt = 0;
 int timer = 1;
+int flag = 0;
 
 void setup() {
   //pinMode(6, OUTPUT); //PWM OUT
@@ -41,16 +42,25 @@ ISR(TIMER0_COMPA_vect){
 }
 
 void loop() {
-  analogWrite(5,255); //PWM 출력 
+  //analogWrite(5,255); //PWM 출력 
   // digitalWrite(9,HIGH);
-  pwmTest();
+  //pwmTest();
   
 //  if(Serial.available()){
 //    data=Serial.read();
 //    echoSerial(data);
 //  }
+   if (flag = 0){
+    digitalWrite(9,HIGH);
+   }
+   if (timer == 0){
+    if (flag == 0){
+    digitalWrite(9,LOW);
+    flag = 1;
+    }
+   }
    
-   //countFlow();
+   countFlow();
 }
 
 void pwmTest(){
@@ -74,17 +84,17 @@ void pwmTest(){
   
 }
 
-void echoSerial(char data){
-  // int data로 받으면 48, 49가 출력됨
-  if(data == '1'){
-    //digitalWrite(9, HIGH);  // Turn the LED
-    Serial.println(data);
-  }
-  else if(data == '0'){
-    //digitalWrite(9, LOW);   // Turn the LED
-    Serial.println(data);
-  }
-}
+//void echoSerial(char data){
+//  // int data로 받으면 48, 49가 출력됨
+//  if(data == '1'){
+//    //digitalWrite(9, HIGH);  // Turn the LED
+//    Serial.println(data);
+//  }
+//  else if(data == '0'){
+//    //digitalWrite(9, LOW);   // Turn the LED
+//    Serial.println(data);
+//  }
+//}
 
 // 1초동안 펄스를 측정하여 유량을 계산
 void countFlow(){
