@@ -21,7 +21,7 @@ export default function (props) {
     content: "",
     article: props.location.state.article,
     parent: null,
-    user: 1,
+    user: user.user.id,
   });
 
   function handleChangeCommentInput(e) {

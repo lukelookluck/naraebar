@@ -23,8 +23,10 @@ function App() {
     {
       token: "",
       user: {
+        id: "",
         username: "",
         email: "",
+        like_articles: "",
       },
     },
     "user"

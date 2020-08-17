@@ -1,117 +1,186 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Fragment, useContext } from "react";
 import { Grid, Button } from "@material-ui/core";
-import {
-  ListGroup,
-  ListGroupItem,
-  Card,
-  // Pagination,
-} from "react-bootstrap";
+import { ListGroup, ListGroupItem, Card } from "react-bootstrap";
 import Wrapper from "./styles";
 import SyncButton from "../../components/SyncButton";
-// import CocktailDump from "./CocktailDump.json";
-import CocktailDump from "./dump.json";
-// import MyPagination from "../../components/MyPagination";
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import { MemoryRouter, Route } from "react-router";
 import { Link } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 
-const dumpFile = CocktailDump;
+import { CommonContext } from "../../context/CommonContext";
+import axios from "axios";
 
 const MyBar = () => {
-  const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [endPage] = useState(dumpFile.length);
+  const { serverUrl, user } = useContext(CommonContext);
+  const [menuList, setMenuList] = useState([]);
   const [index, setIndex] = useState(0);
 
-  const MyCocktail = dumpFile[index];
+  const MyCocktail = menuList[index];
 
-  const igrList = MyCocktail.ingredients.map((item) => {
-    return (
-      <ListGroupItem>
-        <div className="listdiv">{item.igrname}</div>
-        <div className="listdiv">{item.amount} ml</div>
-      </ListGroupItem>
-    );
-  });
+  function refreshList() {
+    axios
+      .get(`${serverUrl}/accounts/user/current`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setMenuList(res.data.like_articles);
+        console.log(menuList);
+      })
+      .catch((err) => console.log(err + " 에러났음"));
+  }
 
-  const deleteRecipe = id => e => {
+  useEffect(() => {
+    refreshList();
+    console.log("asda");
+    if (menuList.length === 0) {
+      console.log("i don't know");
+    }
+  }, []);
+
+  const deleteRecipe = (id) => (e) => {
     try {
-        // 삭제하라는 어떤 신호를 보내겠지
+      // 삭제하라는 어떤 신호를 보내겠지
 
-
-        console.log("삭제 버튼 클릭, id = " + id);
-        alert('삭제 성공');
+      console.log("삭제 버튼 클릭, id = " + id);
+      alert("삭제 성공");
     } catch (e) {
-        alert('네트워크 연결에 문제가 있어 레시피 삭제에 실패했습니다.');
+      alert("네트워크 연결에 문제가 있어 레시피 삭제에 실패했습니다.");
     }
   };
 
-  // const onSearchSubmit = text => {
-  //   console.log(text);
-  //   alert(text);
-  // };
+  function igrList() {
+    return (
+      <Fragment>
+        {MyCocktail.strIngredient1 != "null" ? (
+          <ListGroupItem>
+            <div className="listdiv">{MyCocktail.ingredient1}</div>
+            <div className="listdiv">{MyCocktail.measure1} ml</div>
+          </ListGroupItem>
+        ) : (
+          <div></div>
+        )}
+        {MyCocktail.strIngredient2 != "null" ? (
+          <ListGroupItem>
+            <div className="listdiv">{MyCocktail.ingredient2}</div>
+            <div className="listdiv">{MyCocktail.measure1} ml</div>
+          </ListGroupItem>
+        ) : (
+          <div></div>
+        )}
+        {MyCocktail.strIngredient3 != "null" ? (
+          <ListGroupItem>
+            <div className="listdiv">{MyCocktail.ingredient3}</div>
+            <div className="listdiv">{MyCocktail.measure1} ml</div>
+          </ListGroupItem>
+        ) : (
+          <div></div>
+        )}
+        {MyCocktail.strIngredient4 != "null" ? (
+          <ListGroupItem>
+            <div className="listdiv">{MyCocktail.strIngredient4}</div>
+            <div className="listdiv">{MyCocktail.strMeasure4} ml</div>
+          </ListGroupItem>
+        ) : (
+          <div></div>
+        )}
+        {MyCocktail.strIngredient5 != "null" ? (
+          <ListGroupItem>
+            <div className="listdiv">{MyCocktail.strIngredient5}</div>
+            <div className="listdiv">{MyCocktail.strMeasure5} ml</div>
+          </ListGroupItem>
+        ) : (
+          <div></div>
+        )}
+        {MyCocktail.strIngredient6 != "null" ? (
+          <ListGroupItem>
+            <div className="listdiv">{MyCocktail.strIngredient6}</div>
+            <div className="listdiv">{MyCocktail.strMeasure6} ml</div>
+          </ListGroupItem>
+        ) : (
+          <div></div>
+        )}
+      </Fragment>
+    );
+  }
 
   return (
     <Wrapper>
-      <Grid container className="syncButtonGrid" justify="flex-end">
-        <SyncButton />
-      </Grid>
+      {/* {menuList[1]} */}
+      {MyCocktail ? (
+        <Fragment>
+          <Grid container className="syncButtonGrid" justify="flex-end">
+            <SyncButton />
+          </Grid>
+          <Grid
+            container
+            className="recipe"
+            justify="center"
+            alignItems="center"
+          >
+            <Card>
+              <Card.Body>
+                <Card.Title>
+                  <div className="namediv">{MyCocktail.drink_name}</div>
+                  <div className="iconbtndiv">
+                    <IconButton
+                      aria-label="delete"
+                      className="deletebtn"
+                      onClick={deleteRecipe(MyCocktail.id)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </div>
+                </Card.Title>
+                <hr />
+                <Card.Img
+                  variant="top"
+                  src={`http://localhost:8000${MyCocktail.image}`}
+                />
+                <hr />
+                <Card.Text>{MyCocktail.strInstructions}</Card.Text>
+              </Card.Body>
+              <ListGroup className="list-group-flush">{igrList()}</ListGroup>
+            </Card>
+          </Grid>
 
-      <Grid container className="recipe" justify="center" alignItems="center">
-        <Card>
-          <Card.Body>
-            <Card.Title>
-              <div className="namediv">
-                {MyCocktail.name}
-              </div>
-              <div className="iconbtndiv">
-                <IconButton aria-label="delete" className="deletebtn" onClick={deleteRecipe(MyCocktail.id)}>
-                  <DeleteIcon/>
-                </IconButton>
-              </div>
-            </Card.Title>
-            <hr />
-            <Card.Img variant="top" src={MyCocktail.img} />
-            <hr />
-            <Card.Text>{MyCocktail.details}</Card.Text>
-          </Card.Body>
-          <ListGroup className="list-group-flush">
-            {igrList}
-          </ListGroup>
-        </Card>
-      </Grid>
-
-      <Grid container justify="center" className="pagination">
-      <MemoryRouter initialEntries={["/inbox"]} initialIndex={0}>
-      <Route>
-        {({ location }) => {
-          const query = new URLSearchParams(location.search);
-          const page = parseInt(query.get("page") || "1", 10);
-          return (
-            // <form onSubmit={onFormSubmit}>
-              <Pagination
-                size="small"
-                page={page}
-                count={dumpFile.length}
-                onChange={setIndex(page - 1)}
-                renderItem={(item) => (
-                  <PaginationItem
-                    component={Link}
-                    to={`/inbox${item.page === 1 ? "" : `?page=${item.page}`}`}
-                    {...item}
-                  />
-                )}
-              />
-            // </form>
-          );
-        }}
-      </Route>
-    </MemoryRouter>
-      </Grid>
+          <Grid container justify="center" className="pagination">
+            <MemoryRouter initialEntries={["/inbox"]} initialIndex={0}>
+              <Route>
+                {({ location }) => {
+                  const query = new URLSearchParams(location.search);
+                  const page = parseInt(query.get("page") || "1", 10);
+                  return (
+                    <Pagination
+                      size="small"
+                      page={page}
+                      count={menuList.length}
+                      onChange={setIndex(page - 1)}
+                      renderItem={(item) => (
+                        <PaginationItem
+                          component={Link}
+                          to={`/inbox${
+                            item.page === 1 ? "" : `?page=${item.page}`
+                          }`}
+                          {...item}
+                        />
+                      )}
+                    />
+                  );
+                }}
+              </Route>
+            </MemoryRouter>
+          </Grid>
+        </Fragment>
+      ) : (
+        <div className="sug">커뮤니티에서 레시피를 찜해보세요!</div>
+      )}
     </Wrapper>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
@@ -14,25 +14,30 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CommentList from "../../Comment/ArticleUnderCommentList";
 import MenuModal from "../MenuModal/";
 
-export default function (props) {
-  // console.log(props.list);
-  let article = props.list.map((item, index) => {
-    // console.log("key", index);
-    // console.log("item", item);
+import { CommonContext } from "../../../../context/CommonContext";
 
-    // const [countLikeIt, setCountLikeIt] = useState(item.LIKE.length);
+export default function (props) {
+  const { serverUrl, user } = useContext(CommonContext);
+
+  let article = props.list.map((item, index) => {
     const [isSaveit, setSaveit] = useState(0);
 
     let likeButton = null;
     let countLikeIt1 = null;
-    if (item.LIKE.length) {
+    if (item.LIKE.includes(user.user.id)) {
       // 현재 유저가 item.LIKE에 있으면 1 없으면 0
+      console.log("있다면");
       likeButton = <FavoriteIcon onClick={likeIt} color="error" key={index} />;
       countLikeIt1 = (
         <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
       );
     } else {
+      console.log("없다면");
+
       likeButton = <FavoriteBorderIcon onClick={likeIt} key={index} />;
+      countLikeIt1 = (
+        <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
+      );
     }
 
     function likeIt() {

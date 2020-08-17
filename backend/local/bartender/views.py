@@ -49,9 +49,6 @@ class recipeViewset(viewsets.ModelViewSet):
     # 실제 사용시 아래 주석 해제할 것!
     # permission_classes = [IsAuthenticated]
 
-    # def search(self):
-    #     return filterQuery(self.request)
-
 
 class bottleViewset(viewsets.ModelViewSet):
     queryset = Bottle.objects.all()

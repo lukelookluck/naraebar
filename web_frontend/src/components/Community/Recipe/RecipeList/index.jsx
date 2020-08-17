@@ -47,11 +47,10 @@ export default function () {
   }
 
   function likeSubmit(article) {
-    console.log(article);
     axios
       .post(
         `${serverUrl}/community/article/${article.id}/`,
-        { user: article.user }, // 현재 유저 정보 넣기
+        { user: user.user.id }, // 현재 유저 정보 넣기
         {
           headers: {
             Authorization: `JWT ${user.token}`,

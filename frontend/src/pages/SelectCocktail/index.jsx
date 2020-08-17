@@ -5,31 +5,27 @@ import { useHistory } from 'react-router-dom';
 import { Grid, Button } from "@material-ui/core";
 import { CommonContext } from "../../context/CommonContext";
 import axios from "axios";
-// import dumpfile from '../dump.json';
 
 const SelectCocktail = ({ match }) => {
-
   let history = useHistory();
 
   const onClickRedirectPathHandler = name => e => {
-
     // 여기 뭔가 아두이노나 라즈베리파이한테 만들어!라는 명령을 주는게 와야할 듯
 
     history.push(name);
   };
 
-  // const Cocktails = dumpfile;
   const [menuList, setMenuList] = useState([]);
   const { serverUrl } = useContext(CommonContext);
 
   function refreshList() {
     axios
       .get(`/bartender/recipe`, {
-        headers: {
-          'Access-Control-Allow-Origin' : '*'
-        },
+        // headers: {
+        //   Authorization: `JWT ${user.token}`,
+        // },
       })
-      .then((res) => {
+      .then(res => {
         console.log(res.data);
         setMenuList(res.data);
       })
@@ -43,15 +39,6 @@ const SelectCocktail = ({ match }) => {
   var index = menuList.findIndex(item => item.id == match.params.cocktailId);
 
   const MyCocktail = menuList[index];
-
-  // const igrList = MyCocktail.ingredients.map((item) => {
-  //   return (
-  //     <Grid item xs>
-  //       <div className="itemdiv">{item.strIngredient}</div>
-  //       <div className="itemdiv">{item.strMeasure} ml</div>
-  //     </Grid>
-  //   );
-  // });
 
   function igrList () {
     return (
@@ -116,8 +103,20 @@ const SelectCocktail = ({ match }) => {
               {igrList()}
             </Grid>
             <Grid className="btnGrid">
-              <Button className="btnSelect" variant="contained" onClick={onClickRedirectPathHandler("/MakingCocktail")}>선택</Button>
-              <Button className="btnCancel" variant="contained" onClick={onClickRedirectPathHandler("/MenuList")}>취소</Button>
+              <Button
+                className="btnCancel"
+                variant="contained"
+                onClick={onClickRedirectPathHandler('/MenuList')}
+              >
+                취소
+              </Button>
+              <Button
+                className="btnSelect"
+                variant="contained"
+                onClick={onClickRedirectPathHandler('/MakingCocktail')}
+              >
+                제조
+              </Button>
             </Grid>
           </Grid>
         </Grid>) : (<div></div>)

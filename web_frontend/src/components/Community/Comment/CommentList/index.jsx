@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import Grid from "@material-ui/core/Grid";
+import React, { useContext } from "react";
 import Wrapper from "./style";
-
-import axios from "axios";
 
 import AccountCircleTwoToneIcon from "@material-ui/icons/AccountCircleTwoTone";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -10,11 +7,15 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
 import ReplyList from "../../../Community/ReplyList/";
 
+import { CommonContext } from "../../../../context/CommonContext";
+
 export default function (props) {
+  const { serverUrl, user } = useContext(CommonContext);
+
   let comments = props.comments.map((comment, idx) => {
     let likeButton = null;
     let countLikeIt1 = null;
-    if (comment.LIKE.length) {
+    if (comment.LIKE.includes(user.user.id)) {
       likeButton = (
         <FavoriteIcon onClick={() => likeIt(comment)} color="error" key={idx} />
       );
@@ -26,6 +27,11 @@ export default function (props) {
     } else {
       likeButton = (
         <FavoriteBorderIcon onClick={() => likeIt(comment)} key={idx} />
+      );
+      countLikeIt1 = (
+        <span className="comment-likeIt-count">
+          좋아요 {comment.LIKE.length}개
+        </span>
       );
     }
 
