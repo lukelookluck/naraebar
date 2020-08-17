@@ -76,36 +76,73 @@ export default function (props) {
         <div>
           <div>{item.detail}</div>
           <div className="ingredient-title">[재료]</div>
-          <div className="ingredient-box">
-            <span>{item.ingredient1}</span>
-            <span>{item.measure1}</span>
-          </div>
-          <div className="ingredient-box">
-            <span>{item.ingredient2}</span>
-            <span>{item.measure2}</span>
-          </div>
-          <div className="ingredient-box">
-            <span>{item.ingredient3}</span>
-            <span>{item.measure3}</span>
-          </div>
-          {item.ingredient4 && (
+
+          {item.ingredient1.length != 0
+            ? (
+            <div className="ingredient-box">
+              <span>{item.ingredient1}</span>
+              <span>{item.measure1} ml</span>
+            </div>
+            )
+            : (
+              <div></div>
+            )
+          }
+          {item.ingredient2.length != 0
+            ? (
+            <div className="ingredient-box">
+              <span>{item.ingredient2}</span>
+              <span>{item.measure2} ml</span>
+            </div>
+            )
+            : (
+              <div></div>
+            )
+          }
+          {item.ingredient3.length != 0
+            ? (
+            <div className="ingredient-box">
+              <span>{item.ingredient3}</span>
+              <span>{item.measure3} ml</span>
+            </div>
+            )
+            : (
+              <div></div>
+            )
+          }
+          {item.ingredient4.length != 0
+            ? (
             <div className="ingredient-box">
               <span>{item.ingredient4}</span>
-              <span>{item.measure4}</span>
+              <span>{item.measure4} ml</span>
             </div>
-          )}
-          {item.ingredient5 && (
+            )
+            : (
+              <div></div>
+            )
+          }
+          {item.ingredient5.length != 0
+            ? (
             <div className="ingredient-box">
               <span>{item.ingredient5}</span>
-              <span>{item.measure5}</span>
+              <span>{item.measure5} ml</span>
             </div>
-          )}
-          {item.ingredient6 && (
+            )
+            : (
+              <div></div>
+            )
+          }
+          {item.ingredient6.length != 0
+            ? (
             <div className="ingredient-box">
               <span>{item.ingredient6}</span>
-              <span>{item.measure6}</span>
+              <span>{item.measure6} ml</span>
             </div>
-          )}
+            )
+            : (
+              <div></div>
+            )
+          }
         </div>
       );
       setIngredients("");
