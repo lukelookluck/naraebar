@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'like_articles')
+        fields = ('id', 'username', 'email', 'like_articles')
 
     def get_like_articles(self, obj):
         like_articles = obj.like_articles.all()
