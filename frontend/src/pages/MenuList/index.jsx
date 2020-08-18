@@ -5,7 +5,7 @@ import Layout from '../../layout/';
 
 const MenuList = () => (
   <Layout>
-    <Carousel/>
+    <Carousel />
   </Layout>
 );
 
