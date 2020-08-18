@@ -51,6 +51,22 @@ def LikeArticle(request, article_pk):
 
 
 @api_view(['POST'])
+def SaveArticle(request, article_pk):
+    article = Article.objects.get(pk=article_pk)
+    user_id = request.data.get('user')
+    user = User.objects.get(id=user_id)
+    SAVE = article.SAVE.all()
+
+    if user in SAVE:
+        article.SAVE.remove(user)
+    else:
+        article.SAVE.add(user)
+
+    result = article.SAVE.all().count()
+    return Response(result)
+
+
+@api_view(['POST'])
 def LikeComment(request, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     user_id = request.data.get('user')
