@@ -10,6 +10,7 @@ int mon = 1; // 현재 펌프가 on인지 off인지 확인할 수 있음
 int mon_before = 1;
 int x = 0; // switch문 사용 용도 
 int y = 0; 
+char valve[] = {8, 9, 10, 11, 12}; // idx 0번은 공기 주입구 순서대로 1, 2, 3, 4번 솔밸브
 
 void setup() {
   //pinMode(6, OUTPUT); //PWM OUT
@@ -55,11 +56,42 @@ void loop() {
 }
 
 
-int make (){
+int make(){
   //전역변수 써서 그 전역변수 idx의 bottle과 contain 의 값에 따라 음료를 만들기 
   // 전역변수 idx의 bottle과 contain 의 값이 -1이면 return 1
   // 1을 return 하면 다 만들었으니까 다만들었다는 신호 보내기
   //나머지는 0 리턴 0일 경우에는 전역변수 값 1개씩 증가
+
+  
+}
+
+int wash() {
+  if (timer == 0) {
+    switch(x) {
+      case 0: 
+        mon = HIGH;
+        // 1초가 지나면 알람이 1이 됨 
+        if (alarm(1)) {
+          mon = LOW;
+          x = 1;
+        }
+        break;
+      case 1:
+        mon = LOW;
+        if (alarm(3)) {
+          mon = HIGH;
+          x = 2;
+        }
+        break;
+      case 2:
+        mon = HIGH;
+        break;
+      default:
+        break;
+    }
+
+    digitalWrite(valve[0], mon);
+  }
 }
 
 
