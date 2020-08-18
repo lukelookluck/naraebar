@@ -8,7 +8,7 @@ const Settings = () => {
 
   return (
     <Layout>
-      
+      <div>뿌야</div>
     </Layout>
   );
 };
