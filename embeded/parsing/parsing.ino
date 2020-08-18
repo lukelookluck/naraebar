@@ -9,6 +9,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   pinMode(9, OUTPUT);
+
 }
 
 void loop() {
@@ -32,9 +33,10 @@ void loop() {
 String tmp = ""; 
 
 tmp = Serial.readString();
-if (tmp && (tmp!="")){
-  parsing(tmp);
-}
+Serial.println(tmp);
+//if (tmp && (tmp!="")){
+//  parsing(tmp);
+//}
 
 }
 
