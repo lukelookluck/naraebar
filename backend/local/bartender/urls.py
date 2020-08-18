@@ -10,5 +10,4 @@ router.register('bottle', views.bottleViewset)
 
 urlpatterns = [
     path('', include(router.urls)),
-    # path('random/', views.get_random_recipe),
 ]

@@ -4,8 +4,8 @@ const Wrapper = styled.div`
   text-align: center;
 
   & .cocktailimg {
-      width:700px;
-      height:700px;
+      width:600px;
+      height:600px;
   }
 
   & .caro {
@@ -64,15 +64,31 @@ const Wrapper = styled.div`
 
 & .carousel-caption {
   background-color: rgba( 255, 255, 255, 0.5 );
-  width: 630px;
+  width: 530px;
   border-radius: 20px;
   right: 0%;
   left: 0%;
-  margin-left: 195px;
+  margin-left: 245px;
 };
 
 & .caroitem {
   text-align: center;
+}
+
+& .btnRandom {
+  font-family: 'IBMPlexSansKR-Text';
+  font-size: 35px;
+  background-color: rgb(56, 107, 180);
+  text-decoration: none;
+  border: none;
+  color: white;
+  margin-top: 25px;
+  width: 300px;
+  border-radius: 30px;
+}
+
+& .btnRandom:hover {
+  background-color: rgb(56, 107, 180);
 }
 `;
 

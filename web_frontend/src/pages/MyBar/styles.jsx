@@ -41,6 +41,11 @@ const Wrapper = styled.div`
     margin-top: 50px;
   }
 
+  & .card-img-top {
+    // width: 200px;
+    // hegiht: 200px;
+  }
+
   @media(min-width: 700px) {
 
     & .card {
