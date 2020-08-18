@@ -46,7 +46,20 @@ const MyBar = () => {
 
   const deleteRecipe = (id) => (e) => {
     try {
-      // 삭제하라는 어떤 신호를 보내겠지
+      axios
+      .delete(
+        `${serverUrl}/recipe/list/${id}/`,
+        {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        refreshList();
+      })
+      .catch((err) => console.log(err));
 
       console.log("삭제 버튼 클릭, id = " + id);
       alert("삭제 성공");
