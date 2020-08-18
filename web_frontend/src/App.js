@@ -16,11 +16,7 @@ import { useLocalStorageSetState } from "./common/CommonHooks";
 import { CommonContext } from "./context/CommonContext";
 
 function App() {
-<<<<<<< HEAD
   const HOST = "i3d209.p.ssafy.io";
-=======
-  const HOST = "localhost:8000";
->>>>>>> 9a97b94cefbfb7eb394326142edab12eac3068f6
   const serverUrl = `http://${HOST}`;
 
   const [user, setUser] = useLocalStorageSetState(
