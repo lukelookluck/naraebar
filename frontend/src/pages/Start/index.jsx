@@ -2,10 +2,11 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Layout from '../../layout/';
 import Wrapper from './styles';
-import { Grid, Button } from "@material-ui/core";
+import { Grid, Button } from '@material-ui/core';
 import '../../index.css';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
+import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
 
 const Start = () => {
   let history = useHistory();
@@ -18,6 +19,12 @@ const Start = () => {
     <Layout>
       <Wrapper>
         <Grid container className="root" justify="center" alignItems="center">
+          <Grid item xs={12} className="setting">
+            <SettingsRoundedIcon
+              fontSize="large"
+              onClick={onClickRedirectPathHandler('/Settings')}
+            ></SettingsRoundedIcon>
+          </Grid>
           <Grid item xs={12} className="logo">
             <p>NaReBar</p>
             <div className="btndiv">
@@ -25,7 +32,7 @@ const Start = () => {
                 className="btnCleaning"
                 variant="contained"
                 onClick={onClickRedirectPathHandler('/Cleaning')}
-                startIcon={<InvertColorsIcon/>}
+                startIcon={<InvertColorsIcon />}
               >
                 세척 모드
               </Button>
@@ -33,12 +40,11 @@ const Start = () => {
                 className="btnStart"
                 variant="contained"
                 onClick={onClickRedirectPathHandler('/MenuList')}
-                startIcon={<LocalBarIcon/>}
+                startIcon={<LocalBarIcon />}
               >
                 메뉴 선택
               </Button>
             </div>
-
           </Grid>
         </Grid>
       </Wrapper>
