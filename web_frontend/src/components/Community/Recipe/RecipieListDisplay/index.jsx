@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
@@ -14,7 +14,11 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CommentList from "../../Comment/ArticleUnderCommentList";
 import MenuModal from "../MenuModal/";
 
+import { CommonContext } from "../../../../context/CommonContext";
+
 export default function (props) {
+  const { serverUrl, user } = useContext(CommonContext);
+
   // console.log(props.list);
   let article = props.list.map((item, index) => {
     // console.log("key", index);
@@ -122,6 +126,9 @@ export default function (props) {
             &nbsp;&nbsp;{item.username}
           </div>
           <div>
+            {item.user}
+            {user.user.id}
+            {}
             <MenuModal item={item} DeleteArticle={props.DeleteArticle} />
           </div>
         </div>
