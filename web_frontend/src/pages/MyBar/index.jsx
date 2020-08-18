@@ -58,56 +58,62 @@ const MyBar = () => {
   function igrList() {
     return (
       <Fragment>
-        {MyCocktail.strIngredient1 != "null" ? (
+        { MyCocktail.ingredient1.length != 0 ? (
           <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient1}</div>
             <div className="listdiv">{MyCocktail.measure1} ml</div>
           </ListGroupItem>
         ) : (
-          <div></div>
-        )}
-        {MyCocktail.strIngredient2 != "null" ? (
+            <div></div>
+          )}
+        {MyCocktail.ingredient2.length != 0 ? (
           <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient2}</div>
-            <div className="listdiv">{MyCocktail.measure1} ml</div>
+            <div className="listdiv">{MyCocktail.measure2} ml</div>
           </ListGroupItem>
         ) : (
-          <div></div>
-        )}
-        {MyCocktail.strIngredient3 != "null" ? (
+            <div></div>
+          )}
+        {MyCocktail.ingredient3.length != 0 ? (
           <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient3}</div>
-            <div className="listdiv">{MyCocktail.measure1} ml</div>
+            <div className="listdiv">{MyCocktail.measure3} ml</div>
           </ListGroupItem>
         ) : (
-          <div></div>
-        )}
-        {MyCocktail.strIngredient4 != "null" ? (
+            <div></div>
+          )}
+        {MyCocktail.ingredient4.length != 0 ? (
           <ListGroupItem>
-            <div className="listdiv">{MyCocktail.strIngredient4}</div>
-            <div className="listdiv">{MyCocktail.strMeasure4} ml</div>
+            <div className="listdiv">{MyCocktail.ingredient4}</div>
+            <div className="listdiv">{MyCocktail.measure4} ml</div>
           </ListGroupItem>
         ) : (
-          <div></div>
-        )}
-        {MyCocktail.strIngredient5 != "null" ? (
-          <ListGroupItem>
-            <div className="listdiv">{MyCocktail.strIngredient5}</div>
-            <div className="listdiv">{MyCocktail.strMeasure5} ml</div>
+            <div></div>
+          )}
+        {MyCocktail.ingredient5.length != 0 ? (
+          <ListGroupItem >
+            <div className="listdiv">{MyCocktail.ingredient5}</div>
+            <div className="listdiv">{MyCocktail.measure5} ml</div>
           </ListGroupItem>
         ) : (
-          <div></div>
-        )}
-        {MyCocktail.strIngredient6 != "null" ? (
-          <ListGroupItem>
-            <div className="listdiv">{MyCocktail.strIngredient6}</div>
-            <div className="listdiv">{MyCocktail.strMeasure6} ml</div>
-          </ListGroupItem>
-        ) : (
-          <div></div>
-        )}
-      </Fragment>
-    );
+            <div></div>
+          )
+        }
+        {
+          MyCocktail.ingredient6.length != 0 ? (
+            <ListGroupItem>
+              <div className="listdiv">{MyCocktail.ingredient6}</div>
+              <div className="listdiv">{MyCocktail.measure6} ml</div>
+            </ListGroupItem>
+          ) : (
+              <div></div>
+            )
+        }
+        {
+          console.log(MyCocktail)
+        }
+      </Fragment >
+    )
   }
 
   return (
@@ -127,7 +133,7 @@ const MyBar = () => {
             <Card>
               <Card.Body>
                 <Card.Title>
-                  <div className="namediv">{MyCocktail.drink_name}</div>
+                  <div className="namediv">{MyCocktail.title}</div>
                   <div className="iconbtndiv">
                     <IconButton
                       aria-label="delete"
@@ -144,7 +150,7 @@ const MyBar = () => {
                   src={`http://localhost:8000${MyCocktail.image}`}
                 />
                 <hr />
-                <Card.Text>{MyCocktail.strInstructions}</Card.Text>
+                <Card.Text>{MyCocktail.detail}</Card.Text>
               </Card.Body>
               <ListGroup className="list-group-flush">{igrList()}</ListGroup>
             </Card>
@@ -167,7 +173,7 @@ const MyBar = () => {
                           component={Link}
                           to={`/inbox${
                             item.page === 1 ? "" : `?page=${item.page}`
-                          }`}
+                            }`}
                           {...item}
                         />
                       )}
@@ -179,8 +185,8 @@ const MyBar = () => {
           </Grid>
         </Fragment>
       ) : (
-        <div className="sug">커뮤니티에서 레시피를 찜해보세요!</div>
-      )}
+          <div className="sug">커뮤니티에서 레시피를 찜해보세요!</div>
+        )}
     </Wrapper>
   );
 };
