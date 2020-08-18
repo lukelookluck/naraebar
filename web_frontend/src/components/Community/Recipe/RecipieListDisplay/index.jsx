@@ -136,10 +136,9 @@ export default function (props) {
             &nbsp;&nbsp;{item.username}
           </div>
           <div>
-            {item.user}
-            {user.user.id}
-            {}
-            <MenuModal item={item} DeleteArticle={props.DeleteArticle} />
+            {user.user.id === item.user && (
+              <MenuModal item={item} DeleteArticle={props.DeleteArticle} />
+            )}
           </div>
         </div>
         <div className="list-item">

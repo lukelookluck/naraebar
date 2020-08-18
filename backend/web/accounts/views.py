@@ -22,7 +22,7 @@ from .forms import CustomUserCreationForm
 
 @api_view(['GET'])
 def current_user(request):
-
+    print(request.user)
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
 

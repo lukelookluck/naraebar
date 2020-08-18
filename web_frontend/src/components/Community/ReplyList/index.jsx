@@ -137,7 +137,10 @@ export default function (props) {
       return (
         <div className="reply-single" key={idx}>
           <AccountCircleTwoToneIcon className="reply-avata" fontSize="large" />
-          <div className="reply-single-left">
+          <div
+            className="reply-single-left"
+            onClick={(e) => props.clickComment(e)}
+          >
             <div className="reply-single-left-1">
               <div className="reply-username">
                 {reply.username}

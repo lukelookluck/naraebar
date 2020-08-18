@@ -30,7 +30,7 @@ const MyBar = () => {
       })
       .then((res) => {
         console.log(res.data);
-        setMenuList(res.data.like_articles);
+        setMenuList(res.data.save_articles);
         console.log(menuList);
       })
       .catch((err) => console.log(err + " 에러났음"));
@@ -47,19 +47,16 @@ const MyBar = () => {
   const deleteRecipe = (id) => (e) => {
     try {
       axios
-      .delete(
-        `${serverUrl}/recipe/list/${id}/`,
-        {
+        .delete(`${serverUrl}/article_save/${id}/`, {
           headers: {
             Authorization: `JWT ${user.token}`,
           },
-        }
-      )
-      .then((res) => {
-        console.log(res.data);
-        refreshList();
-      })
-      .catch((err) => console.log(err));
+        })
+        .then((res) => {
+          console.log(res.data);
+          refreshList();
+        })
+        .catch((err) => console.log(err));
 
       console.log("삭제 버튼 클릭, id = " + id);
       alert("삭제 성공");
@@ -71,62 +68,57 @@ const MyBar = () => {
   function igrList() {
     return (
       <Fragment>
-        { MyCocktail.ingredient1.length != 0 ? (
+        {MyCocktail.ingredient1.length != 0 ? (
           <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient1}</div>
             <div className="listdiv">{MyCocktail.measure1} ml</div>
           </ListGroupItem>
         ) : (
-            <div></div>
-          )}
+          <div></div>
+        )}
         {MyCocktail.ingredient2.length != 0 ? (
           <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient2}</div>
             <div className="listdiv">{MyCocktail.measure2} ml</div>
           </ListGroupItem>
         ) : (
-            <div></div>
-          )}
+          <div></div>
+        )}
         {MyCocktail.ingredient3.length != 0 ? (
           <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient3}</div>
             <div className="listdiv">{MyCocktail.measure3} ml</div>
           </ListGroupItem>
         ) : (
-            <div></div>
-          )}
+          <div></div>
+        )}
         {MyCocktail.ingredient4.length != 0 ? (
           <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient4}</div>
             <div className="listdiv">{MyCocktail.measure4} ml</div>
           </ListGroupItem>
         ) : (
-            <div></div>
-          )}
+          <div></div>
+        )}
         {MyCocktail.ingredient5.length != 0 ? (
-          <ListGroupItem >
+          <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient5}</div>
             <div className="listdiv">{MyCocktail.measure5} ml</div>
           </ListGroupItem>
         ) : (
-            <div></div>
-          )
-        }
-        {
-          MyCocktail.ingredient6.length != 0 ? (
-            <ListGroupItem>
-              <div className="listdiv">{MyCocktail.ingredient6}</div>
-              <div className="listdiv">{MyCocktail.measure6} ml</div>
-            </ListGroupItem>
-          ) : (
-              <div></div>
-            )
-        }
-        {
-          console.log(MyCocktail)
-        }
-      </Fragment >
-    )
+          <div></div>
+        )}
+        {MyCocktail.ingredient6.length != 0 ? (
+          <ListGroupItem>
+            <div className="listdiv">{MyCocktail.ingredient6}</div>
+            <div className="listdiv">{MyCocktail.measure6} ml</div>
+          </ListGroupItem>
+        ) : (
+          <div></div>
+        )}
+        {console.log(MyCocktail)}
+      </Fragment>
+    );
   }
 
   return (
@@ -186,7 +178,7 @@ const MyBar = () => {
                           component={Link}
                           to={`/inbox${
                             item.page === 1 ? "" : `?page=${item.page}`
-                            }`}
+                          }`}
                           {...item}
                         />
                       )}
@@ -198,8 +190,8 @@ const MyBar = () => {
           </Grid>
         </Fragment>
       ) : (
-          <div className="sug">커뮤니티에서 레시피를 찜해보세요!</div>
-        )}
+        <div className="sug">커뮤니티에서 레시피를 찜해보세요!</div>
+      )}
     </Wrapper>
   );
 };
