@@ -47,6 +47,21 @@ const MyBar = () => {
   const deleteRecipe = (id) => (e) => {
     try {
       // 삭제하라는 어떤 신호를 보내겠지
+      // axios
+      // .post(
+      //   `${serverUrl}/community/article/${article.id}/`,
+      //   { user: article.user }, // 현재 유저 정보 넣기
+      //   {
+      //     headers: {
+      //       Authorization: `JWT ${user.token}`,
+      //     },
+      //   }
+      // )
+      // .then((res) => {
+      //   console.log(res.data);
+      //   refreshList();
+      // })
+      // .catch((err) => console.log(err));
 
       console.log("삭제 버튼 클릭, id = " + id);
       alert("삭제 성공");
