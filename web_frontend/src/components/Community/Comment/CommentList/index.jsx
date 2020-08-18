@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import Wrapper from "./style";
 
@@ -9,6 +9,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
 import ReplyList from "../../../Community/ReplyList/";
+import { CommonContext } from "../../../../context/CommonContext";
 
 export default function (props) {
   let comments = props.comments.map((comment, idx) => {
@@ -98,12 +99,16 @@ export default function (props) {
 
     return (
       <div key={idx}>
+        {}
         <div className="comment-single">
           <AccountCircleTwoToneIcon
             className="comment-avata"
             fontSize="large"
           />
-          <div className="comment-single-left">
+          <div
+            className="comment-single-left"
+            onClick={(e) => props.clickComment(e)}
+          >
             <div className="comment-single-left-1">
               <div className="comment-username">
                 {comment.username}
@@ -125,7 +130,11 @@ export default function (props) {
           <div className="comment-likeIt">{likeButton}</div>
         </div>
         <div>
-          <ReplyList replys={comment.replys} likeIt={likeIt} />
+          <ReplyList
+            replys={comment.replys}
+            likeIt={likeIt}
+            clickComment={props.clickComment}
+          />
         </div>
       </div>
     );

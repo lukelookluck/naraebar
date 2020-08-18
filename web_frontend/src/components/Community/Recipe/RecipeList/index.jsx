@@ -18,7 +18,6 @@ export default function () {
   const { serverUrl, user } = useContext(CommonContext);
 
   const [articleList, setArticleList] = useState([]);
-  const [showMore, setShowMore] = useState();
 
   useEffect(() => {
     refreshList();
@@ -44,11 +43,11 @@ export default function () {
   }
 
   function likeSubmit(article) {
-    console.log(article);
+    // console.log(article);
     axios
       .post(
         `${serverUrl}/community/article_like/${article.id}/`,
-        { user: article.user }, // 현재 유저 정보 넣기
+        { user: user.user.id }, // 현재 유저 정보 넣기
         {
           headers: {
             Authorization: `JWT ${user.token}`,
@@ -57,8 +56,7 @@ export default function () {
       )
       .then((res) => {
         console.log(res.data.LIKE);
-
-        // refreshList();
+        refreshList();
       })
       .catch((err) => console.log(err));
   }
@@ -68,7 +66,7 @@ export default function () {
     axios
       .post(
         `${serverUrl}/community/article_save/${article.id}/`,
-        { user: article.user }, // 현재 유저 정보 넣기
+        { user: user.user.id }, // 현재 유저 정보 넣기
         {
           headers: {
             Authorization: `JWT ${user.token}`,
@@ -109,8 +107,6 @@ export default function () {
           likeSubmit={likeSubmit}
           saveSubmit={saveSubmit}
           DeleteArticle={DeleteArticle}
-          showMore={showMore}
-          setShowMore={setShowMore}
         />
       </Grid>
     </Wrapper>

@@ -3,11 +3,6 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
     
     text-align: center;
-
-    & .setting {
-        margin-top: 60px;
-        margin-left: 800px;
-    }
     
     & .logo p {
         margin-top: 150px;

@@ -1,21 +1,21 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from .models import User
 from community.models import Article
 from community.serializers import ArticleSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
-    like_articles = serializers.SerializerMethodField()
+    save_articles = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'like_articles')
+        fields = ('id', 'username', 'email', 'save_articles')
 
-    def get_like_articles(self, obj):
-        like_articles = obj.like_articles.all()
-        serializer = ArticleSerializer(instance=like_articles, many=True)
+    def get_save_articles(self, obj):
+        save_articles = obj.save_articles.all()
+        serializer = ArticleSerializer(instance=save_articles, many=True)
         return serializer.data
 
 
