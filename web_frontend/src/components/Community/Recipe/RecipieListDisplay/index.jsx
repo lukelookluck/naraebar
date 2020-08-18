@@ -29,14 +29,20 @@ export default function (props) {
 
     let likeButton = null;
     let countLikeIt1 = null;
-    if (item.LIKE.length) {
+    if (item.LIKE.includes(user.user.id)) {
       // 현재 유저가 item.LIKE에 있으면 1 없으면 0
+      console.log("있다면");
       likeButton = <FavoriteIcon onClick={likeIt} color="error" key={index} />;
       countLikeIt1 = (
         <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
       );
     } else {
+      console.log("없다면");
+
       likeButton = <FavoriteBorderIcon onClick={likeIt} key={index} />;
+      countLikeIt1 = (
+        <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
+      );
     }
 
     function likeIt() {
@@ -53,9 +59,11 @@ export default function (props) {
 
     let saveButton = null;
     if (isSaveit) {
-      saveButton = <BookmarkIcon onClick={saveIt} />;
+      saveButton = <BookmarkIcon onClick={() => props.saveSubmit(item)} />;
     } else {
-      saveButton = <BookmarkBorderIcon onClick={saveIt} />;
+      saveButton = (
+        <BookmarkBorderIcon onClick={() => props.saveSubmit(item)} />
+      );
     }
 
     function saveIt() {
@@ -81,72 +89,54 @@ export default function (props) {
           <div>{item.detail}</div>
           <div className="ingredient-title">[재료]</div>
 
-          {item.ingredient1.length != 0
-            ? (
+          {item.ingredient1.length != 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient1}</span>
               <span>{item.measure1} ml</span>
             </div>
-            )
-            : (
-              <div></div>
-            )
-          }
-          {item.ingredient2.length != 0
-            ? (
+          ) : (
+            <div></div>
+          )}
+          {item.ingredient2.length != 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient2}</span>
               <span>{item.measure2} ml</span>
             </div>
-            )
-            : (
-              <div></div>
-            )
-          }
-          {item.ingredient3.length != 0
-            ? (
+          ) : (
+            <div></div>
+          )}
+          {item.ingredient3.length != 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient3}</span>
               <span>{item.measure3} ml</span>
             </div>
-            )
-            : (
-              <div></div>
-            )
-          }
-          {item.ingredient4.length != 0
-            ? (
+          ) : (
+            <div></div>
+          )}
+          {item.ingredient4.length != 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient4}</span>
               <span>{item.measure4} ml</span>
             </div>
-            )
-            : (
-              <div></div>
-            )
-          }
-          {item.ingredient5.length != 0
-            ? (
+          ) : (
+            <div></div>
+          )}
+          {item.ingredient5.length != 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient5}</span>
               <span>{item.measure5} ml</span>
             </div>
-            )
-            : (
-              <div></div>
-            )
-          }
-          {item.ingredient6.length != 0
-            ? (
+          ) : (
+            <div></div>
+          )}
+          {item.ingredient6.length != 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient6}</span>
               <span>{item.measure6} ml</span>
             </div>
-            )
-            : (
-              <div></div>
-            )
-          }
+          ) : (
+            <div></div>
+          )}
         </div>
       );
       setIngredients("");
