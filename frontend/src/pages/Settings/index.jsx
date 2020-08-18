@@ -1,4 +1,4 @@
-import React, {useEffect, useState, Fragment} from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import Layout from '../../layout/';
 import Wrapper from './styles';
 import { Grid } from '@material-ui/core';
@@ -9,36 +9,44 @@ import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 const Settings = () => {
 
     const [bottleList, setBottleList] = useState([]);
+    const [imgurl, setImgurl] = useState();
 
     function refreshList() {
         axios
-          .get(`/bartender/bottle`, {
-            headers: {
-                'Access-Control-Allow-Origin' : '*'
-              },
-          })
-          .then(res => {
-            console.log(res.data);
-            setBottleList(res.data);
-          })
-          .catch((err) => console.log(err + "왜 에러가 난걸까"));
-      }
-    
-      useEffect(() => {
-        refreshList();
-      }, []);
+            .get(`/bartender/bottle`, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
 
-      const nozzles = bottleList.map((item) => {
+            })
+            .then((res) => {
+                console.log(res.data);
+                setBottleList(res.data);
+            })
+            .catch((err) => console.log(err + " 에러났음"));
+    }
+
+    useEffect(() => {
+        refreshList();
+    }, []);
+
+    const imgchange = (n) => setImgurl("./image_bottles/empty_bottle/empty_bottle_icon_" + n + ".png");
+
+    const nozzles = bottleList.map((item) => {
+        {imgchange(item.nozzle)}
         return (
-          <Grid item xs={3}>
-            {
-                item.volume === 0 
-                ? (<Fragment></Fragment>)
-                : (<Fragment></Fragment>)
-            }
-          </Grid>
+            <Grid item xs={3} key={item.id}>
+                {
+                    item.volume === 0
+                        ? (<Fragment>
+                            {/* <img src=`${imgbase}${item.nozzle}${para}` /> */}
+                            <img src={imgurl}></img>
+                        </Fragment>)
+                        : (<Fragment>흥</Fragment>)
+                }
+            </Grid>
         );
-      });
+    });
 
     return (
         <Layout>

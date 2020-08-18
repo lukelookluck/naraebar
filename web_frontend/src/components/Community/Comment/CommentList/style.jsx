@@ -29,6 +29,13 @@ const Wrapper = styled.div`
     justify-content: space-between;
   }
 
+  & .comment-single:hover {
+    margin: 11px 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #68b4ff;
+  }
+
   & .comment-single-left {
     width: 100%;
     /* margin: auto; */

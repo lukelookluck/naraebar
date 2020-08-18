@@ -13,12 +13,14 @@ import Temp1 from "../../components/Community/ArticleForm/Temp1";
 import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
+  const { serverUrl, user } = useContext(CommonContext);
+
   const [articleFormData, setArticleFormData] = useState({
     id: null,
     title: "",
     detail: "",
     drink_name: "",
-    user: 1,
+    user: user.user.id,
     ingredient1: "",
     ingredient2: "",
     ingredient3: "",
@@ -60,8 +62,6 @@ export default function (props) {
       });
     }
   }
-
-  const { serverUrl, user } = useContext(CommonContext);
 
   function goBack() {
     props.history.goBack();

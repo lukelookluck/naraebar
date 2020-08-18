@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import { Grid, Button } from "@material-ui/core";
 import { CommonContext } from "../../context/CommonContext";
 import axios from "axios";
-import errorImg from './sampleimage.png';
 
 const SelectCocktail = ({ match }) => {
   let history = useHistory();
@@ -84,10 +83,7 @@ const SelectCocktail = ({ match }) => {
         {
           MyCocktail ? (<Grid container justify="center" alignItems="center">
           <Grid item xs={6} className="imgGrid">
-              {/* <img src={MyCocktail.imgDrink} onError={
-    () => this.img.src = './sampleimage.png'} /> */}
-              {/* <img src={require('./sampleimage.png')}></img> */}
-              <img src={MyCocktail.imgDrink} alt="image"></img>
+            <img src={MyCocktail.imgDrink} alt={MyCocktail.strDrink} className="cocktailImg"></img>
           </Grid>
           <Grid item xs={6} className="textGrid">
             <Grid className="titleGrid">

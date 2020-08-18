@@ -5,13 +5,10 @@ import Wrapper from "./style";
 import axios from "axios";
 
 import ArrowBackOutlinedIcon from "@material-ui/icons/ArrowBackOutlined";
-import AccountCircleTwoToneIcon from "@material-ui/icons/AccountCircleTwoTone";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import ClearIcon from "@material-ui/icons/Clear";
 
 import CommentList from "../../components/Community/Comment/CommentList/";
 import CommentForm from "../../components/Community/Comment/CommentForm/";
-import ReplyList from "../../components/Community/ReplyList/";
 import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
@@ -21,7 +18,7 @@ export default function (props) {
     content: "",
     article: props.location.state.article,
     parent: null,
-    user: 1,
+    user: user.user.id,
   });
 
   function handleChangeCommentInput(e) {
@@ -104,22 +101,51 @@ export default function (props) {
     console.log(commentInput);
   }
 
+  const [clicked, setClicked] = useState(1);
+
+  function clickComment(e) {
+    console.log(e.target.className);
+    // e.target.style
+
+    setClicked(!clicked);
+  }
+
+  let commentHeader = null;
+  if (clicked) {
+    commentHeader = (
+      <div className="comment-list-header">
+        <ArrowBackOutlinedIcon
+          className="comment-list-header-arrow"
+          fontSize="large"
+          onClick={goBack}
+        />
+        <span className="comment-list-header-title">댓글</span>
+      </div>
+    );
+  } else {
+    commentHeader = (
+      <div className="comment-list-header-clicked">
+        <ClearIcon
+          className="comment-list-header-arrow-click"
+          fontSize="large"
+          onClick={goBack}
+        />
+        <span className="comment-list-header-title-click">선택됨</span>
+      </div>
+    );
+  }
+
   return (
     <Wrapper>
       <Grid>
-        <div className="comment-list-header">
-          <ArrowBackOutlinedIcon
-            className="comment-list-header-arrow"
-            fontSize="large"
-            onClick={goBack}
-          />
-          <span className="comment-list-header-title">댓글</span>
-        </div>
+        {commentHeader}
         <div className="comment-list-box">
           <CommentList
             comments={listComment}
             likeSubmit={likeSubmit}
             doReply={doReply}
+            clickComment={clickComment}
+            clicked={clicked}
           />
         </div>
         <CommentForm

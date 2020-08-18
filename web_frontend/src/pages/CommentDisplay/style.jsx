@@ -9,11 +9,30 @@ const Wrapper = styled.div`
     background-color: #fcfcfc;
   }
 
+  & .comment-list-header-clicked {
+    border-bottom: solid 0.5px #dddddd;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: #0080ff;
+  }
+
   & .comment-list-header-arrow {
     font-size: 45px;
   }
 
+  & .comment-list-header-arrow-click {
+    font-size: 45px;
+    color: #ffffff;
+  }
+
   & .comment-list-header-title {
+    margin-left: 15px;
+    font-size: 30px;
+  }
+
+  & .comment-list-header-title-click {
+    color: #ffffff;
     margin-left: 15px;
     font-size: 30px;
   }
