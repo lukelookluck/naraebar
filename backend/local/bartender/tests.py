@@ -12,16 +12,24 @@ ser.open()
 
 # print("help")
 
-while(True):
-    print("in while")
-    ser.write('$,MAKE,1,180,3,350,&'.encode())
-    print('write ok')
+print("in while")
+ser.write('$,MAKE,1,180,3,350,&'.encode())
+print('write ok')
 
-    receive_data = ser.readline()
-    print(receive_data)
-    print(receive_data.decode())
-    print('read ok!')
-    time.sleep(1)
+receive_data = ser.readline()
+print(receive_data)
+
+receive_data = ser.readline()
+print(receive_data)
+receive_data = ser.readline()
+print(receive_data)
+receive_data = ser.readline()
+print(receive_data)
+
+print('read ok!')
+# time.sleep(1)
 
 ser.close()
+
+
 

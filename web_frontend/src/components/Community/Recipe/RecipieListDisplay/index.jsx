@@ -19,46 +19,32 @@ import { CommonContext } from "../../../../context/CommonContext";
 export default function (props) {
   const { serverUrl, user } = useContext(CommonContext);
 
-  // console.log(props.list);
   let article = props.list.map((item, index) => {
-    // console.log("key", index);
-    // console.log("item", item);
-
-    // const [countLikeIt, setCountLikeIt] = useState(item.LIKE.length);
     const [isSaveit, setSaveit] = useState(0);
 
     let likeButton = null;
     let countLikeIt1 = null;
     if (item.LIKE.includes(user.user.id)) {
       // 현재 유저가 item.LIKE에 있으면 1 없으면 0
-      console.log("있다면");
       likeButton = <FavoriteIcon onClick={likeIt} color="error" key={index} />;
       countLikeIt1 = (
         <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
       );
     } else {
-      console.log("없다면");
-
       likeButton = <FavoriteBorderIcon onClick={likeIt} key={index} />;
-      countLikeIt1 = (
-        <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
-      );
+      if (item.LIKE.length) {
+        countLikeIt1 = (
+          <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
+        );
+      }
     }
 
     function likeIt() {
-      // alert("눌럿어?");
       props.likeSubmit(item);
-      // setLikeIt(!isLikeit);
-      // if (item.LIKE.length) {
-      //   // 현재 유저가 item.LIKE에 있으면 1 없으면 0
-      //   setCountLikeIt(countLikeIt - 1);
-      // } else {
-      //   setCountLikeIt(countLikeIt + 1);
-      // }
     }
 
     let saveButton = null;
-    if (isSaveit) {
+    if (item.SAVE.includes(user.user.id)) {
       saveButton = <BookmarkIcon onClick={() => props.saveSubmit(item)} />;
     } else {
       saveButton = (
@@ -81,7 +67,6 @@ export default function (props) {
     const [cardContent, setCardContent] = useState(
       item.detail.substring(0, 50) + "..."
     );
-    const [ingredients, setIngredients] = useState("");
 
     function moreContent(e) {
       setCardContent(
@@ -139,8 +124,6 @@ export default function (props) {
           )}
         </div>
       );
-      setIngredients("");
-      console.log(myHide);
       setmyHide(null);
       e.preventDefault();
     }
