@@ -18,15 +18,12 @@ export default function () {
   const { serverUrl, user } = useContext(CommonContext);
 
   const [articleList, setArticleList] = useState([]);
-  const [commentList, setCommentList] = useState([]);
+  const [showMore, setShowMore] = useState();
 
   useEffect(() => {
     refreshList();
   }, []);
 
-  // componentDidMount() {
-  //   this.refreshList();
-  // }
   function refreshList() {
     axios
       .get(`${serverUrl}/community/`, {
@@ -59,8 +56,9 @@ export default function () {
         }
       )
       .then((res) => {
-        console.log(res.data);
-        refreshList();
+        console.log(res.data.LIKE);
+
+        // refreshList();
       })
       .catch((err) => console.log(err));
   }
@@ -84,13 +82,6 @@ export default function () {
       .catch((err) => console.log(err));
   }
 
-  function reload() {
-    // const current = location.pathname;
-    // history.replace(`/reload`);
-    setTimeout(() => {
-      history.go(0);
-    });
-  }
   let history = useHistory();
 
   function DeleteArticle(article) {
@@ -118,6 +109,8 @@ export default function () {
           likeSubmit={likeSubmit}
           saveSubmit={saveSubmit}
           DeleteArticle={DeleteArticle}
+          showMore={showMore}
+          setShowMore={setShowMore}
         />
       </Grid>
     </Wrapper>
