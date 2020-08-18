@@ -95,6 +95,15 @@ export default function (props) {
       .catch((err) => console.log(err));
   }
 
+  function doReply(reply) {
+    setCommentInput({
+      ...commentInput,
+      content: "@" + reply.username + " ",
+      parent: reply.id,
+    });
+    console.log(commentInput);
+  }
+
   return (
     <Wrapper>
       <Grid>
@@ -107,7 +116,11 @@ export default function (props) {
           <span className="comment-list-header-title">댓글</span>
         </div>
         <div className="comment-list-box">
-          <CommentList comments={listComment} likeSubmit={likeSubmit} />
+          <CommentList
+            comments={listComment}
+            likeSubmit={likeSubmit}
+            doReply={doReply}
+          />
         </div>
         <CommentForm
           commentInput={commentInput}

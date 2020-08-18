@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Article, Comment
 from accounts.models import User
+from drf_extra_fields.fields import Base64ImageField
 
 from django.core import serializers as sz
 
@@ -8,6 +9,7 @@ from django.core import serializers as sz
 class ArticleSerializer(serializers.ModelSerializer):
     username = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
+    image = Base64ImageField()
 
     class Meta:
         model = Article
@@ -22,11 +24,9 @@ class ArticleSerializer(serializers.ModelSerializer):
         serializer = CommentSerializer(instance=comments, many=True)
         return serializer.data
 
-        # return sz.serialize('json', obj.comments.all(), ensure_ascii=False)
-
-    # def perform_update(self, serializer):
-    #     instance = serializer.save()
-    #     LIKE(user=self.request.user, modified=instance)
+    # def create(self, validate_data):
+    #     image = validate_data.pop('image')
+    #     return Article.objects.update(image=image)
 
 
 class CommentSerializer(serializers.ModelSerializer):

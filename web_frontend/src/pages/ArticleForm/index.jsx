@@ -9,7 +9,7 @@ import Header from "../../layout/Header/";
 import CloseIcon from "@material-ui/icons/Close";
 import ImageUploadBtn from "../../components/Community/ArticleForm/ImageUploadButton/";
 
-import Temp1 from "../../components/Community/Temp1/";
+import Temp1 from "../../components/Community/ArticleForm/Temp1";
 import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
@@ -86,12 +86,9 @@ export default function (props) {
     };
   }, [props.history]);
 
-  // function yerOrNo() {
-  //   if
-  // }
-
   function handleSubmit(data) {
     // console.log(data);
+
     if (data.id) {
       console.log(data);
       axios
@@ -101,6 +98,7 @@ export default function (props) {
           },
         })
         .then((res) => {
+          props.history.push("/Main");
           // console.log(res.data);
         })
         .catch((err) => {
@@ -116,6 +114,7 @@ export default function (props) {
       })
       .then((res) => {
         console.log(res.data);
+        props.history.push("/Main");
       })
       .catch((err) => {
         console.log(err);
@@ -129,12 +128,12 @@ export default function (props) {
         <Grid item xs={12} className="form-header-title">
           <div>나만의 레시피 만들기</div>
           <p>
-            id: {articleFormData.id}
+            {/* id: {articleFormData.id}
             title: {articleFormData.title}
             detail: {articleFormData.detail}
             drink_name: {articleFormData.drink_name}
-            user: {articleFormData.user}
-            image: {articleFormData.image}
+            user: {articleFormData.user} */}
+            {/* image: {articleFormData.image} */}
             {/* ingredients: {articleFormData.ingredients2.ingredient} */}
           </p>
         </Grid>
@@ -197,23 +196,16 @@ export default function (props) {
             {/* <button className="article-create-button">작성완료</button> */}
             <Grid container justify="center" alignItems="center">
               <Grid item xs={6}>
-                <Link
-                  className="more-comment"
-                  to={{
-                    pathname: "/Main",
+                <Button
+                  type="button"
+                  variant="contained"
+                  className="article-create-button"
+                  onClick={() => {
+                    handleSubmit(articleFormData);
                   }}
                 >
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    className="article-create-button"
-                    onClick={() => {
-                      handleSubmit(articleFormData);
-                    }}
-                  >
-                    공유하기
-                  </Button>
-                </Link>
+                  공유하기
+                </Button>
               </Grid>
               <Grid item xs={6}>
                 <Button type="reset" variant="contained" className="resetBtn">

@@ -5,6 +5,7 @@ import Wrapper from './styles';
 import { Grid, Button } from "@material-ui/core";
 import '../../index.css';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
+import InvertColorsIcon from '@material-ui/icons/InvertColors';
 
 const Start = () => {
   let history = useHistory();
@@ -19,13 +20,14 @@ const Start = () => {
         <Grid container className="root" justify="center" alignItems="center">
           <Grid item xs={12} className="logo">
             <p>NaReBar</p>
-            <div>
+            <div className="btndiv">
               <Button
                 className="btnCleaning"
                 variant="contained"
                 onClick={onClickRedirectPathHandler('/Cleaning')}
+                startIcon={<InvertColorsIcon/>}
               >
-                세척
+                세척 모드
               </Button>
               <Button
                 className="btnStart"
@@ -33,7 +35,7 @@ const Start = () => {
                 onClick={onClickRedirectPathHandler('/MenuList')}
                 startIcon={<LocalBarIcon/>}
               >
-                칵테일
+                메뉴 선택
               </Button>
             </div>
 
