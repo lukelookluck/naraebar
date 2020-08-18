@@ -18,15 +18,12 @@ export default function () {
   const { serverUrl, user } = useContext(CommonContext);
 
   const [articleList, setArticleList] = useState([]);
-  const [commentList, setCommentList] = useState([]);
+  const [showMore, setShowMore] = useState();
 
   useEffect(() => {
     refreshList();
   }, []);
 
-  // componentDidMount() {
-  //   this.refreshList();
-  // }
   function refreshList() {
     axios
       .get(`${serverUrl}/community/`, {
@@ -50,7 +47,27 @@ export default function () {
     console.log(article);
     axios
       .post(
-        `${serverUrl}/community/article/${article.id}/`,
+        `${serverUrl}/community/article_like/${article.id}/`,
+        { user: article.user }, // 현재 유저 정보 넣기
+        {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data.LIKE);
+
+        // refreshList();
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function saveSubmit(article) {
+    console.log(article);
+    axios
+      .post(
+        `${serverUrl}/community/article_save/${article.id}/`,
         { user: article.user }, // 현재 유저 정보 넣기
         {
           headers: {
@@ -65,13 +82,6 @@ export default function () {
       .catch((err) => console.log(err));
   }
 
-  function reload() {
-    // const current = location.pathname;
-    // history.replace(`/reload`);
-    setTimeout(() => {
-      history.go(0);
-    });
-  }
   let history = useHistory();
 
   function DeleteArticle(article) {
@@ -97,7 +107,10 @@ export default function () {
         <RecipieListDisplay
           list={articleList}
           likeSubmit={likeSubmit}
+          saveSubmit={saveSubmit}
           DeleteArticle={DeleteArticle}
+          showMore={showMore}
+          setShowMore={setShowMore}
         />
       </Grid>
     </Wrapper>

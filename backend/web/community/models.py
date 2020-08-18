@@ -5,17 +5,18 @@ from django.conf import settings
 
 class Article(models.Model):
     # 게시글 관련 정보 필드
-    title = models.CharField(max_length=20)
-    detail = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE, related_name='articles')
     LIKE = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name='like_articles', blank=True)
+    SAVE = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name='save_articles', blank=True)
 
     # 레시피 관련 정보 필드
-    drink_name = models.CharField(max_length=20)
+    title = models.CharField(max_length=20)
+    detail = models.TextField()
     image = models.ImageField(upload_to="%Y/%m/%d", blank=True)
     # 레시피 재료 정보 필드
     ingredient1 = models.CharField(max_length=30, null=True, blank=True)
