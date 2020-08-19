@@ -3,7 +3,6 @@ import Wrapper from './style';
 import Button from '../../components/Button';
 
 export default function CardBody(props) {
-
   return (
     <Wrapper>
       <div className="card-body">

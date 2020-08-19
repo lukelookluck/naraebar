@@ -5,6 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Collapse from "@material-ui/core/Collapse";
 import Button from "@material-ui/core/Button";
 import CloseIcon from "@material-ui/icons/Close";
+import LocalBarOutlinedIcon from "@material-ui/icons/LocalBarOutlined";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,39 +16,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionAlerts() {
+export default function TransitionAlerts(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
 
   return (
     <div className={classes.root}>
-      <Collapse in={open}>
+      <Collapse in={props.open}>
         <Alert
+          icon={<LocalBarOutlinedIcon fontSize="small" />}
           action={
             <IconButton
               aria-label="close"
               color="inherit"
               size="small"
               onClick={() => {
-                setOpen(false);
+                props.setOpen(false);
               }}
             >
               <CloseIcon fontSize="inherit" />
             </IconButton>
           }
         >
-          Close me!
+          MYBAR에 저장되었습니다.
         </Alert>
       </Collapse>
-      <Button
-        disabled={open}
-        variant="outlined"
-        onClick={() => {
-          setOpen(true);
-        }}
-      >
-        Re-open
-      </Button>
     </div>
   );
 }

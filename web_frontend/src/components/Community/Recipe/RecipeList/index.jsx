@@ -98,6 +98,7 @@ export default function () {
         history.push("/Main");
       });
   }
+  const [open, setOpen] = useState(false);
 
   return (
     <Wrapper>
@@ -107,6 +108,8 @@ export default function () {
           likeSubmit={likeSubmit}
           saveSubmit={saveSubmit}
           DeleteArticle={DeleteArticle}
+          open={open}
+          setOpen={setOpen}
         />
       </Grid>
     </Wrapper>

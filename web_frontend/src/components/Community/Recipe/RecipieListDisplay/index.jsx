@@ -21,8 +21,6 @@ export default function (props) {
   const { serverUrl, user } = useContext(CommonContext);
 
   let article = props.list.map((item, index) => {
-    const [isSaveit, setSaveit] = useState(0);
-
     let likeButton = null;
     let countLikeIt1 = null;
     if (item.LIKE.includes(user.user.id)) {
@@ -46,15 +44,26 @@ export default function (props) {
 
     let saveButton = null;
     if (item.SAVE.includes(user.user.id)) {
-      saveButton = <BookmarkIcon onClick={() => props.saveSubmit(item)} />;
+      saveButton = (
+        <BookmarkIcon
+          onClick={() => {
+            props.saveSubmit(item);
+            props.setOpen(false);
+          }}
+        />
+      );
     } else {
       saveButton = (
-        <BookmarkBorderIcon onClick={() => props.saveSubmit(item)} />
+        <BookmarkBorderIcon
+          onClick={() => {
+            props.saveSubmit(item);
+            props.setOpen(true);
+            setTimeout(() => {
+              props.setOpen(false);
+            }, 3000);
+          }}
+        />
       );
-    }
-
-    function saveIt() {
-      setSaveit(!isSaveit);
     }
 
     let moreButton = (
@@ -183,7 +192,7 @@ export default function (props) {
           </div>
           {saveButton}
         </div>
-        <Alert />
+        <Alert open={props.open} setOpen={props.setOpen} />
         {/* <hr /> */}
         {countLikeIt1}
         <CommentList comments={item.comments} article={item} />
