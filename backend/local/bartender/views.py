@@ -61,7 +61,7 @@ class recipeViewset(viewsets.ModelViewSet):
         return JsonResponse({'data': ser_data})
 
     @action(detail=False, methods=['get'])
-    def done(self, request):
+    def done(self):
         return JsonResponse({"what": "done"})
 
 
