@@ -38,12 +38,14 @@ const SelectCocktail = ({ match }) => {
         )
         .then((res) => {
           console.log(res.data);
-          refreshList();
+          // refreshList();
+          // onClickRedirectPathHandler('/MakingCocktail');
         })
         .catch((err) => console.log(err + "에러 발생"));
 
       console.log("제조 버튼 클릭, id = " + id);
-      onClickRedirectPathHandler('/MakingCocktail');
+      history.push('/MakingCocktail');
+      console.log("???뭐지???");
 
     } catch (e) {
       alert("제조에 실패했습니다.");
