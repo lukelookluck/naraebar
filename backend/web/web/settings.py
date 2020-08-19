@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'accounts',
     'community',
     'recipe',
+    'web',
 ]
 
 MIDDLEWARE = [
