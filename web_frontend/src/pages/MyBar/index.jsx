@@ -47,11 +47,15 @@ const MyBar = () => {
   const deleteRecipe = (id) => (e) => {
     try {
       axios
-        .delete(`${serverUrl}/article_save/${id}/`, {
-          headers: {
-            Authorization: `JWT ${user.token}`,
-          },
-        })
+        .post(
+          `${serverUrl}/community/article_save/${id}/`,
+          { user: user.user.id },
+          {
+            headers: {
+              Authorization: `JWT ${user.token}`,
+            },
+          }
+        )
         .then((res) => {
           console.log(res.data);
           refreshList();
@@ -152,7 +156,7 @@ const MyBar = () => {
                 <hr />
                 <Card.Img
                   variant="top"
-                  src={`http://localhost:8000${MyCocktail.image}`}
+                  src={`${serverUrl}${MyCocktail.image}`}
                 />
                 <hr />
                 <Card.Text>{MyCocktail.detail}</Card.Text>

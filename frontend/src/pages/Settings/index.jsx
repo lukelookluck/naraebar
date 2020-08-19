@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../../layout/';
 import Wrapper from './styles';
 import { Grid } from '@material-ui/core';
@@ -16,7 +16,6 @@ const Settings = () => {
     };
 
     const [bottleList, setBottleList] = useState([]);
-    // const [imgurl, setImgurl] = useState();
 
     function refreshList() {
         axios
@@ -37,23 +36,18 @@ const Settings = () => {
         refreshList();
     }, []);
 
-    // const imgchange = (n) => setImgurl("./image_bottles/empty_bottle/empty_bottle_icon_" + n + ".png");
 
     const nozzles = bottleList.map((item) => {
-        // {imgchange(item.nozzle)}
         return (
             <Grid item xs={3} key={item.id}>
                 {
                     item.volume === 0
-                        ? (<Fragment>
-                            {/* <img src=`${imgbase}${item.nozzle}${para}` /> */}
-                            
-                            <img src={`/images/empty_bottle/empty_bottle_icon_${item.nozzle}.png`} alt={item.name}></img>
-                        </Fragment>)
-                        : (<Fragment>
-                            {/* <img src="images/red.jpg"></img> */}
-                            <img src={`images/full_bottle/full_bottle_icon_${item.nozzle}.png`} alt={item.name}></img>
-                        </Fragment>)
+                        ? (<Grid item xs={3}>
+                            <img src={`images/empty_bottle/empty_bottle_icon_${item.nozzle}.png`} alt={item.name} className="botimg" onClick={onClickRedirectPathHandler('/SetBottle/' + item.nozzle)}></img>
+                        </Grid>)
+                        : (<Grid item xs={3}>
+                            <img src={`images/full_bottle/full_bottle_icon_${item.nozzle}.png`} alt={item.name} className="botimg"></img>
+                        </Grid>)
                 }
             </Grid>
         );
@@ -64,9 +58,9 @@ const Settings = () => {
             <Wrapper>
                 <Grid container justify="center" alignItems="center">
                     <Grid item xs={12}>
-                        <ArrowBackRoundedIcon onClick={onClickRedirectPathHandler('/Start')}></ArrowBackRoundedIcon>
+                        <ArrowBackRoundedIcon onClick={onClickRedirectPathHandler('/Start')} className="back"></ArrowBackRoundedIcon>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid container justify="center" alignItems="center">
                         {nozzles}
                     </Grid>
                 </Grid>

@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 import Layout from "../../layout/";
-import NavigationTab from "../../layout/NavigationTab/"
+import NavigationTab from "../../layout/NavigationTab/";
 
 const Main = () => {
-
   return (
     <Layout>
       <NavigationTab></NavigationTab>

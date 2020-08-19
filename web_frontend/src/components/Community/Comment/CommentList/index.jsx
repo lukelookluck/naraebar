@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Wrapper from "./style";
 
@@ -7,15 +7,18 @@ import axios from "axios";
 import AccountCircleTwoToneIcon from "@material-ui/icons/AccountCircleTwoTone";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import ReplyList from "../../../Community/ReplyList/";
 import { CommonContext } from "../../../../context/CommonContext";
 
 export default function (props) {
+  const { serverUrl, user } = useContext(CommonContext);
+
   let comments = props.comments.map((comment, idx) => {
     let likeButton = null;
     let countLikeIt1 = null;
-    if (comment.LIKE.length) {
+    if (comment.LIKE.includes(user.user.id)) {
       likeButton = (
         <FavoriteIcon onClick={() => likeIt(comment)} color="error" key={idx} />
       );
@@ -97,6 +100,23 @@ export default function (props) {
       return <div>{theTime}</div>;
     }
 
+    function clickComment(e, comment) {
+      props.setA(e.target.closest(".comment-single"));
+      props.clickComment(e, comment);
+
+      if (user.user.id === comment.user) {
+        props.setDeleteBtn(
+          <DeleteIcon
+            className="comment-list-header-delete-click"
+            fontSize="large"
+            onClick={() => props.DeleteComment(comment)}
+          />
+        );
+      } else {
+        props.setDeleteBtn("");
+      }
+    }
+
     return (
       <div key={idx}>
         {}
@@ -105,18 +125,18 @@ export default function (props) {
             className="comment-avata"
             fontSize="large"
           />
-          <div
-            className="comment-single-left"
-            onClick={(e) => props.clickComment(e)}
-          >
-            <div className="comment-single-left-1">
+          <div className="comment-single-left">
+            <div
+              className="comment-single-left-1"
+              onClick={(e) => clickComment(e, comment)}
+            >
               <div className="comment-username">
                 {comment.username}
                 <div className="comment-content">{comment.content}</div>
               </div>
             </div>
 
-            <div className="comment-single-left-2">
+            <span className="comment-single-left-2">
               {getTime(comment.created_at)}
               {countLikeIt1}
               <span
@@ -125,7 +145,7 @@ export default function (props) {
               >
                 답글 달기
               </span>
-            </div>
+            </span>
           </div>
           <div className="comment-likeIt">{likeButton}</div>
         </div>
@@ -134,6 +154,10 @@ export default function (props) {
             replys={comment.replys}
             likeIt={likeIt}
             clickComment={props.clickComment}
+            setA={props.setA}
+            a={props.a}
+            setDeleteBtn={props.setDeleteBtn}
+            DeleteComment={props.DeleteComment}
           />
         </div>
       </div>

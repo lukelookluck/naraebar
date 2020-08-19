@@ -18,22 +18,11 @@ const Wrapper = styled.div`
     font-size: 30px;
   }
 
-  & .comment-list-box {
-    margin: 20px 10px;
-    margin-bottom: 70px;
-  }
-
   & .comment-single {
-    margin: 11px 0;
+    padding: 10px 5px;
+    margin: 0;
     display: flex;
     justify-content: space-between;
-  }
-
-  & .comment-single:hover {
-    margin: 11px 0;
-    display: flex;
-    justify-content: space-between;
-    background-color: #68b4ff;
   }
 
   & .comment-single-left {
