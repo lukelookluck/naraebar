@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useContext} from 'react';
+import React, { Component, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Layout from '../../layout/';
 import Wrapper from './styles';
@@ -15,20 +15,21 @@ export default class MakingCocktail extends Component {
 
   componentDidMount() {
     let goComplete = () => {
-        axios
+      axios
         .get(`/bartender/recipe/done`)
         .then(res => {
           //  this.props.onReceive(res.data.number);
-           console.log(res.data);
-           if(res.data.what === "done"){
+          console.log(res.data);
+          if (res.data.what === "done") {
             this.props.history.push('/CompleteCocktail');
-           }
-           setTimeout(goComplete, 1000); // 1초마다 get 호출하면서 완성됐는지 확인
+          }
         });
     }
+
+    setTimeout(goComplete, 1000); // 1초마다 get 호출하면서 완성됐는지 확인
     goComplete();
-}
-  
+  }
+
   render() {
     return (
       <Layout>
