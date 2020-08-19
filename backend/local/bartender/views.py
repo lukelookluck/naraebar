@@ -60,6 +60,10 @@ class recipeViewset(viewsets.ModelViewSet):
 
         return JsonResponse({'data': ser_data})
 
+    @action(detail=False, methods=['get'])
+    def done(self, request):
+        return JsonResponse({"what": "done"})
+
 
 class bottleViewset(viewsets.ModelViewSet):
     queryset = Bottle.objects.all()
