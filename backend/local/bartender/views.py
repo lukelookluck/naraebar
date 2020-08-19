@@ -56,4 +56,4 @@ class recipeViewset(viewsets.ModelViewSet):
 class bottleViewset(viewsets.ModelViewSet):
     queryset = Bottle.objects.all()
     serializer_class = BottleSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
