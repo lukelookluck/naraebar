@@ -37,6 +37,11 @@ class ListComment(generics.ListCreateAPIView):
     filterset_fields = ['article']  # 요청받은 article과 같은 값을 가진 댓글만 가져오기
 
 
+class DetailComment(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = ArticleSerializer
+
+
 @api_view(['POST'])
 def LikeArticle(request, article_pk):
     article = Article.objects.get(pk=article_pk)
