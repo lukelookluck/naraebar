@@ -61,8 +61,9 @@ class recipeViewset(viewsets.ModelViewSet):
         return JsonResponse({'data': ser_data})
 
     @action(detail=False, methods=['get'])
-    def done(self):
+    def done(self, request):
         return JsonResponse({"what": "done"})
+
 
 
 class bottleViewset(viewsets.ModelViewSet):
