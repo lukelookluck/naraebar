@@ -10,19 +10,7 @@ from rest_framework.response import Response
 
 from django.db.models import Max
 import random
-
-
-# def isValidQueryParams(param):
-#     return param != '' and param is not None
-
-
-# def filterQuery(request):
-#     qs = Recipe.objects.all()
-#     searchQuery = request.GET.get('search_query')
-#     if isValidQueryParams(searchQuery):
-#         qs = qs.filter(Q(name__icontains=searchQuery) | Q(
-#             ingredients__icontains=searchQuery) | Q(id__icontains=searchQuery)).distinct()
-#     return qs
+import serial
 
 
 class recipeViewset(viewsets.ModelViewSet):
@@ -37,6 +25,28 @@ class recipeViewset(viewsets.ModelViewSet):
         random_recipe = Recipe.objects.get(pk=pk)
         serializer = self.get_serializer(random_recipe)
         return Response(serializer.data)
+
+    @action(detail=False, methods=['post'])
+    def make_cocktail(self, request, pk=None):
+        cocktail_id = 1
+
+        ser = serial.Serial()
+        ser.port = '/dev/ttyAMA0'
+        ser.baudrate = 9600
+
+        ser.open()
+
+        print("in while")
+        ser.write('$,MAKE,1,180,3,350,&'.encode())
+        print('write ok')
+
+        receive_data = ser.readline()
+        print(receive_data)
+
+        print('read ok!')
+        # time.sleep(1)
+
+        ser.close()
 
 
 class bottleViewset(viewsets.ModelViewSet):
