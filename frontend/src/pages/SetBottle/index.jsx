@@ -36,6 +36,9 @@ const SetBottle = ({ match }) => {
           <Grid item xs={6}>
             <Grid>
               <h1>노즐 정보 입력</h1>
+              <form>
+                  
+              </form>
             </Grid>
           </Grid>
         </Grid>
