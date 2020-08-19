@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   & .card-imageBox {
     width: 63.75vw;
     height: 63.75vw;
-    padding: 10% 5%;
+    padding: 5% 0%;
     overflow: hidden;
     /* padding-bottom: 10%; */
     border-bottom: solid 1px #9b9b9b;

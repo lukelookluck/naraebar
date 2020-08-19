@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   text-align: center;
   & .myAppbar {
-    margin-top: 0;
     position: sticky;
     top: 0px;
   }
