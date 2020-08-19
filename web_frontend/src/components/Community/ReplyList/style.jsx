@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   & .replys-box {
-    margin-top: 4.5px;
-    margin-left: 47px;
+    /* padding: 5.5px 0 ;
+    padding-left: 47px; */
+    : 
   }
 
   /* & .reply-single {
@@ -25,7 +26,10 @@ const Wrapper = styled.div`
   }
 
   & .reply-single {
-    margin: 11px 0;
+    /* margin: 11px 0; */
+    padding: 5.5px 0 ;
+    padding-left: 47px;
+    padding-right: 5px;
     display: flex;
     justify-content: space-between;
   }

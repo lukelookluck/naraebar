@@ -38,7 +38,7 @@ const Wrapper = styled.div`
   }
 
   & .comment-list-box {
-    margin: 20px 10px;
+    /* margin: 10px 5px; */
     margin-bottom: 70px;
   }
 

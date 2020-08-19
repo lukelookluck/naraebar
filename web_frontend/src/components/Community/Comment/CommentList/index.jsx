@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Wrapper from "./style";
 
@@ -97,6 +97,39 @@ export default function (props) {
       return <div>{theTime}</div>;
     }
 
+    const [myClicked, setMyClicked] = useState(true);
+    const [myClicked1, setMyClicked1] = useState(false);
+
+    function clickComment(e) {
+      let b = myClicked1;
+      console.log("myClicked", myClicked);
+
+      const a = e.target.closest(".comment-single");
+
+      if (myClicked) {
+        a.style.background = "#b0e1ff";
+        // props.setMyClicked1(!props.myClicked1);
+
+        if (myClicked1) {
+          console.log("중복!");
+          setMyClicked1(false);
+        }
+        console.log(myClicked, myClicked1);
+        setMyClicked1(true);
+        console.log(myClicked, myClicked1);
+      } else {
+        a.style.background = "";
+      }
+      // console.log(props.myClicked, props.myClicked1);
+      console.log(myClicked, myClicked1);
+      console.log("-----------");
+      setMyClicked1(!myClicked1);
+
+      setMyClicked(!myClicked);
+
+      props.clickComment(e);
+    }
+
     return (
       <div key={idx}>
         {}
@@ -105,10 +138,7 @@ export default function (props) {
             className="comment-avata"
             fontSize="large"
           />
-          <div
-            className="comment-single-left"
-            onClick={(e) => props.clickComment(e)}
-          >
+          <div className="comment-single-left" onClick={(e) => clickComment(e)}>
             <div className="comment-single-left-1">
               <div className="comment-username">
                 {comment.username}

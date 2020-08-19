@@ -102,9 +102,11 @@ export default function (props) {
   }
 
   const [clicked, setClicked] = useState(1);
+  const [myClicked, setMyClicked] = useState(true);
+  const [myClicked1, setMyClicked1] = useState(true);
 
   function clickComment(e) {
-    console.log(e.target.className);
+    // console.log(e.target.className);
     // e.target.style
 
     setClicked(!clicked);
@@ -146,6 +148,10 @@ export default function (props) {
             doReply={doReply}
             clickComment={clickComment}
             clicked={clicked}
+            // myClicked={myClicked}
+            // myClicked1={myClicked1}
+            // setMyClicked={setMyClicked}
+            // setMyClicked1={setMyClicked1}
           />
         </div>
         <CommentForm
