@@ -62,7 +62,11 @@ class recipeViewset(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def done(self):
-        return JsonResponse({"what": "done"})
+        global whatdone
+        whatdone = False
+        if whatdone is False:
+            whatdone = True
+            return JsonResponse({"what": "done"})
 
 
 class bottleViewset(viewsets.ModelViewSet):
