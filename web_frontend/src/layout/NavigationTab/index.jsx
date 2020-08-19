@@ -107,7 +107,7 @@ export default function NavigationTab() {
             <MyBar></MyBar>
           </TabPanel>
         </SwipeableViews>
-        <CreateArticleButton />
+        {value == 0 && <CreateArticleButton />}
       </Grid>
     </Wrapper>
   );
