@@ -27,26 +27,35 @@ class recipeViewset(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(detail=False, methods=['post'])
-    def make_cocktail(self, request, pk=None):
-        cocktail_id = 1
+    def make_cocktail(self, request, pk):
+        recipe = Recipe.objects.get(pk=pk)
 
-        ser = serial.Serial()
-        ser.port = '/dev/ttyAMA0'
-        ser.baudrate = 9600
+        ser = serial.Serial('/dev/ttyAMA0', 9600)
+        # ser.port = '/dev/ttyAMA0'
+        # ser.baudrate = 9600
 
-        ser.open()
+        # ser.open()
+        ser_data = '$,MAKE,'
+        for i in range(6):
+            key_Ingredient = 'strIngredient'
+            key_Measure = 'strMeasure'
 
-        print("in while")
-        ser.write('$,MAKE,1,180,3,350,&'.encode())
-        print('write ok')
+            if recipe[key_Ingredient] != 'null':
+                bottle = Bottle.objects.get(name=recipe.strDrink)
+                ser_data += (bottle.nozzle + )
+            else:
+                ser_data += '&'
+                break
 
-        receive_data = ser.readline()
-        print(receive_data)
+        ser.write(ser_data.encode())
 
-        print('read ok!')
+        # receive_data = ser.readline()
+        # print(receive_data)
+
+        # print('read ok!')
         # time.sleep(1)
 
-        ser.close()
+        # ser.close()
 
 
 class bottleViewset(viewsets.ModelViewSet):
