@@ -84,45 +84,56 @@ void loop() {
     // readString()은 timeout을 기준으로 1초에 한번씩 데이터를 받아옴
     // -> timer0을 써서 그런지 타임아웃이 작동하지않음 
     // 개행문자가 올 때까지 받는 until을 쓰는게 적절
-    tmp = Serial.readStringUntil('\r');
-//    Serial.read();
+    
+    tmp = Serial.readStringUntil('\n');
 
-    Serial.println(tmp);
+    //아래는 나중에 지우자 지금은 테스트
+    Serial.println(tmp); // 위에서 '\n'까지 받아서 '\r'도 출력됨 
 //    tmp = "$,MAKE,1,180,3,350,&";
     if (tmp && (tmp!="")){
-      parsing(tmp);
-    }
-//    Serial.println(mode);
-    switch (main_switch) {
-      case 0: //대기 모드
-        // 파싱한 데이터의 mode에 따라 모드 전환
+      if (parsing(tmp)){
         if (mode == "MAKE"){
           main_switch = 1;
         }
         else if (mode == "WASH"){
           main_switch = 2;
         }
-        break;
-      case 1: //make 모드 
-        // make가 완료되면 1을 return함. -> 대기모드로 전환
-        if (make()){
-          main_switch = 0;
-        }
-        break;
-      case 2: //wash 모드 
-        if (wash()){
-          main_switch = 0;
-        }
-        break;
-      default:
-        break;
+      }
     }
-
   }
-//  pwmTest();
-  
-//  wash();
-//  make();
+
+  switch (main_switch) {
+          case 0: //대기 모드
+            // 파싱한 데이터의 mode에 따라 모드 전환
+            if (mode == "MAKE"){
+              
+              main_switch = 1;
+            }
+            else if (mode == "WASH"){
+              main_switch = 2;
+            }
+            break;
+          case 1: //make 모드 
+            // make가 완료되면 1을 return함. -> 대기모드로 전환
+            if (make()){
+              main_switch = 3;
+              digitalWrite(pump,HIGH);
+            }
+            break;
+          case 2: //wash 모드 
+            if (wash()){
+              main_switch = 3;
+              digitalWrite(pump,HIGH);
+            }
+            break;
+          case 3:
+            mode = "start";
+            main_switch = 0;
+            break;
+          default:
+            break;
+        }
+
   countFlow();  // 여기에  timer을 1로 만들어주는 코드가 있어서 이거 없으면 시간 짧아짐
 }
 
@@ -132,10 +143,9 @@ int make(){
   // 전역변수 idx의 bottle과 contain 의 값이 -1이면 return 1
   // 1을 return 하면 다 만들었으니까 다만들었다는 신호 보내기
   //나머지는 0 리턴 0일 경우에는 전역변수 값 1개씩 증가
-  if (timer == 0) {
-//      if (alarm(5)){
-//        digitalWrite(pump, LOW);
-//      }
+  
+  //원래는 1초마다 한번 받아들이도록 했는데 타이밍 안맞는 문제 생겨서 뺌
+  if (1) {
     if (bottle[i] != "-1"){
       
       switch(x) { 
@@ -149,8 +159,6 @@ int make(){
           break;
         case 1: //용량 다 차면 밸브를 닫아요
           mon = LOW;
-//          if (alarm(1)){
-
           if (alarm(atoi(contain[i].c_str())/75)) {
             mon = HIGH;
             x = 2;
@@ -158,6 +166,7 @@ int make(){
           break;
         case 2: //밸브를 닫고 있어요 
           digitalWrite(pump, HIGH);
+          digitalWrite(8, HIGH);
           mon = HIGH;
           i++;
           x = 0;
@@ -167,6 +176,7 @@ int make(){
       }
       digitalWrite(valve[atoi(bottle[i].c_str())], mon); //LOW가 밸브를 켜는것
       digitalWrite(pump, LOW); // 펌프도 계속 켬
+      digitalWrite(8, LOW);
       return 0;
     }
     else {
@@ -174,19 +184,19 @@ int make(){
       //제작 완료신호 보내기
       if (alarm(2)) {
         digitalWrite(pump, HIGH);
+        digitalWrite(8, HIGH);
         Serial.println("$,DONE,MAKE,&");
-        // i = 0;
+         i = 0;
         return 1;
       }
     }
   }
   
-  
-  
 }
 
 int wash() {
-  if (timer == 0) {
+  //원래는 1초마다 한번 받아들이도록 했는데 타이밍 안맞는 문제 생겨서 뺌
+  if (1) {
     switch(x) {
       case 0: 
         mon = HIGH;
@@ -205,16 +215,19 @@ int wash() {
         break;
       case 2:
         mon = HIGH;
-        x = 0;
-        Serial.println("$,DONE,WASH,&");
-        return 1;
+        if (alarm(1)) {
+          digitalWrite(pump, HIGH);
+          x = 0;
+          Serial.println("$,DONE,WASH,&");
+          return 1;
+        }
         break;
       default:
         break;
     }
 
     digitalWrite(8, mon);
-    digitalWrite(pump, LOW);
+    digitalWrite(pump, mon);
     return 0;
   }
 }
@@ -241,7 +254,7 @@ void countFlow() {
       Serial.print("lqd: ");
       Serial.print(lqd);
       Serial.print("mL ");
-      //        if(lqd >= 180){
+      //        if(lqd >= contain[i]){
       //
       //          Serial.println("넘친다!");
       //        }
@@ -313,13 +326,13 @@ int parsing(String str){
   start = str.substring(0, first); // 첫번째 토큰
   mode = str.substring(first+1, second); // 두번째 토큰
   data = str.substring(second+1, strlength-2); // 세번째 토큰
-  enddata = str.substring(strlength-1,strlength); // 네번째 토큰 문자열 맨 마지막은 \n임 그래서 -1해줌
+  enddata = str.substring(strlength-2,strlength-1); // 네번째 토큰 문자열 맨 마지막은 \n임 그래서 -1해줌
 
   int ss = 0; //이전 콤마idx
   int ee = 0; //이번 콤마idx
   String tmp = "";
 
-  if ((start == "$") && (enddata == "&")){
+  if ((start == "$") ){
     while(ss < (data.length()-1)){
       if (ss == 0){
         ee = data.indexOf(",", ss);
@@ -347,10 +360,18 @@ int parsing(String str){
   else {
     //문자열 에러
     Serial.println("ERROR");
-    
+    Serial.print("start: ");
+    Serial.println(start);
+    Serial.print("mode: ");
+    Serial.println(mode);
+    Serial.print("data: ");
+    Serial.println(data);
+    Serial.print("enddata: ");
+    Serial.println(enddata);
+
+    return 0;
   }
 
-  
 //  Serial.print(str);
 //  
 //  Serial.println("$,DONE,MAKE,&");
@@ -377,36 +398,41 @@ int parsing(String str){
 
 
 
-void pwmTest() {
-  
-  if (timer == 0) {
-    switch(x) {
-      case 0: 
-        mon = HIGH;
-        // 2초가 지나면 알람이 1이 됨 
-        if (alarm(2)) {
-          mon = LOW;
-          x = 1;
-        }
-        break;
-      case 1:
-        mon = LOW;
-        if (alarm(2)) {
-          mon = HIGH;
-          x = 2;
-        }
-        break;
-      case 2:
-        mon = HIGH;
-        break;
-      default:
-        break;
-    }
 
-    digitalWrite(8, mon);
-  }
-}
 
+
+
+
+
+//void pwmTest() {
+//  
+//  if (timer == 0) {
+//    switch(x) {
+//      case 0: 
+//        mon = HIGH;
+//        // 2초가 지나면 알람이 1이 됨 
+//        if (alarm(2)) {
+//          mon = LOW;
+//          x = 1;
+//        }
+//        break;
+//      case 1:
+//        mon = LOW;
+//        if (alarm(2)) {
+//          mon = HIGH;
+//          x = 2;
+//        }
+//        break;
+//      case 2:
+//        mon = HIGH;
+//        break;
+//      default:
+//        break;
+//    }
+//
+//    digitalWrite(8, mon);
+//  }
+//}
 
 
 //void ledPwmTest(){
