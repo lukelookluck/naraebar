@@ -53,6 +53,11 @@ const Wrapper = styled.div`
         height: 50px;
     }
 
+    & .btnset {
+        margin-left: 700px;
+        margin-top: 40px;
+    }
+
 `
 
 export default Wrapper;
