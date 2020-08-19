@@ -10,19 +10,7 @@ from rest_framework.response import Response
 
 from django.db.models import Max
 import random
-
-
-# def isValidQueryParams(param):
-#     return param != '' and param is not None
-
-
-# def filterQuery(request):
-#     qs = Recipe.objects.all()
-#     searchQuery = request.GET.get('search_query')
-#     if isValidQueryParams(searchQuery):
-#         qs = qs.filter(Q(name__icontains=searchQuery) | Q(
-#             ingredients__icontains=searchQuery) | Q(id__icontains=searchQuery)).distinct()
-#     return qs
+import serial
 
 
 class recipeViewset(viewsets.ModelViewSet):
@@ -38,8 +26,34 @@ class recipeViewset(viewsets.ModelViewSet):
         serializer = self.get_serializer(random_recipe)
         return Response(serializer.data)
 
+    @action(detail=False, methods=['post'])
+    def make_cocktail(self, request, pk):
+        recipe = Recipe.objects.get(pk=pk)
+
+        ser = serial.Serial('/dev/ttyAMA0', 9600)
+        # ser.port = '/dev/ttyAMA0'
+        # ser.baudrate = 9600
+
+        ser_data = '$,MAKE,'
+        for i in range(6):
+            key_Ingredient = 'strIngredient' + str(i)
+            key_Measure = 'strMeasure' + str(i)
+
+            if recipe[key_Ingredient] != 'null':
+                bottle = Bottle.objects.get(name=recipe[strDrink])
+                ser_data += (bottle[nozzle] + ',' + recipe[key_Measure])
+            else:
+                ser_data += '&'
+                break
+        ser.write(ser_data.encode())
+
+        receive_data = ser.readline()
+        print(receive_data)
+
+        return Response({ser_data: receive_data})
+
 
 class bottleViewset(viewsets.ModelViewSet):
     queryset = Bottle.objects.all()
     serializer_class = BottleSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
