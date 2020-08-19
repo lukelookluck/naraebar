@@ -33,8 +33,8 @@ const SelectCocktail = ({ match }) => {
   const makeCocktail = (id) => (e) => {
     try {
       axios
-        .post(
-          `/bartender/recipe/${id}/make_cocktail/`,
+        .get(
+          `/bartender/recipe/make_cocktail/${id}`,
         )
         .then((res) => {
           console.log(res.data);
