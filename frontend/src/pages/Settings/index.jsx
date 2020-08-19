@@ -5,11 +5,18 @@ import { Grid } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
+import '../../index.css';
 
 const Settings = () => {
 
+    let history = useHistory();
+
+    const onClickRedirectPathHandler = name => e => {
+        history.push(name);
+    };
+
     const [bottleList, setBottleList] = useState([]);
-    const [imgurl, setImgurl] = useState();
+    // const [imgurl, setImgurl] = useState();
 
     function refreshList() {
         axios
@@ -30,19 +37,23 @@ const Settings = () => {
         refreshList();
     }, []);
 
-    const imgchange = (n) => setImgurl("./image_bottles/empty_bottle/empty_bottle_icon_" + n + ".png");
+    // const imgchange = (n) => setImgurl("./image_bottles/empty_bottle/empty_bottle_icon_" + n + ".png");
 
     const nozzles = bottleList.map((item) => {
-        {imgchange(item.nozzle)}
+        // {imgchange(item.nozzle)}
         return (
             <Grid item xs={3} key={item.id}>
                 {
                     item.volume === 0
                         ? (<Fragment>
                             {/* <img src=`${imgbase}${item.nozzle}${para}` /> */}
-                            <img src={imgurl}></img>
+                            
+                            <img src={`/images/empty_bottle/empty_bottle_icon_${item.nozzle}.png`} alt={item.name}></img>
                         </Fragment>)
-                        : (<Fragment>흥</Fragment>)
+                        : (<Fragment>
+                            {/* <img src="images/red.jpg"></img> */}
+                            <img src={`images/full_bottle/full_bottle_icon_${item.nozzle}.png`} alt={item.name}></img>
+                        </Fragment>)
                 }
             </Grid>
         );
@@ -53,7 +64,7 @@ const Settings = () => {
             <Wrapper>
                 <Grid container justify="center" alignItems="center">
                     <Grid item xs={12}>
-                        <ArrowBackRoundedIcon></ArrowBackRoundedIcon>
+                        <ArrowBackRoundedIcon onClick={onClickRedirectPathHandler('/Start')}></ArrowBackRoundedIcon>
                     </Grid>
                     <Grid item xs={12}>
                         {nozzles}
