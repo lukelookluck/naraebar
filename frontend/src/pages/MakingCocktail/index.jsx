@@ -20,15 +20,13 @@ export default class MakingCocktail extends Component {
         .then(res => {
           //  this.props.onReceive(res.data.number);
            console.log(res.data);
-           if(res.data === "done"){
+           if(res.data.what === "done"){
             this.props.history.push('/CompleteCocktail');
            }
-           setTimeout(goComplete, 1000); // REPEAT THIS EVERy 1 SECONDS
+           setTimeout(goComplete, 1000); // 1초마다 get 호출하면서 완성됐는지 확인
         });
     }
-
     goComplete();
-
 }
   
   render() {
