@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../../layout/';
 import Wrapper from './styles';
 import { Grid } from '@material-ui/core';
@@ -43,7 +43,7 @@ const Settings = () => {
                 {
                     item.volume === 0
                         ? (<Grid item xs={3}>
-                            <img src={`images/empty_bottle/empty_bottle_icon_${item.nozzle}.png`} alt={item.name} className="botimg" onClick={onClickRedirectPathHandler('/setBottle')}></img>
+                            <img src={`images/empty_bottle/empty_bottle_icon_${item.nozzle}.png`} alt={item.name} className="botimg" onClick={onClickRedirectPathHandler('/SetBottle/' + item.nozzle)}></img>
                         </Grid>)
                         : (<Grid item xs={3}>
                             <img src={`images/full_bottle/full_bottle_icon_${item.nozzle}.png`} alt={item.name} className="botimg"></img>
