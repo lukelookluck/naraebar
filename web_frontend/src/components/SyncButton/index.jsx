@@ -1,21 +1,35 @@
-import React from "react";
+import React, { useState, useEffect, Fragment, useContext } from "react";
 import Wrapper from "./style";
 import { Grid, Button } from "@material-ui/core";
 import Icon from '@material-ui/core/Icon';
+import axios from "axios";
+import { CommonContext } from "../../context/CommonContext";
 
 const SyncButton = () => {
 
+  const { serverUrl, user } = useContext(CommonContext);
+  const [menuList, setMenuList] = useState([]);
+
   const handleSync = () => {
     try {
-        // 연동하라는 어떤 신호를 보내겠지
-
-
-        console.log("동기화버튼 클릭");
-        alert('동기화 성공');
+      // 연동
+      axios
+        .get(`${serverUrl}/sync`, {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          setMenuList(res.data.save_articles);
+          console.log(menuList);
+        })
+        .catch((err) => console.log(err + " 에러났음"));
+      alert('동기화 성공');
     } catch (e) {
-        alert('네트워크 연결에 문제가 있어 레시피 목록 동기화에 실패했습니다.');
+      alert('네트워크 연결에 문제가 있어 레시피 목록 동기화에 실패했습니다.');
     }
-};
+  };
 
   return (
     <Wrapper>
