@@ -65,6 +65,8 @@ export default function (props) {
       .then((res) => {
         console.log(res.data);
         commentInput.content = "";
+        commentInput.parent = null;
+
         refreshList();
       })
       .catch((err) => {
@@ -76,7 +78,7 @@ export default function (props) {
     console.log(comment);
     axios
       .post(
-        `${serverUrl}/community/comment/${comment.id}/`,
+        `${serverUrl}/community/comment/like/${comment.id}/`,
         { user: user.user.id }, // 현재 유저 정보 넣기
         {
           headers: {
@@ -110,41 +112,44 @@ export default function (props) {
   //   <DeleteIcon className="comment-list-header-delete-click" fontSize="large" />
   // );
 
-  function clickComment(e) {
+  function clickComment(e, comment) {
     if (a) {
-      // console.log("a있다");
-      // console.log("a", a);
-      // console.log("myClicked", myClicked);
-
       if (myClicked) {
-        // console.log("myClicked있다");
         e.target.closest(".comment-single").style.background = "#e0f2ff";
-        // props.setMyClicked1(!props.myClicked1);
       } else {
-        // console.log("myClicked없다");
         a.style.background = "";
       }
     } else {
-      // console.log("a없다");
-      // console.log("a", a);
       if (myClicked) {
-        // console.log("myClicked있다");
         e.target.closest(".comment-single").style.background = "#e0f2ff";
-        // props.setMyClicked1(!props.myClicked1);
       } else {
-        // console.log("myClicked없다");
         e.target.closest(".comment-single").style.background = "";
       }
     }
-    // console.log("a", a);
     if (a !== e.target.closest(".comment-single")) {
       a = "";
     }
-    // e.target.style
-    // console.log("끼룩..");
     setMyClicked(!myClicked);
 
     setClicked(!clicked);
+
+    console.log(comment);
+  }
+
+  function DeleteComment(comment) {
+    console.log(comment);
+    axios
+      .delete(`${serverUrl}/community/comment/${comment.id}/`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+      })
+      .then((res) => {
+        setClicked(1);
+        refreshList();
+        window.scrollTo(0, 0);
+        // history.push("/Main");
+      });
   }
 
   let commentHeader = null;
@@ -192,6 +197,7 @@ export default function (props) {
             a={a}
             deleteBtn={deleteBtn}
             setDeleteBtn={setDeleteBtn}
+            DeleteComment={DeleteComment}
           />
         </div>
         <CommentForm

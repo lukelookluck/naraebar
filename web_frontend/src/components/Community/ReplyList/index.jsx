@@ -151,12 +151,13 @@ export default function (props) {
           <DeleteIcon
             className="comment-list-header-delete-click"
             fontSize="large"
+            onClick={() => props.DeleteComment(reply)}
           />
         );
       } else {
         props.setDeleteBtn("");
       }
-      props.clickComment(e);
+      props.clickComment(e, reply);
     }
 
     if (showReplysBool === false && idx < myIndex) {

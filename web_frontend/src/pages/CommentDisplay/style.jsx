@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  font-family: "IBMPlexSansKR-Text";
+
   & .comment-list-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     border-bottom: solid 0.5px #dddddd;
     padding: 10px 5px;
     display: flex;
@@ -10,12 +15,15 @@ const Wrapper = styled.div`
   }
 
   & .comment-list-header-clicked {
+    position: fixed;
+    top: 0;
+    width: 100%;
     border-bottom: solid 0.5px #dddddd;
     padding: 10px 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #0195f7;
+    background-color: #4477b5;
   }
 
   & .comment-list-header-clicked-1 {
@@ -50,6 +58,7 @@ const Wrapper = styled.div`
 
   & .comment-list-box {
     /* margin: 10px 5px; */
+    margin-top: 65px;
     margin-bottom: 70px;
   }
 

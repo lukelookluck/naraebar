@@ -102,15 +102,14 @@ export default function (props) {
 
     function clickComment(e, comment) {
       props.setA(e.target.closest(".comment-single"));
-      console.log(comment.user);
-      console.log(user.user.id);
-      props.clickComment(e);
-      console.log(comment.user === user.user.id);
+      props.clickComment(e, comment);
+
       if (user.user.id === comment.user) {
         props.setDeleteBtn(
           <DeleteIcon
             className="comment-list-header-delete-click"
             fontSize="large"
+            onClick={() => props.DeleteComment(comment)}
           />
         );
       } else {
@@ -158,6 +157,7 @@ export default function (props) {
             setA={props.setA}
             a={props.a}
             setDeleteBtn={props.setDeleteBtn}
+            DeleteComment={props.DeleteComment}
           />
         </div>
       </div>

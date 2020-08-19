@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 
   & .reply-single {
     /* margin: 11px 0; */
-    padding: 5.5px 0 ;
+    padding: 10px 0 ;
     padding-left: 47px;
     padding-right: 5px;
     display: flex;
