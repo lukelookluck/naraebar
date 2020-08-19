@@ -14,7 +14,7 @@ const SelectCocktail = ({ match }) => {
   };
 
   const [menuList, setMenuList] = useState([]);
-  const { serverUrl } = useContext(CommonContext);
+  // const { serverUrl } = useContext(CommonContext);
 
   function refreshList() {
     axios
@@ -34,7 +34,7 @@ const SelectCocktail = ({ match }) => {
     try {
       axios
         .post(
-          `${serverUrl}/bartender/recipe/${id}/make_cocktail/`,
+          `/bartender/recipe/${id}/make_cocktail/`,
         )
         .then((res) => {
           console.log(res.data);
