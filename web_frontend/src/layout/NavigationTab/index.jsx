@@ -72,41 +72,42 @@ export default function NavigationTab() {
 
   return (
     <Wrapper className={classes.root}>
-      <Grid container justify="center" alignItems="center">
-        <AppBar className="myAppbar" position="static" color="default">
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth"
-            className="navTabs"
-          >
-            <Tab
-              /* component={Link} to="/Community" */ label="Community"
-              {...a11yProps(0)}
-            />
-            <Tab
-              /* component={Link} to="/MyBar" */ label="MyBar"
-              {...a11yProps(1)}
-            />
-          </Tabs>
-        </AppBar>
-        <SwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-          index={value}
-          onChangeIndex={handleChangeIndex}
+      {/* <Grid container justify="center" alignItems="center" class="asd"> */}
+      <AppBar className="myAppbar" position="static" color="default">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="fullWidth"
+          className="navTabs"
         >
-          <TabPanel value={value} index={0} dir={theme.direction}>
-            <Portal container={document.body}>
-              <Community></Community>
-            </Portal>
-          </TabPanel>
-          <TabPanel value={value} index={1} dir={theme.direction}>
-            <MyBar></MyBar>
-          </TabPanel>
-        </SwipeableViews>
-      </Grid>
+          <Tab
+            /* component={Link} to="/Community" */ label="Community"
+            {...a11yProps(0)}
+          />
+          <Tab
+            /* component={Link} to="/MyBar" */ label="MyBar"
+            {...a11yProps(1)}
+          />
+        </Tabs>
+      </AppBar>
+      <SwipeableViews
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+        index={value}
+        onChangeIndex={handleChangeIndex}
+        class="asdas"
+      >
+        <TabPanel value={value} index={0} dir={theme.direction}>
+          {/* <Portal container={document.body}> */}
+          <Community></Community>
+          {/* </Portal> */}
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <MyBar></MyBar>
+        </TabPanel>
+      </SwipeableViews>
+      {/* </Grid> */}
     </Wrapper>
   );
 }

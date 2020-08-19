@@ -154,10 +154,13 @@ const MyBar = () => {
                   </div>
                 </Card.Title>
                 <hr />
-                <Card.Img
-                  variant="top"
-                  src={`${serverUrl}${MyCocktail.image}`}
-                />
+                <div className="card-imageBox">
+                  <Card.Img
+                    className="card-image"
+                    variant="top"
+                    src={`${serverUrl}${MyCocktail.image}`}
+                  />
+                </div>
                 <hr />
                 <Card.Text>{MyCocktail.detail}</Card.Text>
               </Card.Body>
