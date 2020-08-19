@@ -35,17 +35,17 @@ class recipeViewset(viewsets.ModelViewSet):
         # ser.baudrate = 9600
 
         ser_data = '$,MAKE,'
-        for i in range(6):
+        for i in range(1, 7):
             key_Ingredient = 'strIngredient' + str(i)
             key_Measure = 'strMeasure' + str(i)
 
             if recipe[key_Ingredient] != 'null':
                 bottle = Bottle.objects.get(name=recipe[strDrink])
                 ser_data += (bottle[nozzle] + ',' + recipe[key_Measure])
-            else:
-                ser_data += '&'
-                break
+
+        ser_data += '&'
         ser.write(ser_data.encode())
+        print(ser_data)
 
         receive_data = ser.readline()
         print(receive_data)
