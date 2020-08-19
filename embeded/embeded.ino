@@ -14,6 +14,7 @@ String enddata;
 //유량계
 int pulse = 0; // 유량계입력 pulse
 float lqd = 0; // 누적 용액
+int empty = 0; // 액상이 비어있는지 확인
 
 
 int main_switch = 0; // 현재 작동 모드 -> 대기? make? wash?
@@ -118,12 +119,14 @@ void loop() {
             if (make()){
               main_switch = 3;
               digitalWrite(pump,HIGH);
+              digitalWrite(8, HIGH);
             }
             break;
           case 2: //wash 모드 
             if (wash()){
               main_switch = 3;
               digitalWrite(pump,HIGH);
+              digitalWrite(8, HIGH);
             }
             break;
           case 3:
@@ -145,7 +148,7 @@ int make(){
   //나머지는 0 리턴 0일 경우에는 전역변수 값 1개씩 증가
   
   //원래는 1초마다 한번 받아들이도록 했는데 타이밍 안맞는 문제 생겨서 뺌
-  if (1) {
+  if (!empty) {
     if (bottle[i] != "-1"){
       
       switch(x) { 
@@ -190,6 +193,11 @@ int make(){
         return 1;
       }
     }
+  }
+  else {
+    empty = 0;
+    Serial.println("$,ERROR,&");
+    return 1;
   }
   
 }
@@ -247,6 +255,7 @@ void countFlow() {
 
     // 누적 액상
     lqd += flow;
+
     if (0) {
       Serial.print("flow: ");
       Serial.print(flow);
@@ -277,6 +286,16 @@ void countFlow() {
       case 0: // 정상 입력값 -> 그대로 누적해줌 (break)
         break;
       case 1: // mon의 변경이 있을 때 -> 그대로 누적해줌 (break)
+        if (mon == 1){
+          //켜져있던게 꺼졌을 때
+          //시연에서는 세척수를 못넣어서 MAKE 모드일 때만 액상 빈 것을 확인
+          if ((lqd < 10) && (mode == "MAKE")){
+            // 액상 없음
+//            empty = 1;
+            
+          }
+          lqd = 0;
+        }
         y = 2;
         break;
       case 2: // mon변경 다음 -> 채터링 값을 버려줌 (flow를 빼기)
