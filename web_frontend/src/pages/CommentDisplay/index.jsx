@@ -77,7 +77,7 @@ export default function (props) {
     axios
       .post(
         `${serverUrl}/community/comment/${comment.id}/`,
-        { user: comment.user }, // 현재 유저 정보 넣기
+        { user: user.user.id }, // 현재 유저 정보 넣기
         {
           headers: {
             Authorization: `JWT ${user.token}`,
@@ -103,11 +103,46 @@ export default function (props) {
 
   const [clicked, setClicked] = useState(1);
   const [myClicked, setMyClicked] = useState(true);
-  const [myClicked1, setMyClicked1] = useState(true);
+  let [a, setA] = useState("");
+
+  let [deleteBtn, setDeleteBtn] = useState(null);
+  // deleteBtn = (
+  //   <DeleteIcon className="comment-list-header-delete-click" fontSize="large" />
+  // );
 
   function clickComment(e) {
-    // console.log(e.target.className);
+    if (a) {
+      // console.log("a있다");
+      // console.log("a", a);
+      // console.log("myClicked", myClicked);
+
+      if (myClicked) {
+        // console.log("myClicked있다");
+        e.target.closest(".comment-single").style.background = "#e0f2ff";
+        // props.setMyClicked1(!props.myClicked1);
+      } else {
+        // console.log("myClicked없다");
+        a.style.background = "";
+      }
+    } else {
+      // console.log("a없다");
+      // console.log("a", a);
+      if (myClicked) {
+        // console.log("myClicked있다");
+        e.target.closest(".comment-single").style.background = "#e0f2ff";
+        // props.setMyClicked1(!props.myClicked1);
+      } else {
+        // console.log("myClicked없다");
+        e.target.closest(".comment-single").style.background = "";
+      }
+    }
+    // console.log("a", a);
+    if (a !== e.target.closest(".comment-single")) {
+      a = "";
+    }
     // e.target.style
+    // console.log("끼룩..");
+    setMyClicked(!myClicked);
 
     setClicked(!clicked);
   }
@@ -127,12 +162,17 @@ export default function (props) {
   } else {
     commentHeader = (
       <div className="comment-list-header-clicked">
-        <ClearIcon
-          className="comment-list-header-arrow-click"
-          fontSize="large"
-          onClick={goBack}
-        />
-        <span className="comment-list-header-title-click">선택됨</span>
+        <div className="comment-list-header-clicked-1">
+          <div>
+            <ClearIcon
+              className="comment-list-header-arrow-click"
+              fontSize="large"
+              onClick={(e) => clickComment(e)}
+            />
+          </div>
+          <span className="comment-list-header-title-click">선택됨</span>
+        </div>
+        {deleteBtn}
       </div>
     );
   }
@@ -148,10 +188,10 @@ export default function (props) {
             doReply={doReply}
             clickComment={clickComment}
             clicked={clicked}
-            // myClicked={myClicked}
-            // myClicked1={myClicked1}
-            // setMyClicked={setMyClicked}
-            // setMyClicked1={setMyClicked1}
+            setA={setA}
+            a={a}
+            deleteBtn={deleteBtn}
+            setDeleteBtn={setDeleteBtn}
           />
         </div>
         <CommentForm

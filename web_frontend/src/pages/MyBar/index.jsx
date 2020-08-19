@@ -156,7 +156,7 @@ const MyBar = () => {
                 <hr />
                 <Card.Img
                   variant="top"
-                  src={`http://localhost:8000${MyCocktail.image}`}
+                  src={`${serverUrl}${MyCocktail.image}`}
                 />
                 <hr />
                 <Card.Text>{MyCocktail.detail}</Card.Text>

@@ -7,15 +7,18 @@ import axios from "axios";
 import AccountCircleTwoToneIcon from "@material-ui/icons/AccountCircleTwoTone";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import ReplyList from "../../../Community/ReplyList/";
 import { CommonContext } from "../../../../context/CommonContext";
 
 export default function (props) {
+  const { serverUrl, user } = useContext(CommonContext);
+
   let comments = props.comments.map((comment, idx) => {
     let likeButton = null;
     let countLikeIt1 = null;
-    if (comment.LIKE.length) {
+    if (comment.LIKE.includes(user.user.id)) {
       likeButton = (
         <FavoriteIcon onClick={() => likeIt(comment)} color="error" key={idx} />
       );
@@ -97,37 +100,22 @@ export default function (props) {
       return <div>{theTime}</div>;
     }
 
-    const [myClicked, setMyClicked] = useState(true);
-    const [myClicked1, setMyClicked1] = useState(false);
-
-    function clickComment(e) {
-      let b = myClicked1;
-      console.log("myClicked", myClicked);
-
-      const a = e.target.closest(".comment-single");
-
-      if (myClicked) {
-        a.style.background = "#b0e1ff";
-        // props.setMyClicked1(!props.myClicked1);
-
-        if (myClicked1) {
-          console.log("중복!");
-          setMyClicked1(false);
-        }
-        console.log(myClicked, myClicked1);
-        setMyClicked1(true);
-        console.log(myClicked, myClicked1);
-      } else {
-        a.style.background = "";
-      }
-      // console.log(props.myClicked, props.myClicked1);
-      console.log(myClicked, myClicked1);
-      console.log("-----------");
-      setMyClicked1(!myClicked1);
-
-      setMyClicked(!myClicked);
-
+    function clickComment(e, comment) {
+      props.setA(e.target.closest(".comment-single"));
+      console.log(comment.user);
+      console.log(user.user.id);
       props.clickComment(e);
+      console.log(comment.user === user.user.id);
+      if (user.user.id === comment.user) {
+        props.setDeleteBtn(
+          <DeleteIcon
+            className="comment-list-header-delete-click"
+            fontSize="large"
+          />
+        );
+      } else {
+        props.setDeleteBtn("");
+      }
     }
 
     return (
@@ -138,15 +126,18 @@ export default function (props) {
             className="comment-avata"
             fontSize="large"
           />
-          <div className="comment-single-left" onClick={(e) => clickComment(e)}>
-            <div className="comment-single-left-1">
+          <div className="comment-single-left">
+            <div
+              className="comment-single-left-1"
+              onClick={(e) => clickComment(e, comment)}
+            >
               <div className="comment-username">
                 {comment.username}
                 <div className="comment-content">{comment.content}</div>
               </div>
             </div>
 
-            <div className="comment-single-left-2">
+            <span className="comment-single-left-2">
               {getTime(comment.created_at)}
               {countLikeIt1}
               <span
@@ -155,7 +146,7 @@ export default function (props) {
               >
                 답글 달기
               </span>
-            </div>
+            </span>
           </div>
           <div className="comment-likeIt">{likeButton}</div>
         </div>
@@ -164,6 +155,9 @@ export default function (props) {
             replys={comment.replys}
             likeIt={likeIt}
             clickComment={props.clickComment}
+            setA={props.setA}
+            a={props.a}
+            setDeleteBtn={props.setDeleteBtn}
           />
         </div>
       </div>

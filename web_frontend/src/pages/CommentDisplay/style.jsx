@@ -14,7 +14,13 @@ const Wrapper = styled.div`
     padding: 10px 5px;
     display: flex;
     flex-direction: row;
-    background-color: #0080ff;
+    justify-content: space-between;
+    background-color: #0195f7;
+  }
+
+  & .comment-list-header-clicked-1 {
+    height: 45px;
+    display: flex;
   }
 
   & .comment-list-header-arrow {
@@ -22,6 +28,11 @@ const Wrapper = styled.div`
   }
 
   & .comment-list-header-arrow-click {
+    font-size: 45px;
+    color: #ffffff;
+  }
+
+  & .comment-list-header-delete-click {
     font-size: 45px;
     color: #ffffff;
   }
