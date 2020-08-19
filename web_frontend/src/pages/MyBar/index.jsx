@@ -32,6 +32,7 @@ const MyBar = () => {
         console.log(res.data);
         setMenuList(res.data.save_articles);
         console.log(menuList);
+        setIndex(0);
       })
       .catch((err) => console.log(err + " 에러났음"));
   }
@@ -59,6 +60,7 @@ const MyBar = () => {
         .then((res) => {
           console.log(res.data);
           refreshList();
+          setIndex(0);
         })
         .catch((err) => console.log(err));
 
