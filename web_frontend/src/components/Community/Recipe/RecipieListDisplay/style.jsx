@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 
   & .list-item {
     /* display: flex; */
-    margin-bottom: 4%;
+    margin-bottom: 0;
   }
 
   & .list-item-imageBox {
@@ -36,15 +36,12 @@ const Wrapper = styled.div`
     padding: 5% 0%;
     overflow: hidden;
     /* padding-bottom: 10%; */
-    border-bottom: solid 1px #9b9b9b;
+    /* border-bottom: solid 1px #9b9b9b; */
   }
 
   & .list-item-image {
     width: 100%;
     height: 100%;
-    padding: 0;
-    /* padding-bottom: 10%; */
-    /* border-bottom: solid 1px #9b9b9b; */
   }
 
   & .list-item-detail {
@@ -53,11 +50,12 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 0;
   }
 
   & .like-button {
-    margin-left: 2%;
-    margin-right: 2%;
+    padding: 10px 8px;
+    margin: 0;
     display: flex;
     justify-content: space-between;
   }
@@ -65,6 +63,8 @@ const Wrapper = styled.div`
   & .detail-content {
     font-size: 1em;
     padding: 10% 0;
+    margin: 0;
+    margin-bottom: 5px
     width: 100%;
     border-bottom: solid 1px #9b9b9b;
   }

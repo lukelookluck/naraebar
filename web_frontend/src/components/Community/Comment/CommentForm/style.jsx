@@ -13,6 +13,12 @@ const Wrapper = styled.div`
 
   & .comment-form-avata {
     font-size: 35px;
+    color: #3a679e;
+  }
+
+  & .comment-form-avata2 {
+    font-size: 35px;
+    color: #3a679e;
   }
 
   & .comment-form-input {
