@@ -9,6 +9,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from django.db.models import Max
+from django.http import JsonResponse
+
 import random
 import serial
 
@@ -21,27 +23,32 @@ class recipeViewset(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def random(self, request, pk=None):
         max_id = Recipe.objects.all().aggregate(max_id=Max("id"))['max_id']
+        if max_id is None:
+            return Response({"recipe_error": "No recipe!"})
+
         pk = random.randint(1, max_id)
         random_recipe = Recipe.objects.get(pk=pk)
         serializer = self.get_serializer(random_recipe)
         return Response(serializer.data)
 
-    @action(detail=False, methods=['post'])
-    def make_cocktail(self, request, pk):
-        recipe = Recipe.objects.get(pk=pk)
+    @action(detail=False, methods=['get'])
+    def make_cocktail(self, pk):
+        cocktail_recipe = Recipe.objects.get(pk=pk)
 
-        ser = serial.Serial('/dev/ttyAMA0', 9600)
-        # ser.port = '/dev/ttyAMA0'
-        # ser.baudrate = 9600
+        # ser = serial.Serial('/dev/ttyAMA0', 9600)
+        ser = serial.Serial()
+        ser.port = '/dev/ttyAMA0'
+        ser.baudrate = 9600
 
         ser_data = '$,MAKE,'
         for i in range(1, 7):
             key_Ingredient = 'strIngredient' + str(i)
             key_Measure = 'strMeasure' + str(i)
 
-            if recipe[key_Ingredient] != 'null':
-                bottle = Bottle.objects.get(name=recipe[strDrink])
-                ser_data += (bottle[nozzle] + ',' + recipe[key_Measure])
+            if getattr(cocktail_recipe, key_Ingredient) != 'null':
+                bottle = Bottle.objects.get(name=cocktail_recipe.strDrink)
+                ser_data += (str(bottle.nozzle) + ',' +
+                             str(getattr(cocktail_recipe, key_Measure)))
 
         ser_data += '&'
         ser.write(ser_data.encode())
@@ -50,7 +57,7 @@ class recipeViewset(viewsets.ModelViewSet):
         receive_data = ser.readline()
         print(receive_data)
 
-        return Response({ser_data: receive_data})
+        return JsonResponse({'data': ser_data})
 
 
 class bottleViewset(viewsets.ModelViewSet):
