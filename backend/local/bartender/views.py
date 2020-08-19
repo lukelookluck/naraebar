@@ -33,29 +33,30 @@ class recipeViewset(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def make_cocktail(self, pk):
-        cocktail_recipe = Recipe.objects.get(pk=pk)
-
         # ser = serial.Serial('/dev/ttyAMA0', 9600)
-        ser = serial.Serial()
-        ser.port = '/dev/ttyAMA0'
-        ser.baudrate = 9600
+        # ser = serial.Serial()
+        # ser.port = '/dev/ttyAMA0'
+        # ser.baudrate = 9600
 
         ser_data = '$,MAKE,'
+        cocktail_recipe = Recipe.objects.get(pk=pk)
         for i in range(1, 7):
             key_Ingredient = 'strIngredient' + str(i)
             key_Measure = 'strMeasure' + str(i)
 
-            if getattr(cocktail_recipe, key_Ingredient) != 'null':
-                bottle = Bottle.objects.get(name=cocktail_recipe.strDrink)
+            ingredient = getattr(cocktail_recipe, key_Ingredient)
+
+            if ingredient != 'null':
+                bottle = Bottle.objects.get(name=ingredient)
                 ser_data += (str(bottle.nozzle) + ',' +
                              str(getattr(cocktail_recipe, key_Measure)))
 
-        ser_data += '&'
-        ser.write(ser_data.encode())
-        print(ser_data)
+        ser_data += ',&'
+        # ser.write(ser_data.encode())
+        # print(ser_data)
 
-        receive_data = ser.readline()
-        print(receive_data)
+        # receive_data = ser.readline()
+        # print(receive_data)
 
         return JsonResponse({'data': ser_data})
 
