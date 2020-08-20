@@ -33,7 +33,7 @@ class recipeViewset(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def make_cocktail(self, pk):
-        # ser = serial.Serial('/dev/ttyAMA0', 9600)
+        ser = serial.Serial('/dev/ttyAMA0', 9600)
         # ser = serial.Serial()
         # ser.port = '/dev/ttyAMA0'
         # ser.baudrate = 9600
@@ -52,10 +52,10 @@ class recipeViewset(viewsets.ModelViewSet):
                              str(getattr(cocktail_recipe, key_Measure)))
 
         ser_data += ',&'
-        # ser.write(ser_data.encode())
+        ser.write(ser_data.encode())
         # print(ser_data)
 
-        # receive_data = ser.readline()
+        receive_data = ser.readline()
         # print(receive_data)
 
         return JsonResponse({'data': ser_data})
@@ -63,7 +63,6 @@ class recipeViewset(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def done(self, request):
         return JsonResponse({"what": "done"})
-
 
 
 class bottleViewset(viewsets.ModelViewSet):
