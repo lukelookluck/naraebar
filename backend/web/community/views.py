@@ -91,3 +91,9 @@ def LikeComment(request, comment_pk):
     result = comment.LIKE.all().count()
     print(result)
     return Response(result)
+
+
+# @ api_view(['GET'])
+# def SinkArticle(request, pk):
+#     pass
+
