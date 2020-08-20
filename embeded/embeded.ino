@@ -162,7 +162,7 @@ int make(){
           break;
         case 1: //용량 다 차면 밸브를 닫아요
           mon = LOW;
-          if (alarm(atof(contain[i].c_str())/75)) {
+          if (alarm(atof(contain[i].c_str())/75*2)) {
             mon = HIGH;
             x = 2;
           }
