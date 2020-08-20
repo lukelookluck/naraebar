@@ -16,7 +16,7 @@ import { useLocalStorageSetState } from "./common/CommonHooks";
 import { CommonContext } from "./context/CommonContext";
 
 function App() {
-  const HOST = "localhost:8000";
+  const HOST = "192.168.0.26:8000";
   const serverUrl = `http://${HOST}`;
 
   const [user, setUser] = useLocalStorageSetState(

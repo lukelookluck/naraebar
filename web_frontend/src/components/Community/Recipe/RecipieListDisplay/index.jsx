@@ -51,18 +51,20 @@ export default function (props) {
       props.likeSubmit(item);
     }
 
-    const [mySave, setMySave] = useState(item.SAVE);
+    const [mySave, setMySave] = useState(item.SAVE.includes(user.user.id));
 
     const [open, setOpen] = useState(0);
     let saveButton = null;
-    if (item.SAVE.includes(user.user.id)) {
+    if (mySave) {
       saveButton = (
         <BookmarkIcon
           className="btn-icon"
           onClick={() => {
             props.saveSubmit(item);
-            setMySave(item.SAVE.pop());
+            item.SAVE.pop();
             setOpen(0);
+            setMySave(false);
+            console.log(item);
           }}
         />
       );
@@ -76,7 +78,10 @@ export default function (props) {
             setTimeout(() => {
               setOpen(0);
             }, 3000);
-            setMySave(item.SAVE.push(1));
+            item.SAVE.push(user.user.id);
+            setMySave(true);
+
+            console.log(item);
           }}
         />
       );
