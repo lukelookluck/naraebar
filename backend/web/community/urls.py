@@ -13,4 +13,5 @@ urlpatterns = [
     path('article_like/<int:article_pk>/', views.LikeArticle),
     path('article_save/<int:article_pk>/', views.SaveArticle),
     path('comment/like/<int:comment_pk>/', views.LikeComment),
+    # path('sync/<int:pk>/', views.SinkArticle),
 ]
