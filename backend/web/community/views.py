@@ -73,8 +73,11 @@ def SaveArticle(request, article_pk):
     else:
         article.SAVE.add(user)
 
-    result = article.SAVE.all().count()
-    return Response(result)
+    result = article.SAVE.all()
+    print(result)
+    data = ArticleSerializer(instance=article)
+
+    return Response(data.data)
 
 
 @ api_view(['POST'])

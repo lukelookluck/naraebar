@@ -62,7 +62,7 @@ export default function () {
   }
 
   function saveSubmit(article) {
-    console.log(article);
+    // console.log(article);
     axios
       .post(
         `${serverUrl}/community/article_save/${article.id}/`,
@@ -74,8 +74,8 @@ export default function () {
         }
       )
       .then((res) => {
-        console.log(res.data);
-        refreshList();
+        console.log(res.data.SAVE);
+        // refreshList();
       })
       .catch((err) => console.log(err));
   }
@@ -98,7 +98,6 @@ export default function () {
         history.push("/Main");
       });
   }
-  const [open, setOpen] = useState(false);
 
   return (
     <Wrapper>
@@ -108,8 +107,6 @@ export default function () {
           likeSubmit={likeSubmit}
           saveSubmit={saveSubmit}
           DeleteArticle={DeleteArticle}
-          open={open}
-          setOpen={setOpen}
         />
       </Grid>
     </Wrapper>

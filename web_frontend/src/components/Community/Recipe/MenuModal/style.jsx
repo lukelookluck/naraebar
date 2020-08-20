@@ -14,6 +14,10 @@ const Wrapper = styled.div`
     border: "2px solid #000",
     boxShadow: theme.shadows[5], */
   }
+
+  & .moreIcon {
+    font-size: 30px;
+  }
 `;
 
 export default Wrapper;

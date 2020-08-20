@@ -12,6 +12,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Community from "../../pages/Community/";
+
 import MyBar from "../../pages/MyBar/";
 
 import Portal from "@material-ui/core/Portal";
@@ -64,8 +65,8 @@ export default function NavigationTab() {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = (event, value) => {
+    setValue(value);
   };
 
   const handleChangeIndex = (index) => {
@@ -95,10 +96,9 @@ export default function NavigationTab() {
           </Tabs>
         </AppBar>
         <SwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          axis={theme.direction === "ltr" ? "x" : "x-reverse"}
           index={value}
           onChangeIndex={handleChangeIndex}
-          class="asdas"
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
             <Community></Community>

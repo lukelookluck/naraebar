@@ -25,12 +25,21 @@ export default function (props) {
     let countLikeIt1 = null;
     if (item.LIKE.includes(user.user.id)) {
       // 현재 유저가 item.LIKE에 있으면 1 없으면 0
-      likeButton = <FavoriteIcon onClick={likeIt} color="error" key={index} />;
+      likeButton = (
+        <FavoriteIcon
+          className="btn-icon"
+          onClick={likeIt}
+          color="error"
+          key={index}
+        />
+      );
       countLikeIt1 = (
         <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
       );
     } else {
-      likeButton = <FavoriteBorderIcon onClick={likeIt} key={index} />;
+      likeButton = (
+        <FavoriteBorderIcon className="btn-icon" onClick={likeIt} key={index} />
+      );
       if (item.LIKE.length) {
         countLikeIt1 = (
           <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
@@ -42,25 +51,32 @@ export default function (props) {
       props.likeSubmit(item);
     }
 
+    const [mySave, setMySave] = useState(item.SAVE);
+
+    const [open, setOpen] = useState(0);
     let saveButton = null;
     if (item.SAVE.includes(user.user.id)) {
       saveButton = (
         <BookmarkIcon
+          className="btn-icon"
           onClick={() => {
             props.saveSubmit(item);
-            props.setOpen(false);
+            setMySave(item.SAVE.pop());
+            setOpen(0);
           }}
         />
       );
     } else {
       saveButton = (
         <BookmarkBorderIcon
+          className="btn-icon"
           onClick={() => {
             props.saveSubmit(item);
-            props.setOpen(true);
+            setOpen(1);
             setTimeout(() => {
-              props.setOpen(false);
+              setOpen(0);
             }, 3000);
+            setMySave(item.SAVE.push(1));
           }}
         />
       );
@@ -142,8 +158,10 @@ export default function (props) {
       <div className="list-card" key={index}>
         <div className="list-user">
           <div>
-            <AccountCircleIcon />
-            &nbsp;&nbsp;{item.username}
+            <div className="list-avata">
+              <AccountCircleIcon className="list-useravata" />
+              <span className="list-username">{item.username}</span>
+            </div>
           </div>
           <div>
             {user.user.id === item.user && (
@@ -187,18 +205,19 @@ export default function (props) {
                 },
               }}
             >
-              <InsertCommentOutlinedIcon />
+              <InsertCommentOutlinedIcon className="btn-icon" />
             </Link>
           </div>
           {saveButton}
         </div>
-        <Alert open={props.open} setOpen={props.setOpen} />
+        <Alert open={open} setOpen={setOpen} />
         {/* <hr /> */}
         {countLikeIt1}
         <CommentList comments={item.comments} article={item} />
       </div>
     );
   });
+
   return (
     <Wrapper>
       <Grid className="list-box">{article}</Grid>

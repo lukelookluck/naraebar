@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Layout from "../../layout/";
 import Grid from "@material-ui/core/Grid";
 
@@ -12,12 +12,7 @@ import CreateArticleButton from "../../components/Community/ArticleForm/CreateAr
 const Community = () => {
   return (
     <Wrapper>
-      <Grid>
-        {/* <Logo /> */}
-        {/* <Nav /> */}
-        <RecipeList />
-        {/* <CreateArticleButton /> */}
-      </Grid>
+      <RecipeList />
     </Wrapper>
   );
 };

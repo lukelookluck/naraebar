@@ -4,17 +4,22 @@ const Wrapper = styled.div`
   & .go-articleForm-button {
     position: fixed;
     /* right: 50%; */
-    left: 50%;
-    transform: translateX(-50%);
+    right: 5vw;
+    /* transform: translateX(-50%); */
     /* top: 0; */
-    bottom: 9%;
+    bottom: 5vw;
 
-    border: 0.5px solid #9b9b9b;
-    border-radius: 15px;
-    padding: 5px 10px;
-    background-color: whitesmoke;
+    border: 0;
+    border-radius: 30px;
+    padding: 12.5px;
+    background-color: #3d69a0;
 
     font-size: 0.9rem;
+  }
+
+  & .acticleBtn {
+    color: white;
+    font-size: 30px;
   }
 
   & .create-button:hover {

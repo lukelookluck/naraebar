@@ -50,7 +50,7 @@ export default function (props) {
 
   return (
     <Wrapper>
-      <MoreVertIcon onClick={handleOpen}></MoreVertIcon>
+      <MoreVertIcon className="moreIcon" onClick={handleOpen}></MoreVertIcon>
       <Modal
         disableEnforceFocus
         disableAutoFocus

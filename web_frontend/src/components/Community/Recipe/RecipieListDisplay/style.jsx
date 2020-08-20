@@ -4,14 +4,16 @@ const Wrapper = styled.div`
   & .list-box {
     padding-left: 0%;
     padding-right: 0%;
+    padding-top: 20px;
   }
 
   & .list-card {
+    margin-right: 0;
     margin-bottom: 20%;
-    padding: 6.5%;
-    border: solid 1px #9b9b9b;
-    border-radius: 15px;
-    width: 74vw;
+    padding: 1%;
+    /* border: solid 1px #9b9b9b;
+    border-radius: 15px; */
+    width: 92.3vw;
     text-align: left;
   }
 
@@ -20,9 +22,22 @@ const Wrapper = styled.div`
     justify-content: space-between;
     padding-left: 2%;
     margin: 0;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     width: 100%;
-    border-bottom: solid 1px #9b9b9b;
+    /* border-bottom: solid 1px #9b9b9b; */
+  }
+
+  & .list-avata {
+    display: flex;
+  }
+
+  & .list-useravata {
+    font-size: 30px;
+  }
+
+  & .list-username {
+    margin-left: 5px;
+    font-size: 20px;
   }
 
   & .list-item {
@@ -31,8 +46,8 @@ const Wrapper = styled.div`
   }
 
   & .list-item-imageBox {
-    width: 63.75vw;
-    height: 63.75vw;
+    width: 90.5vw;
+    height: 86vw;
     padding: 5% 0%;
     overflow: hidden;
     /* padding-bottom: 10%; */
@@ -42,6 +57,8 @@ const Wrapper = styled.div`
   & .list-item-image {
     width: 100%;
     height: 100%;
+    padding: 0;
+    /* border-bottom: 0; */
   }
 
   & .list-item-detail {
@@ -62,11 +79,10 @@ const Wrapper = styled.div`
 
   & .detail-content {
     font-size: 1em;
-    padding: 10% 0;
+    padding: 2vw 0;
     margin: 0;
-    margin-bottom: 5px
     width: 100%;
-    border-bottom: solid 1px #9b9b9b;
+    /* border-bottom: solid 1px #9b9b9b; */
   }
 
   & .more-tag {
@@ -105,6 +121,10 @@ const Wrapper = styled.div`
     justify-content: space-between;
     margin: 2vw 2vw;
     border-bottom: 1px dotted #9b9b9b;
+  }
+
+  & .btn-icon {
+    font-size: 30px;
   }
 `;
 

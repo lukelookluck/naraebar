@@ -68,6 +68,11 @@ export default function (props) {
         commentInput.parent = null;
 
         refreshList();
+
+        setTimeout(() => {
+          refreshList();
+          console.log("새로고침!");
+        }, 3000);
       })
       .catch((err) => {
         console.log(err);

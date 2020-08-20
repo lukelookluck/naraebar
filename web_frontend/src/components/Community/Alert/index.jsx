@@ -23,11 +23,12 @@ export default function TransitionAlerts(props) {
     <div className={classes.root}>
       <Collapse in={props.open}>
         <Alert
+          severity="info"
           icon={<LocalBarOutlinedIcon fontSize="small" />}
           action={
             <IconButton
               aria-label="close"
-              color="inherit"
+              color="primary"
               size="small"
               onClick={() => {
                 props.setOpen(false);
