@@ -8,35 +8,18 @@ String enddata;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  pinMode(9, OUTPUT);
+//  pinMode(9, OUTPUT);
 
 }
 
 void loop() {
-//    if(Serial.available()){
-//      if ( parsing(Serial.readString()) == 1){
-//        if (mode == "MAKE"){
-//          // 제작 함수 실행 bottle과 contain 하나하나 돌면서 출력
-////          j = 0;
-////          while (bottle[j] != "-1"){
-////            Serial.print(bottle[j]);
-////            Serial.print(" ");
-////            Serial.println(contain[j]);
-////            j++;
-////          }
-//        }
-//        else if (mode == "WASH"){
-//          // 세척 함수 실행 
-//        }
-//      }
-//    }
-String tmp = ""; 
-
-tmp = Serial.readString();
-Serial.println(tmp);
-//if (tmp && (tmp!="")){
-//  parsing(tmp);
-//}
+  String tmp = ""; 
+  tmp = Serial.readStringUntil("\r");
+  if (tmp && (tmp != "")){
+    
+    Serial.println(tmp);
+  //  parsing(tmp);
+  }
 
 }
 
