@@ -18,7 +18,7 @@ import serial
 class recipeViewset(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     @action(detail=False, methods=['get'])
     def random(self, request, pk=None):
@@ -37,6 +37,8 @@ class recipeViewset(viewsets.ModelViewSet):
         # ser = serial.Serial()
         # ser.port = '/dev/ttyAMA0'
         # ser.baudrate = 9600
+
+        ser.open()
 
         ser_data = '$,MAKE,'
         cocktail_recipe = Recipe.objects.get(pk=pk)
@@ -58,6 +60,8 @@ class recipeViewset(viewsets.ModelViewSet):
         receive_data = ser.readline()
         # print(receive_data)
 
+        ser.close()
+
         return JsonResponse({'data': ser_data})
 
     @action(detail=False, methods=['get'])
@@ -68,4 +72,4 @@ class recipeViewset(viewsets.ModelViewSet):
 class bottleViewset(viewsets.ModelViewSet):
     queryset = Bottle.objects.all()
     serializer_class = BottleSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
