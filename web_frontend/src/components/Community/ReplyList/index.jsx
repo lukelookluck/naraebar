@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import Wrapper from "./style";
@@ -8,8 +8,12 @@ import Grid from "@material-ui/core/Grid";
 import AccountCircleTwoToneIcon from "@material-ui/icons/AccountCircleTwoTone";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import DeleteIcon from "@material-ui/icons/Delete";
+
+import { CommonContext } from "../../../context/CommonContext";
 
 export default function (props) {
+  const { serverUrl, user } = useContext(CommonContext);
   const [myIndex, setMyIndex] = useState(2);
 
   function moreComment() {
@@ -115,7 +119,7 @@ export default function (props) {
 
     let likeButton = null;
     let countLikeIt1 = null;
-    if (reply.LIKE.length) {
+    if (reply.LIKE.includes(user.user.id)) {
       likeButton = (
         <FavoriteIcon
           onClick={() => props.likeIt(reply)}
@@ -132,13 +136,39 @@ export default function (props) {
       likeButton = (
         <FavoriteBorderIcon onClick={() => props.likeIt(reply)} key={idx} />
       );
+      countLikeIt1 = (
+        <span className="comment-likeIt-count">
+          좋아요 {reply.LIKE.length}개
+        </span>
+      );
     }
+
+    function clickReply(e, reply) {
+      props.setA(e.target.closest(".comment-single"));
+      // console.log(props.a);
+      if (user.user.id === reply.user) {
+        props.setDeleteBtn(
+          <DeleteIcon
+            className="comment-list-header-delete-click"
+            fontSize="large"
+            onClick={() => props.DeleteComment(reply)}
+          />
+        );
+      } else {
+        props.setDeleteBtn("");
+      }
+      props.clickComment(e, reply);
+    }
+
     if (showReplysBool === false && idx < myIndex) {
       return (
-        <div className="reply-single" key={idx}>
+        <div className="comment-single reply-single" key={idx}>
           <AccountCircleTwoToneIcon className="reply-avata" fontSize="large" />
           <div className="reply-single-left">
-            <div className="reply-single-left-1">
+            <div
+              className="reply-single-left-1"
+              onClick={(e) => clickReply(e, reply)}
+            >
               <div className="reply-username">
                 {reply.username}
                 <div className="reply-content">{reply.content}</div>

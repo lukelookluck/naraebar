@@ -30,8 +30,9 @@ const MyBar = () => {
       })
       .then((res) => {
         console.log(res.data);
-        setMenuList(res.data.like_articles);
+        setMenuList(res.data.save_articles);
         console.log(menuList);
+        setIndex(0);
       })
       .catch((err) => console.log(err + " 에러났음"));
   }
@@ -46,7 +47,22 @@ const MyBar = () => {
 
   const deleteRecipe = (id) => (e) => {
     try {
-      // 삭제하라는 어떤 신호를 보내겠지
+      axios
+        .post(
+          `${serverUrl}/community/article_save/${id}/`,
+          { user: user.user.id },
+          {
+            headers: {
+              Authorization: `JWT ${user.token}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+          refreshList();
+          setIndex(0);
+        })
+        .catch((err) => console.log(err));
 
       console.log("삭제 버튼 클릭, id = " + id);
       alert("삭제 성공");
@@ -58,7 +74,7 @@ const MyBar = () => {
   function igrList() {
     return (
       <Fragment>
-        {MyCocktail.strIngredient1 != "null" ? (
+        {MyCocktail.ingredient1.length != 0 ? (
           <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient1}</div>
             <div className="listdiv">{MyCocktail.measure1} ml</div>
@@ -66,46 +82,47 @@ const MyBar = () => {
         ) : (
           <div></div>
         )}
-        {MyCocktail.strIngredient2 != "null" ? (
+        {MyCocktail.ingredient2.length != 0 ? (
           <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient2}</div>
-            <div className="listdiv">{MyCocktail.measure1} ml</div>
+            <div className="listdiv">{MyCocktail.measure2} ml</div>
           </ListGroupItem>
         ) : (
           <div></div>
         )}
-        {MyCocktail.strIngredient3 != "null" ? (
+        {MyCocktail.ingredient3.length != 0 ? (
           <ListGroupItem>
             <div className="listdiv">{MyCocktail.ingredient3}</div>
-            <div className="listdiv">{MyCocktail.measure1} ml</div>
+            <div className="listdiv">{MyCocktail.measure3} ml</div>
           </ListGroupItem>
         ) : (
           <div></div>
         )}
-        {MyCocktail.strIngredient4 != "null" ? (
+        {MyCocktail.ingredient4.length != 0 ? (
           <ListGroupItem>
-            <div className="listdiv">{MyCocktail.strIngredient4}</div>
-            <div className="listdiv">{MyCocktail.strMeasure4} ml</div>
+            <div className="listdiv">{MyCocktail.ingredient4}</div>
+            <div className="listdiv">{MyCocktail.measure4} ml</div>
           </ListGroupItem>
         ) : (
           <div></div>
         )}
-        {MyCocktail.strIngredient5 != "null" ? (
+        {MyCocktail.ingredient5.length != 0 ? (
           <ListGroupItem>
-            <div className="listdiv">{MyCocktail.strIngredient5}</div>
-            <div className="listdiv">{MyCocktail.strMeasure5} ml</div>
+            <div className="listdiv">{MyCocktail.ingredient5}</div>
+            <div className="listdiv">{MyCocktail.measure5} ml</div>
           </ListGroupItem>
         ) : (
           <div></div>
         )}
-        {MyCocktail.strIngredient6 != "null" ? (
+        {MyCocktail.ingredient6.length != 0 ? (
           <ListGroupItem>
-            <div className="listdiv">{MyCocktail.strIngredient6}</div>
-            <div className="listdiv">{MyCocktail.strMeasure6} ml</div>
+            <div className="listdiv">{MyCocktail.ingredient6}</div>
+            <div className="listdiv">{MyCocktail.measure6} ml</div>
           </ListGroupItem>
         ) : (
           <div></div>
         )}
+        {console.log(MyCocktail)}
       </Fragment>
     );
   }
@@ -127,7 +144,7 @@ const MyBar = () => {
             <Card>
               <Card.Body>
                 <Card.Title>
-                  <div className="namediv">{MyCocktail.drink_name}</div>
+                  <div className="namediv">{MyCocktail.title}</div>
                   <div className="iconbtndiv">
                     <IconButton
                       aria-label="delete"
@@ -139,12 +156,15 @@ const MyBar = () => {
                   </div>
                 </Card.Title>
                 <hr />
-                <Card.Img
-                  variant="top"
-                  src={`http://localhost:8000${MyCocktail.image}`}
-                />
+                <div className="card-imageBox">
+                  <Card.Img
+                    className="card-image"
+                    variant="top"
+                    src={`${serverUrl}${MyCocktail.image}`}
+                  />
+                </div>
                 <hr />
-                <Card.Text>{MyCocktail.strInstructions}</Card.Text>
+                <Card.Text>{MyCocktail.detail}</Card.Text>
               </Card.Body>
               <ListGroup className="list-group-flush">{igrList()}</ListGroup>
             </Card>

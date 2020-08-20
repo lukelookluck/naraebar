@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  font-family: "IBMPlexSansKR-Text";
+
   & .comment-list-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     border-bottom: solid 0.5px #dddddd;
     padding: 10px 5px;
     display: flex;
@@ -9,8 +14,35 @@ const Wrapper = styled.div`
     background-color: #fcfcfc;
   }
 
+  & .comment-list-header-clicked {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: solid 0.5px #dddddd;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #4477b5;
+  }
+
+  & .comment-list-header-clicked-1 {
+    height: 45px;
+    display: flex;
+  }
+
   & .comment-list-header-arrow {
     font-size: 45px;
+  }
+
+  & .comment-list-header-arrow-click {
+    font-size: 45px;
+    color: #ffffff;
+  }
+
+  & .comment-list-header-delete-click {
+    font-size: 45px;
+    color: #ffffff;
   }
 
   & .comment-list-header-title {
@@ -18,8 +50,15 @@ const Wrapper = styled.div`
     font-size: 30px;
   }
 
+  & .comment-list-header-title-click {
+    color: #ffffff;
+    margin-left: 15px;
+    font-size: 30px;
+  }
+
   & .comment-list-box {
-    margin: 20px 10px;
+    /* margin: 10px 5px; */
+    margin-top: 65px;
     margin-bottom: 70px;
   }
 

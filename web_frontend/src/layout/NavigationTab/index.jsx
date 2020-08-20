@@ -16,6 +16,8 @@ import MyBar from "../../pages/MyBar/";
 
 import Portal from "@material-ui/core/Portal";
 
+import CreateArticleButton from "../../components/Community/ArticleForm/CreateArticleButton/";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -72,7 +74,7 @@ export default function NavigationTab() {
 
   return (
     <Wrapper className={classes.root}>
-      <Grid container justify="center" alignItems="center">
+      <Grid container justify="center" alignItems="center" class="asd">
         <AppBar className="myAppbar" position="static" color="default">
           <Tabs
             value={value}
@@ -96,16 +98,16 @@ export default function NavigationTab() {
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={value}
           onChangeIndex={handleChangeIndex}
+          class="asdas"
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <Portal container={document.body}>
-              <Community></Community>
-            </Portal>
+            <Community></Community>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <MyBar></MyBar>
           </TabPanel>
         </SwipeableViews>
+        {value == 0 && <CreateArticleButton />}
       </Grid>
     </Wrapper>
   );

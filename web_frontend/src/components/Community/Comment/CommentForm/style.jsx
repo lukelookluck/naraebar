@@ -13,6 +13,12 @@ const Wrapper = styled.div`
 
   & .comment-form-avata {
     font-size: 35px;
+    color: #3a679e;
+  }
+
+  & .comment-form-avata2 {
+    font-size: 35px;
+    color: #3a679e;
   }
 
   & .comment-form-input {
@@ -26,13 +32,13 @@ const Wrapper = styled.div`
   & .comment-form-register {
     text-decoration: none;
     font-weight: 600;
-    color: #88c4ff;
+    color: #93b1d7;
   }
 
   & .comment-form-register2 {
     text-decoration: none;
     font-weight: 600;
-    color: #0080ff;
+    color: #4477b5;
   }
 `;
 export default Wrapper;

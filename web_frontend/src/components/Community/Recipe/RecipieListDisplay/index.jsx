@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
@@ -13,19 +13,17 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import CommentList from "../../Comment/ArticleUnderCommentList";
 import MenuModal from "../MenuModal/";
+import Alert from "../../../../components/Community/Alert/";
+
+import { CommonContext } from "../../../../context/CommonContext";
 
 export default function (props) {
-  // console.log(props.list);
+  const { serverUrl, user } = useContext(CommonContext);
+
   let article = props.list.map((item, index) => {
-    // console.log("key", index);
-    // console.log("item", item);
-
-    // const [countLikeIt, setCountLikeIt] = useState(item.LIKE.length);
-    const [isSaveit, setSaveit] = useState(0);
-
     let likeButton = null;
     let countLikeIt1 = null;
-    if (item.LIKE.length) {
+    if (item.LIKE.includes(user.user.id)) {
       // 현재 유저가 item.LIKE에 있으면 1 없으면 0
       likeButton = <FavoriteIcon onClick={likeIt} color="error" key={index} />;
       countLikeIt1 = (
@@ -33,29 +31,39 @@ export default function (props) {
       );
     } else {
       likeButton = <FavoriteBorderIcon onClick={likeIt} key={index} />;
+      if (item.LIKE.length) {
+        countLikeIt1 = (
+          <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
+        );
+      }
     }
 
     function likeIt() {
-      // alert("눌럿어?");
       props.likeSubmit(item);
-      // setLikeIt(!isLikeit);
-      // if (item.LIKE.length) {
-      //   // 현재 유저가 item.LIKE에 있으면 1 없으면 0
-      //   setCountLikeIt(countLikeIt - 1);
-      // } else {
-      //   setCountLikeIt(countLikeIt + 1);
-      // }
     }
 
     let saveButton = null;
-    if (isSaveit) {
-      saveButton = <BookmarkIcon onClick={saveIt} />;
+    if (item.SAVE.includes(user.user.id)) {
+      saveButton = (
+        <BookmarkIcon
+          onClick={() => {
+            props.saveSubmit(item);
+            props.setOpen(false);
+          }}
+        />
+      );
     } else {
-      saveButton = <BookmarkBorderIcon onClick={saveIt} />;
-    }
-
-    function saveIt() {
-      setSaveit(!isSaveit);
+      saveButton = (
+        <BookmarkBorderIcon
+          onClick={() => {
+            props.saveSubmit(item);
+            props.setOpen(true);
+            setTimeout(() => {
+              props.setOpen(false);
+            }, 3000);
+          }}
+        />
+      );
     }
 
     let moreButton = (
@@ -69,47 +77,63 @@ export default function (props) {
     const [cardContent, setCardContent] = useState(
       item.detail.substring(0, 50) + "..."
     );
-    const [ingredients, setIngredients] = useState("");
 
     function moreContent(e) {
       setCardContent(
         <div>
           <div>{item.detail}</div>
           <div className="ingredient-title">[재료]</div>
-          <div className="ingredient-box">
-            <span>{item.ingredient1}</span>
-            <span>{item.measure1}</span>
-          </div>
-          <div className="ingredient-box">
-            <span>{item.ingredient2}</span>
-            <span>{item.measure2}</span>
-          </div>
-          <div className="ingredient-box">
-            <span>{item.ingredient3}</span>
-            <span>{item.measure3}</span>
-          </div>
-          {item.ingredient4 && (
+
+          {item.ingredient1.length != 0 ? (
+            <div className="ingredient-box">
+              <span>{item.ingredient1}</span>
+              <span>{item.measure1} ml</span>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          {item.ingredient2.length != 0 ? (
+            <div className="ingredient-box">
+              <span>{item.ingredient2}</span>
+              <span>{item.measure2} ml</span>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          {item.ingredient3.length != 0 ? (
+            <div className="ingredient-box">
+              <span>{item.ingredient3}</span>
+              <span>{item.measure3} ml</span>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          {item.ingredient4.length != 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient4}</span>
-              <span>{item.measure4}</span>
+              <span>{item.measure4} ml</span>
             </div>
+          ) : (
+            <div></div>
           )}
-          {item.ingredient5 && (
+          {item.ingredient5.length != 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient5}</span>
-              <span>{item.measure5}</span>
+              <span>{item.measure5} ml</span>
             </div>
+          ) : (
+            <div></div>
           )}
-          {item.ingredient6 && (
+          {item.ingredient6.length != 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient6}</span>
-              <span>{item.measure6}</span>
+              <span>{item.measure6} ml</span>
             </div>
+          ) : (
+            <div></div>
           )}
         </div>
       );
-      setIngredients("");
-      console.log(myHide);
       setmyHide(null);
       e.preventDefault();
     }
@@ -122,7 +146,9 @@ export default function (props) {
             &nbsp;&nbsp;{item.username}
           </div>
           <div>
-            <MenuModal item={item} DeleteArticle={props.DeleteArticle} />
+            {user.user.id === item.user && (
+              <MenuModal item={item} DeleteArticle={props.DeleteArticle} />
+            )}
           </div>
         </div>
         <div className="list-item">
@@ -166,7 +192,8 @@ export default function (props) {
           </div>
           {saveButton}
         </div>
-        <hr />
+        <Alert open={props.open} setOpen={props.setOpen} />
+        {/* <hr /> */}
         {countLikeIt1}
         <CommentList comments={item.comments} article={item} />
       </div>

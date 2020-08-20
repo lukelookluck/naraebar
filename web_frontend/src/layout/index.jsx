@@ -10,8 +10,10 @@ const Layout = (props) => {
     <Grid container justify="center" alignItems="center">
       <Grid item xs={12}>
         <Header></Header>
-        {/* <NavigationTab></NavigationTab> */}
-        <div>{children}</div>
+        <div>
+          <NavigationTab></NavigationTab>
+          {children}
+        </div>
       </Grid>
     </Grid>
   );

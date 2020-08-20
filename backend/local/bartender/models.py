@@ -5,9 +5,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Bottle(models.Model):
     name = models.CharField(max_length=100)
     nozzle = models.PositiveIntegerField(
-        default=1, validators=[MinValueValidator(1), MaxValueValidator(4)])
+        default=0, validators=[MinValueValidator(1), MaxValueValidator(4)])
     inserted_at = models.DateTimeField(auto_now_add="true")
-    capacity = models.IntegerField()
+    volume = models.IntegerField(default=0)
     strAlcoholic = models.BooleanField(default="true")
 
 

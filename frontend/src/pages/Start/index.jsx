@@ -6,6 +6,7 @@ import { Grid, Button } from "@material-ui/core";
 import '../../index.css';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
+import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
 
 const Start = () => {
   let history = useHistory();
@@ -18,6 +19,9 @@ const Start = () => {
     <Layout>
       <Wrapper>
         <Grid container className="root" justify="center" alignItems="center">
+          <Grid item xs={12}>
+            <SettingsRoundedIcon className="btnset" onClick={onClickRedirectPathHandler('/Settings')}></SettingsRoundedIcon>
+          </Grid>
           <Grid item xs={12} className="logo">
             <p>NaReBar</p>
             <div className="btndiv">

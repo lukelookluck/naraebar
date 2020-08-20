@@ -24,10 +24,6 @@ class ArticleSerializer(serializers.ModelSerializer):
         serializer = CommentSerializer(instance=comments, many=True)
         return serializer.data
 
-    # def create(self, validate_data):
-    #     image = validate_data.pop('image')
-    #     return Article.objects.update(image=image)
-
 
 class CommentSerializer(serializers.ModelSerializer):
     username = serializers.SerializerMethodField()

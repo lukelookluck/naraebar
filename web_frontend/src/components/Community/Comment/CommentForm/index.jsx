@@ -4,6 +4,7 @@ import Wrapper from "./style";
 import axios from "axios";
 
 import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
+import FaceIcon from "@material-ui/icons/Face";
 
 export default function (props) {
   // console.log("props", props);
@@ -34,7 +35,11 @@ export default function (props) {
   return (
     <Wrapper>
       <div className="comment-form-footer">
-        <FaceOutlinedIcon className="comment-form-avata" />
+        {props.commentInput.content ? (
+          <FaceIcon className="comment-form-avata2" />
+        ) : (
+          <FaceOutlinedIcon className="comment-form-avata" />
+        )}
         <input
           className="comment-form-input"
           type="text"
@@ -50,40 +55,3 @@ export default function (props) {
     </Wrapper>
   );
 }
-
-// class CommentForm extends Component {
-//   // num = 3; //모든 input 제어
-//   state = { input1: "", input2: "" };
-//   handleChange = (e) => {
-//     const { name, value } = e.target;
-//     this.setState({ [name]: value });
-//   }; //추가 명령을 수행할 함수
-//   handleCreate = (data) => {
-//     data.preventDefault();
-//     // this.state.num++;
-//     // const { input1, input2, list } = this.state;
-//   };
-//   render() {
-//     const { handleChange, handleCreate } = this;
-//     const { input1, input2 } = this.state;
-//     return (
-//       <Wrapper>
-//         <div className="comment-form-footer">
-//           <FaceOutlinedIcon className="comment-form-avata" />
-//           <input
-//             className="comment-form-input"
-//             type="text"
-//             name="comment-content"
-//             placeholder="댓글 달기..."
-//             // value={this.state.activeItem.description}
-//             // onChange={this.handleChange}
-//           />
-//           <a href="#" className="comment-form-register">
-//             등록
-//           </a>
-//         </div>
-//       </Wrapper>
-//     );
-//   }
-// }
-// export default CommentForm;

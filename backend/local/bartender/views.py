@@ -9,55 +9,64 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from django.db.models import Max
+from django.http import JsonResponse
+
 import random
-
-
-# def isValidQueryParams(param):
-#     return param != '' and param is not None
-
-
-# def filterQuery(request):
-#     qs = Recipe.objects.all()
-#     searchQuery = request.GET.get('search_query')
-#     if isValidQueryParams(searchQuery):
-#         qs = qs.filter(Q(name__icontains=searchQuery) | Q(
-#             ingredients__icontains=searchQuery) | Q(id__icontains=searchQuery)).distinct()
-
-#     return qs
-
-
-# class randomRecipeViewset(viewsets.ReadOnlyModelViewSet):
-#     queryset = Recipe.objects.all()
-#     serializer_class = RecipeSerializer
-
-#     def get_queryset(self):
-#         return Recipe.objects.all().filter(id=pickRandom())
-
-
-# class searchRecipeViewset(viewsets.ReadOnlyModelViewSet):
-#     queryset = Recipe.objects.all()
-#     serializer_class = RecipeSerializer
-
-#     def get_queryset(self):
-#         qs = filterQuery(self.request)
-#         return qs
+import serial
 
 
 class recipeViewset(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
-    # 실제 사용시 아래 주석 해제할 것!
     # permission_classes = [IsAuthenticated]
+
+    @action(detail=False, methods=['get'])
+    def random(self, request, pk=None):
+        max_id = Recipe.objects.all().aggregate(max_id=Max("id"))['max_id']
+        if max_id is None:
+            return Response({"recipe_error": "No recipe!"})
+
+        pk = random.randint(1, max_id)
+        random_recipe = Recipe.objects.get(pk=pk)
+        serializer = self.get_serializer(random_recipe)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=['get'])
+    def make_cocktail(self, pk):
+        # ser = serial.Serial('/dev/ttyAMA0', 9600)
+        # ser = serial.Serial()
+        # ser.port = '/dev/ttyAMA0'
+        # ser.baudrate = 9600
+
+        ser_data = '$,MAKE,'
+        cocktail_recipe = Recipe.objects.get(pk=pk)
+        for i in range(1, 7):
+            key_Ingredient = 'strIngredient' + str(i)
+            key_Measure = 'strMeasure' + str(i)
+
+            ingredient = getattr(cocktail_recipe, key_Ingredient)
+
+            if ingredient != 'null':
+                bottle = Bottle.objects.get(name=ingredient)
+                ser_data += (str(bottle.nozzle) + ',' +
+                             str(getattr(cocktail_recipe, key_Measure)))
+
+        ser_data += ',&'
+        # ser.write(ser_data.encode())
+        # print(ser_data)
+
+        # receive_data = ser.readline()
+        # print(receive_data)
+
+        return JsonResponse({'data': ser_data})
+
+    @action(detail=False, methods=['get'])
+    def done(self, request):
+        return JsonResponse({"what": "done"})
+
 
 
 class bottleViewset(viewsets.ModelViewSet):
     queryset = Bottle.objects.all()
     serializer_class = BottleSerializer
-    # 실제 사용시 아래 주석 해제할 것!
     # permission_classes = [IsAuthenticated]
-
-
-def get_random_recipe(request):
-    max_id = Recipe.objects.all().aggregate(max_id=Max("id"))['max_id']
-    pk = random.randint(1, max_id)
-    return Recipe.objects.get(pk=pk)

@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  font-family: 'IBMPlexSansKR-Text';
+  font-family: "IBMPlexSansKR-Text";
 
   * {
     word-break: keep-all;
@@ -32,7 +32,7 @@ const Wrapper = styled.div`
 
   & .iconbtndiv {
     position: relative;
-    left:10px;
+    left: 10px;
     top: -38px;
   }
 
@@ -41,8 +41,22 @@ const Wrapper = styled.div`
     margin-top: 50px;
   }
 
-  @media(min-width: 700px) {
+  & .card-imageBox {
+    width: 63.75vw;
+    height: 63.75vw;
+    padding: 5% 0%;
+    overflow: hidden;
+    /* padding-bottom: 10%; */
+    border-bottom: solid 1px #9b9b9b;
+  }
 
+  & .card-image {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  @media (min-width: 700px) {
     & .card {
       width: 1000px;
     }
@@ -52,8 +66,6 @@ const Wrapper = styled.div`
       // height: 500px;
     }
   }
-
-
 `;
 
 export default Wrapper;

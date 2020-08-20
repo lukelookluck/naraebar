@@ -10,5 +10,6 @@ router.register('bottle', views.bottleViewset)
 
 urlpatterns = [
     path('', include(router.urls)),
-    # path('random/', views.get_random_recipe),
+    path('recipe/make_cocktail/<int:pk>', views.recipeViewset.make_cocktail),
+    path('recipe/done', views.recipeViewset.done),
 ]
