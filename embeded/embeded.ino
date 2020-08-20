@@ -179,12 +179,13 @@ int make(){
       }
       digitalWrite(valve[atoi(bottle[i].c_str())], mon); //LOW가 밸브를 켜는것
       digitalWrite(pump, LOW); // 펌프도 계속 켬
-      digitalWrite(8, LOW);
+      digitalWrite(8, !mon);
       return 0;
     }
     else {
       //펌프 2초 가동 후 대기모드로 전환(return 1)
       //제작 완료신호 보내기
+      digitalWrite(8, LOW);
       if (alarm(2)) {
         digitalWrite(pump, HIGH);
         digitalWrite(8, HIGH);
