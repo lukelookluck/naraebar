@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import { Grid, Button, TextField } from "@material-ui/core";
 import axios from "axios";
 
 import Wrapper from "./style";
 import Header from "../../layout/Header/";
 
-import CloseIcon from "@material-ui/icons/Close";
 import ImageUploadBtn from "../../components/Community/ArticleForm/ImageUploadButton/";
 
 import Temp1 from "../../components/Community/ArticleForm/Temp1";
@@ -14,7 +12,6 @@ import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
   const { serverUrl, user } = useContext(CommonContext);
-
   const [articleFormData, setArticleFormData] = useState({
     id: null,
     title: "",
@@ -35,8 +32,6 @@ export default function (props) {
     measure6: "",
     image: "",
   });
-
-  console.log("asd", articleFormData);
 
   function refreshList() {
     if (props.location.state) {
@@ -63,10 +58,6 @@ export default function (props) {
     }
   }
 
-  function goBack() {
-    props.history.goBack();
-  }
-
   useEffect(() => {
     refreshList();
   }, []);
@@ -87,10 +78,7 @@ export default function (props) {
   }, [props.history]);
 
   function handleSubmit(data) {
-    // console.log(data);
-
     if (data.id) {
-      console.log(data);
       axios
         .put(`${serverUrl}/community/${data.id}/`, data, {
           headers: {
@@ -98,8 +86,7 @@ export default function (props) {
           },
         })
         .then((res) => {
-          props.history.push("/Main");
-          // console.log(res.data);
+          props.history.push("/main");
         })
         .catch((err) => {
           console.log(err);
@@ -113,8 +100,7 @@ export default function (props) {
         },
       })
       .then((res) => {
-        console.log(res.data);
-        props.history.push("/Main");
+        props.history.push("/main");
       })
       .catch((err) => {
         console.log(err);
@@ -127,22 +113,7 @@ export default function (props) {
       <Grid container className="root" justify="center" alignItems="center">
         <Grid item xs={12} className="form-header-title">
           <div>나만의 레시피 만들기</div>
-          <p>
-            {/* id: {articleFormData.id}
-            title: {articleFormData.title}
-            detail: {articleFormData.detail}
-            drink_name: {articleFormData.drink_name}
-            user: {articleFormData.user} */}
-            {/* image: {articleFormData.image} */}
-            {/* ingredients: {articleFormData.ingredients2.ingredient} */}
-          </p>
         </Grid>
-        {/* <div className="form-header">
-            <Link to="/Community">
-            <CloseIcon fontSize="large" onClick={goBack} />
-            </Link>
-            <p className="form-header-title">글 쓰기</p>
-          </div> */}
 
         <Grid item xs={10}>
           <form>
@@ -163,7 +134,6 @@ export default function (props) {
                 }}
               ></TextField>
             </div>
-            {/* {a.a} */}
             <div>
               <TextField
                 required
@@ -193,7 +163,6 @@ export default function (props) {
               setArticleFormData={setArticleFormData}
             />
 
-            {/* <button className="article-create-button">작성완료</button> */}
             <Grid container justify="center" alignItems="center">
               <Grid item xs={6}>
                 <Button

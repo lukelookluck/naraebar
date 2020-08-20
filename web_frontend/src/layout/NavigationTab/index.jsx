@@ -15,8 +15,6 @@ import Community from "../../pages/Community/";
 
 import MyBar from "../../pages/MyBar/";
 
-import Portal from "@material-ui/core/Portal";
-
 import CreateArticleButton from "../../components/Community/ArticleForm/CreateArticleButton/";
 
 function TabPanel(props) {

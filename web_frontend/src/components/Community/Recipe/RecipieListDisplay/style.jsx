@@ -5,6 +5,7 @@ const Wrapper = styled.div`
     padding-left: 0%;
     padding-right: 0%;
     padding-top: 20px;
+    min-height: 6000px;
   }
 
   & .list-card {

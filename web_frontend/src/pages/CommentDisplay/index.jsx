@@ -50,7 +50,6 @@ export default function (props) {
       })
       .then((res) => {
         setListComment(res.data);
-        console.log(listComment);
       })
       .catch((err) => console.log(err));
   }
@@ -63,7 +62,6 @@ export default function (props) {
         },
       })
       .then((res) => {
-        console.log(res.data);
         commentInput.content = "";
         commentInput.parent = null;
 
@@ -71,7 +69,6 @@ export default function (props) {
 
         setTimeout(() => {
           refreshList();
-          console.log("새로고침!");
         }, 3000);
       })
       .catch((err) => {
@@ -80,7 +77,6 @@ export default function (props) {
   }
 
   function likeSubmit(comment) {
-    console.log(comment);
     axios
       .post(
         `${serverUrl}/community/comment/like/${comment.id}/`,
@@ -105,7 +101,6 @@ export default function (props) {
       content: "@" + reply.username + " ",
       parent: reply.id,
     });
-    console.log(commentInput);
   }
 
   const [clicked, setClicked] = useState(1);
@@ -137,12 +132,9 @@ export default function (props) {
     setMyClicked(!myClicked);
 
     setClicked(!clicked);
-
-    console.log(comment);
   }
 
   function DeleteComment(comment) {
-    console.log(comment);
     axios
       .delete(`${serverUrl}/community/comment/${comment.id}/`, {
         headers: {
