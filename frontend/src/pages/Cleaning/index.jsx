@@ -12,7 +12,7 @@ export default class Cleaning extends Component {
       this.props.history.push('/Start');
       console.log("처음으로");
 
-    }, 5000) // 5초 후 실행
+    }, 20000) // 5초 후 실행
   }
 
   render() {

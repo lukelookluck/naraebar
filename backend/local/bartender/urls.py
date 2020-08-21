@@ -12,4 +12,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('recipe/make_cocktail/<int:pk>', views.recipeViewset.make_cocktail),
     path('recipe/done', views.recipeViewset.done),
+    path('recipe/wash', views.recipeViewset.wash),
 ]
