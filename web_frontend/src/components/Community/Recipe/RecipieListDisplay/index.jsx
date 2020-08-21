@@ -18,8 +18,7 @@ import Alert from "../../../../components/Community/Alert/";
 import { CommonContext } from "../../../../context/CommonContext";
 
 export default function (props) {
-  const { serverUrl, user } = useContext(CommonContext);
-
+  const { user } = useContext(CommonContext);
   let article = props.list.map((item, index) => {
     let likeButton = null;
     let countLikeIt1 = null;
@@ -105,7 +104,7 @@ export default function (props) {
           <div>{item.detail}</div>
           <div className="ingredient-title">[재료]</div>
 
-          {item.ingredient1.length != 0 ? (
+          {item.ingredient1.length !== 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient1}</span>
               <span>{item.measure1} ml</span>
@@ -113,7 +112,7 @@ export default function (props) {
           ) : (
             <div></div>
           )}
-          {item.ingredient2.length != 0 ? (
+          {item.ingredient2.length !== 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient2}</span>
               <span>{item.measure2} ml</span>
@@ -121,7 +120,7 @@ export default function (props) {
           ) : (
             <div></div>
           )}
-          {item.ingredient3.length != 0 ? (
+          {item.ingredient3.length !== 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient3}</span>
               <span>{item.measure3} ml</span>
@@ -129,7 +128,7 @@ export default function (props) {
           ) : (
             <div></div>
           )}
-          {item.ingredient4.length != 0 ? (
+          {item.ingredient4.length !== 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient4}</span>
               <span>{item.measure4} ml</span>
@@ -137,7 +136,7 @@ export default function (props) {
           ) : (
             <div></div>
           )}
-          {item.ingredient5.length != 0 ? (
+          {item.ingredient5.length !== 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient5}</span>
               <span>{item.measure5} ml</span>
@@ -145,7 +144,7 @@ export default function (props) {
           ) : (
             <div></div>
           )}
-          {item.ingredient6.length != 0 ? (
+          {item.ingredient6.length !== 0 ? (
             <div className="ingredient-box">
               <span>{item.ingredient6}</span>
               <span>{item.measure6} ml</span>
@@ -183,14 +182,6 @@ export default function (props) {
             <div className="detail-content">
               <p className="cname">" {item.title} "</p>
               {cardContent}
-              {/* {cardContent.split("\n").map((line, index) => {
-                return (
-                  <span key={index}>
-                    {line}
-                    <br></br>
-                  </span>
-                );
-              })} */}
               {myHide}
             </div>
           </div>
@@ -203,7 +194,7 @@ export default function (props) {
             <Link
               className="more-comment"
               to={{
-                pathname: "/Community/Comment",
+                pathname: "/community/comment",
                 state: {
                   comments: item.comments,
                   article: item.id,

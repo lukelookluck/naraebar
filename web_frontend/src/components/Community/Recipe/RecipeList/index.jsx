@@ -5,12 +5,6 @@ import axios from "axios";
 
 import Wrapper from "./style";
 
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import BookmarkIcon from "@material-ui/icons/Bookmark";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-
 import RecipieListDisplay from "../RecipieListDisplay/";
 import { CommonContext } from "../../../../context/CommonContext";
 

@@ -89,7 +89,7 @@ void loop() {
     tmp = Serial.readStringUntil('\n');
 
     //아래는 나중에 지우자 지금은 테스트
-    Serial.println(tmp); // 위에서 '\n'까지 받아서 '\r'도 출력됨 
+//    Serial.println(tmp); // 위에서 '\n'까지 받아서 '\r'도 출력됨 
 //    tmp = "$,MAKE,1,180,3,350,&";
     if (tmp && (tmp!="")){
       if (parsing(tmp)){
@@ -162,7 +162,7 @@ int make(){
           break;
         case 1: //용량 다 차면 밸브를 닫아요
           mon = LOW;
-          if (alarm(atoi(contain[i].c_str())/75)) {
+          if (alarm(atof(contain[i].c_str())/75*2)) {
             mon = HIGH;
             x = 2;
           }
@@ -217,7 +217,7 @@ int wash() {
         break;
       case 1:
         mon = LOW;
-        if (alarm(3)) {
+        if (alarm(15)) {
           mon = HIGH;
           x = 2;
         }
@@ -235,7 +235,11 @@ int wash() {
         break;
     }
 
-    digitalWrite(8, mon);
+    digitalWrite(9, mon);
+    digitalWrite(10, mon);
+    digitalWrite(11, mon);
+    digitalWrite(12, mon);
+    
     digitalWrite(pump, mon);
     return 0;
   }

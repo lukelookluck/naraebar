@@ -1,14 +1,11 @@
-import React, { useState, Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import Wrapper from "./style";
 
 import Grid from "@material-ui/core/Grid";
 
-import CommentDisplay from "../../../../pages/CommentDisplay";
-
 export default function (props) {
-  // console.log(props);
   return (
     <Wrapper>
       <Grid className="comments-box">

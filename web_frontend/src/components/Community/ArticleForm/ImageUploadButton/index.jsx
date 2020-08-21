@@ -1,13 +1,11 @@
 import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 
 import Wrapper from "./style";
 import InputImage from "../InputImage/";
 
-import axios from "axios";
 import { CommonContext } from "../../../../context/CommonContext";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,8 +20,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ImageUploadButton(props) {
-  const { serverUrl, user } = useContext(CommonContext);
-
   const classes = useStyles();
   const [imgBase64, setImgBase64] = useState([]); // 파일 base64, web화면에 띄워주는 역할
   const [imgFile, setImgFile] = useState(null); //파일
@@ -58,13 +54,13 @@ export default function ImageUploadButton(props) {
     // }
   };
 
-  const inputImage = imgBase64.map((item, index) => {
-    return (
-      <span key={index}>
-        <img className="input-image" src={item.value} alt="" />;
-      </span>
-    );
-  });
+  // const inputImage = imgBase64.map((item, index) => {
+  //   return (
+  //     <span key={index}>
+  //       <img className="input-image" src={item.value} alt="" />;
+  //     </span>
+  //   );
+  // });
 
   return (
     <Wrapper>

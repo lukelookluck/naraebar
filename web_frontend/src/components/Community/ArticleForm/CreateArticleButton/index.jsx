@@ -9,7 +9,7 @@ export default function () {
   return (
     <Wrapper>
       <div>
-        <Link to="/Community/Create">
+        <Link to="/community/create">
           <button className="go-articleForm-button">
             <CreateIcon className="acticleBtn" fontSize="small" />
           </button>

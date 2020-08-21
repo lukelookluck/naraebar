@@ -1,16 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Wrapper from "./style";
-import axios from "axios";
 
 import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
 import FaceIcon from "@material-ui/icons/Face";
 
 export default function (props) {
-  // console.log("props", props);
-  // function handleSubmit(data) {
-  //   console.log(data);
-  // }
   let a = null;
   if (props.commentInput.content) {
     a = (
