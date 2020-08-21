@@ -1,8 +1,5 @@
-import React, { useContext, useState } from "react";
-import Grid from "@material-ui/core/Grid";
+import React, { useContext } from "react";
 import Wrapper from "./style";
-
-import axios from "axios";
 
 import AccountCircleTwoToneIcon from "@material-ui/icons/AccountCircleTwoTone";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -13,7 +10,7 @@ import ReplyList from "../../../Community/ReplyList/";
 import { CommonContext } from "../../../../context/CommonContext";
 
 export default function (props) {
-  const { serverUrl, user } = useContext(CommonContext);
+  const { user } = useContext(CommonContext);
 
   let comments = props.comments.map((comment, idx) => {
     let likeButton = null;

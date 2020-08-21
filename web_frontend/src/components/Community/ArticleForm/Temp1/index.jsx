@@ -22,8 +22,6 @@ export default function (props) {
     }
   }, []);
 
-  console.log(myNum);
-
   function moreInput(data) {
     data.preventDefault();
     if (myNum > 5) {
@@ -31,11 +29,6 @@ export default function (props) {
     } else {
       setMyNum(myNum + 1);
     }
-    console.log(myNum);
-  }
-
-  function updateField(index, e) {
-    console.log("index", index);
   }
 
   let ingredient4 = null;

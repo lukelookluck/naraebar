@@ -25,7 +25,7 @@ from django_globals import globals
 class recipeViewset(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     @action(detail=False, methods=['get'])
     def random(self, request, pk=None):
@@ -44,6 +44,8 @@ class recipeViewset(viewsets.ModelViewSet):
         ser = serial.Serial()
         ser.port = '/dev/ttyAMA0'
         ser.baudrate = 9600
+
+        ser.open()
 
         ser.open()
 
@@ -66,24 +68,9 @@ class recipeViewset(viewsets.ModelViewSet):
 
         receive_data = ser.readline()
 
-        globals.request = receive_data.decode()
-        print(globals.__dir__)
-        # print(done_data)
-        # session_data = request.session.get('session_data')
-        # request.session['session_data'] = receive_data.decode()
-
-        print('i receive : ' + receive_data.decode())
-        print(receive_data)
-
         ser.close()
 
-        return JsonResponse({'data': receive_data.decode()})
-
-    @action(detail=False, methods=['get'])
-    def done(request):
-        print("here i am" + globals.request)
-        # making_done = request.session.get('session_data')
-        return JsonResponse({"what": globals.request})
+        return JsonResponse({'data': ser_data})
 
     @action(detail=False, methods=['get'])
     def wash(self):
@@ -112,4 +99,4 @@ class recipeViewset(viewsets.ModelViewSet):
 class bottleViewset(viewsets.ModelViewSet):
     queryset = Bottle.objects.all()
     serializer_class = BottleSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]

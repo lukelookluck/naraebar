@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Start from "./pages/Start";
@@ -42,16 +42,16 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Start}></Route>
-          <Route exact path="/Main" component={Main}></Route>
-          <Route exact path="/Community" component={Community}></Route>
-          <Route exact path="/MyBar" component={MyBar}></Route>
-          <Route exact path="/SignUp" component={SignUp}></Route>
-          <Route exact path="/FindPW" component={FindPW}></Route>
-          <Route exact path="/UploadRecipe" component={UploadRecipe}></Route>
-          <Route exact path="/Community/Create" component={ArticleForm}></Route>
+          <Route exact path="/main" component={Main}></Route>
+          <Route exact path="/community" component={Community}></Route>
+          <Route exact path="/mybar" component={MyBar}></Route>
+          <Route exact path="/signup" component={SignUp}></Route>
+          <Route exact path="/findpW" component={FindPW}></Route>
+          <Route exact path="/uploadrecipe" component={UploadRecipe}></Route>
+          <Route exact path="/community/create" component={ArticleForm}></Route>
           <Route
             exact
-            path="/Community/Comment"
+            path="/community/comment"
             component={CommentDisplay}
           ></Route>
         </Switch>

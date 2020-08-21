@@ -44,7 +44,7 @@ const Start = () => {
         console.log(response);
         console.log(response.data);
         setUser({ ...response.data });
-        history.push("/Main");
+        history.push("/main");
         console.log("로그인 됨");
       })
       .catch((error) => {
