@@ -1,9 +1,9 @@
-![narebar_logo](C:\Users\multicampus\Desktop\images\narebar_logo.png)
+![narebar_logo](./images/narebar_logo.PNG)
 
 # NAREBAR
 
 - [기획서](https://drive.google.com/file/d/1Pjh1MHnT8vvco5QqzVb-gD_Sag1VSvNQ/view?usp=sharing)
-- [Web UI 디자인]()
+- [Web UI 디자인](https://drive.google.com/file/d/1mG3RfXZyAV0GH9_HAP3oBa4VqBiwnnbO/view?usp=sharing)
 - [Local UI 디자인](https://drive.google.com/file/d/1mbv17E_YQ9WuZFX8xKeDhNDy37q7QhTE/view?usp=sharing)
 
 - [릴리즈노트](https://drive.google.com/file/d/1QscnKkrVjy3Sh74RuVOhMGRw924oNGFn/view)
@@ -40,19 +40,19 @@
 
 <h3 align="center">- FRONT -</h3>
 
-![front](C:\Users\multicampus\Desktop\front.jpg)
+![front](./images/front.jpg)
 
 
 
 <h3 align="center">- SIDE -</h3>
 
-![side](C:\Users\multicampus\Desktop\side.jpg)
+![side](./images/side.jpg)
 
 
 
 <h3 align="center">- BACK -</h3>
 
-![back](C:\Users\multicampus\Desktop\back.jpg)
+![back](./images/back.jpg)
 
 
 
@@ -66,7 +66,7 @@
 - [릴리즈노트](https://drive.google.com/file/d/1QscnKkrVjy3Sh74RuVOhMGRw924oNGFn/view)
 - [API](https://drive.google.com/file/d/1GnOVbW3CJNLBv0gmJtFTYRFeQjHIuyOD/view?usp=sharing)
 - [예산안](https://drive.google.com/file/d/1KcQU5yn_EYlZiysWpgOt0LvoPYBquoHP/view?usp=sharing)
-- [나레바 발표 자료]()
+- [나레바 발표 자료](https://drive.google.com/file/d/1ev1kvrGW4rTEyiguV4xa4yFpT1rZCT8X/view?usp=sharing)
 
 
 
@@ -122,7 +122,9 @@
 | Fusion360 | 3D 모델링               |      |
 | CURA      | 3D 프린터 출력 슬라이서 |      |
 
-![language](./images/language.png)
+- 언어 사용
+
+![language](./images/언어 사용.png)
 
 ## TEAM 
 
