@@ -7,13 +7,31 @@ import '../../index.css';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
+import axios from "axios";
 
 const Start = () => {
   let history = useHistory();
 
   const onClickRedirectPathHandler = name => e => {
+    
     history.push(name);
   };
+
+  const clean = name => e=> {
+    axios
+      .get(`/bartender/recipe/wash`, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      })
+      .then(res => {
+        console.log("here");
+        console.log(res.data);
+      })
+      .catch(err => console.log(err + ' 에러났음'));
+
+      history.push(name);
+  }
 
   return (
     <Layout>
@@ -28,7 +46,7 @@ const Start = () => {
               <Button
                 className="btnCleaning"
                 variant="contained"
-                onClick={onClickRedirectPathHandler('/Cleaning')}
+                onClick={clean('/Cleaning')}
                 startIcon={<InvertColorsIcon/>}
               >
                 세척 모드
@@ -36,7 +54,7 @@ const Start = () => {
               <Button
                 className="btnStart"
                 variant="contained"
-                onClick={onClickRedirectPathHandler('/MenuList')}
+                onClick={clean('/MenuList')}
                 startIcon={<LocalBarIcon/>}
               >
                 메뉴 선택

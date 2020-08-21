@@ -11,9 +11,16 @@ from rest_framework.response import Response
 from django.db.models import Max
 from django.http import JsonResponse
 
+# from django.conf import settings
+
 import random
 import serial
 
+# globals
+from django_globals import globals
+
+# global done_data
+# done_data = ''
 
 class recipeViewset(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
@@ -33,10 +40,12 @@ class recipeViewset(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def make_cocktail(self, pk):
-        ser = serial.Serial('/dev/ttyAMA0', 9600)
-        # ser = serial.Serial()
-        # ser.port = '/dev/ttyAMA0'
-        # ser.baudrate = 9600
+        # ser = serial.Serial('/dev/ttyAMA0', 9600)
+        ser = serial.Serial()
+        ser.port = '/dev/ttyAMA0'
+        ser.baudrate = 9600
+
+        ser.open()
 
         ser_data = '$,MAKE,'
         cocktail_recipe = Recipe.objects.get(pk=pk)
@@ -49,20 +58,55 @@ class recipeViewset(viewsets.ModelViewSet):
             if ingredient != 'null':
                 bottle = Bottle.objects.get(name=ingredient)
                 ser_data += (str(bottle.nozzle) + ',' +
-                             str(getattr(cocktail_recipe, key_Measure)))
+                            str(getattr(cocktail_recipe, key_Measure)) + ',')
 
-        ser_data += ',&'
+        ser_data += '&' + '\r\n'
         ser.write(ser_data.encode())
-        # print(ser_data)
+        print('i send : ' + ser_data)
 
         receive_data = ser.readline()
-        # print(receive_data)
 
-        return JsonResponse({'data': ser_data})
+        globals.request = receive_data.decode()
+        print(globals.__dir__)
+        # print(done_data)
+        # session_data = request.session.get('session_data')
+        # request.session['session_data'] = receive_data.decode()
+
+        print('i receive : ' + receive_data.decode())
+        print(receive_data)
+
+        ser.close()
+
+        return JsonResponse({'data': receive_data.decode()})
 
     @action(detail=False, methods=['get'])
-    def done(self, request):
-        return JsonResponse({"what": "done"})
+    def done(request):
+        print("here i am" + globals.request)
+        # making_done = request.session.get('session_data')
+        return JsonResponse({"what": globals.request})
+
+    @action(detail=False, methods=['get'])
+    def wash(self):
+        # ser = serial.Serial('/dev/ttyAMA0', 9600)
+        ser = serial.Serial()
+        ser.port = '/dev/ttyAMA0'
+        ser.baudrate = 9600
+
+        ser.open()
+
+        ser_data = '$,WASH,&\r\n'
+        ser.write(ser_data.encode())
+        print('i send : ' + ser_data)
+
+        receive_data = ser.readline()
+
+        print(receive_data)
+        print('i receive : ' + receive_data.decode())
+
+        ser.close()
+
+        return JsonResponse({'data': receive_data.decode()})
+
 
 
 class bottleViewset(viewsets.ModelViewSet):

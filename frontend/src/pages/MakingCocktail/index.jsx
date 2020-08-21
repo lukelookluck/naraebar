@@ -6,29 +6,30 @@ import axios from "axios";
 
 export default class MakingCocktail extends Component {
 
-  // componentDidMount() {
-  //   setTimeout(() => {
-  //     this.props.history.push('/CompleteCocktail');
-  //     console.log("다음으로!");
-  //   }, 5000) // 지금은 임의로 만드는 중 5초 띄우고 완성으로 넘김. 추후 수정예정
-  // }
-
   componentDidMount() {
-    let goComplete = () => {
-      axios
-        .get(`/bartender/recipe/done`)
-        .then(res => {
-          //  this.props.onReceive(res.data.number);
-          console.log(res.data);
-          if (res.data.what === "done") {
-            this.props.history.push('/CompleteCocktail');
-          }
-        });
-    }
-
-    setTimeout(goComplete, 1000); // 1초마다 get 호출하면서 완성됐는지 확인
-    goComplete();
+    setTimeout(() => {
+      this.props.history.push('/CompleteCocktail');
+      console.log("다음으로!");
+    }, 20000)
   }
+
+  // componentDidMount() {
+  //   let goComplete = () => {
+  //     axios
+  //       .get(`/bartender/recipe/done`)
+  //       .then(res => {
+  //         //  this.props.onReceive(res.data.number);
+  //         console.log("res.data : " + res.data);
+  //         console.log("what : " + res.data.what);
+  //         // if (res.data.what === "$,DONE,MAKE,&") {
+  //         //   this.props.history.push('/CompleteCocktail');
+  //         // } 
+  //       });
+  //   }
+
+  //   setTimeout(goComplete, 1000); // 1초마다 get 호출하면서 완성됐는지 확인
+  //   goComplete();
+  // }
 
   render() {
     return (
