@@ -217,7 +217,7 @@ int wash() {
         break;
       case 1:
         mon = LOW;
-        if (alarm(3)) {
+        if (alarm(15)) {
           mon = HIGH;
           x = 2;
         }
@@ -235,7 +235,11 @@ int wash() {
         break;
     }
 
-    digitalWrite(8, mon);
+    digitalWrite(9, mon);
+    digitalWrite(10, mon);
+    digitalWrite(11, mon);
+    digitalWrite(12, mon);
+    
     digitalWrite(pump, mon);
     return 0;
   }

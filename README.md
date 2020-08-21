@@ -1,12 +1,12 @@
-![narebar_logo](C:\Users\multicampus\Desktop\narebar_logo.png)
+![narebar_logo](C:\Users\multicampus\Desktop\images\narebar_logo.png)
 
 # NAREBAR
 
-- 기획서
-- UI디자인
+- [기획서](https://drive.google.com/file/d/1Pjh1MHnT8vvco5QqzVb-gD_Sag1VSvNQ/view?usp=sharing)
+- [Web UI 디자인]()
+- [Local UI 디자인](https://drive.google.com/file/d/1mbv17E_YQ9WuZFX8xKeDhNDy37q7QhTE/view?usp=sharing)
 
-- 디바이스
-- 릴리즈노트
+- [릴리즈노트](https://drive.google.com/file/d/1QscnKkrVjy3Sh74RuVOhMGRw924oNGFn/view)
 
 
 
@@ -56,19 +56,17 @@
 
 
 
-
-
 ## 프로젝트 산출물
 
-- 기획서
-- ERD
-- 회로도
-- 3D 모델링 
-- 나레바 발표 자료
-- 임베디드 명세
-- 릴리즈노트
-- API
-- 예산안
+- [기획서](https://drive.google.com/file/d/1Pjh1MHnT8vvco5QqzVb-gD_Sag1VSvNQ/view?usp=sharing)
+- [ERD](https://drive.google.com/file/d/1IPDJMx0K04XcpwjvHBSuuyC_UpD18-ax/view?usp=sharing)
+- [회로도](https://drive.google.com/file/d/1un7AlISM4Uw9p6J_7rJX27q-vtZmSlwO/view?usp=sharing)
+- [3D 모델링](https://drive.google.com/file/d/1uM7y9-6-jKNy0GQ9rMZxRdvo7eJnlBzq/view?usp=sharing)
+- [임베디드 명세](https://drive.google.com/file/d/1iOSuVLxVAcIJRJBwMAz5Ti5oJpQmtT5v/view)
+- [릴리즈노트](https://drive.google.com/file/d/1QscnKkrVjy3Sh74RuVOhMGRw924oNGFn/view)
+- [API](https://drive.google.com/file/d/1GnOVbW3CJNLBv0gmJtFTYRFeQjHIuyOD/view?usp=sharing)
+- [예산안](https://drive.google.com/file/d/1KcQU5yn_EYlZiysWpgOt0LvoPYBquoHP/view?usp=sharing)
+- [나레바 발표 자료]()
 
 
 
@@ -76,7 +74,7 @@
 
 - 기술 스택
 
-|                    | 용도                  | 비고 |
+| 기술               | 용도                  | 비고 |
 | ------------------ | --------------------- | ---- |
 | React              | 프론트엔드 프레임워크 |      |
 | DjangoRESTframwork | 백엔드 프레임워크     |      |
@@ -84,6 +82,16 @@
 | SQLite             | 백엔드 데이터베이스   |      |
 | AWS                | 백엔드 배포           |      |
 | EC2                | 백엔드 배포           |      |
+
+- 협업 툴
+
+| 툴         | 용도                       | 비고 |
+| ---------- | -------------------------- | ---- |
+| GitLab     | 형상 관리, 코드 공유, 등.. |      |
+| Jira       | 프로젝트 일정 관리         |      |
+| mattermost | 메신저                     |      |
+| Webex      | 화상 미팅                  |      |
+| Hangout    | 화상 미팅                  |      |
 
 - 사용 언어
 
@@ -109,16 +117,12 @@
 
 - 3D 모델링
 
-| 프로그램  | 용도                      | 비고 |
-| --------- | ------------------------- | ---- |
-| Fusion360 | 3D 모델링                 |      |
-| CURA      | 3D 프린터 출력용 슬라이서 |      |
+| 프로그램  | 용도                    | 비고 |
+| --------- | ----------------------- | ---- |
+| Fusion360 | 3D 모델링               |      |
+| CURA      | 3D 프린터 출력 슬라이서 |      |
 
-
-
-![언어 사용](images/언어 사용.PNG)
-
-
+![language](./images/language.png)
 
 ## TEAM 
 
@@ -134,3 +138,14 @@
 
 
 
+
+
+### GITLAB 주소
+
+- https://lab.ssafy.com/s03-webmobile3-sub3/s03p13d209.git
+
+
+
+### 배포 URL
+
+- http://i3d209.p.ssafy.io/
