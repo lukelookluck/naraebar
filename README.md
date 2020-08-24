@@ -1,4 +1,4 @@
-![narebar_logo](./images/narebar_logo.PNG)
+![narebar_logo](./images/narebar_logo.png)
 
 # NAREBAR
 
